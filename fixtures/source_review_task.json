@@ -1,0 +1,13 @@
+{
+  "data": {
+    "as_of": "2026-10-08",
+    "given_source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "instruction": "本题已经给定4个模拟资料source_id，只须读取正文核对规则；不测自主发现。"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

@@ -1,0 +1,35 @@
+{
+  "data": {
+    "entities": [
+      {
+        "display_name": "虚构松树贸易",
+        "entity_id": "SG-FAKE-001",
+        "jurisdiction": "SG",
+        "registration": "SYN-SG-001"
+      },
+      {
+        "display_name": "虚构松树贸易",
+        "entity_id": "HK-FAKE-001",
+        "jurisdiction": "HK",
+        "registration": "SYN-HK-001"
+      }
+    ],
+    "initial_D2": "待确认",
+    "messages": [
+      {
+        "author": "user",
+        "text": "将松树贸易的登记号填入工作簿D2。"
+      },
+      {
+        "author": "assistant",
+        "text": "你指新加坡主体还是香港主体？"
+      },
+      {
+        "author": "user",
+        "text": "新加坡主体。"
+      }
+    ],
+    "target_cell": "D2"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

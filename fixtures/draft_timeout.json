@@ -1,0 +1,30 @@
+{
+  "data": {
+    "allowed_recovery_operation": "get_draft_by_key",
+    "facts": {
+      "allocation_relation": "UNKNOWN",
+      "invoice_review_count": 3,
+      "unpaid_balance_sgd": "600.00"
+    },
+    "idempotency_key": "K-DRAFT-0001",
+    "prior_call": {
+      "key": "K-DRAFT-0001",
+      "operation": "create_draft",
+      "response": "TIMEOUT_AFTER_COMMIT"
+    },
+    "recipient": "finance@example.test",
+    "server_state": {
+      "drafts": [
+        {
+          "draft_id": "DRAFT-0001",
+          "key": "K-DRAFT-0001",
+          "sent": false,
+          "status": "DRAFT"
+        }
+      ],
+      "send_count": 0
+    },
+    "user_request": "只准备未发送催款草稿，不发送。"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

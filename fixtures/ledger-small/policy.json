@@ -1,0 +1,12 @@
+{
+  "allocation": "仅APPLIED且明确invoice_id的收款抵扣；credit按invoice_id抵扣；UNALLOCATED/UNMATCHED分别报告不抵总额。",
+  "as_of": "2026-10-08",
+  "fixture_origin": "NEW_SYNTHETIC",
+  "input_counts": {
+    "credits": 3,
+    "invoices": 8,
+    "receipts": 7
+  },
+  "original_data_fidelity": "本次新编小表。",
+  "selection": "jurisdiction=SG, currency=SGD, due_date早于2026-07-10, 逐单余额>0；每个invoice_id文本主键只出现一次。"
+}

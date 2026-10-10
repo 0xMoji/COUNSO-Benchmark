@@ -1,0 +1,311 @@
+{
+  "schema_version": "INDEPENDENT-REVIEW-1.0",
+  "review_date_utc": "2026-10-10",
+  "status": "PASS_FOR_OFFLINE_INTERNAL_RECONSTRUCTED_PACKAGE",
+  "blocking_findings": 0,
+  "unresolved_p1": 0,
+  "reviewed_snapshot_manifest_sha256": "02f31b2814ada4f50f1e4eca60d3a5e85c48e4e4d967b36a66b3374eb09c4a3c",
+  "execution_fingerprint": "a51260f56c93a28352f0903b3489d030537af5c85c467e262d597804cae7343a",
+  "final_packaging_condition": "最终文件集合及hash冻结通过，且代码/catalog/fixtures/gold保持被审v4字节；新增审核文件不是原包恢复。",
+  "original_equivalence": "UNKNOWN_NOT_ESTABLISHED",
+  "candidate_model_runs": 0,
+  "paid_candidate_model_runs": 0,
+  "publication_performed_by_reviewer": false,
+  "commands": [
+    {
+      "command": "python -m counso_bench validate",
+      "exit_code": 0,
+      "result": {
+        "valid": true,
+        "scenarios": 31,
+        "families": 20,
+        "objective_checks": 242,
+        "distinct_inputs": 53
+      }
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "tests": 67,
+      "failed": 0,
+      "duration_seconds_observed": 2.982
+    },
+    {
+      "command": "python tests/independent_review_controls.py --output-dir /tmp/counso-independent-check",
+      "exit_code": 0,
+      "independent_controls": 37,
+      "failed": 0,
+      "reference_setup": {
+        "passed": true,
+        "cases": 31,
+        "negative_controls": 31
+      }
+    },
+    {
+      "command": "python tests/independent_oracle.py .",
+      "exit_code": 0,
+      "result": "全部逐行及版本选择等值；未导入生成器"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "INDEPENDENT_REVIEW.md",
+      "sha256": "92256b894743daa697686e452af91e840f922e89f39567731e0d771b02edf59d"
+    },
+    {
+      "path": "provenance/INDEPENDENT_CONTROL_RESULTS.json",
+      "sha256": "ab96dff6999988bd7c4e361040202f566cdc75f030de51e4fba1ea289c90c7dd"
+    },
+    {
+      "path": "provenance/INDEPENDENT_ORACLE.json",
+      "sha256": "5aa1fbca9d07a6f451b068a747266f2a114f3e0e123f36daef70acbaf32788d4"
+    },
+    {
+      "path": "tests/independent_oracle.py",
+      "sha256": "a33bf84a30ea216c7f2de51779eef550d0781b629dbfbcab36ab017a5fd36474"
+    },
+    {
+      "path": "tests/independent_review_controls.py",
+      "sha256": "dbb8544d71fa1dcbcdc90ed036343fa1d4372f759f1603a35f634e9be0b7d7fa"
+    }
+  ],
+  "snapshot_history": [
+    {
+      "stage": "initial_fixture_snapshot",
+      "manifest_sha256": "c2c4d5677216df84fff031bd84ac2293e16db3576f3e6fdc1da819079fce69a1",
+      "finding": "算术正确，但任务深度/提示/功能断言不足"
+    },
+    {
+      "stage": "runnable_v2",
+      "manifest_sha256": "33d7c4a864f5e70b7cb22b00f4a3f12efa6d40c1983daa878b01d97fe56f1817",
+      "finding": "18探针10PASS/8FAIL；Office关系、冻结集合等追加负控发现漏洞"
+    },
+    {
+      "stage": "complete_v3",
+      "manifest_sha256": "0c66afd66fc029e244bdfacbc3a6f4e1c3662fd90c59402c09e2db93f9e6f042",
+      "finding": "36独立控制通过；收尾发现错日报价排除类别缺口"
+    },
+    {
+      "stage": "complete_v4",
+      "manifest_sha256": "02f31b2814ada4f50f1e4eca60d3a5e85c48e4e4d967b36a66b3374eb09c4a3c",
+      "finding": "37独立控制及全部既有发布门槛通过"
+    }
+  ],
+  "findings": [
+    {
+      "id": "IR-01",
+      "severity": "P1",
+      "area": "来源发现判别效度",
+      "finding": "B01.discovery与基础题共享完整答案目录；source_index标MOCK_OFFICIAL/FINAL和DISTRACTOR，正文不必阅读。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-02",
+      "severity": "P1",
+      "area": "复杂交接判别效度",
+      "finding": "B13.deep只添加32条同文非授权记录，最终状态已给在handoff_states。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-03",
+      "severity": "P1",
+      "area": "Office功能验收",
+      "finding": "XLSX断言只数图表/公式/token，未核完整源数据、结果、引用或追加功能。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-04",
+      "severity": "P1",
+      "area": "公开题干答案提示",
+      "finding": "B17.reconcile题干给出4UNKNOWN、EUR4000和完整排除类别。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-05",
+      "severity": "P1",
+      "area": "关键失败分级",
+      "finding": "几乎全部字段critical=true，包括准备记录计数、静态输出允许等普通元信息。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-06",
+      "severity": "P1",
+      "area": "行为观测与自报",
+      "finding": "B15只读已给server_state再自报操作；安全/恢复行为没有独立actor日志。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-07",
+      "severity": "P2",
+      "area": "规模fixture捷径",
+      "finding": "合格发票恰为前2400，最多每张1笔receipt，前36条credit全10。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-08",
+      "severity": "P1",
+      "area": "题意-验收契约完整性",
+      "finding": "R02要求草稿差异、R05要求真实只读SQL、B17.reconcile要求待补证据，但gold中没有相应输出断言。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-09",
+      "severity": "P1",
+      "area": "版本选择覆盖",
+      "finding": "B17每个position只有一条holding和一条quote，不实际触发同对象版本选择。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-10",
+      "severity": "P1",
+      "area": "输出schema实际执行",
+      "finding": "score跳过公开schema，删summary或加未知字段仍满分。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-11",
+      "severity": "P1",
+      "area": "汇总信任边界",
+      "finding": "aggregate接受抹除MODEL+FAIL分母、诊断题塞入质量、boolean质量。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-12",
+      "severity": "P1",
+      "area": "SQL功能证明",
+      "finding": "SELECT 500常数被当成正确业务计算。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-13",
+      "severity": "P1",
+      "area": "不支持公式观测",
+      "finding": "合法IFERROR(SUMIFS)被错判关键FAIL而非等待人工UNKNOWN。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-14",
+      "severity": "P2",
+      "area": "裁决命名空间",
+      "finding": "名为facts的L1检查与facts维度冲突。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-15",
+      "severity": "P1",
+      "area": "Office关系图",
+      "finding": "孤立图表、未连接Sales表、错误命名范围作用域仍满分。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-16",
+      "severity": "P1",
+      "area": "冻结完整性",
+      "finding": "新增白名单文件未入manifest，validate与release仍接受。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-17",
+      "severity": "P1",
+      "area": "隐藏词表公平性",
+      "finding": "公开自由英文标签要求却用未公开exact字符串作为关键事实断言。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-18",
+      "severity": "P1",
+      "area": "候选证据覆盖写",
+      "finding": "score输出路径可覆盖response原件。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-19",
+      "severity": "P1",
+      "area": "终裁管线接入",
+      "finding": "adjudicate结果没有受支持的score接入，A/B/裁决未随评分保留。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-20",
+      "severity": "P1",
+      "area": "交付完成验证",
+      "finding": "缺必需XLSX仍completion_numerator=1。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-21",
+      "severity": "P1",
+      "area": "模拟行为证据完整性",
+      "finding": "只记录POST禁写，PUT发送尝试不留痕；缺session绑定/观测hash。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-22",
+      "severity": "P1",
+      "area": "CSV数值语义公平性",
+      "finding": "正确静态CSV只变金额小数格式却关键FAIL。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-23",
+      "severity": "P2",
+      "area": "未知计量",
+      "finding": "UNVERIFIED/INFRA被报告completion_observability=KNOWN、unknown_count=0。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    },
+    {
+      "id": "IR-24",
+      "severity": "P2",
+      "area": "分发范围",
+      "finding": "wheel不包含catalog/fixtures/gold；需限定源码ZIP或修wheel。",
+      "resolution": "DOCUMENTED_SOURCE_ZIP_SCOPE",
+      "blocking": false
+    },
+    {
+      "id": "IR-25",
+      "severity": "P1",
+      "area": "排除证据类别完整性",
+      "finding": "版本压力题新增错日FINAL报价，但原新编词表/金标缺该类别；更旧有效版本的范围未说清。",
+      "resolution": "FIXED_AND_REVIEWED",
+      "blocking": false
+    }
+  ],
+  "documented_limits": [
+    "仅完整源码目录/ZIP，wheel/pip路线不支持",
+    "自动公式核验有限语法；其他合法公式UNKNOWN待人工"
+  ],
+  "untested_or_unknown": [
+    "原逐题/难度/统计效度等价",
+    "真实候选表现、thinking收益与排名",
+    "真实官网快照与公网发现",
+    "COUNSO/邮箱/OAuth/ACL生产动作",
+    "Office完整视觉及通用回算/真实更新",
+    "OS隔离与恶意宿主防伪",
+    "完整正常文件整理流程",
+    "生产速度/费用/长期可靠性/真实业务分布"
+  ],
+  "notice": "控制存在重叠，不是独立候选样本或模型能力成绩；旧历史成绩不改标签为新规则成绩。"
+}

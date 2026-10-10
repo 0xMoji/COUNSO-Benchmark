@@ -1,0 +1,8 @@
+{
+  "data": {
+    "candidate_responsibility": "UNDETERMINED",
+    "event": "tool_connection_lost_before_observation",
+    "scope": "不得把无观测当成模型错误或零分。"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

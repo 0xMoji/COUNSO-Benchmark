@@ -1,0 +1,30 @@
+{
+  "data": {
+    "calendar": "本题按自然日；单线串行，起始日计第1天。",
+    "milestone": "2026-10-15",
+    "scope": "只做计划，不能替用户承诺延期。",
+    "start": "2026-10-12",
+    "tasks": [
+      {
+        "days": 2,
+        "id": "D1",
+        "requires": []
+      },
+      {
+        "days": 1,
+        "id": "D2",
+        "requires": [
+          "D1"
+        ]
+      },
+      {
+        "days": 2,
+        "id": "D3",
+        "requires": [
+          "D2"
+        ]
+      }
+    ]
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

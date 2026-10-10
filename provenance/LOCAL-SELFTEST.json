@@ -1,0 +1,32 @@
+{
+  "aggregate": {
+    "completion_denominator": 31,
+    "completion_numerator": 31,
+    "completion_rate": 1.0,
+    "completion_unknown_count": 0,
+    "critical_failed_count": 0,
+    "diagnostic_count": 6,
+    "excluded_harness_count": 0,
+    "excluded_infra_count": 0,
+    "excluded_unknown_origin_count": 0,
+    "human_quality_expected": 23,
+    "human_quality_mean": 4.0,
+    "human_quality_observed_mean": 4.0,
+    "human_quality_review_coverage": 1.0,
+    "human_quality_reviewed": 23,
+    "notice": "有效模型失败保留；未知不补零。23个normalized新编契约可形成质量均分，supplemental/diagnostic另列。缺审核时完整质量均分UNKNOWN，observed_mean仅为已审核子集，不得排名。",
+    "observed_model_fail_count": 0,
+    "run_count": 31,
+    "run_origin": "SIMULATED",
+    "schema_version": "RECON-0.1",
+    "unverified_run_count": 0
+  },
+  "failures": [],
+  "negative_controls": 31,
+  "negative_detected": 31,
+  "notice": "仅验证本次工具/合成fixture一致性。31个参考通过和31负控检出都不是模型能力成绩。",
+  "passed": true,
+  "reference_cases": 31,
+  "run_origin": "SIMULATED",
+  "schema_version": "RECON-0.1"
+}

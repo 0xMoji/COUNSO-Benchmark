@@ -1,0 +1,21 @@
+{
+  "data": {
+    "scope": "无需联网；无法确认当日最终值时保留UNKNOWN。",
+    "sources": [
+      {
+        "date": "2026-07-01",
+        "id": "SRC-OLD",
+        "rate": "1.10",
+        "status": "FINAL"
+      },
+      {
+        "date": "2026-10-08",
+        "id": "SRC-DRAFT",
+        "rate": "1.20",
+        "status": "DRAFT"
+      }
+    ],
+    "user_as_of": "2026-10-08"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

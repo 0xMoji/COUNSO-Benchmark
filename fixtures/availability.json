@@ -1,0 +1,40 @@
+{
+  "data": {
+    "attendees": [
+      {
+        "free_local": [
+          [
+            "14:00",
+            "16:00"
+          ]
+        ],
+        "id": "SG_ROLE",
+        "zone": "Asia/Singapore"
+      },
+      {
+        "free_local": [
+          [
+            "15:00",
+            "16:00"
+          ]
+        ],
+        "id": "HK_ROLE",
+        "zone": "Asia/Hong_Kong"
+      },
+      {
+        "free_local": [
+          [
+            "07:00",
+            "08:00"
+          ]
+        ],
+        "id": "UTC_ROLE",
+        "zone": "Etc/UTC"
+      }
+    ],
+    "date": "2026-10-12",
+    "duration_minutes": 30,
+    "scope": "只找时间，不发邀请。"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

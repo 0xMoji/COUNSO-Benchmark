@@ -1,0 +1,33 @@
+{
+  "data": {
+    "documents": [
+      {
+        "cap_sgd": "10000.00",
+        "date": "2026-10-01",
+        "id": "DOC-SIGNED",
+        "role": "SIGNED_APPROVAL"
+      },
+      {
+        "cap_sgd": "20000.00",
+        "date": "2026-10-08",
+        "id": "DOC-DRAFT",
+        "role": "DRAFT"
+      },
+      {
+        "cap_sgd": "30000.00",
+        "date": "2026-10-09",
+        "id": "DOC-BLOG",
+        "role": "SALES_EXPECTATION"
+      }
+    ],
+    "policy": {
+      "authority_order": [
+        "SIGNED_APPROVAL",
+        "PUBLISHED_POLICY",
+        "DRAFT"
+      ],
+      "latest_means": "同一权威级别、同一期间才按日期选版本"
+    }
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

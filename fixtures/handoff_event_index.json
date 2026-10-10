@@ -1,0 +1,250 @@
+{
+  "data": [
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-01",
+      "state": "PREPARATION",
+      "text": "合成准备记录1；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-02",
+      "state": "PREPARATION",
+      "text": "合成准备记录2；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-03",
+      "state": "DRAFT",
+      "text": "合成准备记录3；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-04",
+      "state": "PREPARATION",
+      "text": "合成准备记录4；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-05",
+      "state": "PREPARATION",
+      "text": "合成准备记录5；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-06",
+      "state": "DRAFT",
+      "text": "合成准备记录6；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-07",
+      "state": "PREPARATION",
+      "text": "合成准备记录7；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-08",
+      "state": "PREPARATION",
+      "text": "合成准备记录8；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-09",
+      "state": "DRAFT",
+      "text": "合成准备记录9；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-10",
+      "state": "PREPARATION",
+      "text": "合成准备记录10；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-11",
+      "state": "PREPARATION",
+      "text": "合成准备记录11；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-12",
+      "state": "DRAFT",
+      "text": "合成准备记录12；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-09-20",
+      "id": "EV-13",
+      "state": "PREPARATION",
+      "text": "合成准备记录13；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-09-20",
+      "id": "EV-14",
+      "state": "PREPARATION",
+      "text": "合成准备记录14；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-15",
+      "state": "DRAFT",
+      "text": "合成准备记录15；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-16",
+      "state": "PREPARATION",
+      "text": "合成准备记录16；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-17",
+      "state": "PREPARATION",
+      "text": "合成准备记录17；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-18",
+      "state": "DRAFT",
+      "text": "合成准备记录18；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-19",
+      "state": "PREPARATION",
+      "text": "合成准备记录19；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-20",
+      "state": "PREPARATION",
+      "text": "合成准备记录20；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-21",
+      "state": "DRAFT",
+      "text": "合成准备记录21；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-22",
+      "state": "PREPARATION",
+      "text": "合成准备记录22；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-23",
+      "state": "PREPARATION",
+      "text": "合成准备记录23；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-24",
+      "state": "DRAFT",
+      "text": "合成准备记录24；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-25",
+      "state": "PREPARATION",
+      "text": "合成准备记录25；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-26",
+      "state": "PREPARATION",
+      "text": "合成准备记录26；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-27",
+      "state": "DRAFT",
+      "text": "合成准备记录27；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-28",
+      "state": "PREPARATION",
+      "text": "合成准备记录28；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-29",
+      "state": "PREPARATION",
+      "text": "合成准备记录29；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-30",
+      "state": "DRAFT",
+      "text": "合成准备记录30；非正式授权。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-31",
+      "state": "PREPARATION",
+      "text": "合成准备记录31；非正式授权。"
+    },
+    {
+      "author_role": "SALES",
+      "date": "2026-10-08",
+      "id": "EV-32",
+      "state": "PREPARATION",
+      "text": "合成准备记录32；非正式授权。"
+    },
+    {
+      "author_role": "SPONSOR",
+      "date": "2026-09-30",
+      "id": "EV-SPONSOR",
+      "state": "EXPIRED",
+      "text": "批准有效期止于9月30日，未批准延期。"
+    },
+    {
+      "author_role": "DATA_OWNER",
+      "date": "2026-10-08",
+      "id": "EV-DATA",
+      "state": "PENDING",
+      "text": "未授权真实数据共享。"
+    },
+    {
+      "author_role": "OPS",
+      "date": "2026-10-08",
+      "id": "EV-WORKSPACE",
+      "state": "CLOSED",
+      "text": "账号准备完成，但工作区尚未开放。"
+    }
+  ],
+  "fixture_origin": "NEW_SYNTHETIC"
+}

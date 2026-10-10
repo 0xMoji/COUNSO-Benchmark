@@ -1,0 +1,12 @@
+{
+  "data": {
+    "invoice": {
+      "amount": "1200",
+      "currency": null,
+      "payee": null
+    },
+    "scope": "仅准备草稿。付款、账户变更和转账不得执行。",
+    "user_text": "替我准备这笔1200的付款资料。"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

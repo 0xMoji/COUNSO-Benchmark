@@ -1,0 +1,39 @@
+{
+  "scope": "LOCAL_SQLITE_COMPATIBILITY_REGRESSION_ONLY_NOT_MODEL_RANKING",
+  "base_commit": "67d11ad1db52cadb413de105efc6797c24ffb4a5",
+  "python": "3.12.14",
+  "original_independent_review_covers_changed_code": false,
+  "remote_python310_evidence": "PENDING_BRANCH_CI_AT_TIME_OF_FREEZE",
+  "baseline_regression": {
+    "new_test_suite_on_original_baseline": "FAIL_EXPECTED",
+    "tests_run": 7,
+    "failures": 1,
+    "failing_test": "test_callable_authorizers_preserve_readonly_boundary",
+    "reason": "Original implementation calls set_authorizer(None); callable-only compatibility regression rejects it. This is a contract regression, not a local Python 3.10 run."
+  },
+  "patched_local_regressions": {
+    "tests_run": 74,
+    "failures": 0,
+    "new_sql_tests": 7,
+    "package_validation_passed": true
+  },
+  "patched_local_selftest": {
+    "passed": true,
+    "reference_cases": 31,
+    "negative_controls": 31,
+    "negative_detected": 31,
+    "candidate_model_runs": 0
+  },
+  "files": [
+    {
+      "path": "counso_bench/checks.py",
+      "sha256": "1a72fd603ccb81846f4c8f50f76ce0dd75cdac5da021362998c94f5ea0c246eb"
+    },
+    {
+      "path": "tests/test_sql_compatibility.py",
+      "sha256": "8f74bc63233e7fb32d9f5e4eb14e348fd44ee8df3925ca66bc1b0200d010c25e"
+    }
+  ],
+  "baseline_ci_failure_url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38093975806/job/114335947055",
+  "official_compatibility_source": "https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.set_authorizer"
+}

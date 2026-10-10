@@ -146,7 +146,10 @@ def evaluate(check, response, output_dir, package_root, observations=None):
                 connection.set_progress_handler(lambda:1,10000)
                 values=connection.execute(actual).fetchall()
                 ok=len(values)==1 and len(values[0])==1 and _money(values[0][0])==Decimal('500.00')
-                connection.set_authorizer(None)
+                # Python 3.10 cannot disable the authorizer with None.
+                # Only these fixed evaluator INSERTs run with this callback;
+                # restore the read-only callback before executing candidate SQL.
+                connection.set_authorizer(lambda *_: sqlite3.SQLITE_OK)
                 connection.execute("INSERT INTO transactions VALUES('TX-PERTURB','SALE','17.35')")
                 connection.execute("INSERT INTO transactions VALUES('TX-REFUND-PERTURB','REFUND','-999.99')")
                 connection.set_authorizer(authorize)

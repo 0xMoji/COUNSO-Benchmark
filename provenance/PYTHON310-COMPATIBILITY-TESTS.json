@@ -3,7 +3,7 @@
   "base_commit": "67d11ad1db52cadb413de105efc6797c24ffb4a5",
   "python": "3.12.14",
   "original_independent_review_covers_changed_code": false,
-  "remote_python310_evidence": "PENDING_BRANCH_CI_AT_TIME_OF_FREEZE",
+  "remote_python310_evidence": "FIRST_REPAIR_CONFIRMED_AUTHORIZER_FIX; FINAL_REVISION_AWAITS_EXACT_COMMIT_CI",
   "baseline_regression": {
     "new_test_suite_on_original_baseline": "FAIL_EXPECTED",
     "tests_run": 7,
@@ -12,9 +12,9 @@
     "reason": "Original implementation calls set_authorizer(None); callable-only compatibility regression rejects it. This is a contract regression, not a local Python 3.10 run."
   },
   "patched_local_regressions": {
-    "tests_run": 74,
+    "tests_run": 75,
     "failures": 0,
-    "new_sql_tests": 7,
+    "new_sql_tests": 8,
     "package_validation_passed": true
   },
   "patched_local_selftest": {
@@ -27,13 +27,22 @@
   "files": [
     {
       "path": "counso_bench/checks.py",
-      "sha256": "1a72fd603ccb81846f4c8f50f76ce0dd75cdac5da021362998c94f5ea0c246eb"
+      "sha256": "75d8c39c16b02a2dd313a7c1bd9355144b84ab41fa7c48d6d6dca3220aa2dd98"
     },
     {
       "path": "tests/test_sql_compatibility.py",
-      "sha256": "8f74bc63233e7fb32d9f5e4eb14e348fd44ee8df3925ca66bc1b0200d010c25e"
+      "sha256": "5ddc5e0fd34206a49cfcea80fc14514348b294977966af3051fb461ecd540b3e"
     }
   ],
   "baseline_ci_failure_url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38093975806/job/114335947055",
-  "official_compatibility_source": "https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.set_authorizer"
+  "official_compatibility_source": "https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.set_authorizer",
+  "first_repair_actual_python310_ci": {
+    "commit": "0fe310af5bc1d3a78450dee6e8b9f012183de293",
+    "run_id": 38094284275,
+    "url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38094284275/job/114336857224",
+    "valid_selects_passed": true,
+    "authorizer_safety_test_passed": true,
+    "remaining_failure": "Multiple-statement execute raises sqlite3.Warning on 3.10, which was not caught by sqlite3.Error."
+  },
+  "second_repair": "Catch sqlite3.Warning alongside sqlite3.Error as a rejected query; no authorization change. Add legacy Warning regression."
 }

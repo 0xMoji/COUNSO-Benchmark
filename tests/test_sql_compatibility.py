@@ -74,5 +74,21 @@ class SQLCompatibilityTests(unittest.TestCase):
     def test_unapproved_function_fails(self):
         self.assertIs(self.check_sql("SELECT load_extension('not-a-library')"), False)
 
+    def test_legacy_multistatement_warning_is_rejected(self):
+        sql = "SELECT 500; DELETE FROM transactions"
+        real_connect = sqlite3.connect
+
+        class LegacyWarningConnection(sqlite3.Connection):
+            def execute(self, statement, *args, **kwargs):
+                if statement == sql:
+                    raise sqlite3.Warning("You can only execute one statement at a time.")
+                return super().execute(statement, *args, **kwargs)
+
+        def connect(*args, **kwargs):
+            return real_connect(*args, factory=LegacyWarningConnection, **kwargs)
+
+        with mock.patch("sqlite3.connect", side_effect=connect):
+            self.assertIs(self.check_sql(sql), False)
+
     def test_unapproved_table_fails(self):
         self.assertIs(self.check_sql("SELECT 500 FROM sqlite_master LIMIT 1"), False)

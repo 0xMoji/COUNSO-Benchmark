@@ -32,12 +32,21 @@ candidate SQL. No candidate string executes under the temporary callback.
 Allowed table/function restrictions, single-statement SELECT execution, and the
 instruction limit are unchanged. The Python 3.10 and 3.12 CI matrix is retained.
 
+The first repair's real Python 3.10 run
+[38094284275](https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38094284275)
+passed both valid SELECT tests and the authorizer safety test, then exposed a
+second compatibility difference: a multiple-statement query raises
+`sqlite3.Warning` on Python 3.10. That exception is not a subclass of
+`sqlite3.Error`. Catch both types and reject the query, without executing its
+trailing write. A regression reproduces this legacy exception on newer Python.
+
 ## Regression coverage and evidence scope
 
-Seven new tests cover the reference SELECT, an equivalent aggregate SELECT,
+Eight new tests cover the reference SELECT, an equivalent aggregate SELECT,
 callable-only authorizer compatibility and restored read-only enforcement,
 constant queries, writes/multiple statements, unapproved functions, and
-unapproved table reads. Both valid SELECTs must pass; invalid queries must fail.
+unapproved table reads, and the legacy multiple-statement warning. Both valid
+SELECTs must pass; invalid queries must fail.
 
 Local command results are recorded separately in
 `provenance/PYTHON310-COMPATIBILITY-TESTS.json`. Local Python 3.12 and the

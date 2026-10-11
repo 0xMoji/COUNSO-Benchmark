@@ -1,0 +1,88 @@
+{
+  "packageDir": "candidate-inputs/packages/u-f74d3828bab9d7330174/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-f74d3828bab9d7330174/unseen_same_schema",
+  "kind": "planner",
+  "artifactDir": "candidate-results/u-f74d3828bab9d7330174/unseen_same_schema",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-EDIT-C1",
+  "fixtureId": "unseen_same_schema",
+  "fixtureHashes": {
+    "unseen_same_schema": "07ad69c57a1c4c55e5af3fbb8104f45a238ed2f760659265636a7dd7c7134b79"
+  },
+  "candidatePackageSha256": "ac8a468a6c15813549424b8e9fcf4aeb29aa3fc30fd1ae95d169fbcb05da1661",
+  "testIds": [
+    "P-unseen_same_schema-legacy",
+    "P-unseen_same_schema-draft_baseline",
+    "P-unseen_same_schema-keyboard",
+    "P-unseen_same_schema-validation",
+    "P-unseen_same_schema-cumulative_capacity",
+    "P-unseen_same_schema-cumulative_demand",
+    "P-unseen_same_schema-save",
+    "P-unseen_same_schema-preserve",
+    "P-unseen_same_schema-conflict",
+    "P-unseen_same_schema-readonly",
+    "P-unseen_same_schema-midflight_readonly",
+    "P-unseen_same_schema-late_ack",
+    "P-unseen_same_schema-retry_failure",
+    "P-unseen_same_schema-ambiguous_ack",
+    "P-unseen_same_schema-generalization"
+  ],
+  "fixtureReplacements": {
+    "advanced_authority": {
+      "draft.json": {
+        "draft_id": "CAL-UNSEEN-PLAN-008",
+        "allocations": [
+          {
+            "allocation_id": "CAL-UNSEEN-LINE-001",
+            "work_item_id": "CAL-UNSEEN-W-0001",
+            "resource_id": "CAL-UNSEEN-R-00001",
+            "date": "2027-01-28",
+            "minutes": 90
+          },
+          {
+            "allocation_id": "CAL-UNSEEN-LINE-002",
+            "work_item_id": "CAL-UNSEEN-W-0002",
+            "resource_id": "CAL-UNSEEN-R-00002",
+            "date": "2027-01-29",
+            "minutes": 135
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/candidate-observer.mjs",
+  "observerSha256": "666cb23e30ece49bfc77b8bd0994bf2dc5c04be3994ffb28723b5ef3f236c259",
+  "hostMetadata": {
+    "draft.json": {
+      "revision": "219",
+      "canWrite": true
+    },
+    "resources.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "candidate-inputs/references/ref-g-ui-edit-c1/frame",
+    "packageSha256": "d12b902a9130edee66082f557abcfdef6d8d5951eec9b1748f438f52fc15e4aa",
+    "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
+    "fixtureDir": "candidate-inputs/fixtures/u-f74d3828bab9d7330174/unseen_same_schema",
+    "fixtureSha256": "07ad69c57a1c4c55e5af3fbb8104f45a238ed2f760659265636a7dd7c7134b79",
+    "hostMetadata": {
+      "draft.json": {
+        "revision": "219",
+        "canWrite": true
+      },
+      "resources.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "P-unseen_same_schema-draft_baseline",
+    "baselineTestPlanSha256": "de20e8adbf614b87e8c0cb28011ede70048807e46412eb72bf8ef2a4600c4283"
+  }
+}

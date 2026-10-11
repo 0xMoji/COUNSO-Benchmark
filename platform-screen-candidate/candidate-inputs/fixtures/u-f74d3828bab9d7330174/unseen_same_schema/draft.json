@@ -1,0 +1,19 @@
+{
+  "draft_id": "CAL-UNSEEN-PLAN-008",
+  "allocations": [
+    {
+      "allocation_id": "CAL-UNSEEN-LINE-001",
+      "work_item_id": "CAL-UNSEEN-W-0001",
+      "resource_id": "CAL-UNSEEN-R-00001",
+      "date": "2027-01-28",
+      "minutes": 75
+    },
+    {
+      "allocation_id": "CAL-UNSEEN-LINE-002",
+      "work_item_id": "CAL-UNSEEN-W-0002",
+      "resource_id": "CAL-UNSEEN-R-00002",
+      "date": "2027-01-29",
+      "minutes": 135
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "packageDir": "candidate-inputs/packages/u-f74d3828bab9d7330174/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-f74d3828bab9d7330174/primary",
+  "kind": "planner",
+  "artifactDir": "candidate-results/u-f74d3828bab9d7330174/primary",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-EDIT-C1",
+  "fixtureId": "primary",
+  "fixtureHashes": {
+    "primary": "2576fc45635d60e152081680c30a30bd944238147ab9e621046a322b987639c6"
+  },
+  "candidatePackageSha256": "ac8a468a6c15813549424b8e9fcf4aeb29aa3fc30fd1ae95d169fbcb05da1661",
+  "testIds": [
+    "P-primary-legacy",
+    "P-primary-draft_baseline",
+    "P-primary-keyboard",
+    "P-primary-validation",
+    "P-primary-cumulative_capacity",
+    "P-primary-cumulative_demand",
+    "P-primary-save",
+    "P-primary-preserve",
+    "P-primary-conflict",
+    "P-primary-readonly",
+    "P-primary-midflight_readonly",
+    "P-primary-late_ack",
+    "P-primary-retry_failure",
+    "P-primary-ambiguous_ack"
+  ],
+  "fixtureReplacements": {
+    "advanced_authority": {
+      "draft.json": {
+        "draft_id": "CAL-PLAN-008",
+        "allocations": [
+          {
+            "allocation_id": "CAL-LINE-001",
+            "work_item_id": "CAL-W-0001",
+            "resource_id": "CAL-R-00001",
+            "date": "2027-01-16",
+            "minutes": 75
+          },
+          {
+            "allocation_id": "CAL-LINE-002",
+            "work_item_id": "CAL-W-0003",
+            "resource_id": "CAL-R-00003",
+            "date": "2027-01-17",
+            "minutes": 75
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/candidate-observer.mjs",
+  "observerSha256": "666cb23e30ece49bfc77b8bd0994bf2dc5c04be3994ffb28723b5ef3f236c259",
+  "hostMetadata": {
+    "draft.json": {
+      "revision": "105",
+      "canWrite": true
+    },
+    "resources.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "candidate-inputs/references/ref-g-ui-edit-c1/frame",
+    "packageSha256": "d12b902a9130edee66082f557abcfdef6d8d5951eec9b1748f438f52fc15e4aa",
+    "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
+    "fixtureDir": "candidate-inputs/fixtures/u-f74d3828bab9d7330174/primary",
+    "fixtureSha256": "2576fc45635d60e152081680c30a30bd944238147ab9e621046a322b987639c6",
+    "hostMetadata": {
+      "draft.json": {
+        "revision": "105",
+        "canWrite": true
+      },
+      "resources.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "P-primary-draft_baseline",
+    "baselineTestPlanSha256": "5f0fe7df681d405a023ca17f5f17282a576c6f3699ffe84c1c997f65d2816b4f"
+  }
+}

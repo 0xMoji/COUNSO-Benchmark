@@ -1,0 +1,70 @@
+name: Registered synthetic candidate UI acceptance
+# Authority copy: publisher maps identical bytes to the fixed active root path.
+# Only a newly registered immutable batch anchor triggers this one candidate job.
+on:
+  push:
+    branches: ['eval/counso-ui-probe']
+    paths:
+      - 'platform-screen-candidate/candidate-inputs/current-batch.sha256'
+permissions:
+  contents: read
+concurrency:
+  group: registered-candidate-ui-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  candidate_ui:
+    if: github.repository == '0xMoji/counso-benchmark-reconstructed' && github.event.repository.private == true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: platform-screen-candidate
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        timeout-minutes: 1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+          lfs: false
+      - name: Start once-only setup and npm 60-second budget
+        run: printf 'CANDIDATE_SETUP_STARTED=%s\n' "$(date +%s)" >> "$GITHUB_ENV"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        timeout-minutes: 1
+        with:
+          node-version: '24.16.0'
+          check-latest: false
+      - name: Fixed official-registry runtime dependencies only
+        timeout-minutes: 1
+        working-directory: platform-screen-candidate/runtime
+        run: |
+          remaining=$((60 - $(date +%s) + CANDIDATE_SETUP_STARTED))
+          test "$remaining" -gt 0
+          timeout --signal=TERM --kill-after=5s "${remaining}s" npm ci --ignore-scripts --no-audit --no-fund --registry=https://registry.npmjs.org
+      - name: Committed execution-subset admission and official preinstalled Chrome
+        timeout-minutes: 1
+        env:
+          CI_EVIDENCE_COMMIT: ${{ github.sha }}
+          CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
+        run: |
+          timeout --signal=TERM --kill-after=5s 55s node runtime/candidate-ci-entry.mjs --verify
+          command -v google-chrome
+          google-chrome --version
+          test -x /opt/google/chrome/chrome
+          sha256sum /opt/google/chrome/chrome
+      - name: At most two registered frontend artifacts and two fixtures each
+        timeout-minutes: 6
+        env:
+          CI_EVIDENCE_COMMIT: ${{ github.sha }}
+          CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
+          CI_BROWSER_CHANNEL: chrome
+        run: timeout --signal=TERM --kill-after=5s 330s node runtime/candidate-ci-entry.mjs --job candidate-ui
+      - name: Preserve raw evaluator evidence only
+        if: always()
+        timeout-minutes: 1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ui-candidates-${{ github.run_id }}
+          path: platform-screen-candidate/candidate-results/
+          retention-days: 7
+          if-no-files-found: error

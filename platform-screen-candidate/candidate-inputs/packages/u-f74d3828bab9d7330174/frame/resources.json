@@ -1,0 +1,132 @@
+{
+  "schema_version": "resource-plan-1",
+  "snapshot_revision": "CAL-resource-064",
+  "default_date": "2027-01-16",
+  "teams": [
+    {
+      "team_id": "CAL-TEAM-001",
+      "display_name": "Harbor Service"
+    },
+    {
+      "team_id": "CAL-TEAM-002",
+      "display_name": "Harbour Service"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "CAL-R-00001",
+      "display_name": "Mira Stone",
+      "team_id": "CAL-TEAM-001",
+      "skills": [
+        "EMAIL",
+        "CHAT"
+      ]
+    },
+    {
+      "resource_id": "CAL-R-00002",
+      "display_name": "Mina Stone",
+      "team_id": "CAL-TEAM-001",
+      "skills": [
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "CAL-R-00003",
+      "display_name": "Noel Reed",
+      "team_id": "CAL-TEAM-002",
+      "skills": [
+        "CHAT"
+      ]
+    }
+  ],
+  "roster": [
+    {
+      "resource_id": "CAL-R-00001",
+      "date": "2027-01-16",
+      "available_minutes": 465,
+      "committed_minutes": 210
+    },
+    {
+      "resource_id": "CAL-R-00001",
+      "date": "2027-01-17",
+      "available_minutes": 525,
+      "committed_minutes": 435
+    },
+    {
+      "resource_id": "CAL-R-00001",
+      "date": "2027-01-18",
+      "available_minutes": 405,
+      "committed_minutes": 375
+    },
+    {
+      "resource_id": "CAL-R-00002",
+      "date": "2027-01-16",
+      "available_minutes": 525,
+      "committed_minutes": 165
+    },
+    {
+      "resource_id": "CAL-R-00002",
+      "date": "2027-01-17",
+      "available_minutes": 405,
+      "committed_minutes": 120
+    },
+    {
+      "resource_id": "CAL-R-00002",
+      "date": "2027-01-18",
+      "available_minutes": 465,
+      "committed_minutes": 285
+    },
+    {
+      "resource_id": "CAL-R-00003",
+      "date": "2027-01-16",
+      "available_minutes": 405,
+      "committed_minutes": 270
+    },
+    {
+      "resource_id": "CAL-R-00003",
+      "date": "2027-01-17",
+      "available_minutes": 405,
+      "committed_minutes": 225
+    },
+    {
+      "resource_id": "CAL-R-00003",
+      "date": "2027-01-18",
+      "available_minutes": 525,
+      "committed_minutes": 210
+    }
+  ],
+  "work_items": [
+    {
+      "work_item_id": "CAL-W-0001",
+      "team_id": "CAL-TEAM-001",
+      "required_skill": "CHAT",
+      "remaining_minutes": 270,
+      "earliest_date": "2027-01-16",
+      "due_date": "2027-01-17"
+    },
+    {
+      "work_item_id": "CAL-W-0002",
+      "team_id": "CAL-TEAM-001",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 420,
+      "earliest_date": "2027-01-16",
+      "due_date": "2027-01-18"
+    },
+    {
+      "work_item_id": "CAL-W-0003",
+      "team_id": "CAL-TEAM-002",
+      "required_skill": "CHAT",
+      "remaining_minutes": 240,
+      "earliest_date": "2027-01-17",
+      "due_date": "2027-01-18"
+    },
+    {
+      "work_item_id": "CAL-W-0004",
+      "team_id": "CAL-TEAM-002",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 180,
+      "earliest_date": "2027-01-16",
+      "due_date": "2027-01-18"
+    }
+  ]
+}

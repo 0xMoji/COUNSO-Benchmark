@@ -1,0 +1,117 @@
+{
+  "commit": "6b83eac6e43597cb154e892f2fc4bd9165f512c1",
+  "files": [
+    {
+      "upstream_path": "LICENSE",
+      "runtime_path": "vendor/LICENSE",
+      "sha256": "bcc09bd98ae787f6ef5357a088d065f9479bf07cf85f6c66e5d7e3b52a7881c7",
+      "github_blob_sha": "b8448d6c27441447869daa6be0b8a06174b30b39",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/LICENSE",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "front/lib/api/bundler/bundle_module.ts",
+      "runtime_path": "vendor/front/lib/api/bundler/bundle_module.ts",
+      "sha256": "453b640671a71d8168462895d196dc5ce75d0eb62d300abafcbdd62ce7378c87",
+      "github_blob_sha": "162e524e9ee0fa354ae1eeeafb63b31e04f1885e",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/front/lib/api/bundler/bundle_module.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "front/lib/error.ts",
+      "runtime_path": "vendor/front/lib/error.ts",
+      "sha256": "256c3b188dcd0aa697356eea9a4a4f1ba790e97e00c33cd5fae68f89968e4baa",
+      "github_blob_sha": "6a8f615c1776fcb83dac1a920edcb248582c2042",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/front/lib/error.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "front/types/shared/result.ts",
+      "runtime_path": "vendor/front/types/shared/result.ts",
+      "sha256": "e5161ca5fe0a932602f20f34f52a9d7e3f7a72f28ec7afcec2b6aeb08aa46b5e",
+      "github_blob_sha": "253ff5a8d14f6cb38d51df56ac67454b2595b535",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/front/types/shared/result.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "front/types/shared/utils/error_utils.ts",
+      "runtime_path": "vendor/front/types/shared/utils/error_utils.ts",
+      "sha256": "7108c0b70f4d31df0ec14fe513d1cc6a28c66d8d0999c6406aafcf1f83c031a1",
+      "github_blob_sha": "51190d0909929b27ab0353c6746825cb131affca",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/front/types/shared/utils/error_utils.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/lib/data-apis/rpc-data-api.ts",
+      "runtime_path": "vendor/viz/app/lib/data-apis/rpc-data-api.ts",
+      "sha256": "a6dcfb7d7c58d06e594d85bf9e9e1a005d30761a170f0d6dd64c106889df4c1d",
+      "github_blob_sha": "6ebc07eab3c56e533ba366db4ffd06320b1e6158",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/lib/data-apis/rpc-data-api.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/lib/data-apis/sandbox-function-call-error.ts",
+      "runtime_path": "vendor/viz/app/lib/data-apis/sandbox-function-call-error.ts",
+      "sha256": "a411666738946527da42df9e9614ad5d92f1f60182326fa5a71a3f516036168c",
+      "github_blob_sha": "40463f0b86f17d6cc96408536cab36a239246964",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/lib/data-apis/sandbox-function-call-error.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/lib/frame-function-hooks.tsx",
+      "runtime_path": "vendor/viz/app/lib/frame-function-hooks.tsx",
+      "sha256": "5beb69bd440c14562e4753d22f5ef0f579aaa94cb4601971e01b08a61f5bd709",
+      "github_blob_sha": "6fb93f20fdb0b7bf8764369701f0f8631370e146",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/lib/frame-function-hooks.tsx",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/lib/frame-function-slug.ts",
+      "runtime_path": "vendor/viz/app/lib/frame-function-slug.ts",
+      "sha256": "a6e5415f5b020c1bc66b06da5f44ff8d00509fb1a8b8ee11cff3651f358d42cf",
+      "github_blob_sha": "7faea61f0279ba04e3e95cfd4516ea564221cf31",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/lib/frame-function-slug.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/lib/visualization-api.ts",
+      "runtime_path": "vendor/viz/app/lib/visualization-api.ts",
+      "sha256": "ae4e8b6542d3c641738a7d0168197b3b074e756da8618cff54dbdabdc14058d1",
+      "github_blob_sha": "6cab36a92afefbb5c89ddc88a9ab2772dcd495fb",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/lib/visualization-api.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/types/messages.ts",
+      "runtime_path": "vendor/viz/app/types/messages.ts",
+      "sha256": "c9cd6b84fccad321d7cf52771d3bcc081d1c0f2a82fb6dfd5c44ca8381e315c5",
+      "github_blob_sha": "5acb7711767128780e15bb2f85707eff4b5f5eaa",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/types/messages.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/app/types.ts",
+      "runtime_path": "vendor/viz/app/types.ts",
+      "sha256": "b30ea1d860ad79f308d9572faba195a7296712ded7d548861019ba3c63b9d5e6",
+      "github_blob_sha": "a45c901ce21083ccfecb15d4f0f04642fbcae07e",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/app/types.ts",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/components/dust/frame/index.tsx",
+      "runtime_path": "vendor/viz/components/dust/frame/index.tsx",
+      "sha256": "b69f25e864513f37fc18df528caf5581244a6263823c01b4a2b578aaac564677",
+      "github_blob_sha": "230fe5dc5f5ed34cc95d5874024ed5b763e26f06",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/components/dust/frame/index.tsx",
+      "unmodified": true
+    },
+    {
+      "upstream_path": "viz/lib/utils.ts",
+      "runtime_path": "vendor/viz/lib/utils.ts",
+      "sha256": "4acbc7165a8d54738ff62b51414e772c08fe78434e524e6d8770180d3ba2925f",
+      "github_blob_sha": "365058cebd7d2bdb327ca1c081b16e4937e11050",
+      "official_url": "https://github.com/dust-tt/dust/blob/6b83eac6e43597cb154e892f2fc4bd9165f512c1/viz/lib/utils.ts",
+      "unmodified": true
+    }
+  ]
+}

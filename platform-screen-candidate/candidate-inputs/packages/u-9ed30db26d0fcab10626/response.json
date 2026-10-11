@@ -1,0 +1,9 @@
+{
+  "artifacts": [
+    "frame/manifest.json",
+    "frame/index.tsx",
+    "frame/functions/load-data.ts",
+    "frame/dataset.json"
+  ],
+  "limitations": []
+}

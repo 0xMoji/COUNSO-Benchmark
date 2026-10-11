@@ -1,0 +1,187 @@
+{
+  "packageDir": "candidate-inputs/packages/u-9ed30db26d0fcab10626/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-9ed30db26d0fcab10626/unseen_same_schema",
+  "kind": "dashboard",
+  "artifactDir": "candidate-results/u-9ed30db26d0fcab10626/unseen_same_schema",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-CREATE-C1",
+  "fixtureId": "unseen_same_schema",
+  "fixtureHashes": {
+    "unseen_same_schema": "e2adf5d2dc58817aa4c0b9e1e073653ea0958587d842d2d1d5647ae58ee7f259"
+  },
+  "candidatePackageSha256": "0faf236d4a6fbc0cece8367c53e712f86477adf39d0464be69c2342cd3936e6b",
+  "testIds": [
+    "D-unseen_same_schema-baseline",
+    "D-unseen_same_schema-keyboard",
+    "D-unseen_same_schema-linked_scope",
+    "D-unseen_same_schema-reset",
+    "D-unseen_same_schema-empty",
+    "D-unseen_same_schema-late_result",
+    "D-unseen_same_schema-late_error",
+    "D-unseen_same_schema-retry",
+    "D-unseen_same_schema-retention",
+    "D-unseen_same_schema-generalization"
+  ],
+  "fixtureReplacements": {
+    "updated_same_schema": {
+      "dataset.json": {
+        "schema_version": "support-snapshot-1",
+        "snapshot_revision": "CAL-UNSEEN-snapshot-063-updated-control",
+        "as_of": "2027-01-21T12:00:00Z",
+        "default_created_from": "2027-01-18",
+        "default_created_to": "2027-01-22",
+        "teams": [
+          {
+            "team_id": "CAL-UNSEEN-TEAM-0001",
+            "display_name": "Harbor Desk"
+          },
+          {
+            "team_id": "CAL-UNSEEN-TEAM-0002",
+            "display_name": "Harbour Desk"
+          },
+          {
+            "team_id": "CAL-UNSEEN-TEAM-0003",
+            "display_name": "Delta Desk"
+          }
+        ],
+        "tickets": [
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00001",
+            "team_id": "CAL-UNSEEN-TEAM-0001",
+            "status": "WAITING",
+            "priority": "P3",
+            "created_at": "2027-01-20T09:00:00Z",
+            "due_at": "2027-01-21T10:00:00Z",
+            "remaining_minutes": 120
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00002",
+            "team_id": "CAL-UNSEEN-TEAM-0001",
+            "status": "CLOSED",
+            "priority": "P1",
+            "created_at": "2027-01-20T09:30:00Z",
+            "due_at": "2027-01-21T14:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00003",
+            "team_id": "CAL-UNSEEN-TEAM-0001",
+            "status": "OPEN",
+            "priority": "P2",
+            "created_at": "2027-01-18T08:00:00Z",
+            "due_at": "2027-01-20T09:00:00Z",
+            "remaining_minutes": 45
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00004",
+            "team_id": "CAL-UNSEEN-TEAM-0001",
+            "status": "IN_PROGRESS",
+            "priority": "P3",
+            "created_at": "2027-01-21T09:00:00Z",
+            "due_at": "2027-01-21T12:00:00Z",
+            "remaining_minutes": 60
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00005",
+            "team_id": "CAL-UNSEEN-TEAM-0002",
+            "status": "WAITING",
+            "priority": "P1",
+            "created_at": "2027-01-19T10:00:00Z",
+            "due_at": "2027-01-20T16:00:00Z",
+            "remaining_minutes": 180
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00006",
+            "team_id": "CAL-UNSEEN-TEAM-0002",
+            "status": "WAITING",
+            "priority": "P2",
+            "created_at": "2027-01-20T13:00:00Z",
+            "due_at": "2027-01-21T09:00:00Z",
+            "remaining_minutes": 75
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00007",
+            "team_id": "CAL-UNSEEN-TEAM-0002",
+            "status": "CLOSED",
+            "priority": "P3",
+            "created_at": "2027-01-21T08:30:00Z",
+            "due_at": "2027-01-22T09:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00008",
+            "team_id": "CAL-UNSEEN-TEAM-0002",
+            "status": "OPEN",
+            "priority": "P1",
+            "created_at": "2027-01-18T15:00:00Z",
+            "due_at": "2027-01-20T11:00:00Z",
+            "remaining_minutes": 30
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00009",
+            "team_id": "CAL-UNSEEN-TEAM-0003",
+            "status": "IN_PROGRESS",
+            "priority": "P2",
+            "created_at": "2027-01-20T16:00:00Z",
+            "due_at": "2027-01-21T11:59:00Z",
+            "remaining_minutes": 105
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00010",
+            "team_id": "CAL-UNSEEN-TEAM-0003",
+            "status": "CLOSED",
+            "priority": "P3",
+            "created_at": "2027-01-21T08:00:00Z",
+            "due_at": "2027-01-21T11:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00011",
+            "team_id": "CAL-UNSEEN-TEAM-0003",
+            "status": "IN_PROGRESS",
+            "priority": "P1",
+            "created_at": "2027-01-21T10:00:00Z",
+            "due_at": "2027-01-22T12:00:00Z",
+            "remaining_minutes": 45
+          },
+          {
+            "ticket_id": "CAL-UNSEEN-CASE-00012",
+            "team_id": "CAL-UNSEEN-TEAM-0003",
+            "status": "OPEN",
+            "priority": "P2",
+            "created_at": "2027-01-19T15:00:00Z",
+            "due_at": "2027-01-21T10:00:00Z",
+            "remaining_minutes": 45
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/candidate-observer.mjs",
+  "observerSha256": "666cb23e30ece49bfc77b8bd0994bf2dc5c04be3994ffb28723b5ef3f236c259",
+  "hostMetadata": {
+    "dataset.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "candidate-inputs/references/ref-g-ui-create-c1/frame",
+    "packageSha256": "a2b307480bb1e320db99b0bfa9560e4cd1e0b23e47923e8760f984cc4899ea92",
+    "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
+    "fixtureDir": "candidate-inputs/fixtures/u-9ed30db26d0fcab10626/unseen_same_schema",
+    "fixtureSha256": "e2adf5d2dc58817aa4c0b9e1e073653ea0958587d842d2d1d5647ae58ee7f259",
+    "hostMetadata": {
+      "dataset.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "D-unseen_same_schema-baseline",
+    "baselineTestPlanSha256": "0f808eaf0b15d5ad6cf328c62ea89bdb24ef434d72c619964b0fd0bdfd9dbbd2"
+  }
+}

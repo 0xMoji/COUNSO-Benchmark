@@ -1,5 +1,0 @@
-HISTORY-RECONSTRUCTED / NEW_SYNTHETIC。以下全部业务实体、数据与材料为本次合成；不是原始业务资料。
-
-2026-09-01汇率不能替代估值日。
-发布机构：OLD-FX
-资料状态：STALE

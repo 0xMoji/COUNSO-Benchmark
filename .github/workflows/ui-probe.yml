@@ -1,0 +1,46 @@
+name: Synthetic browser capability probe
+# First run remains branch-isolated; workflow_dispatch requires default-branch registration.
+on:
+  push:
+    branches: ['eval/counso-ui-probe']
+    paths:
+      - '.github/workflows/ui-probe.yml'
+      - 'ci/probe.mjs'
+      - 'ci/probe-runtime/package.json'
+      - 'ci/probe-runtime/package-lock.json'
+      - 'ci/PROBE_MANIFEST.json'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+          lfs: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.16.0'
+          check-latest: false
+      - name: Fixed official browser test dependency
+        working-directory: ci/probe-runtime
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund --registry=https://registry.npmjs.org
+          node node_modules/playwright/cli.js install --with-deps chromium
+      - name: Real click and same-schema data replacement
+        env:
+          CI_EVIDENCE_COMMIT: ${{ github.sha }}
+          CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
+        run: timeout --signal=TERM 180s node ci/probe.mjs
+      - name: Preserve real browser observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: browser-probe-${{ github.run_id }}
+          path: ci-results/
+          retention-days: 7
+          if-no-files-found: error

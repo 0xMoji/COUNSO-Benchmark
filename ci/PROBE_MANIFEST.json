@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_LOCAL_NOT_EXECUTED",
+  "scope": "one synthetic actual click + same-schema data change and hardcoded-UI negative control",
+  "requires_parent_repo_branch_actions_and_quota_authorization": true,
+  "max_job_minutes": 10,
+  "no_business_account_secrets": true,
+  "no_persistent_checkout_token": true,
+  "no_candidate_scripts_or_external_llm": true,
+  "files": {
+    ".github/workflows/ui-probe.yml": "2d2e4938110e9f021b9853e77047c56356ec5947144c70ccb8b351cb01c6f947",
+    "ci/probe.mjs": "80c25f86214b56d7f0e51a52bb077ff6c4584bf97850d578bd03fc1b8a625d60",
+    "ci/probe-runtime/package.json": "bef684ace146b052df605772a6c8dde4ae1a94c197752ea98b3ee68445fef294",
+    "ci/probe-runtime/package-lock.json": "6b41483c0a61da9f654186e92d6a0ef1b7d69cc4e667678a39d21e3f425d1992",
+    "provenance/CI_ACTION_SOURCE_RECORDS.json": "676020583aa831c752994684067d67eaeb39785b9f5e49cf4831c1342723ee2b"
+  },
+  "workflow_trigger": "PUSH_EXACT_AUTHORIZED_PROBE_BRANCH_ONLY"
+}

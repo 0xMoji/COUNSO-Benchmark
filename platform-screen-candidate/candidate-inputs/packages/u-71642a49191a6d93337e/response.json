@@ -6,6 +6,6 @@
     "frame/dataset.json"
   ],
   "limitations": [
-    "The deliverable is a controlled Frame package; native Counso deployment or live publication was not performed or verified."
+    "Delivered as a static React/TSX Frame package for the controlled host; no live native deployment or browser interaction verification was performed."
   ]
 }

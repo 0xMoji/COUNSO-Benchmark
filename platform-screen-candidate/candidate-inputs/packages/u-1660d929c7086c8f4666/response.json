@@ -1,0 +1,11 @@
+{
+  "artifacts": [
+    "frame/manifest.json",
+    "frame/index.tsx",
+    "frame/functions/load-data.ts",
+    "frame/dataset.json"
+  ],
+  "limitations": [
+    "Runtime browser behavior has not been exercised locally; this static package is intended for the supplied controlled Frame host."
+  ]
+}

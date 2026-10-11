@@ -1,8 +1,8 @@
 {
-  "packageDir": "candidate-inputs/packages/u-9ed30db26d0fcab10626/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-9ed30db26d0fcab10626/primary",
+  "packageDir": "candidate-inputs/packages/u-1660d929c7086c8f4666/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-1660d929c7086c8f4666/primary",
   "kind": "dashboard",
-  "artifactDir": "candidate-results/u-9ed30db26d0fcab10626/primary",
+  "artifactDir": "candidate-results/u-1660d929c7086c8f4666/primary",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
   "caseId": "G-UI-CREATE-C1",
@@ -10,7 +10,7 @@
   "fixtureHashes": {
     "primary": "f00fdc6907a7e9f8b60fcff60c80258682b495aa92f8d2680b74be3b83139121"
   },
-  "candidatePackageSha256": "0faf236d4a6fbc0cece8367c53e712f86477adf39d0464be69c2342cd3936e6b",
+  "candidatePackageSha256": "5f7d4798ec822c7907729f607c9c0d701c356515e2f9390d9e41f2dce3fd653c",
   "testIds": [
     "D-primary-baseline",
     "D-primary-keyboard",
@@ -168,7 +168,7 @@
   },
   "actionTimeoutMs": 5000,
   "observerModule": "runtime/candidate-observer.mjs",
-  "observerSha256": "666cb23e30ece49bfc77b8bd0994bf2dc5c04be3994ffb28723b5ef3f236c259",
+  "observerSha256": "3212c4001df792481d1ff08d097aee1db4b39ed58733dbd12cb04b1c09764ec6",
   "hostMetadata": {
     "dataset.json": {
       "revision": "1",
@@ -181,7 +181,7 @@
     "packageDir": "candidate-inputs/references/ref-g-ui-create-c1/frame",
     "packageSha256": "a2b307480bb1e320db99b0bfa9560e4cd1e0b23e47923e8760f984cc4899ea92",
     "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
-    "fixtureDir": "candidate-inputs/fixtures/u-9ed30db26d0fcab10626/primary",
+    "fixtureDir": "candidate-inputs/fixtures/u-1660d929c7086c8f4666/primary",
     "fixtureSha256": "f00fdc6907a7e9f8b60fcff60c80258682b495aa92f8d2680b74be3b83139121",
     "hostMetadata": {
       "dataset.json": {

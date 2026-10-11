@@ -6,10 +6,12 @@
  */
 import {canonicalPackageTarget} from './package-path.mjs';
 import {dashboardOracle,plannerOracle,defaultDashboardScope} from './acceptance-driver.mjs';
+import {createHash} from 'node:crypto';
 
 const norm=s=>String(s??'').replaceAll('_',' ').replace(/\s+/g,' ').trim().toLowerCase();
 const canon=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
 const same=(a,b)=>canon(a)===canon(b);
+const rawHash=s=>createHash('sha256').update(s).digest('hex');
 const sorted=a=>[...a].sort();
 const nodes=(capture,hook)=>capture.dom.nodes.filter(n=>n.hook===hook&&n.visible);
 const node=(capture,hook,key)=>nodes(capture,hook).find(n=>key===undefined||n.key===key);
@@ -23,8 +25,13 @@ function draftAt(capture){try{return JSON.parse(capture.snapshot.files['draft.js
 function knownNumber(text){const s=String(text??'').trim();const matches=[...s.matchAll(/[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?/g)];if(matches.length!==1)return undefined;const token=matches[0][0];return {value:Number(token.replaceAll(',','')),decimals:token.includes('.')?token.split('.')[1].length:0,text:s}}
 function visibleUnit(text){const s=norm(text);const mins=/\b(?:minutes?|mins?)\b|分钟/.test(s),hours=/\b(?:hours?|hrs?)\b|小时/.test(s);return mins===hours?undefined:mins?'minutes':'hours'}
 export function parseQuantity(display,{targetUnit='count',allowRounding=false}={}){
-  const text=display.input?.visible?display.input.value:display.text;
-  const n=knownNumber(text);if(!n||!Number.isFinite(n.value))return undefined;
+  const input=display.input?.visible===true?display.input:null;
+  const inputType=input?.type==null?null:String(input.type).trim().toLowerCase();
+  if(display.input_count!==undefined&&display.input_count>1)return undefined;
+  if(input&&(![null,'text','number'].includes(inputType)||typeof input.value!=='string'||!/^[+-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(input.value.trim())))return undefined;
+  const text=input?input.value:display.text;
+  const n=input?{value:Number(input.value.replaceAll(',','')),decimals:(input.value.split('.')[1]||'').split(/[eE]/)[0].length}:knownNumber(text);if(!n||!Number.isFinite(n.value))return undefined;
+  if(input){const visible=knownNumber(display.text);if(/\d/.test(display.text||'')&&!visible||visible&&visible.value!==n.value)return undefined;}
   if(targetUnit==='count')return {value:n.value,tolerance:0};
   const unit=visibleUnit(`${display.text||''} ${display.header||''}`)||visibleUnit(display.parent_text||'');
   // A candidate's data-unit attribute alone is not evidence of visible units.
@@ -64,6 +71,8 @@ export function parseCalendarDisplay(text,{timestamp=false,contextUTC=false}={})
 }
 
 const headerFields={ticket_id:/\bticket\b.*\bid\b|\bid\b.*\bticket\b|\bcase\b.*\bid\b/,team_id:/\bteam\b|\bdepartment\b|\bgroup\b/,status:/\bstatus\b|\bstate\b/,due_at:/\bdue\b|\bdeadline\b/,remaining_minutes:/\bremaining\b.*(?:minutes?|hours?|effort)|\beffort\b/,resource_id:/\bresource\b.*\bid\b|\bstaff\b.*\bid\b|^(?:resource|staff)$/,display_name:/\bname\b/,date:/\bdate\b|\bday\b/,available_minutes:/\bavailable\b|\bavailability\b/,committed_minutes:/\bcommitted\b|\bbooked\b/,residual_minutes:/\bresidual\b|\bfree\b|\buncommitted\b/,allocation_id:/\ballocation\b.*\bid\b|\bline\b.*\bid\b/,work_item_id:/\bwork\b.*(?:item|id)|\btask\b.*\bid\b/,minutes:/\bdraft\b.*(?:minutes?|hours?)|\bplanned\b.*(?:minutes?|hours?)|\bquantity\b/};
+// Bare visible unit headers are an unambiguous quantity column, too.
+headerFields.minutes=/\bdraft\b.*(?:minutes?|hours?)|\bplanned\b.*(?:minutes?|hours?)|\bquantity\b|^(?:minutes?|mins?|hours?|hrs?)$/;
 function cellFor(row,field){const cells=row.cells||[];let result=cells.find(c=>c.field===field);if(result){const h=norm(result.header);if(h&&headerFields[field]&&!headerFields[field].test(h))return undefined;return result}return cells.find(c=>headerFields[field]?.test(norm(c.header)))}
 export function textIdentity(display,allowed,labels={}){if(!display)return undefined;const text=String(display.text??'').trim();if(allowed.includes(text))return text;
   const matches=allowed.filter(id=>{const escaped=id.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return new RegExp(`(^|[^A-Za-z0-9_-])${escaped}($|[^A-Za-z0-9_-])`).test(text)});
@@ -81,6 +90,7 @@ function resourceRowsExpected(source,capture){const team=node(capture,'legacy-te
 }
 
 export function chartGeometryFacts(capture,counts){
+ if(capture.dom.chart_geometry_observation?.state==='UNKNOWN')return [unknown('Visible chart geometry requires an observed stable rendered sample','Stable captured chart geometry','Trusted bounded geometry capture is UNKNOWN',refs(capture))];
  const r=refs(capture),facts=[],rows=[];const statuses=Object.keys(counts),raw=capture.dom.nodes;
  const painted=n=>{const color=n.paint?.svg_fill||n.paint?.background_color;if(typeof color!=='string'||/^(?:transparent|none)$/i.test(color.trim()))return false;return !/rgba\([^)]*,\s*0(?:\.0+)?\s*\)$/i.test(color)&&!/(?:rgb|color)\([^)]*\/\s*0(?:\.0+)?\s*\)$/i.test(color)};
  for(const status of statuses){const plots=raw.filter(n=>n.hook==='status-plot'&&n.key===status),glyphs=raw.filter(n=>n.hook==='status-glyph'&&n.key===status);const plot=plots[0],glyph=glyphs[0];if(plots.length!==1||glyphs.length!==1||!plot.visible||!['height','width'].includes(plot.axis)||!plot.rect||!glyph.rect){facts.push(unknown(`Visible chart geometry for ${status}`,'Resolvable real plot/glyph/axis','Missing or unsupported graphic semantics',r));continue}
@@ -104,6 +114,17 @@ function dashboardScopeAt(actions,source){let scope=defaultDashboardScope(source
 function callResults(capture,command){return capture.events.filter(e=>e.type==='RPC_ACCEPTED'&&e.command===command).map(e=>({request:e,result:capture.events.find(r=>r.type==='RPC_RESULT'&&r.requestSeq===e.seq)}))}
 function sourceTarget(capture,supplied,file){const target=canonicalPackageTarget(capture.snapshot?.packageRoot,supplied);return target?.relative===file&&Object.hasOwn(capture.snapshot?.files||{},file)}
 function fileCalls(capture,command,file){const key=command==='writeFile'?'path':'fileId';return callResults(capture,command).filter(c=>sourceTarget(capture,c.request.params?.[key],file))}
+function successfulFileRead(capture,file){const snapshot=capture.snapshot?.files?.[file];if(typeof snapshot?.content!=='string')return false;return fileCalls(capture,'getFile',file).some(({request,result})=>{
+  const answer=result?.answer,value=answer?.result;
+  return result?.command==='getFile'&&result.seq>request.seq&&!answer.error&&!value?.error&&value?.fileContent===snapshot.content&&typeof value.revision==='string'&&!!value.revision&&typeof value.canWrite==='boolean'&&(snapshot.revision===undefined||value.revision===snapshot.revision)&&(snapshot.canWrite===undefined||value.canWrite===(capture.snapshot.canWrite!==false&&snapshot.canWrite!==false));
+})}
+function successfulResourceFunctionRead(capture){const snapshot=capture.snapshot?.files?.['resources.json'];if(typeof snapshot?.content!=='string'||typeof capture.snapshot.sessionId!=='string')return false;let expected;try{expected=JSON.parse(snapshot.content)}catch{return false}
+  return callResults(capture,'callFunction').some(({request,result})=>{
+    const answer=result?.answer,execution=capture.events.filter(e=>e.type==='DETERMINISTIC_FUNCTION'&&e.requestSeq===request.seq);
+    return request.params?.functionIdOrSlug==='load-data'&&same(request.params.input,{})&&result?.command==='callFunction'&&result.seq>request.seq&&!answer?.error&&!answer?.result?.error&&same(answer?.result,expected)&&result.file_hashes?.['resources.json']?.sha256===rawHash(snapshot.content)&&execution.length===1&&execution[0].seq>request.seq&&execution[0].seq<result.seq&&execution[0].bound_function===capture.snapshot.sessionId+'/load-data'&&same(execution[0].input,request.params.input)&&execution[0].output_sha256===rawHash(JSON.stringify(answer.result));
+  })
+}
+function sourceStatus(text){if(typeof text!=='string')return undefined;const matches=['OPEN','IN_PROGRESS','WAITING','CLOSED'].filter(status=>norm(status)===norm(text));return matches.length===1?matches[0]:undefined}
 function dashboardLoad(capture){const calls=callResults(capture,'callFunction');if(calls.length)return calls.at(-1);return fileCalls(capture,'getFile','dataset.json').at(-1)}
 function uiPhase(capture){const text=norm(node(capture,'view-state')?.text);if(/error|fail|unconfirmed|unavailable|not confirmed/.test(text))return 'ERROR';if(/loading|pending|waiting|in progress/.test(text))return 'PENDING';if(/ready|confirmed|complete|loaded|current/.test(text))return 'READY';return undefined}
 function priorMeaning(capture){const text=norm(node(capture,'displayed-scope')?.text);if(/previous|prior|earlier|last confirmed|not (?:the )?(?:pending|current|requested|new)/.test(text))return true;return undefined}
@@ -114,7 +135,7 @@ function dashboardFacts(capture,source,scope,{rows=true,metrics=true,chart=true}
     const exp=sorted(expected.rows.map(t=>t.ticket_id)),obs=sorted(decoded);if(same(exp,obs))facts.push(pass('Visible table ticket membership matches source scope',exp,obs,r));else if(obs.some(id=>!exp.includes(id))||new Set(obs).size!==obs.length)facts.push(failure('Visible table contains wrong/duplicate business entities for actual scope',exp,obs,r,'entity'));else facts.push(unknown('Complete matching table membership',exp,obs,r));
     for(let j=0;j<visible.length;j++){const ticket=source.tickets.find(t=>t.ticket_id===decoded[j]);if(!ticket)continue;const row=visible[j];
       const team=textIdentity(cellFor(row,'team_id'),source.teams.map(t=>t.team_id),Object.fromEntries(source.teams.map(t=>[t.team_id,t.display_name])));facts.push(compare('Visible ticket team identity',ticket.team_id,team,r,'entity'));
-      const status=cellFor(row,'status')?.text?.trim();facts.push(compare('Visible ticket status',ticket.status,['OPEN','IN_PROGRESS','WAITING','CLOSED'].includes(status)?status:undefined,r,'scope'));
+      const status=sourceStatus(cellFor(row,'status')?.text);facts.push(compare('Visible ticket status',ticket.status,status,r,'scope'));
       const due=cellFor(row,'due_at');facts.push(compare('Visible due instant uses source period',Date.parse(ticket.due_at),due&&parseCalendarDisplay(due.text,{timestamp:true,contextUTC:/utc|gmt/i.test(due.header)}),r,'date'));
       facts.push(quantityFact('Visible ticket remaining effort',ticket.remaining_minutes,cellFor(row,'remaining_minutes'),r,{targetUnit:'minutes'}));
     }
@@ -130,7 +151,22 @@ export function resolveHumanLabel(text,expected){if(text===undefined||text===nul
 function resourceFacts(capture,source){const expected=resourceRowsExpected(source,capture),r=refs(capture);if(!expected)return [unknown('Original source/filter/sort capacity view','Resolvable source view','Control semantics unresolved',r)];const visible=nodes(capture,'resource-row');const ids=visible.map(row=>textIdentity(cellFor(row,'resource_id'),source.resources.map(r=>r.resource_id)));const facts=[];
   if(ids.some(id=>id===undefined))facts.push(unknown('Original visible resource IDs',expected.map(r=>r.resource_id),'Resource display unresolved',r));else if(same(expected.map(r=>r.resource_id),ids))facts.push(pass('Original filtered/sorted resource identities',expected.map(r=>r.resource_id),ids,r));else if(ids.some(id=>!expected.some(r=>r.resource_id===id)))facts.push(failure('Original view contains wrong source entity',expected.map(r=>r.resource_id),ids,r,'entity'));else if(same(sorted(expected.map(r=>r.resource_id)),sorted(ids)))facts.push(failure('Original resource-ID sort interaction',expected.map(r=>r.resource_id),ids,r,null));else facts.push(unknown('Original complete resource view',expected.map(r=>r.resource_id),ids,r));
   visible.forEach((row,index)=>{const sourceRow=expected.find(r=>r.resource_id===ids[index]);if(!sourceRow)return;const name=cellFor(row,'display_name');facts.push(compare('Original visible display_name',sourceRow.display_name,resolveHumanLabel(name?.text,sourceRow.display_name),r,null));const team=textIdentity(cellFor(row,'team_id'),source.teams.map(t=>t.team_id),Object.fromEntries(source.teams.map(t=>[t.team_id,t.display_name])));facts.push(compare('Original visible team_id',sourceRow.team_id,team,r,'entity'));const date=cellFor(row,'date');facts.push(compare('Original visible roster date',sourceRow.date,date&&parseCalendarDisplay(date.text),r,'date'));for(const field of ['available_minutes','committed_minutes','residual_minutes'])facts.push(quantityFact(`Original visible ${field}`,sourceRow[field],cellFor(row,field),r,{targetUnit:'minutes'}))});return facts}
-function decodeDraft(capture,source){const result=[];for(const row of nodes(capture,'draft-row')){const idCell=cellFor(row,'allocation_id'),work=cellFor(row,'work_item_id'),resource=cellFor(row,'resource_id'),date=cellFor(row,'date'),minutes=cellFor(row,'minutes');const quantity=minutes&&parseQuantity(minutes,{targetUnit:'minutes'});const record={allocation_id:idCell?.text?.trim(),work_item_id:textIdentity(work,source.work_items.map(w=>w.work_item_id)),resource_id:textIdentity(resource,source.resources.map(r=>r.resource_id)),date:date&&parseCalendarDisplay(date.text),minutes:quantity?.value};if(Object.values(record).some(v=>v===undefined||v===''))return undefined;result.push(record)}return result}
+function draftQuantity(row){const cells=(row.cells||[]).filter(c=>c.visible!==false&&((c.field==='minutes'&&(!norm(c.header)||headerFields.minutes.test(norm(c.header))))||(!c.field&&headerFields.minutes.test(norm(c.header)))));
+  if(cells.filter(c=>c.input?.visible===true).length>1||cells.some(c=>c.input_count!==undefined&&c.input_count>1))return undefined;
+  const quantities=cells.map(c=>parseQuantity(c,{targetUnit:'minutes'}));if(cells.some((c,i)=>c.input?.visible===true&&!quantities[i]))return undefined;
+  const resolved=quantities.filter(Boolean);if(!resolved.length||resolved.some(q=>q.value!==resolved[0].value))return undefined;return resolved[0];
+}
+function visibleDraftIdentity(row){
+  const labelled=cellFor(row,'allocation_id');if(labelled?.visible!==false&&labelled?.text?.trim())return labelled.text.trim();
+  // The public row key identifies a source allocation or stable new local row.
+  // It is not proof alone: require one actual visible literal cell with that
+  // exact identity. Capture cells are visibility-filtered by the trusted driver.
+  const key=typeof row.key==='string'?row.key.trim():'';if(!key||row.key!==key)return undefined;
+  const cells=row.cells||[];if(cells.some(c=>c.visible!==false&&c.field==='allocation_id'&&c.text?.trim()!==key))return undefined;
+  const matches=cells.filter(c=>c.visible!==false&&c.text?.trim()===key&&(!c.field||c.field==='allocation_id'));
+  return matches.length===1?key:undefined;
+}
+function decodeDraft(capture,source){const result=[];for(const row of nodes(capture,'draft-row')){const work=cellFor(row,'work_item_id'),resource=cellFor(row,'resource_id'),date=cellFor(row,'date'),quantity=draftQuantity(row);const record={allocation_id:visibleDraftIdentity(row),work_item_id:textIdentity(work,source.work_items.map(w=>w.work_item_id)),resource_id:textIdentity(resource,source.resources.map(r=>r.resource_id)),date:date&&parseCalendarDisplay(date.text),minutes:quantity?.value};if(Object.values(record).some(v=>v===undefined||v===''))return undefined;result.push(record)}return result}
 function logical(draft){if(!draft)return undefined;return draft.map(a=>({work_item_id:a.work_item_id,resource_id:a.resource_id,date:a.date,minutes:Number(a.minutes)})).sort((a,b)=>canon(a).localeCompare(canon(b)))}
 function localFact(predicate,expected,observed,r){if(!Array.isArray(expected))return unknown(predicate,'Independently resolved expected local snapshot','Expected snapshot unavailable',r);if(!observed)return unknown(predicate,logical(expected),'Visible local allocations unresolved',r);
   const original=expected.filter(a=>!a.allocation_id?.startsWith('_evaluator_new_'));
@@ -283,7 +319,7 @@ function plannerObserve(input){const facts=[],captures=selectedCaptures(input),l
     if(!['reloaded','reread_saved'].includes(capture.checkpoint))facts.push(localFact('Visible local draft preserves source identities and actual user edits',expected,actual,refs(capture)));
     if(['planner_initial','planner_validation','planner_generalization'].includes(kind))facts.push(...previewFacts(capture,source,expected));
   }
-  const initial=input.captures[0];for(const file of ['resources.json','draft.json']){const read=fileCalls(initial,'getFile',file).find(r=>typeof r.result?.answer?.result?.fileContent==='string');facts.push(read?pass(`Actual initial ${file} read`,true,true,refs(initial)):unknown(`Actual initial ${file} read`,'Observed successful read','Read evidence unavailable',refs(initial)))}
+  const initial=input.captures[0];for(const file of ['resources.json','draft.json']){const read=successfulFileRead(initial,file)||(file==='resources.json'&&successfulResourceFunctionRead(initial));facts.push(read?pass(`Actual initial ${file} read`,true,true,refs(initial)):unknown(`Actual initial ${file} read`,'Observed successful source-bound read','Read evidence unavailable',refs(initial)))}
   const source=sourceAt(last,'planner',input.source),actual=decodeDraft(last,source),writes=fileCalls(last,'writeFile','draft.json'),commits=last.events.filter(e=>e.type==='FILE_COMMITTED');
   if(['planner_legacy','planner_generalization'].includes(kind)){const download=input.observations.find(o=>o.kind==='download'),downloadCapture=input.captures.find(c=>c.checkpoint.startsWith('after_download')),absence=input.observations.find(o=>o.kind==='download_absence');if(!download||!downloadCapture){const click=input.actions.find(a=>a.id===absence?.click_action_id),before=input.captures.find(c=>c.evidence_refs.includes(absence?.before_dom_ref)),after=input.captures.find(c=>c.evidence_refs.includes(absence?.after_dom_ref));const proved=absence?.capture_method==='browser_download_event_ledger'&&absence?.event_count===0&&absence?.budget_ms===5000&&absence?.page_valid_before_after===true&&before&&fileCalls(before,'getFile','resources.json').some(r=>r.result?.answer?.result?.fileContent===before.snapshot.files['resources.json']?.content)&&Date.parse(absence.ended_at)-Date.parse(absence.started_at)>=5000&&click?.kind==='click'&&click?.hook==='legacy-export'&&click?.performed===true&&before&&after&&!input.errors?.length;facts.push(proved?failure('Actual valid CSV export click produces a download within the public bounded budget',1,0,[absence.evidence_ref,...refs(before),...refs(after)],null):unknown('Original CSV actual download','Downloaded bytes','Not observed',refs(last)))}else{const parsed=parseCSV(download.content_utf8),columns=['resource_id','display_name','team_id','date','available_minutes','committed_minutes','residual_minutes'];if(!parsed)facts.push(failure('Downloaded CSV parses correctly',true,false,[download.evidence_ref],null));else{facts.push(compare('CSV public field schema',columns,parsed[0],[download.evidence_ref],null));const expected=resourceRowsExpected(sourceAt(downloadCapture,'planner',input.source),downloadCapture);if(expected)facts.push(compare('Actual downloaded filtered/sorted capacity facts',expected.map(row=>columns.map(c=>String(row[c]))),parsed.slice(1),[download.evidence_ref, ...refs(downloadCapture)],'amount'));else facts.push(unknown('Actual CSV source/filter binding','Resolved rows','Unresolved controls',[download.evidence_ref]))}}}
   if(kind==='planner_keyboard'){const opened=input.captures.find(c=>c.checkpoint==='open_details'),closed=input.captures.find(c=>c.checkpoint==='closed_details'),target=input.actions.find(a=>a.hook==='resource-row'&&a.kind==='press'&&a.key==='Enter')?.source_key;

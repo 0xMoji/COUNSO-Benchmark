@@ -147,13 +147,85 @@ export function buildTestPlan(kind, source, draft=null, fixtureId='primary') {
 export async function captureVisibleDOM(frame) {
   return frame.locator('body').evaluate(body=>{
     const visible=e=>{const r=e.getBoundingClientRect();if(typeof e.checkVisibility!=='function')throw new Error('Pinned browser native visibility instrumentation unavailable');return r.width>0&&r.height>0&&e.checkVisibility({opacityProperty:true,visibilityProperty:true})};
+    const inputs=e=>{const all=[...(e.matches('input,select,textarea')?[e]:[]),...e.querySelectorAll('input,select,textarea')];const input=all[0];return {input:input?{value:input.value,type:input.getAttribute('type'),visible:visible(input)}:null,input_count:all.length,visible_input_count:all.filter(visible).length}};
     const cells=e=>{const headers=[...e.closest('table')?.querySelectorAll('thead tr:first-child th')||[]];
-      const direct=[...e.querySelectorAll(':scope > td,:scope > th')].filter(visible).map(c=>{const input=c.querySelector('input,select,textarea');return {text:c.innerText,field:c.getAttribute('data-eval-field'),unit:c.getAttribute('data-eval-unit'),parent_text:c.parentElement?.innerText||'',header:headers[c.cellIndex]?.innerText||'',input:input?{value:input.value,type:input.getAttribute('type'),visible:visible(input)}:null}});
-      const roles=[...e.querySelectorAll('[data-eval-field]')].filter(c=>visible(c)&&c.closest('[data-eval="ticket-row"],[data-eval="resource-row"],[data-eval="draft-row"]')===e).map(c=>{const td=c.closest('td,th');return {text:c.innerText,field:c.getAttribute('data-eval-field'),unit:c.getAttribute('data-eval-unit'),parent_text:c.parentElement?.innerText||'',header:td?headers[td.cellIndex]?.innerText||'':'',input:null}});
+      const direct=[...e.querySelectorAll(':scope > td,:scope > th')].filter(visible).map(c=>({text:c.innerText,field:c.getAttribute('data-eval-field'),unit:c.getAttribute('data-eval-unit'),parent_text:c.parentElement?.innerText||'',header:headers[c.cellIndex]?.innerText||'',...inputs(c)}));
+      const roles=[...e.querySelectorAll('[data-eval-field]')].filter(c=>visible(c)&&c.closest('[data-eval="ticket-row"],[data-eval="resource-row"],[data-eval="draft-row"]')===e).map(c=>{const td=c.closest('td,th');return {text:c.innerText,field:c.getAttribute('data-eval-field'),unit:c.getAttribute('data-eval-unit'),parent_text:c.parentElement?.innerText||'',header:td?headers[td.cellIndex]?.innerText||'':'',...inputs(td||c)}});
       return [...roles,...direct.filter(c=>!roles.some(role=>role.field&&role.field===c.field))];};
     const nodes=[...body.querySelectorAll('[data-eval]')].map(e=>{const r=e.getBoundingClientRect();return {hook:e.getAttribute('data-eval'),key:e.getAttribute('data-eval-key'),tag:e.tagName.toLowerCase(),field:e.getAttribute('data-eval-field'),unit:e.getAttribute('data-eval-unit'),visible:visible(e),effective_visible:e.checkVisibility({opacityProperty:true,visibilityProperty:true}),axis:e.getAttribute('data-eval-axis'),paint:{background_color:getComputedStyle(e).backgroundColor,svg_fill:e.tagName.toLowerCase()==='rect'?getComputedStyle(e).fill:null},text:visible(e)?e.innerText:'',parent_text:e.parentElement?.innerText||'',header:e.tagName==='TD'?[...e.closest('table')?.querySelectorAll('thead tr:first-child th')||[]][e.cellIndex]?.innerText||'':'',json_text:e.querySelector('pre')?.innerText||null,prefix_text:e.querySelector('p')?.innerText||null,checked:'checked'in e?e.checked:null,value:'value'in e?e.value:null,disabled:'disabled'in e?e.disabled:null,focused:e===document.activeElement,rect:{x:r.x,y:r.y,width:r.width,height:r.height},cells:['ticket-row','resource-row','draft-row'].includes(e.getAttribute('data-eval'))?cells(e):null}});
     return {body_text:body.innerText,nodes,viewport:{width:innerWidth,height:innerHeight},scroll:{width:body.scrollWidth,height:body.scrollHeight},focused_hook:document.activeElement?.getAttribute('data-eval')||document.activeElement?.closest('[data-eval]')?.getAttribute('data-eval')||null,focused_key:document.activeElement?.getAttribute('data-eval-key')||document.activeElement?.closest('[data-eval]')?.getAttribute('data-eval-key')||null};
   });
+}
+
+/** Chart-only, read-only measurement. Do not finish/cancel animations or change
+ * CSS to make a capture pass. Geometry includes native ancestor visibility.
+ */
+export async function captureChartGeometry(frame) {
+  return frame.locator('body').evaluate(body=>{
+    const all=[...body.querySelectorAll('[data-eval="status-plot"],[data-eval="status-glyph"]')],limit=64;
+    const targets=all.slice(0,limit);let animationsObserved=true;
+    const animations=new Set();
+    for(const e of targets){
+      try{
+        if(typeof e.getAnimations!=='function'){animationsObserved=false;continue}
+        for(const a of e.getAnimations({subtree:true}))animations.add(a);
+        for(let parent=e.parentElement;parent;parent=parent.parentElement){
+          if(typeof parent.getAnimations!=='function'){animationsObserved=false;break}
+          for(const a of parent.getAnimations())animations.add(a);
+        }
+      }catch{animationsObserved=false}
+    }
+    const active=[];
+    for(const a of animations){
+      if(!a.pending&&!['running','paused'].includes(a.playState))continue;
+      try{const timing=a.effect?.getComputedTiming();active.push({play_state:a.playState,pending:!!a.pending,finite:!!timing&&Number.isFinite(timing.endTime),end_time:Number.isFinite(timing?.endTime)?timing.endTime:null,current_time:Number.isFinite(a.currentTime)?a.currentTime:null})}catch{animationsObserved=false}
+    }
+    let visibilityObserved=true;
+    const nodes=targets.map((e,index)=>{const r=e.getBoundingClientRect();const effective=typeof e.checkVisibility==='function'?e.checkVisibility({opacityProperty:true,visibilityProperty:true}):null;if(effective===null)visibilityObserved=false;return {index,hook:e.getAttribute('data-eval'),key:e.getAttribute('data-eval-key'),tag:e.tagName.toLowerCase(),visible:r.width>0&&r.height>0&&effective===true,effective_visible:effective,rect:{x:r.x,y:r.y,width:r.width,height:r.height}}});
+    return {nodes,node_count:all.length,truncated:all.length>limit,animations_observed:animationsObserved,visibility_observed:visibilityObserved,active_animations:active,active_finite_animation_count:active.filter(a=>a.finite).length,active_other_animation_count:active.filter(a=>!a.finite).length};
+  });
+}
+
+const chartSignature=sample=>JSON.stringify(sample?.nodes);
+const chartObserved=sample=>!!sample?.nodes?.length&&!sample.truncated&&sample.animations_observed&&sample.visibility_observed&&sample.nodes.every(n=>Object.values(n.rect).every(Number.isFinite));
+const chartStill=sample=>chartObserved(sample)&&sample.active_animations.length===0;
+
+/** Added observation work is capped at 1000ms and the remaining checkpoint
+ * clock. Existing PNG/host capture is never cancelled by this measurement.
+ * Injected callbacks let neutral offline controls exercise the same algorithm.
+ */
+export async function captureWithChartStability({sample,capture,budgetMs=1000,deadline=Infinity,now=Date.now,wait=sleep}) {
+  const started=now(),budget=Math.max(0,Math.min(1000,budgetMs));let spent=0;
+  const samples=[];let streakAt=null,last=null,preStable=false,reason='unobserved';
+  const remaining=()=>Math.max(0,Math.min(budget-spent,deadline-now()));
+  const read=async phase=>{
+    const allowance=remaining(),at=now();if(allowance<=0)return null;
+    let timer;
+    try{
+      const value=await Promise.race([Promise.resolve().then(sample),new Promise(resolve=>{timer=setTimeout(()=>resolve(null),allowance)})]);
+      const ended=now();spent+=Math.max(0,ended-at);
+      if(!value){reason='sample_unobserved';return null}
+      const entry={phase,at:new Date(at).toISOString(),ended_at:new Date(ended).toISOString(),elapsed_ms:ended-started,...value};samples.push(entry);return entry;
+    }catch{spent+=Math.max(0,now()-at);reason='sample_unobserved';return null}finally{if(timer)clearTimeout(timer)}
+  };
+  while(samples.length<20&&(samples.length===0?remaining()>0:remaining()>100)){
+    const current=await read('before_capture');if(!current)break;
+    if(!chartObserved(current)){reason=current.nodes?.length?'instrumentation_unobserved':'chart_unobserved';break}
+    if(chartStill(current)&&chartStill(last)&&chartSignature(current)===chartSignature(last)){
+      if(streakAt===null)streakAt=Date.parse(last.ended_at);
+      if(now()-streakAt>=100){preStable=true;last=current;break}
+    }else{streakAt=chartStill(current)?now():null;reason='motion_or_geometry_change'}
+    last=current;const delay=Math.min(50,Math.max(0,remaining()-100));if(delay<=0)break;
+    const at=now();await wait(delay);spent+=Math.max(0,now()-at);
+  }
+  const captureStarted=now(),result=await capture();const captureEnded=now();
+  const after=await read('after_png_host_capture');
+  const capturedNodes=result?.dom?.nodes?.filter(n=>['status-plot','status-glyph'].includes(n.hook)).map((n,index)=>({index,hook:n.hook,key:n.key,tag:n.tag,visible:n.visible,effective_visible:n.effective_visible,rect:n.rect}));
+  const domMatches=!!capturedNodes&&JSON.stringify(capturedNodes)===chartSignature(last);
+  const stable=preStable&&chartStill(after)&&chartSignature(last)===chartSignature(after)&&domMatches;
+  if(stable)reason='consistent_geometry_no_active_animation';else if(preStable)reason=after?'capture_geometry_or_motion_changed':'capture_after_unobserved';
+  const metadata={state:stable?'STABLE':'UNKNOWN',reason,budget_ms:budget,observation_elapsed_ms:spent,started_at:new Date(started).toISOString(),ended_at:new Date(now()).toISOString(),capture_started_at:new Date(captureStarted).toISOString(),capture_ended_at:new Date(captureEnded).toISOString(),quiet_window_ms:100,sample_interval_ms:50,sample_count:samples.length,dom_matches_before_sample:domMatches,samples};
+  return {result,metadata};
 }
 
 async function hostCall(page, method, value=null) {
@@ -204,13 +276,18 @@ export async function runAcceptanceTest({page,proxy,test,kind,source,draft,bindi
   let pendingId=null,frame=null;
   const record=(kind,details={})=>{const a={id:`a-${actions.length+1}`,kind,performed:true,at:new Date().toISOString(),source:'trusted_browser_driver',...details};actions.push(a);return a};
   async function checkpoint(name){
+    const checkpointDeadline=Date.now()+timeout;
     await waitHostQuiescent(page,timeout);
-    const capture=await captureVisibleDOM(frame);const suffix=`${test.test_id}-${captures.length}-${name}`.replace(/[^a-zA-Z0-9_-]/g,'_');
+    const suffix=`${test.test_id}-${captures.length}-${name}`.replace(/[^a-zA-Z0-9_-]/g,'_');
+    const screenshotFile=path.join(artifactDir,`${suffix}.png`);
+    const {result,metadata}=await captureWithChartStability({sample:()=>captureChartGeometry(frame),deadline:checkpointDeadline,capture:async()=>{
+      const dom=await captureVisibleDOM(frame);await page.screenshot({path:screenshotFile,fullPage:true});
+      const snapshot=await hostCall(page,'snapshot'),events=await hostCall(page,'events');return {dom,snapshot,events};
+    }});
+    const {dom:capture,snapshot,events}=result;capture.chart_geometry_observation=metadata;
     const domFile=path.join(artifactDir,`${suffix}.dom.json`);await fs.writeFile(domFile,JSON.stringify(capture,null,2)+'\n');
     const domRef=`dom:${suffix}`;observations.push({kind:'visible_dom',capture_method:'browser_readonly_dom',evidence_ref:domRef,file:path.basename(domFile),sha256:sha(await fs.readFile(domFile)),checkpoint:name});
-    const screenshotFile=path.join(artifactDir,`${suffix}.png`);await page.screenshot({path:screenshotFile,fullPage:true});
     observations.push({kind:'screenshot',evidence_ref:`png:${suffix}`,file:path.basename(screenshotFile),sha256:sha(await fs.readFile(screenshotFile)),checkpoint:name,visually_inspected:false});
-    const snapshot=await hostCall(page,'snapshot'),events=await hostCall(page,'events');
     const ledgerFile=path.join(artifactDir,`${suffix}.host.json`);await fs.writeFile(ledgerFile,JSON.stringify({snapshot,events},null,2)+'\n');
     const ledgerRef=`ledger:${suffix}`;observations.push({kind:'host_ledger',evidence_ref:ledgerRef,file:path.basename(ledgerFile),sha256:sha(await fs.readFile(ledgerFile)),checkpoint:name});
     captures.push({checkpoint:name,action_count:actions.length,dom:capture,snapshot,events,evidence_refs:[domRef,ledgerRef]});

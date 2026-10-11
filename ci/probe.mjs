@@ -3,6 +3,8 @@ import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+if(process.env.GITHUB_ACTIONS!=='true')throw new Error('Real browser execution is authorized only in the separate private GitHub Actions job');
 import { chromium } from './probe-runtime/node_modules/playwright/index.mjs';
 const out=path.resolve('ci-results/probe');await fs.mkdir(out,{recursive:true});
 const started=new Date().toISOString();const fixture={unit_price_eur:5};
@@ -10,13 +12,21 @@ const html=`<!doctype html><meta charset="utf-8"><title>Synthetic calculator pro
 const events=[];const server=http.createServer((req,res)=>{events.push({at:new Date().toISOString(),method:req.method,path:req.url});if(req.method!=='GET'||!['/','/fixture.json','/hardcoded'].includes(req.url)){res.writeHead(404);res.end();return;}res.setHeader('Content-Security-Policy',"default-src 'none'; script-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'");res.setHeader('Content-Type',req.url==='/fixture.json'?'application/json':'text/html; charset=utf-8');res.end(req.url==='/fixture.json'?JSON.stringify(fixture):req.url==='/hardcoded'?html.replace('*f.unit_price_eur','*5'):html);});
 await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
 const origin=`http://127.0.0.1:${server.address().port}`;
-let browser;const observations=[];let failure;
+let browser;const observations=[];let failure;let browserVersion='UNKNOWN';let browserBinarySha256='UNKNOWN';let installedChromeVersion='UNKNOWN';
+const logStage=name=>console.log(JSON.stringify({at:new Date().toISOString(),stage:name}));
 try{
- // Default, officially documented Playwright launch; no custom browser security flags.
+ // Official Playwright branded Chrome channel, using the runner's existing official installation.
+ // No custom browser security flags or alternate executable/channel fallback.
+ logStage('verify_preinstalled_browser');
+ installedChromeVersion=execFileSync('/usr/bin/google-chrome',['--version'],{timeout:10000,env:{PATH:process.env.PATH,HOME:process.env.HOME}}).toString().trim();
+ browserBinarySha256=crypto.createHash('sha256').update(await fs.readFile('/opt/google/chrome/chrome')).digest('hex');
+ logStage('browser_launch');
  // Only ordinary runner PATH/HOME are passed, never repository/account credentials.
- browser=await chromium.launch({headless:true,env:{PATH:process.env.PATH,HOME:process.env.HOME,TMPDIR:process.env.RUNNER_TEMP||'/tmp'}});
+ browser=await chromium.launch({channel:'chrome',headless:true,timeout:30000,env:{PATH:process.env.PATH,HOME:process.env.HOME,TMPDIR:process.env.RUNNER_TEMP||'/tmp'}});
+ browserVersion=browser.version();logStage('actual_browser_launched');
  const context=await browser.newContext({viewport:{width:960,height:640}});
  await context.route('**/*',async route=>{const u=new URL(route.request().url());if(u.origin!==origin)await route.abort('blockedbyclient');else await route.continue();});
+ logStage('actual_click_positive_and_mutation_checks');
  const page=await context.newPage();await page.goto(origin);await page.locator('#qty').fill('3');await page.getByRole('button',{name:'Calculate',exact:true}).click();await page.getByRole('status').getByText('Total: 15 EUR',{exact:true}).waitFor();
  observations.push({step:'initial-fixture',action:['navigate','fill 3','click Calculate'],observed:await page.getByRole('status').innerText(),expected:'Total: 15 EUR'});
  await page.screenshot({path:path.join(out,'initial-fixture.png'),fullPage:true});
@@ -30,5 +40,5 @@ try{
  await fs.writeFile(path.join(out,'dom.txt'),await page.content());
 }catch(error){failure={name:error.name,message:error.message};process.exitCode=1;}
 finally{if(browser)await browser.close();await new Promise(resolve=>server.close(resolve));
- const receipt={probe_version:1,phase:'INSTRUMENT_PROBE_NOT_CANDIDATE',started_at:started,ended_at:new Date().toISOString(),ci_run_id:process.env.CI_EVIDENCE_RUN_ID||'UNKNOWN',ci_commit:process.env.CI_EVIDENCE_COMMIT||'UNKNOWN',node_version:process.version,html_sha256:crypto.createHash('sha256').update(html).digest('hex'),functional_status:failure?'UNKNOWN':'PASS',failure:failure||null,observations,events,browser_validation_is_candidate_generation_time:false,actual_counso_native_status:'UNKNOWN',external_network_allowed:false};
+ const receipt={probe_version:3,browser_channel:'chrome',browser_version:browserVersion,installed_chrome_version:installedChromeVersion,browser_executable:'/opt/google/chrome/chrome',browser_binary_sha256:browserBinarySha256,runner_image_os:process.env.ImageOS||'UNKNOWN',runner_image_version:process.env.ImageVersion||'UNKNOWN',prior_failed_run_id:'38103941953',prior_failure_origin:'INFRA_BROWSER_INSTALL_NOT_CANDIDATE',phase:'INSTRUMENT_PROBE_NOT_CANDIDATE',started_at:started,ended_at:new Date().toISOString(),ci_run_id:process.env.CI_EVIDENCE_RUN_ID||'UNKNOWN',ci_commit:process.env.CI_EVIDENCE_COMMIT||'UNKNOWN',node_version:process.version,html_sha256:crypto.createHash('sha256').update(html).digest('hex'),functional_status:failure?'UNKNOWN':'PASS',failure:failure||null,observations,events,browser_validation_is_candidate_generation_time:false,actual_counso_native_status:'UNKNOWN',external_network_allowed:false};
  await fs.writeFile(path.join(out,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));}

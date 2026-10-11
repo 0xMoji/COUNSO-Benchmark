@@ -27,14 +27,25 @@ jobs:
           node-version: '24.16.0'
           check-latest: false
       - name: Fixed official browser test dependency
+        timeout-minutes: 2
         working-directory: ci/probe-runtime
         run: |
           npm ci --ignore-scripts --no-audit --no-fund --registry=https://registry.npmjs.org
-          node node_modules/playwright/cli.js install --with-deps chromium
+      - name: Verify official runner-preinstalled Google Chrome
+        timeout-minutes: 1
+        run: |
+          date -u +%FT%TZ
+          command -v google-chrome
+          google-chrome --version
+          test -x /opt/google/chrome/chrome
+          sha256sum /opt/google/chrome/chrome
+          printf 'Runner image %s / %s\n' "${ImageOS:-UNKNOWN}" "${ImageVersion:-UNKNOWN}"
       - name: Real click and same-schema data replacement
+        timeout-minutes: 4
         env:
           CI_EVIDENCE_COMMIT: ${{ github.sha }}
           CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
+          CI_BROWSER_CHANNEL: chrome
         run: timeout --signal=TERM 180s node ci/probe.mjs
       - name: Preserve real browser observations
         if: always()

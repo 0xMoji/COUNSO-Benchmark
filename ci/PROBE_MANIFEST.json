@@ -1,17 +1,23 @@
 {
-  "status": "PREPARED_LOCAL_NOT_EXECUTED",
+  "status": "PREPARED_LOCAL_RETRY_NOT_EXECUTED",
   "scope": "one synthetic actual click + same-schema data change and hardcoded-UI negative control",
-  "requires_parent_repo_branch_actions_and_quota_authorization": true,
+  "requires_parent_repo_branch_actions_and_quota_authorization": false,
   "max_job_minutes": 10,
   "no_business_account_secrets": true,
   "no_persistent_checkout_token": true,
   "no_candidate_scripts_or_external_llm": true,
   "files": {
-    ".github/workflows/ui-probe.yml": "2d2e4938110e9f021b9853e77047c56356ec5947144c70ccb8b351cb01c6f947",
-    "ci/probe.mjs": "80c25f86214b56d7f0e51a52bb077ff6c4584bf97850d578bd03fc1b8a625d60",
+    ".github/workflows/ui-probe.yml": "06c6923413a4057a74073f04eea5e23cf5fdcf743cf2111d1dde6e9407807686",
+    "ci/probe.mjs": "79e2f52aa4059830632bc17a7a9c0fe7b87d747bfdea8da3e71944fe16051f4a",
     "ci/probe-runtime/package.json": "bef684ace146b052df605772a6c8dde4ae1a94c197752ea98b3ee68445fef294",
     "ci/probe-runtime/package-lock.json": "6b41483c0a61da9f654186e92d6a0ef1b7d69cc4e667678a39d21e3f425d1992",
-    "provenance/CI_ACTION_SOURCE_RECORDS.json": "676020583aa831c752994684067d67eaeb39785b9f5e49cf4831c1342723ee2b"
+    "provenance/CI_ACTION_SOURCE_RECORDS.json": "e3400cdfbf333b8d69764a37b0652b0bcee2e86b281e14dce062723f81d13cc7"
   },
-  "workflow_trigger": "PUSH_EXACT_AUTHORIZED_PROBE_BRANCH_ONLY"
+  "workflow_trigger": "PUSH_EXACT_AUTHORIZED_PROBE_BRANCH_ONLY",
+  "parent_user_authorization": "Same synthetic private-repo probe retry authorized; no new permissions/paid configuration",
+  "browser_channel": "chrome",
+  "browser_install": "NONE_USE_OFFICIAL_RUNNER_PREINSTALLED",
+  "prior_failed_run_id": "38103941953",
+  "prior_failure_origin": "INFRA_BROWSER_INSTALL_NOT_CANDIDATE",
+  "runtime_browser_version_and_hash": "OBSERVED_PER_RECEIPT_NOT_PINNED"
 }

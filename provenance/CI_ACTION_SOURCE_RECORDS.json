@@ -61,5 +61,20 @@
       },
       "isError": false
     }
+  },
+  {
+    "source_url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md",
+    "verified_at_utc": "2026-10-11T02:16:00Z",
+    "claim": "Official ubuntu24.04 image lists Google Chrome and Chromium. Runtime image/version remains observed, not assumed from live main docs."
+  },
+  {
+    "source_url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/scripts/build/install-google-chrome.sh",
+    "verified_at_utc": "2026-10-11T02:16:00Z",
+    "claim": "Official image script installs Google Chrome from dl.google.com, sets CHROME_BIN=/usr/bin/google-chrome. Probe independently checks the installed executable/version/hash."
+  },
+  {
+    "source_url": "https://playwright.dev/docs/browsers#google-chrome--microsoft-edge",
+    "verified_at_utc": "2026-10-11T02:16:00Z",
+    "claim": "Playwright documents running machine-installed Google Chrome via channel chrome; launch incompatibility is instrumentation UNKNOWN, not candidate failure."
   }
 ]

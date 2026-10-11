@@ -1,8 +1,8 @@
 {
-  "packageDir": "candidate-inputs/packages/u-72c16942c9e0ad9649d3/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-72c16942c9e0ad9649d3/primary",
+  "packageDir": "candidate-inputs/packages/u-f961d0242773316ef722/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-f961d0242773316ef722/primary",
   "kind": "planner",
-  "artifactDir": "candidate-results/u-72c16942c9e0ad9649d3/primary",
+  "artifactDir": "candidate-results/u-f961d0242773316ef722/primary",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
   "caseId": "G-UI-EDIT-M1",
@@ -10,7 +10,7 @@
   "fixtureHashes": {
     "primary": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c"
   },
-  "candidatePackageSha256": "ac794f39b72687dc8a425867f2bc1314baca5ea8b0ebdf450ff45351f3a69093",
+  "candidatePackageSha256": "3a0a00da0b13e783be17d0d737ba15b02a6ed0d93271bb476ea4f02afcdcef0e",
   "testIds": [
     "P-primary-legacy",
     "P-primary-draft_baseline",
@@ -69,7 +69,7 @@
     "packageDir": "candidate-inputs/references/ref-g-ui-edit-m1/frame",
     "packageSha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
     "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
-    "fixtureDir": "candidate-inputs/fixtures/u-72c16942c9e0ad9649d3/primary",
+    "fixtureDir": "candidate-inputs/fixtures/u-f961d0242773316ef722/primary",
     "fixtureSha256": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c",
     "hostMetadata": {
       "draft.json": {

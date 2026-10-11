@@ -1,8 +1,8 @@
 {
-  "packageDir": "candidate-inputs/packages/u-71642a49191a6d93337e/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-71642a49191a6d93337e/primary",
+  "packageDir": "candidate-inputs/packages/u-53171aff9b16e446d24d/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-53171aff9b16e446d24d/primary",
   "kind": "dashboard",
-  "artifactDir": "candidate-results/u-71642a49191a6d93337e/primary",
+  "artifactDir": "candidate-results/u-53171aff9b16e446d24d/primary",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
   "caseId": "G-UI-CREATE-M1",
@@ -10,7 +10,7 @@
   "fixtureHashes": {
     "primary": "bfed50e39fabb37012d7e2c6fb2bf3f632fc756835ae53a7eccb12f591cdb966"
   },
-  "candidatePackageSha256": "6f3cf7f841e4835d3309f6ef1778f6a8939ff5e9a0abd2cec072ff56cfb063a9",
+  "candidatePackageSha256": "b671c66c88af703ea97fea85f898a17bf28151d9226c89ce41a52384b84ca5e6",
   "testIds": [
     "D-primary-baseline",
     "D-primary-keyboard",
@@ -172,7 +172,7 @@
     "packageDir": "candidate-inputs/references/ref-g-ui-create-m1/frame",
     "packageSha256": "ca88ed8f8915bb2885a08f8398c0ee1cd727edc184aced1a4177ea432c9cc5fc",
     "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
-    "fixtureDir": "candidate-inputs/fixtures/u-71642a49191a6d93337e/primary",
+    "fixtureDir": "candidate-inputs/fixtures/u-53171aff9b16e446d24d/primary",
     "fixtureSha256": "bfed50e39fabb37012d7e2c6fb2bf3f632fc756835ae53a7eccb12f591cdb966",
     "hostMetadata": {
       "dataset.json": {

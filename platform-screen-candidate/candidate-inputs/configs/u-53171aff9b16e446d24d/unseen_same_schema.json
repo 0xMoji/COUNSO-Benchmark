@@ -1,8 +1,8 @@
 {
-  "packageDir": "candidate-inputs/packages/u-e087d8e51716030a4c08/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-e087d8e51716030a4c08/unseen_same_schema",
+  "packageDir": "candidate-inputs/packages/u-53171aff9b16e446d24d/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-53171aff9b16e446d24d/unseen_same_schema",
   "kind": "dashboard",
-  "artifactDir": "candidate-results/u-e087d8e51716030a4c08/unseen_same_schema",
+  "artifactDir": "candidate-results/u-53171aff9b16e446d24d/unseen_same_schema",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
   "caseId": "G-UI-CREATE-M1",
@@ -10,7 +10,7 @@
   "fixtureHashes": {
     "unseen_same_schema": "15f810a99440310a9eb5a5a8c76df6410b8c1fb2affc765a5dc316399886a93b"
   },
-  "candidatePackageSha256": "d828579d3dff452ddf083fb8a5e62bf9706fbfd564f7379462cf5bd7a851ad4e",
+  "candidatePackageSha256": "b671c66c88af703ea97fea85f898a17bf28151d9226c89ce41a52384b84ca5e6",
   "testIds": [
     "D-unseen_same_schema-baseline",
     "D-unseen_same_schema-keyboard",
@@ -182,7 +182,7 @@
     "packageDir": "candidate-inputs/references/ref-g-ui-create-m1/frame",
     "packageSha256": "ca88ed8f8915bb2885a08f8398c0ee1cd727edc184aced1a4177ea432c9cc5fc",
     "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
-    "fixtureDir": "candidate-inputs/fixtures/u-e087d8e51716030a4c08/unseen_same_schema",
+    "fixtureDir": "candidate-inputs/fixtures/u-53171aff9b16e446d24d/unseen_same_schema",
     "fixtureSha256": "15f810a99440310a9eb5a5a8c76df6410b8c1fb2affc765a5dc316399886a93b",
     "hostMetadata": {
       "dataset.json": {

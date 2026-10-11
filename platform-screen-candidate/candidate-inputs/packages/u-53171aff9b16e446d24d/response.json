@@ -1,0 +1,12 @@
+{
+  "artifacts": [
+    "frame/manifest.json",
+    "frame/index.tsx",
+    "frame/functions/load-data.ts",
+    "frame/dataset.json"
+  ],
+  "limitations": [
+    "Browser interactions were not run during generation; the static React/TSX package is supplied for the controlled host's runtime validation.",
+    "Native Counso deployment has not been verified or performed."
+  ]
+}

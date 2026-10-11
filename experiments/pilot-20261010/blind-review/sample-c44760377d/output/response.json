@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "已完整读取2818张发票、2282笔收款、37笔贷项。按SG/SGD、到期日早于2026-07-10及逐单余额大于0筛选，共2400行，余额SGD 320772.27；UNALLOCATED 212.96、UNMATCHED 168.00单独报告，不抵余额。所有发票主键以原始文本保留。",
+  "result": {
+    "eligible_rows": 2400,
+    "balance_sgd": "320772.27",
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "invoice_ids_preserved": true,
+    "detail_file": "ledger.csv",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "selection; allocation; input_counts; as_of"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "lines 2-2819: invoice_id, entity_id, jurisdiction, currency, due_date, amount"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "lines 2-2283: invoice_id, amount, allocation; APPLIED aggregated by invoice_id"
+    },
+    {
+      "source_id": "credits",
+      "locator": "lines 2-38: invoice_id, amount; aggregated by invoice_id"
+    }
+  ],
+  "executed_actions": []
+}

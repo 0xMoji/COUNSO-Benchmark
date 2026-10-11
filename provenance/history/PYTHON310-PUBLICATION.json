@@ -1,0 +1,117 @@
+{
+  "repository": "0xMoji/counso-benchmark-reconstructed",
+  "private": true,
+  "main_unchanged": "67d11ad1db52cadb413de105efc6797c24ffb4a5",
+  "branch": "fix/python310-selftest",
+  "head": "a9f731be5abfacf5270c75e387c150ad216e7d9b",
+  "tree": "cf2139baf90ba18b56e1dc4dc746ec4d311b9c38",
+  "file_count": 117,
+  "changed_files_vs_baseline": [
+    {
+      "path": "counso_bench/checks.py",
+      "sha256": "75d8c39c16b02a2dd313a7c1bd9355144b84ab41fa7c48d6d6dca3220aa2dd98",
+      "git_blob_sha": "9cb5806fde1c4a47f617a005b81d0ea1475656d1",
+      "bytes": 15360
+    },
+    {
+      "path": "docs/PYTHON310-COMPATIBILITY.md",
+      "sha256": "0886240e82e36f3833ffbd4ac95b0aa5982e863c5dd29b760ce1bfc6171df540",
+      "git_blob_sha": "be8aa8e20155ef51600b8e52196d81ed10a2376c",
+      "bytes": 3282
+    },
+    {
+      "path": "provenance/PYTHON310-COMPATIBILITY-TESTS.json",
+      "sha256": "0ca8126adcdaa2d772409808a7595647f9bc0071ba63000b69361693601cc66d",
+      "git_blob_sha": "c93490ae1bd27ceed113f49898beb2ea49d3ae2a",
+      "bytes": 2167
+    },
+    {
+      "path": "tests/test_sql_compatibility.py",
+      "sha256": "5ddc5e0fd34206a49cfcea80fc14514348b294977966af3051fb461ecd540b3e",
+      "git_blob_sha": "6d98c4633f0d712a0cc76b77e483c9edd1905ac4",
+      "bytes": 3904
+    },
+    {
+      "path": "provenance/file_manifest.json",
+      "sha256": "ecac5fc602577f32b694030bb3e045f4c14a1ede1937e1e61fec4caf983f808b",
+      "git_blob_sha": "2dba1334e36a30ddddf394206de3a9a6a571f034",
+      "bytes": 18948
+    }
+  ],
+  "manifest_sha256": "ecac5fc602577f32b694030bb3e045f4c14a1ede1937e1e61fec4caf983f808b",
+  "verification": {
+    "all_paths_match": true,
+    "all_git_blob_shas_match": true,
+    "all_byte_sizes_match": true,
+    "extra_files": 0,
+    "main_modified": false,
+    "merged": false,
+    "original_review_bytes_unchanged": true
+  },
+  "branch_url": "https://github.com/0xMoji/counso-benchmark-reconstructed/tree/fix/python310-selftest",
+  "commit_url": "https://github.com/0xMoji/counso-benchmark-reconstructed/commit/a9f731be5abfacf5270c75e387c150ad216e7d9b",
+  "ci": {
+    "run_id": 38094440976,
+    "url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38094440976",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "push",
+    "head_sha": "a9f731be5abfacf5270c75e387c150ad216e7d9b",
+    "jobs": [
+      {
+        "id": 114337319624,
+        "name": "test (3.12)",
+        "url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38094440976/job/114337319624",
+        "status": "completed",
+        "conclusion": "success",
+        "evidence_excerpt": [
+          "2026-10-10T23:16:26.3249927Z Successfully set up CPython (3.12.15)",
+          "2026-10-10T23:16:30.5644620Z Ran 75 tests in 3.453s",
+          "2026-10-10T23:16:34.2838467Z   \"failures\": [],",
+          "2026-10-10T23:16:34.2839493Z   \"negative_detected\": 31,",
+          "2026-10-10T23:16:34.2840985Z   \"passed\": true,",
+          "2026-10-10T23:16:34.2841525Z   \"reference_cases\": 31,"
+        ]
+      },
+      {
+        "id": 114337319796,
+        "name": "test (3.10)",
+        "url": "https://github.com/0xMoji/counso-benchmark-reconstructed/actions/runs/38094440976/job/114337319796",
+        "status": "completed",
+        "conclusion": "success",
+        "evidence_excerpt": [
+          "2026-10-10T23:16:25.4391396Z Successfully set up CPython (3.10.22)",
+          "2026-10-10T23:16:30.3192495Z Ran 75 tests in 3.344s",
+          "2026-10-10T23:16:33.9613923Z   \"failures\": [],",
+          "2026-10-10T23:16:33.9615200Z   \"negative_detected\": 31,",
+          "2026-10-10T23:16:33.9616893Z   \"passed\": true,",
+          "2026-10-10T23:16:33.9617476Z   \"reference_cases\": 31,"
+        ]
+      }
+    ]
+  },
+  "history": [
+    {
+      "commit": "67d11ad1db52cadb413de105efc6797c24ffb4a5",
+      "run_id": 38093975806,
+      "conclusion": "failure",
+      "reason": "3.10 selftest R05 authorizer(None) compatibility; 3.12 success"
+    },
+    {
+      "commit": "0fe310af5bc1d3a78450dee6e8b9f012183de293",
+      "run_id": 38094284275,
+      "conclusion": "failure",
+      "reason": "3.10 legitimate SELECT and authorizer tests pass, new multi-statement negative test raises sqlite3.Warning; 3.12 cancelled by fail-fast"
+    },
+    {
+      "commit": "a9f731be5abfacf5270c75e387c150ad216e7d9b",
+      "run_id": 38094440976,
+      "conclusion": "success",
+      "reason": "Both versions pass validation, 75 tests, 31 reference and 31 negative controls"
+    }
+  ],
+  "scope": "PYTHON310_SQLITE_COMPATIBILITY_FIX_ONLY_NOT_MODEL_RANKING_RELEASE",
+  "pilot_patch_handoff": "Sent to /root/pilot_model_discrimination; independent copy only, no pilot file edits.",
+  "worktree": "/workspace/shared/counso-python310-fix",
+  "diff": "/workspace/shared/counso-python310-fix.diff"
+}

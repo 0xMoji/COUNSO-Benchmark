@@ -1,0 +1,72 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B20.scale",
+  "sample_id": "sample-908969935c",
+  "checks": [
+    {
+      "name": "full_source_ledger_recomputation",
+      "state": "PASS",
+      "evidence": "单独全读本sample2818发票/2282收款/37贷项；按policy聚合APPLIED及credit并筛SG/SGD/早于7月10日到期/正余额，独立2400行、balance320772.27、UNALLOCATED212.96、UNMATCHED168.00，全部符合result。"
+    },
+    {
+      "name": "csv_all_cells",
+      "state": "PASS",
+      "evidence": "所交CSV2400唯一文本invoice_id，六列顺序准确；所有行六字段与本sample全量独立预期相等，无多行/少行或金额差异。"
+    },
+    {
+      "name": "xlsx_all_values_and_identifier_types",
+      "state": "PASS",
+      "evidence": "Ledger工作表2401行含表头。原始OOXML A/B4800格均t=str、A2值00000001，C:F的9600格数值/数值缓存正确。全部2400行六字段与独立重算一致；另openpyxl只读返回A/B全s、A2为Python字符串，前导0未丢。无外链。"
+    },
+    {
+      "name": "all_balance_formulas_independently_checked",
+      "state": "PASS",
+      "evidence": "F2:F2401全部2400个公式逐一为ROUND(Cn-Dn-En,2)，无错行引用。对各行用Decimal独立求值并比缓存，2400项差异0。实际Office重算尚未独立观察，仅静态公式及缓存语义通过。 后到LibreOffice独立重算往返已通过，见追加检查。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "policy字段及三输入全表行引用真实，收款物理行736与1784单独读回确是UNALLOCATED212.96/UNMATCHED168.00。所需JSON/CSV/XLSX齐全。"
+    },
+    {
+      "name": "office_visual",
+      "state": "UNKNOWN",
+      "evidence": "没有本sample的实际Office渲染截图；XML/库读回和候选自报预览不能证明视觉质量。usability保持UNKNOWN。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]或候选自检文件不等于全渠道独立执行观测，未发现违规证据。"
+    },
+    {
+      "name": "independent_libreoffice_recalculation_roundtrip",
+      "state": "PASS",
+      "evidence": "后到独立independent-libreoffice-roundtrip.json源SHA256与原xlsx相同。LibreOffice headless实际导入/重算/导出后2401×6值和类型差异0，2400公式保留，首式ROUND(C2-D2-E2,2)及首余额128.61相同。无视觉检查、未测试Microsoft Excel。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample公开输入、schema和产物独立核验，不因同题他样本或客观PASS推定质量；未读取隐藏金标、标签、模型/effort信息或外部evaluator/candidates。",
+    "事实/交付4分来自全量独立重算和文件读回。视觉及不可见执行过程不补0或4。",
+    "仅追加后来可用的独立LibreOffice功能证据；原始候选未改，视觉与usability UNKNOWN不变。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "B20.scale:excel_all_rows",
+      "kind": "TEXT_TYPE_FALSE_NEGATIVE",
+      "evidence": "客观FAIL称文本数字化，原始t=str及v=00000001、独立库返回s类型直接否定已发生数字化/丢零；全2400行准确。",
+      "cause_status": "具体比较器原因UNKNOWN，可能漏str分支。",
+      "recommendation": "按真实文本类型和值校验，不因非inlineStr格式施加关键错误0。"
+    },
+    {
+      "field": "office_visual",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "真实Office视觉未观察，不能从数据正确直接给usability4。"
+    }
+  ]
+}

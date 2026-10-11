@@ -1,0 +1,9 @@
+position_id,valuation_status,holding_row_id,holding_source_line,quote_row_id,quote_source_line,units,currency,unit_price,source_amount,fx_domain,fx_rate,fx_date,sgd_value,missing_authorized_evidence,notes
+P-SGD-1,CONFIRMED,H-P-SGD-1-CURRENT,2,Q-P-SGD-1-CURRENT,17,1000,SGD,100,100000,standard,,,100000,,Approved October holding and as-of final quote; direct SGD valuation
+P-SGD-4,CONFIRMED,H-P-SGD-4-CURRENT,3,Q-P-SGD-4-CURRENT,3,5028,SGD,10,50280,standard,,,50280,,Approved October holding and as-of final quote; direct SGD valuation
+P-USD-2,CONFIRMED,H-P-USD-2-CURRENT,11,Q-P-USD-2-CURRENT,4,1500,USD,74,111000,standard,0.74,2026-10-08,150000,,USD amount 111000 divided by 0.74 USD per SGD
+P-EUR-3,CONFIRMED,H-P-EUR-3-CURRENT,16,Q-P-EUR-3-CURRENT,6,600,EUR,200,120000,standard,1.50,2026-10-08,180000,,EUR amount 120000 multiplied by 1.50 SGD per EUR
+U-QUOTE,UNKNOWN,H-U-QUOTE-CURRENT,4,,,200,USD,,,,standard,,,,FINAL_AS_OF_QUOTE,"Only prior-date FINAL quote and as-of INDICATIVE quote; neither qualifies"
+U-PERIOD,UNKNOWN,,,Q-U-PERIOD-CURRENT,12,,,,,,,2026-10-08,,APPROVED_OCTOBER_HOLDING,"Available holding is approved but for 2026-09; current quote does not establish an October position"
+U-DRAFT,UNKNOWN,H-U-DRAFT-CURRENT,7,Q-U-DRAFT-CURRENT,13,,,,,,,2026-10-08,,APPROVED_OCTOBER_HOLDING,"October holding is DRAFT; quote cannot make holding eligible"
+U-EUR-FX,UNKNOWN,H-U-EUR-FX-CURRENT,15,Q-U-EUR-FX-CURRENT,14,20,EUR,200,4000,restricted-domain,1.49,2026-10-01,,AS_OF_AUTHORIZED_FX,"Known native amount 4000 EUR; only domain FX is dated 2026-10-01, not policy as-of 2026-10-08"

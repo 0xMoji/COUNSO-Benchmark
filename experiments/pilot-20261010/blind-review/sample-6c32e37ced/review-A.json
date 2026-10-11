@@ -1,0 +1,49 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B01.discovery",
+  "sample_id": "sample-6c32e37ced",
+  "checks": [
+    {
+      "name": "independent_source_reads",
+      "state": "PASS",
+      "evidence": "本sample独立服务记录4个主题search及8个read；8份observed正文逐份读完，SHA256各自与服务记录相符；所选4份均已独立观察读取。"
+    },
+    {
+      "name": "trust_date_status_and_business_rules",
+      "state": "PASS",
+      "evidence": "101–104正文L4日期2026-10-08、L5发布者匹配4项信任根、L6 FINAL；其他4份不合格且未选。L3规则分别支持15日/退款非营收、辖区与登记号、当日FINAL汇率、商业非数据权限，全部result准确。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "4个body L3–6定位及括注真实；summary说明离线合成/非现实官方，JSON全部要求齐全可用。"
+    },
+    {
+      "name": "mock_actions",
+      "state": "PASS",
+      "evidence": "服务事件只有search/read、sent_count=0，不能扩展为全渠道无外部动作。"
+    },
+    {
+      "name": "global_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]为自报，独立全渠道轨迹不可得。未见违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample逐源/逐字段核查，不将客观PASS直接转4；未读匿名包外隐藏答案、模型标签或配置。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "entity_disambiguation_fields",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "jurisdiction/registration_number准确对应原文辖区/登记号，schema仅array、未公开唯一元素标签；该FAIL没有业务错误依据。",
+      "cause_status": "具体实现UNKNOWN。"
+    }
+  ]
+}

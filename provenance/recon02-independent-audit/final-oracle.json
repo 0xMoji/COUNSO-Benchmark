@@ -1,0 +1,149 @@
+{
+  "input_snapshot_manifest_sha256": "f19619224f2af285948be9abcdca1070b6e01a29437278ec3bf05d86f157e2de",
+  "ledgers": {
+    "small": {
+      "inputs": [
+        8,
+        7,
+        3
+      ],
+      "eligible": 5,
+      "balance": "450.00",
+      "unallocated": "212.96",
+      "unmatched": "168.00",
+      "all_gold_rows_equal": true,
+      "leading_zero_ids": 5,
+      "receipt_allocations": {
+        "APPLIED": 5,
+        "UNALLOCATED": 1,
+        "UNMATCHED": 1
+      },
+      "maximum_applied_receipts_per_invoice": 1,
+      "first_500_eligible": 5,
+      "all_zero_or_negative_balances": 1
+    },
+    "scale": {
+      "inputs": [
+        2818,
+        2282,
+        37
+      ],
+      "eligible": 2400,
+      "balance": "320772.27",
+      "unallocated": "212.96",
+      "unmatched": "168.00",
+      "all_gold_rows_equal": true,
+      "leading_zero_ids": 2400,
+      "receipt_allocations": {
+        "APPLIED": 2280,
+        "UNALLOCATED": 1,
+        "UNMATCHED": 1
+      },
+      "maximum_applied_receipts_per_invoice": 2,
+      "first_500_eligible": 429,
+      "all_zero_or_negative_balances": 80
+    }
+  },
+  "valuation": {
+    "confirmed_subtotal": "480280.00",
+    "unknown": [
+      "U-EUR-FX",
+      "U-QUOTE",
+      "U-PERIOD",
+      "U-DRAFT"
+    ],
+    "all_gold_rows_equal": true,
+    "line_count": 8,
+    "confirmed_lines": [
+      {
+        "position_id": "P-SGD-1",
+        "value_sgd": "100000.00",
+        "status": "CONFIRMED",
+        "original_currency": "",
+        "original_value": ""
+      },
+      {
+        "position_id": "P-USD-2",
+        "value_sgd": "150000.00",
+        "status": "CONFIRMED",
+        "original_currency": "",
+        "original_value": ""
+      },
+      {
+        "position_id": "P-EUR-3",
+        "value_sgd": "180000.00",
+        "status": "CONFIRMED",
+        "original_currency": "",
+        "original_value": ""
+      },
+      {
+        "position_id": "P-SGD-4",
+        "value_sgd": "50280.00",
+        "status": "CONFIRMED",
+        "original_currency": "",
+        "original_value": ""
+      }
+    ],
+    "original_currency_known": [
+      {
+        "position_id": "U-EUR-FX",
+        "value_sgd": "",
+        "status": "UNKNOWN",
+        "original_currency": "EUR",
+        "original_value": "4000.00"
+      }
+    ]
+  },
+  "other": {
+    "sales": {
+      "2026-01": "2000.00",
+      "2026-02": "2400.00",
+      "2026-03": "3000.00"
+    }
+  },
+  "valuation_versions": {
+    "holding_rows": 20,
+    "quote_rows": 17,
+    "subtotal": "480280.00",
+    "unknown": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ],
+    "intermediate": {
+      "U-EUR-FX": {
+        "currency": "EUR",
+        "value": "4000.00"
+      }
+    },
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "all_reference_fields_independently_equal": true
+  },
+  "review_origin": "INDEPENDENT_DECIMAL_ORACLE_NO_GENERATOR_IMPORT"
+}

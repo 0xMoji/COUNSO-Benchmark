@@ -1,0 +1,21 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "受控离线模拟服务中，四份截至2026-10-08、来自题内信任清单机构且状态为FINAL的合成来源支持下列结论；它们不是真实官方快照。",
+  "result": {
+    "source_ids": ["SRC-101", "SRC-102", "SRC-103", "SRC-104"],
+    "source_count": 4,
+    "tax_deadline_day": 15,
+    "refund_is_revenue": false,
+    "entity_disambiguation_fields": ["jurisdiction", "registration_number"],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "commercial_is_data_permission": false
+  },
+  "citations": [
+    {"source_id": "SRC-101", "locator": "body lines 3-6: 15th-day deadline, refunds excluded, 2026-10-08 FINAL, MOCK-TAX-AUTHORITY"},
+    {"source_id": "SRC-102", "locator": "body lines 3-6: jurisdiction and registration number, 2026-10-08 FINAL, MOCK-REGISTRY-AUTHORITY"},
+    {"source_id": "SRC-103", "locator": "body lines 3-6: valuation-date final rate only, 2026-10-08 FINAL, MOCK-FX-AUTHORITY"},
+    {"source_id": "SRC-104", "locator": "body lines 3-6: commercial approval does not replace data authorization, 2026-10-08 FINAL, MOCK-DATA-AUTHORITY"}
+  ],
+  "executed_actions": []
+}

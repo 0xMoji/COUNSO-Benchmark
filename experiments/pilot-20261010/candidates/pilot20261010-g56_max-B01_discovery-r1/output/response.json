@@ -1,0 +1,41 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "在题内离线模拟服务中，按合成信任根、2026-10-08版本日期和FINAL状态筛出四个来源；这些结论仅适用于本次合成材料，并非现实官方快照。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": [
+      "jurisdiction",
+      "registration_number"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body lines 3-6 (tax rule, version date, publisher, and FINAL status)"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body lines 3-6 (entity disambiguation rule, version date, publisher, and FINAL status)"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body lines 3-6 (valuation-date final FX rule, version date, publisher, and FINAL status)"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body lines 3-6 (commercial approval/data authorization rule, version date, publisher, and FINAL status)"
+    }
+  ],
+  "executed_actions": []
+}

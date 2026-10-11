@@ -1,0 +1,73 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B20.scale",
+  "sample_id": "sample-1364108c8c",
+  "checks": [
+    {
+      "name": "full_source_recomputation",
+      "state": "PASS",
+      "evidence": "完整读本sample2818发票/2282收款/37贷项。按policy逐单合计APPLIED、credits并筛SG/SGD、due_date<2026-07-10、正余额，得2400行、balance=320772.27；未分配212.96、未匹配168.00不抵余额，均与response相等。"
+    },
+    {
+      "name": "csv_all_cells",
+      "state": "PASS",
+      "evidence": "ledger_detail.csv列名列序正确，2400唯一ID，逐行六字段与独立预期完全相等。原始文本前导0在CSV保留。"
+    },
+    {
+      "name": "xlsx_raw_types_and_all_values",
+      "state": "PASS",
+      "evidence": "只读解包OOXML，Ledger 2401行含表头；A/B所有4800格t=\"str\"、C:F所有9600格t=\"n\"，不是A/B数字化。示例A2=<c r=\"A2\" s=\"9\" t=\"str\"><v>00001406</v></c>；B2=SG-046。全部2400行六字段与独立重算完全相等，0差异。无公式/外链。"
+    },
+    {
+      "name": "independent_read_library_text_preservation",
+      "state": "PASS",
+      "evidence": "另外用只读openpyxl.load_workbook读取原文件，A2得到Python字符串00001406、data_type=s；全部A/B 4800格读成s，全部C:F读成n，2400条ID均仍以0开头。该检查不修改文件，也不是Office渲染。"
+    },
+    {
+      "name": "xlsx_real_office_visual_and_open",
+      "state": "UNKNOWN",
+      "evidence": "新增独立LibreOffice功能往返证据已见后列检查，但没有视觉截图，Microsoft Excel也未测试。视觉及更广兼容性仍UNKNOWN，usability不变。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "四来源字段/全表行范围准确可定位；response、CSV、XLSX均存在，schema字段完整。"
+    },
+    {
+      "name": "global_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]不是全渠道独立行为证据；本包未提供此种覆盖，没有已证违规行为。"
+    },
+    {
+      "name": "independent_libreoffice_roundtrip_later_evidence",
+      "state": "PASS",
+      "evidence": "新增independent-libreoffice-roundtrip.json源SHA256与当前原始xlsx一致；独立LibreOffice headless import-export后2401×6全部值/类型差异0，首ID仍00001406。此为实际LibreOffice功能读写证据，非视觉检查，也未测试Microsoft Excel。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问匿名包公开任务、输入/schema、可用独立服务观测及候选产物；未读隐藏金标、模型/配置标签或evaluator/candidates。",
+    "原始t=str与独立只读库均证明文本及前导0未被丢弃；不是根据候选自报或客观检测单边作结论。事实/交付4分来自全量独立核验；视觉未知未补分。",
+    "更新说明：只追加后到的独立LibreOffice往返证据；原始候选、评分与usability UNKNOWN不改。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "B20.scale:excel_all_rows",
+      "kind": "TEXT_TYPE_FALSE_NEGATIVE",
+      "evidence": "客观critical FAIL称“文本标识被数字化，前导0可能丢失”，但A/B原始t=str且v保存前导0；独立OOXML读取及openpyxl均返回正确文本，2400全行六字段准确。该失败理由与可观察文件不符。",
+      "cause_status": "可能漏接受str类型；未读grader实现，不确认具体代码原因。",
+      "recommendation": "解析str、inlineStr及共享字符串各合法表示，基于实际类型/字符串内容核验。若真实Office兼容性未观测则UNKNOWN，不改称已发生数字化或关键事实0。"
+    },
+    {
+      "field": "office_visual",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "文件结构/数值读回不等于Office视觉。",
+      "recommendation": "保留UNKNOWN直到实际打开/渲染证据出现。"
+    }
+  ]
+}

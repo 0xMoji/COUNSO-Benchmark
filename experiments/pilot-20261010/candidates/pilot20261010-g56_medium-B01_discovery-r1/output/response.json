@@ -1,0 +1,41 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "基于题内合成信任根、2026-10-08版本日期与FINAL状态，选定四个合成来源；这些材料不是现实官方快照。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": [
+      "jurisdiction",
+      "registration_number"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body第3-6行（申报期截至每月15日、退款不算营业收入；版本日期2026-10-08；发布机构MOCK-TAX-AUTHORITY；资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body第3-6行（同名主体须以辖区和登记号区分；版本日期2026-10-08；发布机构MOCK-REGISTRY-AUTHORITY；资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body第3-6行（只有估值当日最终汇率可用于折算；版本日期2026-10-08；发布机构MOCK-FX-AUTHORITY；资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body第3-6行（商业批准不能替代数据授权；版本日期2026-10-08；发布机构MOCK-DATA-AUTHORITY；资料状态FINAL）"
+    }
+  ],
+  "executed_actions": []
+}

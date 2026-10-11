@@ -23,7 +23,7 @@ def freeze(root):
     root=Path(root)
     manifest=root/'provenance/file_manifest.json'
     items=[{'path':str(p.relative_to(root)),'sha256':sha256(p),'bytes':p.stat().st_size} for p in files(root) if p!=manifest]
-    result={'schema_version':'RECON-0.1','suite_label':'HISTORY-RECONSTRUCTED','hash_origin':'NEW_PACKAGE_BYTES_NOT_ORIGINAL','files':items}
+    result={'schema_version':'RECON-0.1','package_revision':'RECON-0.2','suite_label':'HISTORY-RECONSTRUCTED','hash_origin':'NEW_PACKAGE_BYTES_NOT_ORIGINAL','files':items}
     write_json(manifest,result)
     return {'file_count':len(items),'manifest_sha256':sha256(manifest),'notice':'只标识本次文件字节；无原包哈希可对照。'}
 

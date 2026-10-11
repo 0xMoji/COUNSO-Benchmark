@@ -1,0 +1,14 @@
+{
+  "data": {
+    "as_of": "2026-10-08",
+    "endpoint": "评估器另行提供，不在包内预填。",
+    "instruction": "通过评估器提供的本机模拟服务search/read找到各领域可信FINAL来源；这不是现实互联网官方来源。",
+    "topics": [
+      "税务",
+      "主体登记",
+      "汇率",
+      "数据权限"
+    ]
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

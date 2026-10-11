@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "citations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "enum": [
+              "holdings-versions",
+              "quotes-versions",
+              "valuation_policy"
+            ]
+          }
+        },
+        "required": [
+          "source_id",
+          "locator"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "executed_actions": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "complete_valuation_sgd": {
+          "type": [
+            "null",
+            "string",
+            "number"
+          ]
+        },
+        "confirmed_subtotal_sgd": {
+          "type": "string"
+        },
+        "detail_file": {
+          "type": "string",
+          "description": "CSV columns in this order: position_id,value_sgd,status,original_currency,original_value. Per-position rules are defined in prompt.txt."
+        },
+        "eur_intermediate": {
+          "type": "string",
+          "description": "Only the EUR native intermediate value of position_id U-EUR-FX; not other EUR positions or aggregate."
+        },
+        "excluded_evidence": {
+          "items": {
+            "enum": [
+              "DRAFT_HOLDING",
+              "INDICATIVE_QUOTE",
+              "SEPTEMBER_HOLDING",
+              "WRONG_DATE_FX",
+              "WRONG_DATE_QUOTE",
+              "UNSIGNED_POLICY",
+              "UNVERIFIED_CONTACT",
+              "UNKNOWN"
+            ]
+          },
+          "type": "array"
+        },
+        "missing_evidence": {
+          "type": "object"
+        },
+        "period_source": {
+          "type": "string",
+          "enum": [
+            "period",
+            "version_date",
+            "quote_date",
+            "filename",
+            "UNKNOWN"
+          ]
+        },
+        "selected_holding_rows": {
+          "type": "object"
+        },
+        "selected_quote_rows": {
+          "type": "object"
+        },
+        "static_output_acceptable": {
+          "type": "boolean"
+        },
+        "unknown_positions": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "complete_valuation_sgd",
+        "confirmed_subtotal_sgd",
+        "detail_file",
+        "eur_intermediate",
+        "excluded_evidence",
+        "missing_evidence",
+        "period_source",
+        "selected_holding_rows",
+        "selected_quote_rows",
+        "static_output_acceptable",
+        "unknown_positions"
+      ],
+      "type": "object"
+    },
+    "scenario_id": {
+      "const": "B17.reconcile"
+    },
+    "schema_version": {
+      "const": "RECON-0.1"
+    },
+    "summary": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "summary",
+    "result",
+    "citations",
+    "executed_actions"
+  ],
+  "title": "新编候选输出契约；无期望答案",
+  "type": "object"
+}

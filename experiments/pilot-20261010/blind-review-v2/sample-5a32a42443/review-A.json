@@ -1,0 +1,54 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "task_revision": "B17-contract-0.2",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-5a32a42443",
+  "checks": [
+    {
+      "name": "schema_and_independent_all_source_computation",
+      "state": "PASS",
+      "evidence": "本sample20持仓/17报价及policy全读，公开Draft202012Schema独立通过；目标十月APPROVED取最新、当日FINAL，四确认SGD值100000/50280/150000/180000，合计480280.00，与返回值等价。"
+    },
+    {
+      "name": "explicit_eur_period_and_unknowns",
+      "state": "PASS",
+      "evidence": "eur_intermediate=4000是规定U-EUR-FX的20×200，period_source=period；四未知position及其缺证标签正确，完整估值null，5项排除类别正确。未用错日FX/指示报价或把未知当0。"
+    },
+    {
+      "name": "fixed_five_column_csv",
+      "state": "PASS",
+      "evidence": "position_detail.csv含明确5列表头，8唯一输入头寸、无重复/漏项、每行5字段。四确认value_sgd正确、original_*空白；四未知value_sgd空白，唯一U-EUR-FX原币为EUR/4000，其余原币空白。逐行与独立结果无差异。"
+    },
+    {
+      "name": "selected_source_values",
+      "state": "PASS",
+      "evidence": "四确认头寸的持仓/报价行ID均是政策下正确CURRENT源行，字段值真实。键集严格为四个确认SGD头寸，无UNKNOWN额外键。"
+    },
+    {
+      "name": "citations_and_complete_usable_delivery",
+      "state": "PASS",
+      "evidence": "8条定位覆盖policy字段、全部选中/未知行和排除/较旧合法行，逐一核对准确；validation_report只是候选自检，本审阅另行全量独立核验。 所有明确字段和CSV齐全，来源/缺证可追踪，可直接使用。"
+    },
+    {
+      "name": "objective_status_at_review",
+      "state": "UNKNOWN",
+      "evidence": "objective-checks=PENDING_NEW_GRADER、checks空；不借用尚未产生的客观分，本审阅按输入独立判断。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "自报executed_actions=[]无全渠道独立执行观测，未发现违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "只按本sample B17-contract-0.2最终公开prompt/schema审核（prompt SHA256 b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e），与旧题分开；无标签、隐藏金标或evaluator/candidates访问。",
+    "全4来自本sample全面独立检查，不是从旧题或别的候选外推。"
+  ],
+  "benchmark_defects": []
+}

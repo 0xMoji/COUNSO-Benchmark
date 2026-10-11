@@ -1,0 +1,215 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按2026-10持仓期间、最新已批准版本及2026-10-08最终报价核对，确认小计为SGD 480280；4个头寸仍缺授权证据，不能计算完整总值。U-EUR-FX原币金额为EUR 4000，但其受限域汇率日期不符。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.as_of, data.holding_period, data.allowed_holding_status, data.allowed_quote_state, data.version_selection"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.standard.date, data.fx_domains.standard.SGD_per_EUR, data.fx_domains.standard.USD_per_SGD"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.restricted-domain.date, data.fx_domains.restricted-domain.SGD_per_EUR"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 2"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 3"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 4"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 5"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 6"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 7"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 8"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 9"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 10"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 11"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 12"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 13"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 14"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 15"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 16"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 17"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 18"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 19"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 20"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 21"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 2"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 3"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 4"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 5"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 6"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 7"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 8"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 9"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 10"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 11"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 12"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 13"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 14"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 15"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 16"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 17"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 18"
+    }
+  ],
+  "executed_actions": []
+}

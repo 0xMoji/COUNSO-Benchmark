@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "path": "inputs/ledger-scale/invoices.csv",
+      "sha256": "8a1332396f0f45ae33b8d4386a820a36a48dc1c413e36b4bd5a689065e5ed25c",
+      "source_id": "invoices"
+    },
+    {
+      "path": "inputs/ledger-scale/receipts.csv",
+      "sha256": "382122ced5431ae2a2ff6e1498522f021529dce120a458c9cf54a190151a711f",
+      "source_id": "receipts"
+    },
+    {
+      "path": "inputs/ledger-scale/credits.csv",
+      "sha256": "b33f2181d277c4c0469f0308afa9dbee1a1577a9aa1656cda407a84b846d4bf5",
+      "source_id": "credits"
+    },
+    {
+      "path": "inputs/ledger-scale/policy.json",
+      "sha256": "00b6c616bbfc69d860ed1979cc92ae254657d761ccdda617554c4410f3c37ac4",
+      "source_id": "policy"
+    }
+  ],
+  "fixture_origin": "NEW_SYNTHETIC",
+  "scenario_id": "B20.scale",
+  "schema_version": "RECON-0.1",
+  "suite_label": "HISTORY-RECONSTRUCTED"
+}

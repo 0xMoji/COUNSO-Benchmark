@@ -1,0 +1,70 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "截至2026-10-08，四个头寸可确认SGD估值小计为480280；U-EUR-FX仅可确认EUR原币中间值4000，其余三个头寸因缺少合格持仓或报价保持未知。未执行外部操作。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "U-QUOTE": "H-U-QUOTE-CURRENT",
+      "U-EUR-FX": "H-U-EUR-FX-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "U-EUR-FX": "Q-U-EUR-FX-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-QUOTE",
+      "U-PERIOD",
+      "U-DRAFT",
+      "U-EUR-FX"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.as_of=2026-10-08; data.holding_period=2026-10; data.fx_domains.standard; data.fx_domains.restricted-domain; data.version_selection; data.rules"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "rows 2-18: period, status, version_date, units, currency, fx_domain, holding_row_id"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "rows 2-18: date, price, state, quote_row_id"
+    }
+  ],
+  "executed_actions": []
+}

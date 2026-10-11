@@ -1,0 +1,116 @@
+{
+  "revision": "PILOT-LEGACY-REGRADE-0.2",
+  "controls": [
+    {
+      "name": "old_eur_scope_4000",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract does not identify EUR position or aggregation scope; no retroactive use of the new target",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_eur_scope_4000.00",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract does not identify EUR position or aggregation scope; no retroactive use of the new target",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_eur_scope_120000",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract does not identify EUR position or aggregation scope; no retroactive use of the new target",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_eur_scope_124000",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract does not identify EUR position or aggregation scope; no retroactive use of the new target",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_csv_semantics_different_header",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract did not specify canonical CSV column names/set; use separate shape assertion and independent itemized semantic review",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_csv_semantics_explicit_total",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract did not specify canonical CSV column names/set; use separate shape assertion and independent itemized semantic review",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "old_csv_semantics_unknown_extra_row",
+      "passed": true,
+      "evidence": "UNKNOWN: old public contract did not specify canonical CSV column names/set; use separate shape assertion and independent itemized semantic review",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "csv_shape_rectangular",
+      "passed": true,
+      "evidence": "CSV logical records match header width; this is not a semantic column or value judgment",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "csv_shape_quoted_comma",
+      "passed": true,
+      "evidence": "CSV logical records match header width; this is not a semantic column or value judgment",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "csv_shape_ragged_extra",
+      "passed": true,
+      "evidence": "CSV ragged logical records: [{\"logical_record\": 2, \"expected_fields\": 2, \"actual_fields\": 3}]",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "csv_shape_ragged_short",
+      "passed": true,
+      "evidence": "CSV ragged logical records: [{\"logical_record\": 2, \"expected_fields\": 2, \"actual_fields\": 1}]",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "csv_shape_duplicate_header",
+      "passed": true,
+      "evidence": "CSV duplicate header names",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "matching_original_service_identity",
+      "passed": true,
+      "evidence": "Same original run/session/scenario/fingerprint accepted",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "reject_wrong_run_id",
+      "passed": true,
+      "evidence": "Mutated identity must be rejected before applying semantic corrections",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "reject_wrong_session_id",
+      "passed": true,
+      "evidence": "Mutated identity must be rejected before applying semantic corrections",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "reject_wrong_scenario_id",
+      "passed": true,
+      "evidence": "Mutated identity must be rejected before applying semantic corrections",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "reject_wrong_execution_fingerprint",
+      "passed": true,
+      "evidence": "Mutated identity must be rejected before applying semantic corrections",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    },
+    {
+      "name": "reject_changed_observation_bytes",
+      "passed": true,
+      "evidence": "Hash binding catches content changes even if identity fields were reused",
+      "origin": "CONTROL_ONLY_NOT_CANDIDATE_RESULT"
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "all_passed": true
+}

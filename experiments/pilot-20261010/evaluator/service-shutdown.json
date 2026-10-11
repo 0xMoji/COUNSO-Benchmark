@@ -1,0 +1,15 @@
+{
+  "closed_at": "2026-10-10T23:28:49.073920+00:00",
+  "formal_bridge_manager_session": 74476,
+  "formal_manager_exit_code": 130,
+  "method": "All evaluator-owned persistent exec sessions were terminated with tool control-C or shell exit; bridge manager code includes child termination and wait in finally.",
+  "baseline_evidence_hashes_still_match": true,
+  "changed_files": [],
+  "probe_sessions_closed": [
+    75198,
+    93596,
+    42627,
+    82468
+  ],
+  "individual_child_liveness_after_session_shutdown": "NOT_SEPARATELY_OBSERVED"
+}

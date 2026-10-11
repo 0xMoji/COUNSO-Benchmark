@@ -1,0 +1,54 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按目标期间2026-10、批准持仓的同头寸最新合法版本、截至2026-10-08的FINAL报价及同日授权汇率核对。四个头寸可确认，确认小计为SGD 480280.00；四个头寸因授权证据缺失保持UNKNOWN，未将其按零计入，因此完整估值为空。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "reconciliation_detail.csv",
+    "eur_intermediate": "120000.00",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": ["FINAL_AS_OF_QUOTE"],
+      "U-DRAFT": ["APPROVED_OCTOBER_HOLDING"],
+      "U-PERIOD": ["APPROVED_OCTOBER_HOLDING"],
+      "U-EUR-FX": ["AS_OF_AUTHORIZED_FX"]
+    },
+    "period_source": "valuation_policy.data.holding_period=2026-10；按holdings-versions的period字段判断期间",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": ["U-QUOTE", "U-DRAFT", "U-PERIOD", "U-EUR-FX"]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period, data.as_of, data.allowed_holding_status, data.allowed_quote_state, data.version_selection, data.fx_domains"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV lines 2-21; selected rows at lines 2, 3, 11, 16; unknown-evidence rows at lines 4, 7, 9, 15"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV lines 2-18; selected rows at lines 3, 4, 6, 17; unknown/excluded quote evidence at lines 7-9, 11-12, 18"
+    }
+  ],
+  "executed_actions": []
+}

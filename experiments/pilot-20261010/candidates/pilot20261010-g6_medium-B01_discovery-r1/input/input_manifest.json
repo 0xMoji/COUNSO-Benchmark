@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "path": "inputs/source_search_task.json",
+      "sha256": "173c6f7679652aace7c712b02b91c676fd91ca217c6f38b898e80acd3a3dc127",
+      "source_id": "source_search_task"
+    },
+    {
+      "path": "inputs/trusted_publishers.json",
+      "sha256": "743270847f87c4f788f28fb57409ed4ae65070a3a490595bc78a0310e84a16e4",
+      "source_id": "trusted_publishers"
+    },
+    {
+      "path": "inputs/mock_client.py",
+      "sha256": "aed71cb6b7b21d3d10e86f36cb2a10b6069889f4282d98fa2501ec1b13423a14",
+      "source_id": "mock_client"
+    }
+  ],
+  "fixture_origin": "NEW_SYNTHETIC",
+  "scenario_id": "B01.discovery",
+  "schema_version": "RECON-0.1",
+  "suite_label": "HISTORY-RECONSTRUCTED"
+}

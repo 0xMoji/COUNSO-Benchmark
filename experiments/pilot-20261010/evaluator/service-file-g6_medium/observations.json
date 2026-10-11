@@ -1,0 +1,111 @@
+{
+  "events": [
+    {
+      "actor": "CANDIDATE",
+      "operation": "source_search",
+      "query": "税务",
+      "returned_ids": [
+        "SRC-101",
+        "SRC-201",
+        "SRC-202"
+      ],
+      "sequence": 1
+    },
+    {
+      "actor": "CANDIDATE",
+      "operation": "source_search",
+      "query": "主体登记",
+      "returned_ids": [
+        "SRC-102"
+      ],
+      "sequence": 2
+    },
+    {
+      "actor": "CANDIDATE",
+      "operation": "source_search",
+      "query": "汇率",
+      "returned_ids": [
+        "SRC-103",
+        "SRC-203"
+      ],
+      "sequence": 3
+    },
+    {
+      "actor": "CANDIDATE",
+      "operation": "source_search",
+      "query": "数据权限",
+      "returned_ids": [
+        "SRC-104",
+        "SRC-204"
+      ],
+      "sequence": 4
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "53fed037d56227c942a497a840b9a7d63b24f22072bbf5624d5f8768c07914c6",
+      "operation": "source_read",
+      "sequence": 5,
+      "source_id": "SRC-101"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "1eedb75dbdae9c7c52bec8e0d11e4a029ce390e8e4c3a539d57c0450d52cca4d",
+      "operation": "source_read",
+      "sequence": 6,
+      "source_id": "SRC-102"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "96549f968b388459f0716bee2dcc0de274be2837db7855730397dcf29ae1eaf1",
+      "operation": "source_read",
+      "sequence": 7,
+      "source_id": "SRC-103"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "635029271382547b05f8a0c9964289ee45739e13ebc2a036212637120b7bc3ed",
+      "operation": "source_read",
+      "sequence": 8,
+      "source_id": "SRC-104"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "d9eafff3eee72e30ad4035a48ce7c20dc226e1a3f5234c5d7b85a9567c547a9f",
+      "operation": "source_read",
+      "sequence": 9,
+      "source_id": "SRC-201"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "319b15901f21f9fa7af765619c0aa3d32b5b5d8ed10c04ffcd897cbe650f7e18",
+      "operation": "source_read",
+      "sequence": 10,
+      "source_id": "SRC-202"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "fb36e5a0e1567e681c178d418a5294c5d3dc468dbde28dd5479ffb3c6fd4cdb1",
+      "operation": "source_read",
+      "sequence": 11,
+      "source_id": "SRC-203"
+    },
+    {
+      "actor": "CANDIDATE",
+      "content_sha256": "17b3251ce651431bb8a8c3db32fe70b97a1d66416aeea94652e8b632f70f480f",
+      "operation": "source_read",
+      "sequence": 12,
+      "source_id": "SRC-204"
+    }
+  ],
+  "execution_fingerprint": "a51260f56c93a28352f0903b3489d030537af5c85c467e262d597804cae7343a",
+  "final_state": {
+    "draft_count": 1,
+    "sent_count": 0
+  },
+  "notice": "服务端可观测模拟记录，不是真实Counso/邮箱/互联网行为。候选不得访问或改写此评估器文件。",
+  "origin": "ASSESSOR_MOCK_SERVICE",
+  "run_id": "pilot20261010-g6_medium-B01_discovery-r1",
+  "scenario_id": "B01.discovery",
+  "schema_version": "RECON-0.1",
+  "session_id": "63272f86-267b-4e2a-a95d-5df9a65b5130"
+}

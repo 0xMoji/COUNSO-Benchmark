@@ -1,0 +1,22 @@
+{
+  "pdf_sha256": "550c6c9bef7a613bf3ff0c4a2c05b69ed2110d99891707026a82dea7642836f3",
+  "pages": 5,
+  "all_pages_rendered_and_visually_inspected": true,
+  "visual_issues_observed": [],
+  "draft_placeholder_absent": true,
+  "comparison_csv_rows": 40,
+  "comparison_csv_sha256": "1a22821c736618f50bd51f3986cd191d241bd988bc0160e3124cc10519c96a2e",
+  "png_summary_sha256": "fa834089e2a3b7d0216a7e050fd706fd7dbd5287ae2b8373c8e892c78086d338",
+  "orientation": "General office overall quality first; task slices secondary; speed separate; cost excluded from capability rank",
+  "same_candidate_outputs_not_mutated": true,
+  "original_evidence_hash_verification": {
+    "evaluator/baseline-evidence-manifest.json": {
+      "files": 570,
+      "mismatches": []
+    },
+    "revisions/B17-contract-0.2/candidate-evidence-manifest.json": {
+      "files": 103,
+      "mismatches": []
+    }
+  }
+}

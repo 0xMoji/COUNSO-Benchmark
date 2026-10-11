@@ -1,0 +1,44 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B13.deep",
+  "summary": "截至2026-10-08 16:00，APAC生产上线不可行：发起人签署已过期；商业批准仅覆盖EU试点；数据权限仅覆盖已过期的EU匿名测试且没有APAC生产授权；APAC生产工作区仍为CLOSED。OPS账号虽READY、预算已预留、销售虽预期今天上线，均不能替代所需审批或管理员状态。待补发起人续批、APAC生产商业批准、APAC生产数据权限及工作区开放。",
+  "result": {
+    "commercial_approval": "PILOT_ONLY",
+    "commercial_production_allowed": false,
+    "data_permission": "SCOPE_AND_DATE_INVALID",
+    "launch_allowed": false,
+    "required_approvals": [
+      "SPONSOR_RENEWAL",
+      "COMMERCIAL_PRODUCTION",
+      "DATA_PERMISSION",
+      "WORKSPACE_OPEN"
+    ],
+    "sponsor_approval": "EXPIRED",
+    "state_evidence": {
+      "evaluation_target": ["authority-policy"],
+      "sponsor_approval": ["sponsor-signed", "sponsor-draft", "authority-policy"],
+      "commercial_approval": ["commercial-signed", "authority-policy"],
+      "commercial_production_allowed": ["commercial-signed", "authority-policy"],
+      "data_permission": ["data-permission", "authority-policy"],
+      "technical_account": ["technical-ready", "authority-policy"],
+      "workspace": ["workspace-closed", "sales-latest", "technical-ready", "authority-policy"],
+      "required_approvals": ["sponsor-signed", "sponsor-draft", "commercial-signed", "data-permission", "workspace-closed", "authority-policy"],
+      "budget_context": ["budget-reserved"],
+      "sales_expectation_context": ["sales-latest"]
+    },
+    "technical_account": "READY",
+    "workspace": "CLOSED"
+  },
+  "citations": [
+    {"source_id": "authority-policy", "locator": "line 3: evaluation time, APAC production target, required approvals, and authority hierarchy"},
+    {"source_id": "sponsor-signed", "locator": "line 3: APAC production scope and validity through 2026-09-30, without automatic extension"},
+    {"source_id": "sponsor-draft", "locator": "line 3: 2026-10-08 deferral request is DRAFT with blank signature"},
+    {"source_id": "commercial-signed", "locator": "line 3: EU PILOT only; APAC production not approved"},
+    {"source_id": "data-permission", "locator": "line 3: EU anonymous test permission through 2026-10-07; no APAC production permission"},
+    {"source_id": "technical-ready", "locator": "line 3: account READY; workspace administrator opening still required"},
+    {"source_id": "workspace-closed", "locator": "line 3: WORKSPACE_ADMIN says APAC production workspace is CLOSED; final operational status"},
+    {"source_id": "sales-latest", "locator": "line 3: sales expectation and oral OPEN claim do not override administrator status"},
+    {"source_id": "budget-reserved", "locator": "line 3: SGD 10,000 reserved; budget reservation is not sponsor authorization or permission approval"}
+  ],
+  "executed_actions": []
+}

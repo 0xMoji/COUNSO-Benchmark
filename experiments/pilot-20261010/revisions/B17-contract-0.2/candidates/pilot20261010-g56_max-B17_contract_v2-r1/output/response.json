@@ -1,0 +1,67 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按目标期间和版本政策选用同头寸最新的 APPROVED 持仓，并仅使用估值日的 FINAL 报价。四个头寸可确认，确认小计为 480280 SGD；其余四个头寸因缺少授权证据保持未知，因此不报告完整基金总值。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ],
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-QUOTE",
+      "U-DRAFT",
+      "U-PERIOD",
+      "U-EUR-FX"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "fields data.allowed_holding_status, data.allowed_quote_state, data.as_of, data.holding_period, data.fx_domains, data.version_selection, and data.rules"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV lines 2-21, especially selected rows 2, 3, 11, and 16 and unresolved-evidence rows 4, 7, 9, and 15; fields position_id, period, status, units, currency, fx_domain, holding_row_id, version_date"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV lines 2-18, especially selected as-of FINAL rows 3, 4, 6, and 17 and unresolved-evidence rows 7, 12-14, and 18; fields position_id, date, price, state, quote_row_id"
+    }
+  ],
+  "executed_actions": []
+}

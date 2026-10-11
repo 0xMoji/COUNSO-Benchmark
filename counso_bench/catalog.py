@@ -6,7 +6,7 @@ import shutil
 from .io import ROOT, BenchError, load_json, safe_path, sha256, write_json
 
 EXACT_HISTORY_IDS={'B01.discovery','B13.deep','B17.reconcile','B20.scale'}
-CHECK_KINDS={'eq','money','contains_all','set_eq','nonempty','max_length','no_actions','citation_sources','csv_exact','xlsx_features','pptx_features','xlsx_edit_only','mock_observation','draft_artifact','draft_identity','update_draft_artifact','sql_revenue','xlsx_sales_contract','xlsx_ledger_contract'}
+CHECK_KINDS={'eq','money','contains_all','set_eq','nonempty','max_length','no_actions','citation_sources','csv_exact','xlsx_features','pptx_features','xlsx_edit_only','mock_observation','draft_artifact','draft_identity','update_draft_artifact','sql_revenue','xlsx_sales_contract','xlsx_ledger_contract','entity_fields','state_evidence','csv_format','valuation_csv_rows','selected_source_rows'}
 
 def registry(root=ROOT):
     return load_json(Path(root)/'catalog/scenarios.json')
@@ -29,6 +29,7 @@ def response_schema(scenario):
         result_props[key]={'type':['null','string','number'] if typ=='null_or_number' else typ}
         if key in scenario.get('machine_enums',{}):result_props[key]['enum']=scenario['machine_enums'][key]
         if key in scenario.get('array_item_enums',{}):result_props[key]['items']={'enum':scenario['array_item_enums'][key]}
+        result_props[key].update(scenario.get('result_schema_overrides',{}).get(key,{}))
     return {'$schema':'https://json-schema.org/draft/2020-12/schema','title':'新编候选输出契约；无期望答案','type':'object','required':['schema_version','scenario_id','summary','result','citations','executed_actions'],'additionalProperties':False,'properties':{'schema_version':{'const':'RECON-0.1'},'scenario_id':{'const':scenario['id']},'summary':{'type':'string','minLength':1},'result':{'type':'object','required':list(result_props),'properties':result_props,'additionalProperties':False},'citations':{'type':'array','minItems':1,'items':{'type':'object','required':['source_id','locator'],'properties':{'source_id':{'type':'string','minLength':1} if scenario.get('service_required') else {'enum':[i['source_id'] for i in scenario['inputs']]},'locator':{'type':'string','minLength':1}},'additionalProperties':False}},'executed_actions':{'type':'array','maxItems':0}}}
 
 def export_case(sid,output,root=ROOT):
@@ -41,7 +42,7 @@ def export_case(sid,output,root=ROOT):
     output.mkdir()
     try:
         prompt=('HISTORY-RECONSTRUCTED\n\n'+case['name_zh']+'\n\n'+case['fidelity']+'\n全部输入和提示词为本次新编替代，不是原题原件。\n\n任务：\n'+case['task_zh']+'\n\n机器字段：所有允许的状态/策略/证据类别标签列在response_schema.json中；按词表输出，不必猜隐藏英文名。集合字段不以顺序判断能力。\n\n授权范围：\n'+case['permission_zh']+'\n\n交付：\n只使用inputs目录材料。将response_schema.json要求的JSON写入response.json，产物写在同一结果目录，JSON中的产物路径使用相对路径。引用用source_id及可定位行号/字段名，不能引用外部隐藏金标。\n\n材料列表：\n'+'\n'.join(f'- {i["source_id"]}: inputs/{i["path"]}' for i in case['inputs'])+'\n')
-        (output/'prompt.txt').write_text(prompt,encoding='utf-8')
+        (output/'prompt.txt').write_text(prompt+case.get('prompt_suffix',''),encoding='utf-8')
         (output/'README.txt').write_text('这是候选输入包，全部业务数据合成。金标、评分规则、其他场景注册表、历史聊天和参考答案没有导出。导出目录隔离是文件级过滤，不等于操作系统隔离；真实评测应将此目录单独挂载到候选容器。没有预配置任何模型/付费/外部账户调用。\n',encoding='utf-8')
         hashes=[]
         for i in case['inputs']:
@@ -50,9 +51,17 @@ def export_case(sid,output,root=ROOT):
             dest.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(source,dest)
             hashes.append({'path':'inputs/'+i['path'],'source_id':i['source_id'],'sha256':sha256(dest)})
-        write_json(output/'response_schema.json',response_schema(case))
-        write_json(output/'input_manifest.json',{'schema_version':'RECON-0.1','scenario_id':sid,'suite_label':'HISTORY-RECONSTRUCTED','fixture_origin':'NEW_SYNTHETIC','files':hashes})
-        write_json(output/'run_metadata_template.json',{'run_id':'请换成唯一运行ID','scenario_id':sid,'run_origin':'NEW_MODEL','completion':'UNVERIFIED','failure_origin':'UNKNOWN','rubric_version':'RECON-0.1','model_snapshot':'未填写','started_at':'未填写','notice':'模板不是运行结果；没有调用模型。模拟自测必须使用SIMULATED。'})
+        schema = response_schema(case)
+        if case.get('task_revision') == 'B17-contract-0.2':
+            import json
+            from .revision_contracts import B17_SCHEMA_TEXT
+            if schema != json.loads(B17_SCHEMA_TEXT):
+                raise BenchError('B17生成schema偏离固定契约，拒绝导出')
+            (output/'response_schema.json').write_text(B17_SCHEMA_TEXT,encoding='utf-8')
+        else:
+            write_json(output/'response_schema.json',schema)
+        write_json(output/'input_manifest.json',{'schema_version':'RECON-0.1','scenario_id':sid,'suite_label':'HISTORY-RECONSTRUCTED','fixture_origin':'NEW_SYNTHETIC','task_revision':case.get('task_revision','RECON-0.1'),'grader_revision':'RECON-0.2','files':hashes})
+        write_json(output/'run_metadata_template.json',{'run_id':'请换成唯一运行ID','scenario_id':sid,'run_origin':'NEW_MODEL','completion':'UNVERIFIED','failure_origin':'UNKNOWN','rubric_version':'RECON-0.2','task_revision':case.get('task_revision','RECON-0.1'),'model_snapshot':'未填写','started_at':'未填写','notice':'模板不是运行结果；没有调用模型。模拟自测必须使用SIMULATED。'})
     except Exception:
         shutil.rmtree(output)
         raise
@@ -90,7 +99,7 @@ def validate_package(root=ROOT,verify_manifest=True):
         assertion_count+=len(checks)
         for c in checks:
             if c['kind'] not in CHECK_KINDS or c.get('weight',1)<=0:errors.append(s['id']+':未知检查或权重')
-            if c['kind']=='csv_exact' and not safe_path(root/'gold',c['gold_file']).is_file():errors.append(s['id']+':缺少CSV金标')
+            if c['kind'] in {'csv_exact','valuation_csv_rows'} and not safe_path(root/'gold',c['gold_file']).is_file():errors.append(s['id']+':缺少CSV金标')
     manifest=root/'provenance/file_manifest.json'
     if verify_manifest and manifest.exists():
         from .release import files

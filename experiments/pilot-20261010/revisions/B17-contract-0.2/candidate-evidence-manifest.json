@@ -1,0 +1,420 @@
+{
+  "frozen_at": "2026-10-10T23:30:11.566053+00:00",
+  "phase": "CONTRACT_V2_8_COMPLETE",
+  "contract_manifest_sha256": "a1eb635d8edca150207be281e169d6feb20954dec51b223fa591493f95b4f42a",
+  "business_inputs_unchanged": true,
+  "files": [
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/output/build_response.py",
+      "sha256": "f358b46ef3db959baf03f59a57ca6c5cd0255ac8a4da76e7b9a6184c29a8dfac"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/output/calculation_audit.json",
+      "sha256": "59ab719b5616d104ec3c899dd6d76055b76682b37630b9ad643d9978bee3155f"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "69373e434117966574829b7e6175af30470f537e26feff3d14030f529513d357"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/output/response.json",
+      "sha256": "0028d129b7f8364d5c76731206b39a9075d10e97b2402e11c2098c4e1a22943d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_medium-B17_contract_v2-r1/output/valuation_detail.csv",
+      "sha256": "165e7db2d5dbda061336afc3b24aaea53c4d4fd32564e1414c0aa85dd11ad2b9"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g61_medium-B17_contract_v2-r1/run.json",
+      "sha256": "7cbfe5a206826859a78bd170037eefc59f836b4cabcfac935928f66fc8b278db"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/calculation_evidence.csv",
+      "sha256": "d4c748a09cb5a8db94076a6db4099377601fe8e13e10bcef487b62630bc5562c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "a986d38625659f9e05bf960bd1a95eed9add378f66b1c7fd517860f56e0651a7"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/generate_response.py",
+      "sha256": "536b7413ecb5624d4408794a1459591a062e3deb12c747745267b95864322982"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/position_detail.csv",
+      "sha256": "837e5b52a821abaadb496f8d081eca0123f9e9a56c68d30e4183cd8d09dc73e7"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/reconciliation_notes.md",
+      "sha256": "555a13dcaa6b3f651f8a4f4798198ac8bd6248e3d0f77b885b23d602edd16b45"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/response.json",
+      "sha256": "c04b46d5f35a304f7554dd06079b350788562610b91429388d96c5de8e6e31dd"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g61_max-B17_contract_v2-r1/output/validation_report.json",
+      "sha256": "b4b8a8e7b3b26c51985f9883f4e381ebedf062d614c5ef12ec30be046b461af5"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g61_max-B17_contract_v2-r1/run.json",
+      "sha256": "c5c3b1e98d92a0c3533d80299231305f6e846a68a3a645f795ef0b6019829452"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "8451a7ca94e771faa0b40f436a10853bb026bb1c3c1f5226f5aa7533776fa841"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/output/detail.csv",
+      "sha256": "7a5fb2185494da7e3beaf7fb357d5c49cf3e431e09b0c35eb78de3f7cd648c3a"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_medium-B17_contract_v2-r1/output/response.json",
+      "sha256": "7070700556e8646982cf82bbe71769201416d062dbea122433f3f455b6256fba"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g6_medium-B17_contract_v2-r1/run.json",
+      "sha256": "8cae2fb35c9c52a498e5413104c2fe8d48fbf91f5a0c2cbfe184f55a46cc6570"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "2ed8423e3be2bfc109931944ddbde835472b4e08c5137948537562d5925ffe2b"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/output/detail.csv",
+      "sha256": "be3f187fe8ec3e89efdc7d84ec3a537eb20a35c87d9672577cd718327f2a0d5a"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6_max-B17_contract_v2-r1/output/response.json",
+      "sha256": "ba3c3a7fac21e58de9d30750b2fbaf4c0a3b5f4f08d952f89fd76128c4804ed1"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g6_max-B17_contract_v2-r1/run.json",
+      "sha256": "9dde28a6332effa032c89f73f61ecd6405f0aec14c36066fff37cf2fb44fcb96"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "4e9038d19c7f91ff7bfd69b996e2dd4f435fa442d4d6365174c517fd5a525c48"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/output/detail.csv",
+      "sha256": "8eeac7c482abc6a68262ff487f77dcc39583cc1943258520bd19f15f6cac11bb"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_medium-B17_contract_v2-r1/output/response.json",
+      "sha256": "8d728ed15cf5baaad0e7b19517841c3e22b186dda522962051950e24b66b545b"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g6l_medium-B17_contract_v2-r1/run.json",
+      "sha256": "70c12fdd6185c3db417cb1ce44cdd31012e801219f19ed1c0c63ad91aa9a3bca"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/output/calculation_notes.txt",
+      "sha256": "d31f8b54d3cc5ccda1fe1899390c9b83b204ec18c9dff391ad659978aeb468c6"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "2b278e3d1bd044f020d10477da078bcbd3410845087bc41502ccd7434947c25e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/output/detail.csv",
+      "sha256": "837e5b52a821abaadb496f8d081eca0123f9e9a56c68d30e4183cd8d09dc73e7"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g6l_max-B17_contract_v2-r1/output/response.json",
+      "sha256": "f65e62299cbdc0dfa6b3e3e594b3594625b5a5f5954dbcce419ff8cd6ec8b7b8"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g6l_max-B17_contract_v2-r1/run.json",
+      "sha256": "2240596b2e0c5eb77f495ad5cde78b008762d02c9ed7165e32101ae54d0a4c0d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "c80fabce1f1978944a4e1296dfd99c902b27a5f2cd407e65b5f518eec6f60bc7"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/output/position_detail.csv",
+      "sha256": "b6512e4d2af001f63e3acd4dcc27156080826fd3c4ad04d709ea8f52950f265d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_medium-B17_contract_v2-r1/output/response.json",
+      "sha256": "5264e1d8ccdb22a810d9fc8d973e6682e964f6376eb1a60f8f7902bbaa305ba7"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g56_medium-B17_contract_v2-r1/run.json",
+      "sha256": "040aa6c150263195e6e7c3b53a3cacff472374014699d99c894c4abcf4c798c4"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/prompt.txt",
+      "sha256": "b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/input/run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/output/candidate_trace.json",
+      "sha256": "78aa47afcb1cf134db936e3904784deb1ec28c992e9b6208d7c7b34ebec959d4"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/output/detail.csv",
+      "sha256": "67eb366f8981791c25ba57374e041f18384008d5410fa5b9c693db926bd1224f"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/candidates/pilot20261010-g56_max-B17_contract_v2-r1/output/response.json",
+      "sha256": "3104d95be2b6be232d7997dfd59f3d5b3f879471eb96b2c45432a85ec04fc02e"
+    },
+    {
+      "path": "revisions/B17-contract-0.2/results/pilot20261010-g56_max-B17_contract_v2-r1/run.json",
+      "sha256": "11588f7a41a6e077469576fdb1d2483d844e30bd40393b0eeb97cb3285772fcf"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按2026-10期间及2026-10-08估值日，核定4个头寸；确认小计为SGD 480,280。另有4个未知头寸，故完整估值未确定。已提供可追溯的静态逐项明细。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "124000 EUR total determinable native amount: 120000 EUR for confirmed P-EUR-3 plus 4000 EUR for unknown U-EUR-FX; the latter is not converted into SGD.",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": ["FINAL_AS_OF_QUOTE"],
+      "U-PERIOD": ["APPROVED_OCTOBER_HOLDING"],
+      "U-DRAFT": ["APPROVED_OCTOBER_HOLDING"],
+      "U-EUR-FX": ["AS_OF_AUTHORIZED_FX"]
+    },
+    "period_source": "2026-10 from valuation_policy.data.holding_period; quote as-of date 2026-10-08 from valuation_policy.data.as_of",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": ["U-QUOTE", "U-PERIOD", "U-DRAFT", "U-EUR-FX"]
+  },
+  "citations": [
+    {"source_id": "valuation_policy", "locator": "data.holding_period=2026-10; data.as_of=2026-10-08; rules[0], rules[2], rules[3]; version_selection"},
+    {"source_id": "valuation_policy", "locator": "data.fx_domains.standard: SGD_per_EUR=1.50, USD_per_SGD=0.74, date=2026-10-08"},
+    {"source_id": "valuation_policy", "locator": "data.fx_domains.restricted-domain: SGD_per_EUR=1.49, date=2026-10-01"},
+    {"source_id": "holdings-versions", "locator": "CSV lines 2-3: H-P-SGD-1-CURRENT and H-P-SGD-4-CURRENT; October APPROVED"},
+    {"source_id": "holdings-versions", "locator": "CSV lines 11,16: H-P-USD-2-CURRENT and H-P-EUR-3-CURRENT; October APPROVED"},
+    {"source_id": "quotes-versions", "locator": "CSV lines 3-4,6,17: current-date FINAL quotes for P-SGD-4, P-USD-2, P-EUR-3 and P-SGD-1"},
+    {"source_id": "holdings-versions", "locator": "CSV lines 7,9,4: U-DRAFT is DRAFT; U-PERIOD has only September; U-QUOTE is approved October"},
+    {"source_id": "quotes-versions", "locator": "CSV lines 2,5,7,10,16: prior-date FINAL quotes; lines 8,9,11,15,18: INDICATIVE quotes"},
+    {"source_id": "holdings-versions", "locator": "CSV line 15: H-U-EUR-FX-CURRENT has 20 EUR in restricted-domain"},
+    {"source_id": "quotes-versions", "locator": "CSV line 14: Q-U-EUR-FX-CURRENT gives 200 EUR per unit on 2026-10-08"}
+  ],
+  "executed_actions": []
+}

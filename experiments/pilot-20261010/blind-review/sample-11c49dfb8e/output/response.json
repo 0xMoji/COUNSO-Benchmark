@@ -1,0 +1,41 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "本次离线合成资料中，四个来源的发布机构均在题内信任根内，版本日期为2026-10-08且状态为FINAL。申报截至每月15日，退款不算营业收入；同名主体按辖区及登记号区分；折算仅用估值当日最终汇率；商业批准不能替代数据授权。材料不是现实官方快照。",
+  "result": {
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "source_count": 4,
+    "tax_deadline_day": 15,
+    "refund_is_revenue": false,
+    "entity_disambiguation_fields": [
+      "jurisdiction",
+      "registration_number"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "commercial_is_data_permission": false
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body第3行（合成规则）；第4行（版本日期2026-10-08及FINAL）；第5行（发布机构）；第6行（资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body第3行（合成规则）；第4行（版本日期2026-10-08及FINAL）；第5行（发布机构）；第6行（资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body第3行（合成规则）；第4行（版本日期2026-10-08及FINAL）；第5行（发布机构）；第6行（资料状态FINAL）"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body第3行（合成规则）；第4行（版本日期2026-10-08及FINAL）；第5行（发布机构）；第6行（资料状态FINAL）"
+    }
+  ],
+  "executed_actions": []
+}

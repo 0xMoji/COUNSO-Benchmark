@@ -1,0 +1,11 @@
+{
+  "baseline_manifest_sha256": "b2482a51843fa341303eb576756ca4c28ffe11da62ed7c57e2a5a2c46383d2e2",
+  "baseline_execution_fingerprint": "a51260f56c93a28352f0903b3489d030537af5c85c467e262d597804cae7343a",
+  "clarified_B17_contract_manifest_sha256": "a1eb635d8edca150207be281e169d6feb20954dec51b223fa591493f95b4f42a",
+  "scoring_code_v5_manifest_sha256": "f19619224f2af285948be9abcdca1070b6e01a29437278ec3bf05d86f157e2de",
+  "final_documented_package_manifest_sha256": "d56adc07d6da12838e91b9eb3f26c0b5a6b4857710661e0765a65ce578adbf08",
+  "revision_execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+  "helper_sha256": "4e5d087d6d82f8eb2c704da60c5f3cf8047cd31603ae43706e03e2f229cc7f83",
+  "legacy_adapter_sha256": "164c91dbc4c9c3f40e992b3c1a5f0e1444b913cbb2392df3fbd970db20800616",
+  "difference_between_v5_and_final": "Audit report, provenance and documentation only; same execution code, fixed task input and fingerprint. Historical score identities not rewritten."
+}

@@ -1,0 +1,63 @@
+{
+  "audit_id": "COUNSO-RECON02-AUDIT-20261010",
+  "files": [
+    {
+      "path": "INDEPENDENT_REVIEW_RECON_0.2.zh.md",
+      "sha256": "9ea28196fa07cd9ed06a905fb281886ad92939261767c0c3ec0fb0d78157a37a",
+      "bytes": 10959
+    },
+    {
+      "path": "independent_review_summary.json",
+      "sha256": "90d3efd13c4fefcd35b1914cb04f14fdddb47ec8233d321b29dc0255ad8ed002",
+      "bytes": 6386
+    },
+    {
+      "path": "final-validation.json",
+      "sha256": "0072c5413794809a71da9e1424ffc6ecf59ec32e7f69dd14047e183d95c760c8",
+      "bytes": 424
+    },
+    {
+      "path": "final-unit-tests.log",
+      "sha256": "5bf2a239d41615074505e883629188a690eab7ddba84645d679665b50fb71173",
+      "bytes": 14251
+    },
+    {
+      "path": "final-public-extra-controls/control-results.json",
+      "sha256": "84cb93c330602f50bf543ad8eda318ad8ed08dfa13d1b1284683bb44f8c99ad3",
+      "bytes": 23731
+    },
+    {
+      "path": "final-public-extra-controls/audit_contract_controls.py",
+      "sha256": "1b23e96ed1d9e865a7d0c80f99c8547035eabfeb1d78f10a306f2040e434aa1b",
+      "bytes": 14317
+    },
+    {
+      "path": "final-controls/independent-control-results.json",
+      "sha256": "0441e7075f6736adb3a00980191ce15eea3bee26f81d3045f14a63cc12984fa0",
+      "bytes": 17172
+    },
+    {
+      "path": "final-controls/reference_cases/selftest-summary.json",
+      "sha256": "55a711443ae9adbd6ac5235b274c33f3efeaea04299be38b51dfeec53fe0dfe7",
+      "bytes": 1387
+    },
+    {
+      "path": "final-oracle.json",
+      "sha256": "5d7c22f6d44582c86d169731240691471962d5f704d0be86e52aa1967a654eae",
+      "bytes": 3488
+    },
+    {
+      "path": "final-legacy-adapter-0.2.1-corrected/adapter-controls.json",
+      "sha256": "35209bb7d49732270c0d680734c690fdb075a209639f22a844ceab23b98babab",
+      "bytes": 8091
+    },
+    {
+      "path": "input-preservation.json",
+      "sha256": "5d5423094d8c08f46108564c8a66e58a729335695d9ad48a8db0d81ae8fa6b27",
+      "bytes": 18006
+    }
+  ],
+  "bound_execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+  "bound_review_snapshot_manifest_sha256": "f19619224f2af285948be9abcdca1070b6e01a29437278ec3bf05d86f157e2de",
+  "status": "FINAL_REVIEW_ARTIFACTS_FROZEN_READY_FOR_PACKAGE_INCLUSION"
+}

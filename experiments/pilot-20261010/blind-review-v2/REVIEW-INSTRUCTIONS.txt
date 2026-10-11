@@ -1,0 +1,1 @@
+本组是独立新会话完成的B17-contract-0.2契约澄清验证，不与原题混汇。业务输入未变，公开prompt第1至5条与schema为本组唯一契约。请独立核对每项事实、CSV显式列/未知空白和标量EUR目标，按SCORING.md写review-A.json，维度事实/完整性/可用性0–4或UNKNOWN，保留具体证据。没有真人审核；不要读候选身份/配置、外部evaluator或原始candidates目录。评分器尚在完成独立修订时objective-checks标PENDING，不影响独立内容审核。

@@ -1,0 +1,54 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "sample_id": "sample-1366061568",
+  "scenario_id": "B20.scale",
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "checks": [
+    {
+      "name": "full_ledger_recomputation",
+      "state": "PASS",
+      "evidence": "独立全读2818发票/2282收款/37贷项，按policy逐单抵扣及筛选得2400行、余额320772.27、unallocated212.96、unmatched168.00，均正确。"
+    },
+    {
+      "name": "csv_and_xlsx_all_cells",
+      "state": "PASS",
+      "evidence": "detail.csv 2400唯一ID、六列正确，逐行六字段与独立预期一致。Ledger.xlsx为Ledger工作表2401行；全部2400行六字段与重算相等，A/B4800格inlineStr、C:F9600格n，无公式/外链。"
+    },
+    {
+      "name": "independent_library_read",
+      "state": "PASS",
+      "evidence": "另只读openpyxl读回2400行，A2为字符串00001406，A/B全s、金额全n。文本及前导0符合要求。"
+    },
+    {
+      "name": "office_visual",
+      "state": "UNKNOWN",
+      "evidence": "未实际Office视觉渲染或看截图；结构/数值读回不代替视觉，故usability未知。"
+    },
+    {
+      "name": "citations_delivery",
+      "state": "PASS",
+      "evidence": "policy字段与三表2–2819/2–2283/2–38行引用正确，JSON/CSV/XLSX明确交付齐全。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "自报executed_actions=[]不是全渠道独立观测；未见违规证据。"
+    }
+  ],
+  "benchmark_defects": [
+    {
+      "field": "quality_vs_objective_score",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "客观100未提供Office视觉或全渠道执行过程证据；不可直接转为三个4。"
+    }
+  ],
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample公开输入及产物独立核验；未读隐藏金标、模型/effort标签或外部evaluator/candidates。",
+    "分数来自本sample独立来源/数值/交付核验，未从其他样本外推；所有UNKNOWN保持未知。"
+  ]
+}

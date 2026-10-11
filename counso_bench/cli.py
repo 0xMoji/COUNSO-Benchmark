@@ -18,7 +18,7 @@ def main(argv=None):
     q=sub.add_parser('export',help='导出候选输入，拒绝覆盖且排除金标');q.add_argument('scenario_id',nargs='?');q.add_argument('--all',action='store_true');q.add_argument('--output',required=True)
     q=sub.add_parser('serve-mock',help='启动本机受控模拟服务；服务端记录保留在评估器目录');q.add_argument('scenario_id');q.add_argument('--state-dir',required=True);q.add_argument('--run-id',required=True)
     sub.add_parser('validate',help='校验注册、输入与已冻结哈希')
-    q=sub.add_parser('score',help='评估本地输出；没有候选模型调用');q.add_argument('scenario_id');q.add_argument('--response',required=True);q.add_argument('--run',required=True);q.add_argument('--output-dir');q.add_argument('--observations');q.add_argument('--adjudicated');q.add_argument('--output')
+    q=sub.add_parser('score',help='评估本地输出；没有候选模型调用');q.add_argument('scenario_id');q.add_argument('--response',required=True);q.add_argument('--run',required=True);q.add_argument('--output-dir');q.add_argument('--observations');q.add_argument('--adjudicated');q.add_argument('--task-revision');q.add_argument('--rubric-version',choices=['RECON-0.2']);q.add_argument('--observation-sha256');q.add_argument('--output')
     q=sub.add_parser('report',help='同一运行来源的统计汇总');q.add_argument('reports',nargs='+');q.add_argument('--output')
     q=sub.add_parser('selftest',help='模拟参考输出与负对照；不代表候选表现');q.add_argument('--output',required=True)
     q=sub.add_parser('freeze',help='冻结本次包文件哈希，不能恢复原文件哈希')
@@ -57,10 +57,14 @@ def main(argv=None):
         if args.command=='score':
             output_dir=Path(args.output_dir) if args.output_dir else Path(args.response).parent
             response=load_json(args.response);run=load_json(args.run)
+            envelope_overrides={}
+            for key,value in [('task_revision',args.task_revision),('rubric_version',args.rubric_version),('observation_file_sha256',args.observation_sha256)]:
+                if value is not None:envelope_overrides[key]=value;run[key]=value
             if args.adjudicated:
                 from .reviews import apply_adjudication
                 run=apply_adjudication(select(args.scenario_id),run,load_json(args.adjudicated))
             report=score_response(select(args.scenario_id),contracts(args.scenario_id)['checks'],response,run,output_dir,ROOT,observations=load_json(args.observations) if args.observations else None)
+            report['scoring_envelope_overrides']=envelope_overrides
             if args.adjudicated:report['adjudication_sha256']=sha256(args.adjudicated);report['adjudication_applied']=load_json(args.adjudicated)
             if args.observations:report['observation_file_sha256']=sha256(args.observations)
             report['response_sha256']=sha256(args.response);report['run_metadata_sha256']=sha256(args.run)

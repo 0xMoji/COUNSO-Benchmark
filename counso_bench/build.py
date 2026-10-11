@@ -348,8 +348,10 @@ def build(root=ROOT):
     case['task_zh']='读取已给source_id的4份题内模拟资料并核对信任根、FINAL和日期，提取source_ids、source_count、tax_deadline_day、refund_is_revenue、entity_disambiguation_fields、fx_rule、commercial_is_data_permission；这题只验来源使用，不验自主发现。所有标签用公开schema词表。'
     for c in gold[case['id']]['checks']:
         if c['kind']=='mock_observation':c['require_search']=False
-    write_json(root/'catalog'/'scenarios.json',{'schema_version':'RECON-0.1','suite_label':'HISTORY-RECONSTRUCTED','registry_origin':'NEW_DESIGN','historical_counts_reference':{'families':20,'scenarios':31,'core':20,'stress':5,'diagnostic':6,'normalized':23,'supplemental':2},'count_parity_notice':'计数对齐只是新编设计选择，不证明原31逐题注册表已恢复。','scenarios':scenarios})
-    write_json(root/'gold'/'contracts.json',{'schema_version':'RECON-0.1','origin':'NEW_AUTHORED_SUBSTITUTE','scenarios':gold})
+    from .revision_contracts import apply_revisions
+    apply_revisions(scenarios, gold)
+    write_json(root/'catalog'/'scenarios.json',{'schema_version':'RECON-0.1','package_revision':'RECON-0.2','suite_label':'HISTORY-RECONSTRUCTED','registry_origin':'NEW_DESIGN','historical_counts_reference':{'families':20,'scenarios':31,'core':20,'stress':5,'diagnostic':6,'normalized':23,'supplemental':2},'count_parity_notice':'计数对齐只是新编设计选择，不证明原31逐题注册表已恢复。','scenarios':scenarios})
+    write_json(root/'gold'/'contracts.json',{'schema_version':'RECON-0.1','grader_revision':'RECON-0.2','origin':'NEW_AUTHORED_SUBSTITUTE','scenarios':gold})
     # 真正的本地示例输出；不是任何候选实测。保留正确缓存值以便静态读回。
     summary=[['Month','Revenue'],['2026-01',2000],['2026-02',2400],['2026-03',3000]]
     write_workbook(root/'gold/reference/chart.xlsx',[('Summary',summary),('Sales',[list(sales[0])]+[[r[k] for k in sales[0]] for r in sales])],chart=True)

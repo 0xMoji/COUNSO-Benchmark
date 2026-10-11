@@ -1,0 +1,63 @@
+{
+  "input_counts": {
+    "credits": 37,
+    "invoices": 2818,
+    "receipts": 2282
+  },
+  "input_hash_checks": [
+    {
+      "source_id": "invoices",
+      "path": "inputs/ledger-scale/invoices.csv",
+      "sha256": "8a1332396f0f45ae33b8d4386a820a36a48dc1c413e36b4bd5a689065e5ed25c",
+      "manifest_match": true
+    },
+    {
+      "source_id": "receipts",
+      "path": "inputs/ledger-scale/receipts.csv",
+      "sha256": "382122ced5431ae2a2ff6e1498522f021529dce120a458c9cf54a190151a711f",
+      "manifest_match": true
+    },
+    {
+      "source_id": "credits",
+      "path": "inputs/ledger-scale/credits.csv",
+      "sha256": "b33f2181d277c4c0469f0308afa9dbee1a1577a9aa1656cda407a84b846d4bf5",
+      "manifest_match": true
+    },
+    {
+      "source_id": "policy",
+      "path": "inputs/ledger-scale/policy.json",
+      "sha256": "00b6c616bbfc69d860ed1979cc92ae254657d761ccdda617554c4410f3c37ac4",
+      "manifest_match": true
+    }
+  ],
+  "all_source_records_read": true,
+  "invoice_primary_key_unique": true,
+  "receipt_primary_key_unique": true,
+  "credit_primary_key_unique": true,
+  "receipt_allocation_counts": {
+    "APPLIED": 2280,
+    "UNALLOCATED": 1,
+    "UNMATCHED": 1
+  },
+  "receipt_allocation_sums": {
+    "APPLIED": "82007.00",
+    "UNALLOCATED": "212.96",
+    "UNMATCHED": "168.00"
+  },
+  "credit_sum": "260.00",
+  "credit_invoice_keys": 25,
+  "eligible_prefilter_count": 2480,
+  "sequential_exclusion_counts": {
+    "due_date_not_before_cutoff": 113,
+    "nonpositive_balance": 80,
+    "currency_not_SGD": 112,
+    "jurisdiction_not_SG": 113
+  },
+  "eligible_count": 2400,
+  "eligible_invoice_amount_sgd": "386979.27",
+  "eligible_applied_receipts_sgd": "65967.00",
+  "eligible_credits_sgd": "240.00",
+  "balance_sgd": "320772.27",
+  "amounts_computed_with": "Python decimal.Decimal with original two-decimal source strings",
+  "sorting": "invoice_id lexical ascending; identifiers never coerced to numeric"
+}

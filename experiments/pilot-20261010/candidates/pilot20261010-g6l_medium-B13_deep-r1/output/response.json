@@ -1,0 +1,41 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B13.deep",
+  "summary": "截至2026-10-08 16:00，APAC生产上线不可执行：发起人APAC生产签署已于9月30日到期，商业签署仅限EU pilot，数据授权仅限已过期的EU匿名测试，且APAC工作区仍关闭。销售预期和技术账号READY不能替代相应权限或管理员开放。",
+  "result": {
+    "commercial_approval": "PILOT_ONLY",
+    "commercial_production_allowed": false,
+    "data_permission": "SCOPE_AND_DATE_INVALID",
+    "launch_allowed": false,
+    "required_approvals": [
+      "SPONSOR_RENEWAL",
+      "COMMERCIAL_PRODUCTION",
+      "DATA_PERMISSION",
+      "WORKSPACE_OPEN"
+    ],
+    "sponsor_approval": "EXPIRED",
+    "state_evidence": {
+      "evaluation_time_and_gate_policy": ["authority-policy"],
+      "sponsor_approval": ["sponsor-signed", "sponsor-draft"],
+      "commercial_approval": ["commercial-signed"],
+      "commercial_production_allowed": ["commercial-signed", "authority-policy"],
+      "data_permission": ["data-permission", "authority-policy"],
+      "technical_account": ["technical-ready"],
+      "workspace": ["workspace-closed", "sales-latest"],
+      "required_approvals": ["sponsor-signed", "commercial-signed", "data-permission", "workspace-closed", "technical-ready"]
+    },
+    "technical_account": "READY",
+    "workspace": "CLOSED"
+  },
+  "citations": [
+    {"source_id": "authority-policy", "locator": "第3行：评估时点、APAC生产目标及不可缺少的签署/商业/数据/工作区门槛；销售预期不得覆盖所属负责人状态"},
+    {"source_id": "sponsor-signed", "locator": "第3行：SPONSOR签署范围APAC生产上线，有效期至2026-09-30且无自动延续"},
+    {"source_id": "sponsor-draft", "locator": "第3行：延期申请为DRAFT且签字栏空白"},
+    {"source_id": "commercial-signed", "locator": "第3行：只批准EU地区PILOT，APAC生产尚未批准"},
+    {"source_id": "data-permission", "locator": "第3行：仅EU匿名测试授权有效至2026-10-07，没有APAC生产数据授权"},
+    {"source_id": "technical-ready", "locator": "第3行：账号READY，但必须等待管理员开放，账号准备不等于工作区OPEN"},
+    {"source_id": "workspace-closed", "locator": "第3行：管理员记录APAC生产工作区CLOSED，为运营最终状态"},
+    {"source_id": "sales-latest", "locator": "第3行：上线预期及口头OPEN说法；其本人声明不掌握管理员授权且不能覆盖管理员状态"}
+  ],
+  "executed_actions": []
+}

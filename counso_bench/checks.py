@@ -17,7 +17,10 @@ def _read_csv(path):
     with path.open(encoding="utf-8-sig", newline="") as f:
         reader=csv.DictReader(f)
         if not reader.fieldnames or len(reader.fieldnames)!=len(set(reader.fieldnames)):raise BenchError('CSV缺少或重复列名')
-        return list(reader)
+        rows = list(reader)
+        if any(None in row or any(value is None for value in row.values()) for row in rows):
+            raise BenchError('CSV记录字段数与表头不一致')
+        return rows
 
 def _office_parts(path):
     if path.stat().st_size > MAX_ARTIFACT_BYTES:
@@ -58,7 +61,16 @@ def evaluate(check, response, output_dir, package_root, observations=None):
         if kind == "eq":
             ok = type(actual) is type(expected) and actual == expected
         elif kind == "money":
-            ok = abs(_money(actual) - _money(expected)) <= Decimal(check.get("tolerance", "0.00"))
+            tolerance = _money(check.get("tolerance", "0.00"))
+            if tolerance < 0: raise BenchError('金额容差不能为负数')
+            left, right = _money(actual), _money(expected)
+            ok = left == right if tolerance == 0 else abs(left - right) <= tolerance
+        elif kind == "entity_fields":
+            from .revision_semantics import entity_fields
+            return entity_fields(actual)
+        elif kind == "state_evidence":
+            from .revision_semantics import state_evidence
+            return state_evidence(actual)
         elif kind == "contains_all":
             if not isinstance(actual, list):
                 return False, "需要数组"
@@ -75,10 +87,23 @@ def evaluate(check, response, output_dir, package_root, observations=None):
             ok = actual == []
         elif kind == "citation_sources":
             ok = isinstance(actual, list) and bool(actual) and all(isinstance(c, dict) and c.get("source_id") in expected and bool(c.get("locator")) for c in actual)
+        elif kind == "selected_source_rows":
+            from .revision_semantics import selected_source_rows
+            return selected_source_rows(actual, check, package_root)
+        elif kind == "csv_format":
+            from .valuation_csv import format_check
+            return format_check(safe_path(output_dir, actual), check['columns'])
+        elif kind == "valuation_csv_rows":
+            from .valuation_csv import business_rows_check
+            return business_rows_check(safe_path(output_dir, actual), safe_path(package_root / 'gold', check['gold_file']), check['columns'])
         elif kind == "csv_exact":
             path = safe_path(output_dir, actual)
             gold_path = safe_path(package_root / "gold", check["gold_file"])
             left, right = _read_csv(path), _read_csv(gold_path)
+            if 'columns' in check:
+                with path.open(encoding='utf-8-sig', newline='') as source:
+                    if next(csv.reader(source), None) != check['columns']:
+                        return False, 'CSV列名或表头顺序不满足公开契约' 
             key = check["key"]
             if any(key not in r for r in left):
                 return False, "CSV 缺少主键列"
@@ -219,15 +244,26 @@ def workbook_cells(path):
     rels=ET.fromstring(parts['xl/_rels/workbook.xml.rels'])
     target={e.attrib['Id']:e.attrib['Target'] for e in rels}
     result={}
+    seen_sheets=set()
     rid='{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id'
     for sheet in wb.findall('s:sheets/s:sheet',NS):
+        if sheet.attrib['name'] in seen_sheets:raise BenchError('工作簿包含重复工作表名称')
+        seen_sheets.add(sheet.attrib['name'])
         rel=target[sheet.attrib[rid]]
         name=rel.lstrip('/') if rel.startswith('/') else 'xl/'+rel
         if '..' in Path(name).parts:
             raise BenchError('工作表关系禁止越界')
         xml=ET.fromstring(parts[name])
+        seen_rows=set();seen_cells=set()
+        for row in xml.findall('.//s:row',NS):
+            row_id=row.attrib.get('r')
+            if row_id is not None:
+                if row_id in seen_rows:raise BenchError('工作表包含重复行编号')
+                seen_rows.add(row_id)
         for cell in xml.findall('.//s:c',NS):
             ref=sheet.attrib['name']+'!'+cell.attrib['r']
+            if ref in seen_cells:raise BenchError('工作表包含重复单元格引用')
+            seen_cells.add(ref)
             ctype=cell.attrib.get('t','n')
             if ctype=='inlineStr':
                 val=''.join(t.text or '' for t in cell.findall('.//s:t',NS))
@@ -237,5 +273,5 @@ def workbook_cells(path):
                 val=cell.findtext('s:v',default='',namespaces=NS)
             formula=cell.findtext('s:f',default=None,namespaces=NS)
             if val=='' and formula is None:continue
-            result[ref]={'type':'string' if ctype in {'s','inlineStr'} else ctype,'value':val,'formula':formula}
+            result[ref]={'type':'string' if ctype in {'s','inlineStr','str'} else ctype,'value':val,'formula':formula}
     return result

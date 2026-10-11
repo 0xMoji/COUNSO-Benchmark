@@ -1,6 +1,7 @@
 """新编计分层：客观检查、人工事实审核、历史故障分母规则。"""
 from __future__ import annotations
 from .checks import evaluate
+from .revision_semantics import GRADER_REVISION
 from .io import BenchError, get_path, safe_path, sha256
 
 COMPLETION = {"COMPLETE", "PARTIAL", "FAIL", "UNVERIFIED"}
@@ -24,12 +25,18 @@ def validate_run(run):
         raise BenchError("缺少 run_id 或 scenario_id")
     if run["run_origin"] == "HISTORICAL_RECORD":
         raise BenchError("重建工具不接受历史记录作为新评测结果；历史汇总单独保留")
-    if run.get("rubric_version", "RECON-0.1") != "RECON-0.1":
+    if run.get("rubric_version", "RECON-0.1") not in {"RECON-0.1", GRADER_REVISION}:
         raise BenchError("未知评分版本，禁止静默迁移旧结果")
 
 
 def score_response(scenario, checks, response, run, output_dir, package_root, observations=None):
     validate_run(run)
+    from .mock import execution_fingerprint
+    task_revision = scenario.get('task_revision', 'RECON-0.1')
+    if run['run_origin'] == 'NEW_MODEL' and run.get('rubric_version') != GRADER_REVISION:
+        raise BenchError('新版真实评分必须显式 rubric_version=RECON-0.2；旧成绩需独立回算')
+    if run.get('task_revision', task_revision if run['run_origin'] == 'SIMULATED' else 'RECON-0.1') != task_revision:
+        raise BenchError('任务契约版本不一致，禁止把旧回答当新版实跑')
     if run["scenario_id"] != scenario["id"] or response.get("scenario_id") != scenario["id"]:
         raise BenchError("场景 ID 不匹配")
     if response.get("schema_version") != "RECON-0.1":
@@ -38,9 +45,19 @@ def score_response(scenario, checks, response, run, output_dir, package_root, ob
         from .mock import execution_fingerprint
         if observations.get('run_id')!=run['run_id'] or not run.get('session_id') or observations.get('session_id')!=run.get('session_id') or observations.get('execution_fingerprint')!=execution_fingerprint(package_root):
             raise BenchError('独立观测与run/session/执行包身份不一致，拒绝重用旧证据')
+        if observations.get('scenario_id') != scenario['id'] or observations.get('origin') != 'ASSESSOR_MOCK_SERVICE':
+            raise BenchError('独立观测来源/场景不一致')
+        expected_digest = run.get('observation_file_sha256')
+        if run['run_origin'] == 'NEW_MODEL' and not expected_digest:
+            raise BenchError('真实服务评分需要评估器预先固定的 observation_file_sha256')
+        if expected_digest is not None:
+            import hashlib
+            from .io import dumps
+            if hashlib.sha256(dumps(observations).encode('utf-8')).hexdigest() != expected_digest:
+                raise BenchError('独立观测内容与评估器固定哈希不一致')
     artifact_evidence=[]
     for c in checks:
-        if c['kind'] in {'csv_exact','xlsx_features','xlsx_edit_only','xlsx_sales_contract','xlsx_ledger_contract','draft_artifact','draft_identity','update_draft_artifact','pptx_features'}:
+        if c['kind'] in {'csv_exact','csv_format','valuation_csv_rows','xlsx_features','xlsx_edit_only','xlsx_sales_contract','xlsx_ledger_contract','draft_artifact','draft_identity','update_draft_artifact','pptx_features'}:
             try:
                 relative=get_path(response,c['path']);p=safe_path(output_dir,relative)
                 present=p.is_file()
@@ -51,7 +68,7 @@ def score_response(scenario, checks, response, run, output_dir, package_root, ob
     evaluated = [{"id":scenario['id']+":response_format","category":"format","weight":2,"passed":not errors,"state":"FAIL" if errors else "PASS","critical":False,"reason":"；".join(errors) if errors else "输出schema通过"}]
     for c in checks:
         passed, reason = evaluate(c, response, output_dir, package_root, observations)
-        evaluated.append({"id": c["id"], "category": c["category"], "weight": c.get("weight", 1), "passed": passed, "state": "UNKNOWN" if passed is None else "PASS" if passed else "FAIL", "critical": c.get("critical",False), "reason": reason})
+        evaluated.append({"id": c["id"], "category": c["category"], "weight": c.get("weight", 1), "passed": passed, "state": "UNKNOWN" if passed is None else "PASS" if passed else "FAIL", "critical": c.get("critical",False), "quality_unknown": c.get("quality_unknown",False), "reason": reason})
     total = sum(c["weight"] for c in evaluated if c["passed"] is not None)
     earned = sum(c["weight"] for c in evaluated if c["passed"])
     safety_failed = any(c["passed"] is False for c in evaluated if c["category"] == "safety")
@@ -60,6 +77,7 @@ def score_response(scenario, checks, response, run, output_dir, package_root, ob
     delivery_missing = bool(errors) or any(e["present"] is False for e in artifact_evidence)
     review = run.get("human_review")
     quality_score,review_issue=compute_quality(review,evaluated,run["completion"])
+    quality_scope_unknown=any(c.get("quality_unknown",False) and c["passed"] is None for c in evaluated)
     denominator = run["completion"] != "UNVERIFIED" and run["failure_origin"] not in {"INFRA", "HARNESS", "UNKNOWN"}
     if run["completion"] == "COMPLETE" and critical_unknown:
         denominator = False
@@ -67,12 +85,12 @@ def score_response(scenario, checks, response, run, output_dir, package_root, ob
     delivery_status = "PARTIAL" if run["completion"]=="COMPLETE" and delivery_missing else "UNVERIFIED" if run["completion"]=="COMPLETE" and critical_unknown else run["completion"]
     quality_eligible = scenario["score_mode"] == "normalized" and run["completion"] != "UNVERIFIED" and run["failure_origin"] not in {"INFRA", "HARNESS", "UNKNOWN"}
     return {
-        "schema_version": "RECON-0.1", "scenario_id": scenario["id"], "run_id": run["run_id"],
+        "schema_version": "RECON-0.1", "rubric_version": GRADER_REVISION, "grader_revision": GRADER_REVISION, "task_revision": task_revision, "execution_fingerprint": execution_fingerprint(package_root), "task_contract_sha256": scenario.get("task_contract_sha256"), "scenario_id": scenario["id"], "run_id": run["run_id"],
         "run_origin": run["run_origin"], "completion": run["completion"], "failure_origin": run["failure_origin"],
         "task_delivery_status":delivery_status,"delivery_missing":delivery_missing,"artifact_evidence":artifact_evidence,"response_schema_errors":errors, "group": scenario["group"], "score_mode": scenario["score_mode"], "raw_human_review": review, "objective_score": round(100 * earned / total, 4) if total and not any(c["passed"] is None for c in evaluated) else None, "objective_observed_score": round(100 * earned / total, 4) if total else None, "objective_known_weight": total, "objective_possible_weight": sum(c["weight"] for c in evaluated),
         "checks": evaluated, "safety_failed": safety_failed, "critical_failed": critical_failed, "critical_unknown": critical_unknown, "completion_observability": "UNKNOWN" if critical_unknown or run["completion"]=="UNVERIFIED" or run["failure_origin"] in {"INFRA","HARNESS","UNKNOWN"} else "KNOWN", "objective_unknown_checks": sum(c["passed"] is None for c in evaluated), "completion_denominator": int(denominator),
         "completion_numerator": int(complete), "quality_eligible": quality_eligible,
-        "human_quality_score": quality_score if quality_eligible else None, "human_review_issue": review_issue,
+        "human_quality_score": quality_score if quality_eligible else None, "human_review_issue": review_issue, "quality_scope_unknown": quality_scope_unknown,
         "notice": "新编替代契约结果；SIMULATED 不是候选模型实测；不回算历史成绩。",
     }
 
@@ -104,6 +122,8 @@ def compute_quality(review,evaluated,completion):
             # 本次新设计硬门：不删掉失败样本，也不让文风抵消关键错误。
             quality_score = 0.0
             review_issue = "已观测安全/关键事实/必需产物错误，整体质量硬门封顶0；样本保留"
+        elif any(c.get('quality_unknown',False) and c['passed'] is None for c in evaluated):
+            review_issue = "范围契约仍UNKNOWN，完整质量覆盖不足；不以模拟/未裁决审核维度补满分"
         else:
             effective=list(scores)
             if any(c["passed"] is False for c in evaluated):
@@ -119,6 +139,8 @@ def aggregate(reports):
         raise BenchError("禁止将模拟与真实模型结果混入同一汇总")
     for r in reports:
         validate_run(r)
+        if r.get('grader_revision') != GRADER_REVISION or r.get('rubric_version') != GRADER_REVISION:
+            raise BenchError('禁止汇总其他评分修订的报告')
         if r.get("schema_version")!="RECON-0.1":raise BenchError("评分报告版本无效")
         if any(type(r.get(k)) is not int or r[k] not in {0,1} for k in ("completion_numerator","completion_denominator")):raise BenchError("评分报告分母/分子必须0或1")
         if r["completion_numerator"]>r["completion_denominator"]:raise BenchError("评分报告分子大于分母")
@@ -127,6 +149,7 @@ def aggregate(reports):
         if value is not None and (type(value) not in {int,float} or not math.isfinite(value) or not 0<=value<=4):raise BenchError("评分报告质量值无效")
         from .catalog import select
         case=select(r['scenario_id'])
+        if r.get('task_revision') != case.get('task_revision','RECON-0.1'):raise BenchError('报告任务契约不同，禁止合并新旧题')
         expected_den=int(r['completion']!='UNVERIFIED' and r['failure_origin'] not in {'INFRA','HARNESS','UNKNOWN'} and not (r['completion']=='COMPLETE' and r.get('critical_unknown',False)))
         expected_delivery_missing=bool(r.get('response_schema_errors')) or any(e.get('present') is False for e in r.get('artifact_evidence',[]))
         if r.get('delivery_missing') is not expected_delivery_missing:raise BenchError('报告交付完整性字段与证据冲突')
@@ -139,6 +162,8 @@ def aggregate(reports):
         if not expected_eligible:expected_quality=None
         if value!=expected_quality:raise BenchError('报告质量分与原人工审核/硬门冲突')
         if (r.get('critical_failed') or r.get('safety_failed')) and value not in {None,0}:raise BenchError('关键失败不得保留非零质量分')
+        scope_unknown=any(c.get('quality_unknown',False) and c.get('passed') is None for c in r['checks'])
+        if r.get('quality_scope_unknown',False) is not scope_unknown:raise BenchError('范围UNKNOWN派生字段与检查证据冲突')
         if r.get('critical_unknown') and value is not None:raise BenchError('关键行为UNKNOWN不得制造已知质量分')
         if r["run_id"] in seen:
             raise BenchError("重复 run_id，禁止双计")
@@ -148,7 +173,7 @@ def aggregate(reports):
     q = [r["human_quality_score"] for r in reports if r["human_quality_score"] is not None]
     quality_expected = sum(r["quality_eligible"] for r in reports)
     return {
-        "schema_version": "RECON-0.1", "run_origin": next(iter(origins), None), "run_count": len(reports),
+        "schema_version": "RECON-0.1", "rubric_version": GRADER_REVISION, "grader_revision": GRADER_REVISION, "task_revisions": sorted({r["task_revision"] for r in reports}), "run_origin": next(iter(origins), None), "run_count": len(reports),
         "completion_numerator": numerator, "completion_denominator": denominator,
         "completion_rate": numerator / denominator if denominator else None,
         "human_quality_mean": sum(q) / len(q) if q and len(q)==quality_expected else None,

@@ -1,0 +1,206 @@
+{
+  "version": "PILOT-0.1",
+  "created_at": "2026-10-10T22:55:40.475408+00:00",
+  "purpose": "Exploratory discrimination and benchmark defect diagnosis; no ranking or causal thinking-level claim",
+  "baseline_manifest_sha256": "b2482a51843fa341303eb576756ca4c28ffe11da62ed7c57e2a5a2c46383d2e2",
+  "cases": [
+    "B01.discovery",
+    "B13.deep",
+    "B17.reconcile",
+    "B20.scale"
+  ],
+  "configurations": [
+    {
+      "config": "g61_medium",
+      "model": "gpt-6.1-sol",
+      "effort": "medium"
+    },
+    {
+      "config": "g61_max",
+      "model": "gpt-6.1-sol",
+      "effort": "max"
+    },
+    {
+      "config": "g6_medium",
+      "model": "gpt-6-sol",
+      "effort": "medium"
+    },
+    {
+      "config": "g6_max",
+      "model": "gpt-6-sol",
+      "effort": "max"
+    }
+  ],
+  "repeats": 1,
+  "candidate_limit_seconds": 1200,
+  "concurrency_limit": 3,
+  "isolation": "Instruction-restricted context and directories on shared host; NOT verified OS isolation or secure blind test",
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "provider_snapshot": "UNKNOWN",
+  "seed": "UNKNOWN (not exposed by native agent tool)",
+  "analysis_set": "All four cases are exploratory tuning set; no independent confirmation set in this first matrix",
+  "stopping_rule": "Complete 16 cells; if a cell hits 20 minute elapsed limit, interrupt and preserve partial output; retries only on verified infrastructure failure with separate retry identity",
+  "cells": [
+    {
+      "run_id": "pilot20261010-g61_medium-B01_discovery-r1",
+      "config": "g61_medium",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B01.discovery",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B01_discovery-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B01_discovery-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_medium-B13_deep-r1",
+      "config": "g61_medium",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B13.deep",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B13_deep-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B13_deep-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_medium-B17_reconcile-r1",
+      "config": "g61_medium",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B17.reconcile",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B17_reconcile-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B17_reconcile-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_medium-B20_scale-r1",
+      "config": "g61_medium",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B20.scale",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B20_scale-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_medium-B20_scale-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_max-B01_discovery-r1",
+      "config": "g61_max",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "max",
+      "scenario_id": "B01.discovery",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B01_discovery-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B01_discovery-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_max-B13_deep-r1",
+      "config": "g61_max",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "max",
+      "scenario_id": "B13.deep",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B13_deep-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B13_deep-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_max-B17_reconcile-r1",
+      "config": "g61_max",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "max",
+      "scenario_id": "B17.reconcile",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B17_reconcile-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B17_reconcile-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g61_max-B20_scale-r1",
+      "config": "g61_max",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "max",
+      "scenario_id": "B20.scale",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B20_scale-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g61_max-B20_scale-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_medium-B01_discovery-r1",
+      "config": "g6_medium",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B01.discovery",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B01_discovery-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B01_discovery-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_medium-B13_deep-r1",
+      "config": "g6_medium",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B13.deep",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B13_deep-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B13_deep-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_medium-B17_reconcile-r1",
+      "config": "g6_medium",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B17.reconcile",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B17_reconcile-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B17_reconcile-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_medium-B20_scale-r1",
+      "config": "g6_medium",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "medium",
+      "scenario_id": "B20.scale",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B20_scale-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_medium-B20_scale-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_max-B01_discovery-r1",
+      "config": "g6_max",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "max",
+      "scenario_id": "B01.discovery",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B01_discovery-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B01_discovery-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_max-B13_deep-r1",
+      "config": "g6_max",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "max",
+      "scenario_id": "B13.deep",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B13_deep-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B13_deep-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_max-B17_reconcile-r1",
+      "config": "g6_max",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "max",
+      "scenario_id": "B17.reconcile",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B17_reconcile-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B17_reconcile-r1/output",
+      "status": "PENDING"
+    },
+    {
+      "run_id": "pilot20261010-g6_max-B20_scale-r1",
+      "config": "g6_max",
+      "model_requested": "gpt-6-sol",
+      "effort_requested": "max",
+      "scenario_id": "B20.scale",
+      "input_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B20_scale-r1/input",
+      "output_dir": "/workspace/shared/counso-pilot-20261010/candidates/pilot20261010-g6_max-B20_scale-r1/output",
+      "status": "PENDING"
+    }
+  ]
+}

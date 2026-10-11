@@ -1,0 +1,45 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "题内合成的 2026-10-08 FINAL 资料支持以下结论：申报期截至每月15日，退款不算营业收入；SG/HK同名主体按辖区和登记号区分；汇率仅使用估值当日最终汇率；商业批准不能替代数据授权。上述均为合成材料，不是现实官方快照。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": [
+      "辖区",
+      "登记号"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body: 合成规则（申报期截至每月15日；退款不算营业收入）；版本日期 2026-10-08；发布机构 MOCK-TAX-AUTHORITY；资料状态 FINAL"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body: 合成规则（SG与HK同名主体须以辖区和登记号区分）；版本日期 2026-10-08；发布机构 MOCK-REGISTRY-AUTHORITY；资料状态 FINAL"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body: 合成规则（只有估值当日最终汇率可用于本案折算）；版本日期 2026-10-08；发布机构 MOCK-FX-AUTHORITY；资料状态 FINAL"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body: 合成规则（商业批准不能替代数据授权）；版本日期 2026-10-08；发布机构 MOCK-DATA-AUTHORITY；资料状态 FINAL"
+    },
+    {
+      "source_id": "trusted_publishers",
+      "locator": "data.trusted_publishers: MOCK-TAX-AUTHORITY, MOCK-REGISTRY-AUTHORITY, MOCK-FX-AUTHORITY, MOCK-DATA-AUTHORITY (题内合成信任根)"
+    }
+  ],
+  "executed_actions": []
+}

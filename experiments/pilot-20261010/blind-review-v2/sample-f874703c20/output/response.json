@@ -1,0 +1,83 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "截至2026-10-08，按2026-10期间、已批准持仓和当日FINAL报价计算确认小计为480280 SGD；完整估值仍未知。U-EUR-FX可确定的原币中间值为4000 EUR，但其受限FX仅为2026-10-01，不能用于as-of估值。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ],
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-QUOTE",
+      "U-DRAFT",
+      "U-PERIOD",
+      "U-EUR-FX"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "inputs/valuation_policy.json: data.allowed_holding_status, data.allowed_quote_state, data.as_of, data.holding_period, data.version_selection (lines 3-5, 17, 24)"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "inputs/valuation_policy.json: data.fx_domains.standard (lines 11-14) and data.rules (lines 19-22)"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "inputs/holdings-versions.csv: selected approved October rows H-P-SGD-1-CURRENT (line 2), H-P-SGD-4-CURRENT (line 3), H-P-EUR-3-CURRENT (line 16), H-P-USD-2-CURRENT (line 11); fields period, status, units, currency, fx_domain, version_date"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "inputs/quotes-versions.csv: selected as-of FINAL rows Q-P-SGD-1-CURRENT (line 17), Q-P-SGD-4-CURRENT (line 3), Q-P-EUR-3-CURRENT (line 6), Q-P-USD-2-CURRENT (line 4); fields date, price, state"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "inputs/holdings-versions.csv: U-QUOTE approved October row (line 4), U-DRAFT draft row (line 7), U-PERIOD September row (line 9), U-EUR-FX approved October row (line 15)"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "inputs/quotes-versions.csv: U-QUOTE stale FINAL and current INDICATIVE (lines 7, 18); U-EUR-FX current FINAL (line 14)"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "inputs/valuation_policy.json: restricted-domain SGD_per_EUR and date (lines 7-9); rules prohibit using wrong-date FX (lines 19-20)"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,16 @@
+{
+  "source_sha256": "3bcae8ca109fb22c0561f9c4b55ef34a08958bf2a9eae5fc04be1d3d1e910f00",
+  "roundtrip_sha256": "e33c11d6b3cff4d5eb07e3954267f0411e06ffc0ef8f325db630870b1bd23fc0",
+  "tested_application": "LibreOffice headless xlsx import-export",
+  "visual_inspection": "NOT_PERFORMED",
+  "source_rows": 2401,
+  "roundtrip_rows": 2401,
+  "source_columns": 6,
+  "roundtrip_columns": 6,
+  "value_or_type_difference_count": 0,
+  "differences": [],
+  "first_invoice": [
+    "00001406",
+    "00001406"
+  ]
+}

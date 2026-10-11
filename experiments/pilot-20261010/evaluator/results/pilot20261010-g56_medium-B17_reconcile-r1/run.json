@@ -1,0 +1,17 @@
+{
+  "run_id": "pilot20261010-g56_medium-B17_reconcile-r1",
+  "scenario_id": "B17.reconcile",
+  "run_origin": "NEW_MODEL",
+  "completion": "COMPLETE",
+  "failure_origin": "NONE",
+  "rubric_version": "RECON-0.1",
+  "model_snapshot": "UNKNOWN",
+  "model_requested": "gpt-5.6-sol",
+  "effort_requested": "medium",
+  "actual_model_effort_independently_confirmed": false,
+  "tool_request_accepted": true,
+  "started_at": "2026-10-10T23:15:03Z",
+  "finished_at_observed": "2026-10-10T23:17:28.244903+00:00",
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN"
+}

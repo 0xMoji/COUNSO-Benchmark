@@ -1,0 +1,56 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-b7436d8658",
+  "checks": [
+    {
+      "name": "launch_and_approval_states",
+      "state": "PASS",
+      "evidence": "逐份读取inputs/handoff-deep/*.md L3：评估时点10月8日16:00；sponsor-signed有效期9月30日止且无自动延续，sponsor-draft未签；commercial-signed仅EU PILOT；data-permission仅EU匿名测试且10月7日到期；technical-ready=READY；workspace-closed由管理员记CLOSED。response.json对应EXPIRED/PILOT_ONLY/false/SCOPE_AND_DATE_INVALID/READY/CLOSED及launch_allowed=false全部正确。"
+    },
+    {
+      "name": "required_approvals",
+      "state": "PASS",
+      "evidence": "authority-policy L3四项不可缺；返回SPONSOR_RENEWAL、COMMERCIAL_PRODUCTION、DATA_PERMISSION、WORKSPACE_OPEN，未错误要求已就绪技术准备或预算增加。"
+    },
+    {
+      "name": "state_evidence_semantics",
+      "state": "PASS",
+      "evidence": "state_evidence逐状态包含直接决定源；额外authority-policy确定时点/范围/权威，budget-reserved与sales-latest为不能替代授权的反证。summary明确否定其授权效力，没有把销售或财务当状态负责人。公开schema仅要求object，不限定精确键集合/源列表最小集合。"
+    },
+    {
+      "name": "citation_locators",
+      "state": "PASS",
+      "evidence": "全部9条引用均为真实source_id及L3；逐一读回后定位与其括注陈述一致。"
+    },
+    {
+      "name": "delivery_and_handoff_usefulness",
+      "state": "PASS",
+      "evidence": "response.json含全部要求字段；summary直接指出上线禁止、四项阻塞及再核对条件，可作为交接使用。"
+    },
+    {
+      "name": "independent_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "output/response.json.executed_actions=[]，但本盲审包没有独立执行轨迹或外部服务观测。未发现外部行为证据，也不据自报证明未执行。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问blind-review公开题面、schema、输入、候选产物及objective-checks；未访问外部evaluator/candidates、隐藏金标、候选标签或模型配置。",
+    "4/4/4来自独立核对全部9份源材料、每项状态/待补集合、全部引用及交接可用性，不是复制客观PASS。未观测关键事实错误。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "objective-checks仅此字段FAIL，但所有状态映射有直接正确源，额外源均相关；prompt未禁止补充政策/反证来源，schema未指定精确对象。不得将其计为事实错误。",
+      "cause_status": "精确对象/集合比较为可能原因；本审阅未读取grader，具体实现原因UNKNOWN。",
+      "recommendation": "按每状态必需权威来源及错误归因审核，允许语义相关补充源；保留原始客观分并独立记录规则修正。"
+    }
+  ]
+}

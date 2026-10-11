@@ -1,0 +1,51 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-dd6b05c983",
+  "checks": [
+    {
+      "name": "source_by_source_business_states",
+      "state": "PASS",
+      "evidence": "本sample的9份handoff-deep源L3逐份重读；SPONSOR签署9月30日到期且续签未签，commercial仅EU PILOT，data仅EU匿名测试且10月7日到期，OPS READY、WORKSPACE_ADMIN CLOSED。response所有状态、false上线结论与10月8日16:00评估条件一致。"
+    },
+    {
+      "name": "required_approvals",
+      "state": "PASS",
+      "evidence": "四项SPONSOR_RENEWAL/COMMERCIAL_PRODUCTION/DATA_PERMISSION/WORKSPACE_OPEN完整准确；未把财务预留或较新销售预期当成授权，也未增加无须补的技术准备。"
+    },
+    {
+      "name": "state_evidence_semantics",
+      "state": "PASS",
+      "evidence": "每项业务状态都有直接决定源；evaluation_target映射policy，budget_context及sales_expectation_context各映射真实背景来源。没有单独launch_allowed键，但上线判断完整证据链可由target与各状态/required_approvals映射直接追踪；公开schema没有规定该object的唯一键集。"
+    },
+    {
+      "name": "citations_and_handoff_delivery",
+      "state": "PASS",
+      "evidence": "9个source_id及line 3引用真实、括注准确。JSON全部要求字段齐全，摘要给出禁止上线及四项下一步，能够直接交接使用。"
+    },
+    {
+      "name": "global_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]不是全渠道独立行为证据；本包未提供此种覆盖，没有已证违规行为。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问匿名包公开任务、输入/schema、可用独立服务观测及候选产物；未读隐藏金标、模型/配置标签或evaluator/candidates。",
+    "独立逐源核验后无已证事实或遗漏。state_evidence表达结构不同不等于状态误判。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "客观FAIL，但每个业务状态权威源齐全且语义正确。object无公开固定键/来源集合，不能把补充语义相关背景或组合结论的映射组织方式变成事实错误。",
+      "cause_status": "具体实现UNKNOWN。",
+      "recommendation": "公开必需状态键与每项来源要求，或按可追踪证据语义核查。"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B13.deep",
+  "summary": "截至2026-10-08 16:00，APAC生产上线不可做：发起人签署已过期且延期仅为未签草稿，商业批准仅限EU试点，数据授权既不覆盖APAC生产且已过期，管理员最终状态为工作区CLOSED。技术账号READY且预算已预留不能补足这些门槛；须补发起人续批、APAC生产商业批准、APAC生产数据授权，并由管理员开放工作区。",
+  "result": {
+    "commercial_approval": "PILOT_ONLY",
+    "commercial_production_allowed": false,
+    "data_permission": "SCOPE_AND_DATE_INVALID",
+    "launch_allowed": false,
+    "required_approvals": [
+      "SPONSOR_RENEWAL",
+      "COMMERCIAL_PRODUCTION",
+      "DATA_PERMISSION",
+      "WORKSPACE_OPEN"
+    ],
+    "sponsor_approval": "EXPIRED",
+    "state_evidence": {
+      "commercial_approval": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "commercial_production_allowed": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "data_permission": [
+        "data-permission",
+        "authority-policy"
+      ],
+      "launch_allowed": [
+        "authority-policy",
+        "sponsor-signed",
+        "sponsor-draft",
+        "commercial-signed",
+        "data-permission",
+        "workspace-closed",
+        "technical-ready"
+      ],
+      "required_approvals": [
+        "authority-policy",
+        "sponsor-signed",
+        "sponsor-draft",
+        "budget-reserved",
+        "commercial-signed",
+        "data-permission",
+        "workspace-closed",
+        "technical-ready"
+      ],
+      "sponsor_approval": [
+        "sponsor-signed",
+        "sponsor-draft",
+        "budget-reserved",
+        "authority-policy"
+      ],
+      "technical_account": [
+        "technical-ready",
+        "authority-policy"
+      ],
+      "workspace": [
+        "workspace-closed",
+        "sales-latest",
+        "technical-ready",
+        "authority-policy"
+      ]
+    },
+    "technical_account": "READY",
+    "workspace": "CLOSED"
+  },
+  "citations": [
+    {
+      "source_id": "authority-policy",
+      "locator": "line 3（评估时点、APAC生产上线必备门槛、权威顺序及地区/用途/有效期不可替代）"
+    },
+    {
+      "source_id": "sponsor-signed",
+      "locator": "line 3（APAC生产签署范围、2026-09-30到期、无自动延续）"
+    },
+    {
+      "source_id": "sponsor-draft",
+      "locator": "line 3（2026-10-08延期申请为DRAFT且签字栏空白）"
+    },
+    {
+      "source_id": "budget-reserved",
+      "locator": "line 3（SGD10000已预留，但不能替代发起人或权限批准）"
+    },
+    {
+      "source_id": "commercial-signed",
+      "locator": "line 3（仅批准EU PILOT，APAC生产未批准）"
+    },
+    {
+      "source_id": "data-permission",
+      "locator": "line 3（仅EU匿名测试数据、有效至2026-10-07、无APAC生产数据授权）"
+    },
+    {
+      "source_id": "technical-ready",
+      "locator": "line 3（账号READY，但不等于工作区OPEN）"
+    },
+    {
+      "source_id": "workspace-closed",
+      "locator": "line 3（WORKSPACE_ADMIN最终状态：APAC生产工作区CLOSED）"
+    },
+    {
+      "source_id": "sales-latest",
+      "locator": "line 3（销售口头OPEN预期不掌握管理员授权，不能覆盖管理员状态）"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按持仓 period=2026-10、APPROVED 最新有效版本及 2026-10-08 FINAL 报价核对。四项确认 SGD 小计 480280，不是完整基金总值。P-EUR-3 原币中间值 EUR 120000；U-EUR-FX 可确定 EUR 4000，但缺本域估值日授权汇率，SGD 值保留未知。U-QUOTE 缺估值日 FINAL 报价；U-DRAFT 与 U-PERIOD 缺十月 APPROVED 持仓。USD 按 USD_per_SGD=0.74 逆向换算，111000 USD / 0.74 = 150000 SGD。静态逐项 CSV 已提供，未知值为空而非零。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "valuation_detail.csv",
+    "eur_intermediate": "120000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "holdings-versions.period (target: valuation_policy.data.holding_period = 2026-10)",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period; data.as_of; data.allowed_holding_status; data.allowed_quote_state; data.version_selection; data.fx_domains.standard; data.fx_domains.restricted-domain; data.rules[0:4]"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV header line 1: period, status, version_date; selected rows lines 2 (P-SGD-1), 3 (P-SGD-4), 11 (P-USD-2), 16 (P-EUR-3); unknown evidence lines 4 (U-QUOTE), 7 (U-DRAFT), 9 (U-PERIOD), 15 (U-EUR-FX)"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV header line 1: date, state, published_at; selected rows lines 17 (P-SGD-1), 3 (P-SGD-4), 4 (P-USD-2), 6 (P-EUR-3); U-EUR-FX line 14; U-QUOTE lines 7 and 18"
+    }
+  ],
+  "executed_actions": []
+}

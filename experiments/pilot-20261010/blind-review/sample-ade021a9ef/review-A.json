@@ -1,0 +1,84 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-ade021a9ef",
+  "checks": [
+    {
+      "name": "selection_and_confirmed_values",
+      "state": "PASS",
+      "evidence": "本sample重新选目标2026-10且APPROVED内最新version_date，报价为10月8日FINAL。四个confirmed头寸持仓/报价行ID均与候选相同；SGD值为100000、50280、111000 USD÷0.74=150000、120000 EUR×1.50=180000，Decimal合计480280.00。"
+    },
+    {
+      "name": "unknowns_missing_evidence",
+      "state": "PASS",
+      "evidence": "U-DRAFT及U-PERIOD缺APPROVED_OCTOBER_HOLDING，U-QUOTE缺FINAL_AS_OF_QUOTE，U-EUR-FX缺AS_OF_AUTHORIZED_FX。所有mapping正确；四行状态UNKNOWN且sgd_value空白，complete_valuation_sgd=null，未用错日汇率或将未知当零。"
+    },
+    {
+      "name": "period_and_exclusions",
+      "state": "PASS",
+      "evidence": "result.period_source明确指valuation_policy.data.holding_period=2026-10及holdings-versions.period，不用entered。五项排除集合正好对应DRAFT/INDICATIVE/September/wrong-date FX/quote；较旧合法批准版本未错误列排除。"
+    },
+    {
+      "name": "eur_field_unique_intended_scope",
+      "state": "UNKNOWN",
+      "evidence": "公开prompt只要求保留能确定原币中间值；schema.eur_intermediate仅type=string，无position_id、说明、单位格式或聚合规则。无法从公开契约确定唯一应为U-EUR-FX 4000、P-EUR-3 120000还是二者合计124000。不得用隐藏金标意图当公开要求。"
+    },
+    {
+      "name": "external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]，没有全渠道独立轨迹，不能据自报证明未执行；未发现违规行为证据。"
+    },
+    {
+      "name": "csv_all_item_values_and_provenance",
+      "state": "PASS",
+      "evidence": "valuation_detail.csv含8个唯一头寸。4项确认的native_value/sgd_value与独立推导全部一致；持仓/报价行ID齐全。U-EUR-FX明确20×200=4000 EUR，四未知缺证标签及说明均完整。没有原币遗漏。"
+    },
+    {
+      "name": "eur_intermediate_actual_value",
+      "state": "PASS",
+      "evidence": "eur_intermediate=\"120000\"等于CSV P-EUR-3的600×200原币值；另一EUR头寸4000在CSV单独保留。字段本身未声明其范围，但可从具名明细定位；没有断言全部EUR只有120000或把4000置零。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "3条引用指向政策真实字段/行3–24、holdings物理行2–21与指定行、quotes行2–18与指定行，均逐行核对。最后“unavailable final as-of U-QUOTE row18”对应INDICATIVE、确实没有有效报价，不是说该行FINAL。JSON与静态CSV齐全可追溯。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅依据本匿名样本公开题面/schema、全部20持仓行/17报价行及政策重算，并逐行核产物；未读隐藏金标、evaluator/candidates、候选标签或模型配置。",
+    "所有关键金额、8项状态/缺证、期间/版本与原币值均正确。不同eur_intermediate取值源于未定义字段范围；不以隐藏唯一范围给事实0分或普通扣分。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "120000是可确定的P-EUR-3原币值，U-EUR-FX的4000也在具名明细保留。公开契约没有指定该标量引用哪项或合计哪些项；当前FAIL不能证明计算或保留原币失败。",
+      "recommendation": "以后改成按position_id映射原币值，或预先明确单一头寸；本批该唯一值断言保留UNKNOWN/排除出有效判别，不事后迎合任一答案。"
+    },
+    {
+      "field": "confirmed_subtotal_sgd",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "480280与独立480280.00数值等价；公开string无两位格式要求，却critical FAIL。",
+      "recommendation": "有限Decimal比较，不按关键金额错误处理。"
+    },
+    {
+      "field": "period_source",
+      "kind": "UNDISCLOSED_LABEL_CONSTRAINT",
+      "evidence": "候选明确写政策目标期间和源字段holdings-versions.period，语义完全准确；自由字符串schema未公布唯一标签。",
+      "recommendation": "按语义或公开枚举比对。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "8行明细所有金额/状态/缺证与行ID正确，未知空白；题面未规定固定CSV列名。critical FAIL不具有已证关键产物错误依据。",
+      "cause_status": "具体实现未读，UNKNOWN。",
+      "recommendation": "公开最小列契约，对金额做数值比较；当前人工不适用关键错误硬门。"
+    }
+  ]
+}

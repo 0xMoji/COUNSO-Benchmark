@@ -1,0 +1,17 @@
+{
+  "run_id": "pilot20261010-g56_medium-B17_contract_v2-r1",
+  "scenario_id": "B17.reconcile",
+  "run_origin": "NEW_MODEL",
+  "completion": "COMPLETE",
+  "failure_origin": "NONE",
+  "rubric_version": "RECON-0.2",
+  "task_revision": "B17-contract-0.2",
+  "started_at": "2026-10-10T23:25:42Z",
+  "finished_at_observed": "2026-10-10T23:28:49.127091+00:00",
+  "model_requested": "gpt-5.6-sol",
+  "effort_requested": "medium",
+  "model_snapshot": "UNKNOWN",
+  "actual_model_effort_independently_confirmed": false,
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN"
+}

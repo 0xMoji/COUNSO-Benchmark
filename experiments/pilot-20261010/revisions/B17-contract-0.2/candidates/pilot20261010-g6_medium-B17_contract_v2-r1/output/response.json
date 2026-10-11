@@ -1,0 +1,71 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按2026-10期间APPROVED持仓最新有效版本、2026-10-08 FINAL报价及同日授权汇率核对，确认小计为SGD 480280；4个头寸仍未知，不能据此给出完整基金总值。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period, data.allowed_holding_status, data.allowed_quote_state, data.as_of, data.version_selection, data.rules (lines 3-5, 17-24)"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.standard, data.fx_domains.restricted-domain (lines 6-15)"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV lines 2-21: period, status, units, currency, fx_domain, holding_row_id, version_date"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV lines 2-18: date, price, state, quote_row_id, published_at"
+    }
+  ],
+  "executed_actions": []
+}

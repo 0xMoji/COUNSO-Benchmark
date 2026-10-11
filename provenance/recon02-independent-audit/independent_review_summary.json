@@ -1,0 +1,155 @@
+{
+  "review_status": "PASS_FOR_BOUNDED_OFFLINE_RECON02_EXPERIMENT_AND_AUTHENTICATED_LEGACY_REGRADE",
+  "reviewer": {
+    "audit_id": "COUNSO-RECON02-AUDIT-20261010",
+    "requested_model": "gpt-6.1-sol",
+    "requested_reasoning_effort": "ultra",
+    "dispatch_evidence": "Requested model/effort creation parameters accepted; actual backend build/checkpoint/effort attestation not returned",
+    "real_human_review": false
+  },
+  "executed_at_utc": "2026-10-10T23:46:39.714241+00:00",
+  "snapshot": {
+    "path": "/workspace/shared/counso-benchmark-recon-0.2-review-20261010-v5",
+    "manifest_sha256": "f19619224f2af285948be9abcdca1070b6e01a29437278ec3bf05d86f157e2de",
+    "execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+    "semantic_helper_sha256": "4e5d087d6d82f8eb2c704da60c5f3cf8047cd31603ae43706e03e2f229cc7f83",
+    "B17_fixed_contract_manifest_sha256": "a1eb635d8edca150207be281e169d6feb20954dec51b223fa591493f95b4f42a"
+  },
+  "compatibility_base": {
+    "commit": "a9f731be5abfacf5270c75e387c150ad216e7d9b",
+    "manifest_sha256": "ecac5fc602577f32b694030bb3e045f4c14a1ede1937e1e61fec4caf983f808b",
+    "sqlite_callable_authorizer_preserved": true,
+    "sqlite_Warning_catch_preserved": true,
+    "final_revision_actual_python310_run": false
+  },
+  "tests": {
+    "python": "3.12.14",
+    "unit_tests": {
+      "passed": 114,
+      "failed": 0
+    },
+    "independent_contract_controls": {
+      "passed": 95,
+      "failed": 0
+    },
+    "existing_independent_controls": {
+      "passed": 37,
+      "failed": 0
+    },
+    "reference_selftest": {
+      "positive": 31,
+      "negative": 31,
+      "all_passed": true
+    },
+    "legacy_adapter_controls": {
+      "revision": "PILOT-LEGACY-REGRADE-0.2.1",
+      "passed": 31,
+      "failed": 0
+    },
+    "package_validate": true,
+    "source_only_decimal_oracle": true,
+    "preserved_inputs_and_historical_evidence_count": 76,
+    "anonymous_B17_fixed_input_checks": 40,
+    "anonymous_B17_fixed_input_samples": 8
+  },
+  "resolved_findings": [
+    {
+      "id": "P1-01",
+      "issue": "B17 legitimate extra verified source-row key scope and full-quality coverage",
+      "final": "Valid required mappings strict; valid extras UNKNOWN, full quality None and shared quality coverage truthful; known critical amount failure still zero"
+    },
+    {
+      "id": "P1-02",
+      "issue": "B17 non-prefixed fictitious confirmed position swallowed as UNKNOWN",
+      "final": "Explicit fictitious position claim fails independently of P-/U- prefix; correct recognized subtotal still UNKNOWN"
+    },
+    {
+      "id": "P1-03",
+      "issue": "B17 out-of-vocabulary status spelling causing business hard-zero",
+      "final": "Format FAIL/business UNKNOWN; still detects known wrong amounts and legal status reversal"
+    },
+    {
+      "id": "P1-04",
+      "issue": "B13 unparseable earlier evidence suppressing known missing primary source",
+      "final": "Known missing/invented authority fails regardless of earlier unknown evidence"
+    },
+    {
+      "id": "P1-05",
+      "issue": "B20 duplicate XML rows/cell refs silently overwritten",
+      "final": "Duplicate rows/cells rejected; complete reordered records and valid t=str formulas pass"
+    }
+  ],
+  "remaining_limits": [
+    "B17 summary-row and selected-key scope remain UNKNOWN; fixed task prompt not modified",
+    "Legacy B17 EUR target and CSV semantics stay underdefined UNKNOWN, no retroactive 0.2 target",
+    "No actual final-revision Python 3.10 execution in this audit",
+    "No Microsoft Excel or visual Office verification by this reviewer",
+    "No real human quality review, OS-level isolation certification, backend checkpoint attestation or ranking validity proof",
+    "Declarations executed_actions=[] do not establish actual external actions; assessor receipts require trusted isolation"
+  ],
+  "not_authorized_or_not_claimed": [
+    "No additional paid model calls",
+    "No candidate model labels read",
+    "No implementation edit by reviewer",
+    "No upload/publication",
+    "No historical original benchmark equivalence",
+    "No strong model ordering",
+    "No production-readiness certification"
+  ],
+  "regrade_adapter": {
+    "path": "/workspace/shared/counso-pilot-20261010/evaluator/regrade_baseline.py",
+    "sha256": "164c91dbc4c9c3f40e992b3c1a5f0e1444b913cbb2392df3fbd970db20800616",
+    "only_selftest_executed": true,
+    "formal_32_regrade_and_8_new_scores_owned_by_experiment_runner": true,
+    "revision": "PILOT-LEGACY-REGRADE-0.2.1",
+    "period_source_legacy_rules": "Known correct finite aliases PASS; exact wrong source labels FAIL; unrecognized free strings UNKNOWN; non-string FAIL",
+    "previous_0.2_adapter_sha256": "5bbbdaf87eec8e7a56d45440355042d1f48dc93986b6928bd5a43f0aac48c766"
+  },
+  "evidence_files": [
+    {
+      "path": "final-validation.json",
+      "sha256": "0072c5413794809a71da9e1424ffc6ecf59ec32e7f69dd14047e183d95c760c8",
+      "bytes": 424
+    },
+    {
+      "path": "final-unit-tests.log",
+      "sha256": "5bf2a239d41615074505e883629188a690eab7ddba84645d679665b50fb71173",
+      "bytes": 14251
+    },
+    {
+      "path": "final-public-extra-controls/control-results.json",
+      "sha256": "84cb93c330602f50bf543ad8eda318ad8ed08dfa13d1b1284683bb44f8c99ad3",
+      "bytes": 23731
+    },
+    {
+      "path": "final-public-extra-controls/audit_contract_controls.py",
+      "sha256": "1b23e96ed1d9e865a7d0c80f99c8547035eabfeb1d78f10a306f2040e434aa1b",
+      "bytes": 14317
+    },
+    {
+      "path": "final-controls/independent-control-results.json",
+      "sha256": "0441e7075f6736adb3a00980191ce15eea3bee26f81d3045f14a63cc12984fa0",
+      "bytes": 17172
+    },
+    {
+      "path": "final-controls/reference_cases/selftest-summary.json",
+      "sha256": "55a711443ae9adbd6ac5235b274c33f3efeaea04299be38b51dfeec53fe0dfe7",
+      "bytes": 1387
+    },
+    {
+      "path": "final-oracle.json",
+      "sha256": "5d7c22f6d44582c86d169731240691471962d5f704d0be86e52aa1967a654eae",
+      "bytes": 3488
+    },
+    {
+      "path": "final-legacy-adapter-0.2.1-corrected/adapter-controls.json",
+      "sha256": "35209bb7d49732270c0d680734c690fdb075a209639f22a844ceab23b98babab",
+      "bytes": 8091
+    },
+    {
+      "path": "input-preservation.json",
+      "sha256": "5d5423094d8c08f46108564c8a66e58a729335695d9ad48a8db0d81ae8fa6b27",
+      "bytes": 18006
+    }
+  ]
+}

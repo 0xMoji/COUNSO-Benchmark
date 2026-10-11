@@ -1,0 +1,20 @@
+{
+  "distinct_input_files": 53,
+  "errors": [],
+  "family_count": 20,
+  "groups": {
+    "core": 20,
+    "diagnostic": 6,
+    "stress": 5
+  },
+  "notice": "这是本次替代包校验，不等于原包394项校验重跑。",
+  "objective_checks": 243,
+  "scenario_count": 31,
+  "score_modes": {
+    "diagnostic": 6,
+    "normalized": 23,
+    "supplemental": 2
+  },
+  "suite_label": "HISTORY-RECONSTRUCTED",
+  "valid": true
+}

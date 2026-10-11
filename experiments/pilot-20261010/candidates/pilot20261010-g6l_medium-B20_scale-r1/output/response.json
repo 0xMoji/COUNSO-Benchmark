@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "依policy筛选并逐单扣除APPLIED收款与贷项后，符合条件且余额为正的发票共2400笔；未分配及未匹配收款单独汇总，不抵余额。",
+  "result": {
+    "eligible_rows": 2400,
+    "balance_sgd": "320772.27",
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "invoice_ids_preserved": true,
+    "detail_file": "ledger.csv",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "inputs/ledger-scale/policy.json: selection, allocation, as_of"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "inputs/ledger-scale/invoices.csv: header fields jurisdiction,currency,due_date,invoice_id,entity_id,amount; data rows 2-2819"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "inputs/ledger-scale/receipts.csv: header fields invoice_id,amount,allocation; data rows 2-2283"
+    },
+    {
+      "source_id": "credits",
+      "locator": "inputs/ledger-scale/credits.csv: header fields invoice_id,amount; data rows 2-38"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "已读取全部2818张发票、2282笔收款和37笔贷项；按SG、SGD、到期日早于2026-07-10且逐单余额为正筛选。仅按发票号抵扣APPLIED收款和贷项，UNALLOCATED及UNMATCHED另列。",
+  "result": {
+    "eligible_rows": 2400,
+    "balance_sgd": "320772.27",
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "invoice_ids_preserved": true,
+    "detail_file": "ledger_detail.csv",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "selection, allocation, input_counts 字段"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "invoices.csv 第1-2819行；invoice_id, entity_id, jurisdiction, currency, due_date, amount列"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "receipts.csv 第1-2283行；invoice_id, amount, allocation列"
+    },
+    {
+      "source_id": "credits",
+      "locator": "credits.csv 第1-38行；invoice_id, amount列"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按 2026-10 批准持仓、2026-10-08 FINAL 报价及同日授权汇率，仅四个头寸可确认，合计 480280 SGD。四个头寸仍未知；U-EUR-FX 的 4000 EUR 原币金额可确定，但缺同日授权汇率，不能计入 SGD 小计或将未知作零。逐项静态明细见 detail.csv。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "4000 EUR (U-EUR-FX: 20 units × 200 EUR; no authorized as-of restricted-domain FX)",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "Target 2026-10 from valuation_policy.data.holding_period; assess each holdings-versions.period, not entered date.",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period; data.as_of; data.allowed_holding_status; data.allowed_quote_state; data.version_selection; data.rules"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.standard.SGD_per_EUR; data.fx_domains.standard.USD_per_SGD; data.fx_domains.standard.date; data.fx_domains.restricted-domain.SGD_per_EUR; data.fx_domains.restricted-domain.date"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 16, holding_row_id=H-P-EUR-3-CURRENT; fields position_id, period, status, version_date, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 2, holding_row_id=H-P-SGD-1-CURRENT; fields position_id, period, status, version_date, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 3, holding_row_id=H-P-SGD-4-CURRENT; fields position_id, period, status, version_date, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 11, holding_row_id=H-P-USD-2-CURRENT; fields position_id, period, status, version_date, units, currency, fx_domain"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 6, quote_row_id=Q-P-EUR-3-CURRENT; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 17, quote_row_id=Q-P-SGD-1-CURRENT; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 3, quote_row_id=Q-P-SGD-4-CURRENT; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 4, quote_row_id=Q-P-USD-2-CURRENT; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 4, holding_row_id=H-U-QUOTE-CURRENT; fields position_id, period, status, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 7, holding_row_id=H-U-DRAFT-CURRENT; fields position_id, period, status, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 9, holding_row_id=H-U-PERIOD-CURRENT; fields position_id, period, status, units, currency, fx_domain"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "CSV line 15, holding_row_id=H-U-EUR-FX-CURRENT; fields position_id, period, status, units, currency, fx_domain"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 7, quote_row_id=Q-U-QUOTE-STALE-FINAL; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 18, quote_row_id=Q-U-QUOTE-CURRENT; fields position_id, date, state, price"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "CSV line 14, quote_row_id=Q-U-EUR-FX-CURRENT; fields position_id, date, state, price"
+    }
+  ],
+  "executed_actions": []
+}

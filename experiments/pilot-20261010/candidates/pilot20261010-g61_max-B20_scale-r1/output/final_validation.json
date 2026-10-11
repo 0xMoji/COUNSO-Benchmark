@@ -1,0 +1,25 @@
+{
+  "response_schema_valid": true,
+  "independent_sql_integer_cents_join_matches_every_csv_row": true,
+  "full_input_counts": {
+    "invoices": 2818,
+    "receipts": 2282,
+    "credits": 37
+  },
+  "eligible_rows": 2400,
+  "balance_sgd": "320772.27",
+  "unallocated_sgd": "212.96",
+  "unmatched_sgd": "168.00",
+  "xlsx_valid_zip": true,
+  "xlsx_sheet_names": [
+    "Ledger"
+  ],
+  "xlsx_dimensions": "A1:F2401 (verified from actual populated cells)",
+  "xlsx_every_cell_matches_expected": true,
+  "xlsx_text_identifier_cells": 4800,
+  "xlsx_identifier_numfmt": "@",
+  "xlsx_numeric_amount_cells": 9600,
+  "xlsx_balance_formula_count": 2400,
+  "xlsx_balance_formula_caches_verified": true,
+  "external_application_open_test_performed": false
+}

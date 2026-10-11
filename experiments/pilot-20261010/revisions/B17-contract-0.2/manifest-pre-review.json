@@ -1,0 +1,39 @@
+{
+  "version": "B17-contract-0.2",
+  "frozen_at": "2026-10-10T23:11:57.448367+00:00",
+  "business_inputs_unchanged": true,
+  "files": [
+    {
+      "path": "README.txt",
+      "sha256": "a0f16cc07e65c6a4b946d7d59fce59282a41e1d0bc21c91101d23d591fc3713c"
+    },
+    {
+      "path": "input_manifest.json",
+      "sha256": "39e567f1d21429831831d295307cc85f70888e1919aa4c5952cfaf9950f5ba53"
+    },
+    {
+      "path": "inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "a4e456402c17fd9e075b94db74ed2b6a77e0fd5f77428f13324bb2c98305a4b2"
+    },
+    {
+      "path": "response_schema.json",
+      "sha256": "017d00567de9791a067c53226831bb6ff6739ae3c68025db8c42220912774518"
+    },
+    {
+      "path": "run_metadata_template.json",
+      "sha256": "5320ff1ff0cd630333a5c326fe4dfafd756f9565d77824bb1b8c9302a8715b15"
+    }
+  ]
+}

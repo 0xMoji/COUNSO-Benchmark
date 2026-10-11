@@ -1,0 +1,98 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-4876082243",
+  "checks": [
+    {
+      "name": "version_selection",
+      "state": "PASS",
+      "evidence": "读取20行holdings与17行quotes，按valuation_policy.data.version_selection独立筛选。四个确认头寸选CURRENT APPROVED十月行及当日FINAL报价，与selected_holding_rows/selected_quote_rows完全一致；较新DRAFT、九月版本及INDICATIVE未被采用。"
+    },
+    {
+      "name": "confirmed_subtotal_and_fx_direction",
+      "state": "PASS",
+      "evidence": "P-SGD-1=1000×100=100000；P-SGD-4=5028×10=50280；P-USD-2=1500×74÷0.74=150000；P-EUR-3=600×200×1.50=180000。Decimal独立合计480280.00，与result.confirmed_subtotal_sgd=\"480280\"数值等价。源holdings物理行2/3/11/16，quotes物理行17/3/4/6，policy标准FX。"
+    },
+    {
+      "name": "unknowns_and_native_intermediate",
+      "state": "PASS",
+      "evidence": "U-DRAFT及U-PERIOD缺APPROVED_OCTOBER_HOLDING；U-QUOTE缺FINAL_AS_OF_QUOTE；U-EUR-FX缺AS_OF_AUTHORIZED_FX。后者20×200=4000 EUR，restricted-domain汇率日期10月1日不能补10月8日估值。四项缺证映射及unknown_positions与独立推导完全一致，complete_valuation_sgd=null正确。"
+    },
+    {
+      "name": "period_basis",
+      "state": "PASS",
+      "evidence": "result.period_source=\"period\"，summary与reconciliation_notes.txt L3明确目标2026-10、按持仓period而非entered。与policy.data.rules[0]原文一致。"
+    },
+    {
+      "name": "itemized_csv",
+      "state": "PASS",
+      "evidence": "valuation_detail.csv有8个唯一position_id、4项CONFIRMED及4项UNKNOWN。独立逐项比较金额、原币值、持仓/报价行ID和缺证无差异；所有未知sgd_value空白，U-EUR-FX保留native_value=4000。表含可定位源行、汇率方向及政策字段，符合公开静态逐项CSV请求。"
+    },
+    {
+      "name": "excluded_evidence",
+      "state": "PASS",
+      "evidence": "excluded_evidence.csv逐行仅收录DRAFT持仓、九月持仓、INDICATIVE报价、错日报价及错日FX。四条较旧但合法APPROVED十月持仓未列入；result集合准确。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "response.json全部引用source_id与物理行号/政策字段可定位并与陈述一致；valuation_detail.csv、excluded_evidence.csv、reconciliation_notes.txt实际存在，摘要正确区分确认小计与未知完整总值。"
+    },
+    {
+      "name": "independent_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "output/response.json.executed_actions=[]，但本盲审包没有独立执行轨迹或外部服务观测。未发现外部行为证据，也不据自报证明未执行。"
+    },
+    {
+      "name": "eur_intermediate_unique_contract_scope",
+      "state": "UNKNOWN",
+      "evidence": "统一口径补充：公开prompt仅要求保留原币中间值，schema.eur_intermediate只为string；未指定唯一头寸或合计范围。本sample具名U-EUR-FX 4000事实正确，但不能将该数值当所有候选唯一公开答案。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问blind-review公开题面、schema、输入、候选产物及objective-checks；未访问外部evaluator/candidates、隐藏金标、候选标签或模型配置。",
+    "所有关键计算、版本选择、8项逐项交付和出处已独立核对；不存在把UNKNOWN变0或把确认小计充当基金总值。4/4/4依据公开请求的全面可用交付，不沿用客观分。",
+    "一致性补充：EUR字段唯一范围欠定义已明确列UNKNOWN；本sample4/4/4及具名原币核验不变。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "confirmed_subtotal_sgd",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "客观FAIL，但源输入独立算得480280.00，候选480280等值。schema仅string，无两位小数字符串格式要求。",
+      "cause_status": "疑似金额字符串比较，未检查实现，具体原因UNKNOWN。",
+      "recommendation": "有限Decimal数值等价比较；不得将此项作为关键金额错误硬门归零。"
+    },
+    {
+      "field": "eur_intermediate",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "客观FAIL，但U-EUR-FX可确定20×200=4000 EUR，候选4000与说明一致；P-EUR-3原币120000也在明细保留。",
+      "cause_status": "精确格式或字段约定不明；实现原因UNKNOWN。",
+      "recommendation": "显式定义该字段指向哪个头寸并数值等价比较；当前答案无已证原币计算错误。"
+    },
+    {
+      "field": "period_source",
+      "kind": "UNDISCLOSED_LABEL_CONSTRAINT",
+      "evidence": "候选填源字段名period且文字完整解释，符合公开policy。schema自由string且没有公开唯一标签；客观FAIL不证明用了entered或错期间。",
+      "recommendation": "接受明确表示持仓period的语义值，或预先公布枚举。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "客观critical FAIL，但独立逐项核查8行金额/状态/版本/空白未知正确。prompt与schema没有规定CSV固定列名、列顺序或两位小数格式；候选已交付详尽可追溯CSV。",
+      "cause_status": "可能为未公开列名或金额字符串契约；未读取隐藏实现，具体原因UNKNOWN。",
+      "recommendation": "将CSV必要列契约公开，并对金额数值等价校验；在原因厘清前不能按关键产物失败硬门归零。"
+    },
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "本sample说明中主动将4000映射U-EUR-FX，同时CSV保留P-EUR-3 120000。其他合规输出可能以120000或具名合计124000表示；公开契约没有唯一对象，故唯一标量范围断言UNKNOWN。",
+      "recommendation": "新版本定义position_id映射或明确范围；不追溯处罚当前自由字段。"
+    }
+  ]
+}

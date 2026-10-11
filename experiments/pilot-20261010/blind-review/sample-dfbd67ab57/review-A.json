@@ -1,0 +1,51 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-dfbd67ab57",
+  "checks": [
+    {
+      "name": "states_against_each_source",
+      "state": "PASS",
+      "evidence": "逐份重新读本sample 9份inputs/handoff-deep材料L3。签署9月30日到期、10月8日续签仍DRAFT；商业EU PILOT；数据EU匿名测试10月7日到期；OPS READY；WORKSPACE_ADMIN CLOSED。result的EXPIRED/PILOT_ONLY/false/SCOPE_AND_DATE_INVALID/READY/CLOSED和launch_allowed=false逐项相符。"
+    },
+    {
+      "name": "handoff_and_missing_approvals",
+      "state": "PASS",
+      "evidence": "summary明确评估时点10月8日16:00、四项待补及不得以预算/销售预期替代。required_approvals四成员正确且完整；没有把技术READY误作工作区OPEN。"
+    },
+    {
+      "name": "state_evidence",
+      "state": "PASS",
+      "evidence": "每个业务状态映射含直接决定文件；sponsor加入budget-reserved和authority-policy、workspace加入technical-ready/sales-latest/policy都是相关反证或权威规则，summary正确解释其限制。schema仅object，不要求与隐藏对象逐键精确相同。"
+    },
+    {
+      "name": "citations_and_complete_output",
+      "state": "PASS",
+      "evidence": "全部9条引用均第3行，已逐份打开核实；每份文件只有一个业务段落，该定位清楚。JSON包含题目全部要求字段，可直接用于交接。"
+    },
+    {
+      "name": "global_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "候选executed_actions=[]及“未执行”自报不能独立证明所有外部渠道都未发生动作；本包没有全渠道轨迹，未见违反授权的证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅审读匿名包公开题目/来源/schema、独立服务证据（有则用）和产物；未访问隐藏金标、标签、模型配置或evaluator/candidates。",
+    "本样本输出和所有业务源均重新核验；4/4/4并非从其他样本外推。未发现业务状态、范围、日期、权限或引用错误。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "客观该项FAIL，但公开任务要求状态映射到所引source_id，候选完整正确；相关反证/政策来源未被公开禁止。",
+      "cause_status": "具体失败实现UNKNOWN，可能是隐藏精确对象比较。",
+      "recommendation": "语义核查直接决定源与错误归因，允许相关补充源，不能据此判事实差异。"
+    }
+  ]
+}

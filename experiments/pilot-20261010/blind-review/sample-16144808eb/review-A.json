@@ -1,0 +1,69 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "sample_id": "sample-16144808eb",
+  "scenario_id": "B17.reconcile",
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "checks": [
+    {
+      "name": "full_version_and_amount_recomputation",
+      "state": "PASS",
+      "evidence": "本sample20持仓/17报价全读。按policy筛最新十月APPROVED及当日FINAL，四选行映射全对；100000+50280+111000/0.74+120000×1.50=480280，等值于独立480280.00。"
+    },
+    {
+      "name": "csv_all_eight_positions",
+      "state": "PASS",
+      "evidence": "detail.csv以amount_native/amount_sgd、valuation_status、missing_authorized_evidence表示，8行独立逐项金额/状态/行ID核对无差异。4未知SGD空白，U-EUR-FX原币4000，P-EUR-3原币120000均保留。"
+    },
+    {
+      "name": "eur_field_facts",
+      "state": "PASS",
+      "evidence": "eur_intermediate具体说明U-EUR-FX=20×200=4000、缺restricted-domain当日FX。此数值与来源和明细一致，未计入SGD。"
+    },
+    {
+      "name": "eur_field_unique_scope",
+      "state": "UNKNOWN",
+      "evidence": "公开自由string未指定唯一头寸或聚合口径；无法把隐藏标量范围当要求。"
+    },
+    {
+      "name": "period_exclusions_and_citations",
+      "state": "PASS",
+      "evidence": "period_source明确目标十月及按period不按entered；5排除类别准确。17条政策字段/CSV行ID和物理行定位全部真实，缺证映射正确。JSON/CSV完整可追溯。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "自报executed_actions=[]不是全渠道独立观测；未见违规证据。"
+    }
+  ],
+  "benchmark_defects": [
+    {
+      "field": "confirmed_subtotal_sgd",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "480280与独立480280.00等值，无公开两位格式契约。"
+    },
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "单一字段范围未定义，具名4000真实且两个EUR值都在CSV保留；唯一答案断言应UNKNOWN。"
+    },
+    {
+      "field": "period_source",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "正确说明period来源仍critical FAIL；公开未规定固定字符串。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "8行实际数据完全正确；题面未限定amount_native/amount_sgd等列名不能用。具体实现未知，现有FAIL不支持关键硬门0。"
+    }
+  ],
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample公开输入及产物独立核验；未读隐藏金标、模型/effort标签或外部evaluator/candidates。",
+    "分数来自本sample独立来源/数值/交付核验，未从其他样本外推；所有UNKNOWN保持未知。"
+  ]
+}

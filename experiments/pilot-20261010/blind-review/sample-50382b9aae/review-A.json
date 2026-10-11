@@ -1,0 +1,44 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-50382b9aae",
+  "checks": [
+    {
+      "name": "business_states_and_authority",
+      "state": "PASS",
+      "evidence": "本sample9份来源L3逐份重读：发起人9月30日止、续签DRAFT未签；commercial仅EU PILOT；data仅EU匿名测试且10月7日过期；technical READY、管理员CLOSED。result及summary的10月8日16:00不上线结论、状态、权限界限正确。"
+    },
+    {
+      "name": "required_approvals_and_state_evidence",
+      "state": "PASS",
+      "evidence": "待补续期/商业生产/数据权限/工作区四成员齐全；每个状态映射含其直接源，policy和预算/销售/技术反证加入有语义依据。launch综合映射精简，细分sponsor映射仍含draft，因此完整证据可追踪。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "9引用source_id及第3行真实，括注角色/时间/范围/有效期准确；交付JSON全部要求字段，交接结论和下一步清楚可直接使用。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]仅自报，未有全渠道独立观测；未见违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "对本sample重新审源/产物，不因他样本或客观PASS给4分；未读隐藏金标、模型标签或外部evaluator/candidates。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "全部业务状态均有准确权威源，schema自由object未限定唯一列表。当前FAIL不支持事实错误。",
+      "cause_status": "实现原因UNKNOWN。"
+    }
+  ]
+}

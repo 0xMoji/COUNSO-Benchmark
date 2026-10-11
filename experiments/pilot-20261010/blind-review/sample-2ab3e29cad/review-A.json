@@ -1,0 +1,68 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-2ab3e29cad",
+  "checks": [
+    {
+      "name": "full_inputs_version_and_amounts",
+      "state": "PASS",
+      "evidence": "本sample全部20持仓/17报价及policy已单独读完重算。目标十月APPROVED取最新version_date、报价as_of FINAL，4个selected持仓和报价ID全对；100000+50280+(1500×74÷0.74)+(600×200×1.50)=480280.00 SGD。"
+    },
+    {
+      "name": "all_eight_csv_rows",
+      "state": "PASS",
+      "evidence": "valuation_detail.csv有8唯一头寸；4确认金额、原币、源行ID逐项等于独立计算；U-DRAFT/U-PERIOD缺十月APPROVED、U-QUOTE缺当日FINAL、U-EUR-FX缺当日授权FX，四未知金额空白。"
+    },
+    {
+      "name": "native_currency_preservation",
+      "state": "PASS",
+      "evidence": "eur_intermediate=120000在summary明确是P-EUR-3，summary和CSV native_value同时保留U-EUR-FX=4000及缺本域当日FX限制。CSV period列统一目标2026-10，U-PERIOD备注明确源是九月并未选中该行，无错误采用九月持仓。"
+    },
+    {
+      "name": "eur_intermediate_unique_contract",
+      "state": "UNKNOWN",
+      "evidence": "公开字段只要求string，没有定义单一头寸或EUR合计；不把某种隐藏唯一值当公开要求。各具名原币事实独立正确。"
+    },
+    {
+      "name": "period_exclusions_citations_delivery",
+      "state": "PASS",
+      "evidence": "period_source明确holdings-versions.period，政策目标十月；5项excluded类别正确，未排除较旧但合法版本。引用的政策字段和CSV物理行范围逐条与本sample全表核对一致；JSON/静态CSV完整、可追溯。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]及候选自报无独立全渠道行为证明；未观察违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅读取blind-review的公开题目/输入/schema、产物和可用独立证据；未接触隐藏金标、标签、模型配置或evaluator/candidates。",
+    "4/4/4来自本sample全部8项实质结果及出处独立复核；不以客观PASS或其他样本结论替代。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "两项EUR原币120000与4000都已保留，公开未指定唯一标量范围，当前FAIL不代表遗漏或误算。",
+      "recommendation": "本版本唯一范围保持UNKNOWN；新版本可改成position_id映射，不追溯处罚。"
+    },
+    {
+      "field": "period_source",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "公开policy要求period，候选明确填写该源字段仍critical FAIL。",
+      "recommendation": "按语义或预先公开枚举检验。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "八项实际金额/状态/缺证正确，公共题面没有CSV固定列名；候选明细能够静态使用和定位。critical FAIL没有已证关键错误支持。",
+      "cause_status": "具体grader实现未查，UNKNOWN。",
+      "recommendation": "公开最小列契约并数值等价比较，不能根据隐藏列名契约给关键0。"
+    }
+  ]
+}

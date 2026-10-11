@@ -1,0 +1,72 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B20.scale",
+  "sample_id": "sample-c44760377d",
+  "checks": [
+    {
+      "name": "full_source_recomputation",
+      "state": "PASS",
+      "evidence": "本sample2818/2282/37输入全读，按policy对APPLIED及credit逐单抵扣再筛SG/SGD/7月10日前到期/正余额。独立2400行、balance=320772.27、unallocated=212.96、unmatched=168.00，与response完全一致。"
+    },
+    {
+      "name": "csv_all_cells",
+      "state": "PASS",
+      "evidence": "ledger.csv 2400唯一ID，六列顺序正确；2400行六字段与独立重算无差异，前导0原样保留。"
+    },
+    {
+      "name": "xlsx_raw_and_independent_reader",
+      "state": "PASS",
+      "evidence": "Ledger 2401行含表头；OOXML A/B全部4800格t=str，C:F全部9600格t=n；例A2为t=str且v=00000001，B2=SG-001。逐行六字段与独立重算一致。另只读openpyxl读取2400行，A/B均s类型、A2为Python字符串00000001，金额均n；无公式。"
+    },
+    {
+      "name": "reconciliation_supplement",
+      "state": "PASS",
+      "evidence": "独立复核reconciliation.json：排除due_date113/nonpositive80/currency112/jurisdiction113；入选amount386979.27、receipts65967.00、credits240.00、balance320772.27；未分配/未匹配分别在receipt物理行736/1784，金额和主体字段准确。"
+    },
+    {
+      "name": "candidate_process_checks",
+      "state": "UNKNOWN",
+      "evidence": "workbook_checks.txt和independent_sql_cent_comparison是候选自产记录，不能作为独立过程证明；本审阅改用独立全量重算/OOXML/openpyxl验证结果。"
+    },
+    {
+      "name": "office_visual",
+      "state": "UNKNOWN",
+      "evidence": "本sample未有真实Office渲染截图或独立实际Office打开证据。XML/库读回准确不等于视觉与跨软件兼容已验证。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "policy字段与三表全行范围真实准确；response/CSV/XLSX所需产物齐全，另有可核对账说明。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]及候选自报无独立全渠道行为证明；未观察违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅读取blind-review的公开题目/输入/schema、产物和可用独立证据；未接触隐藏金标、标签、模型配置或evaluator/candidates。",
+    "未将候选自报当独立验证，也未因objective FAIL直接下结论；原始文件、独立读库和源表重算一致。真实视觉仍未知。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "B20.scale:excel_all_rows",
+      "kind": "TEXT_TYPE_FALSE_NEGATIVE",
+      "evidence": "冻结检查称标识数字化，但实际t=str值保留00000001等前导0，openpyxl读成s，全部2400行准确。",
+      "cause_status": "可能遗漏str类型分支，具体实现未查。",
+      "recommendation": "支持字符串的不同OOXML表示并以实际值/类型判定；不能据现有失败理由当关键金额/主键错误。"
+    },
+    {
+      "field": "office_visual",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "未提供真实Office视觉证据。",
+      "recommendation": "usability保持UNKNOWN直到观察。"
+    }
+  ]
+}

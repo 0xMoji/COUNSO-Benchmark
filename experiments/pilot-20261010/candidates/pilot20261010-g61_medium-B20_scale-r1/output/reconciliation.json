@@ -1,0 +1,44 @@
+{
+  "full_input_counts": {
+    "invoices": 2818,
+    "receipts": 2282,
+    "credits": 37
+  },
+  "exclusive_exclusion_counts": {
+    "due_date": 113,
+    "nonpositive_balance": 80,
+    "currency": 112,
+    "jurisdiction": 113
+  },
+  "eligible_rows": 2400,
+  "eligible_totals": {
+    "amount": "386979.27",
+    "applied_receipts": "65967.00",
+    "credits": "240.00",
+    "balance": "320772.27"
+  },
+  "nonapplied_receipts": [
+    {
+      "source_line": 736,
+      "receipt_id": "UNALLOCATED-1",
+      "invoice_id": "",
+      "entity_id": "SG-001",
+      "amount": "212.96",
+      "allocation": "UNALLOCATED"
+    },
+    {
+      "source_line": 1784,
+      "receipt_id": "UNMATCHED-1",
+      "invoice_id": "",
+      "entity_id": "",
+      "amount": "168.00",
+      "allocation": "UNMATCHED"
+    }
+  ],
+  "receipt_status_counts": {
+    "APPLIED": 2280,
+    "UNALLOCATED": 1,
+    "UNMATCHED": 1
+  },
+  "independent_sql_cent_comparison": "passed"
+}

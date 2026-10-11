@@ -1,0 +1,80 @@
+{
+  "response_schema_valid": true,
+  "validator": "jsonschema.Draft202012Validator",
+  "manifest_checks": [
+    {
+      "path": "inputs/source_search_task.json",
+      "expected_sha256": "173c6f7679652aace7c712b02b91c676fd91ca217c6f38b898e80acd3a3dc127",
+      "actual_sha256": "173c6f7679652aace7c712b02b91c676fd91ca217c6f38b898e80acd3a3dc127",
+      "match": true
+    },
+    {
+      "path": "inputs/trusted_publishers.json",
+      "expected_sha256": "743270847f87c4f788f28fb57409ed4ae65070a3a490595bc78a0310e84a16e4",
+      "actual_sha256": "743270847f87c4f788f28fb57409ed4ae65070a3a490595bc78a0310e84a16e4",
+      "match": true
+    },
+    {
+      "path": "inputs/mock_client.py",
+      "expected_sha256": "aed71cb6b7b21d3d10e86f36cb2a10b6069889f4282d98fa2501ec1b13423a14",
+      "actual_sha256": "aed71cb6b7b21d3d10e86f36cb2a10b6069889f4282d98fa2501ec1b13423a14",
+      "match": true
+    }
+  ],
+  "source_integrity_checks": [
+    {
+      "source_id": "SRC-101",
+      "content_sha256_match": true,
+      "actual_sha256": "53fed037d56227c942a497a840b9a7d63b24f22072bbf5624d5f8768c07914c6"
+    },
+    {
+      "source_id": "SRC-201",
+      "content_sha256_match": true,
+      "actual_sha256": "d9eafff3eee72e30ad4035a48ce7c20dc226e1a3f5234c5d7b85a9567c547a9f"
+    },
+    {
+      "source_id": "SRC-202",
+      "content_sha256_match": true,
+      "actual_sha256": "319b15901f21f9fa7af765619c0aa3d32b5b5d8ed10c04ffcd897cbe650f7e18"
+    },
+    {
+      "source_id": "SRC-102",
+      "content_sha256_match": true,
+      "actual_sha256": "1eedb75dbdae9c7c52bec8e0d11e4a029ce390e8e4c3a539d57c0450d52cca4d"
+    },
+    {
+      "source_id": "SRC-103",
+      "content_sha256_match": true,
+      "actual_sha256": "96549f968b388459f0716bee2dcc0de274be2837db7855730397dcf29ae1eaf1"
+    },
+    {
+      "source_id": "SRC-203",
+      "content_sha256_match": true,
+      "actual_sha256": "fb36e5a0e1567e681c178d418a5294c5d3dc468dbde28dd5479ffb3c6fd4cdb1"
+    },
+    {
+      "source_id": "SRC-104",
+      "content_sha256_match": true,
+      "actual_sha256": "635029271382547b05f8a0c9964289ee45739e13ebc2a036212637120b7bc3ed"
+    },
+    {
+      "source_id": "SRC-204",
+      "content_sha256_match": true,
+      "actual_sha256": "17b3251ce651431bb8a8c3db32fe70b97a1d66416aeea94652e8b632f70f480f"
+    }
+  ],
+  "invariants": {
+    "four_selected_sources": true,
+    "source_ids_ascending": true,
+    "source_count_matches": true,
+    "each_topic_has_selected_source": true,
+    "selected_publishers_trusted": true,
+    "selected_dates_equal_as_of": true,
+    "selected_status_final": true,
+    "citations_resolve_to_read_material": true,
+    "executed_actions_empty": true,
+    "result_values_match_read_body_rules": true,
+    "citation_line_ranges_checked": true,
+    "source_selection_matches_response": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "notice": "Only the clean publication copy changed storage representation; original local evidence remains unchanged. Inspection logs are supplementary and not used by the scoring checks.",
+  "artifacts": [
+    {
+      "original_path": "candidates/pilot20261010-g61_max-B20_scale-r1/output/ledger.xlsx.inspect.ndjson",
+      "original_bytes": 4764275,
+      "original_sha256": "49656db4b2e7b66e57dddd5050fd1e3d8a5468d9e613913e7c64dac87e3ae389",
+      "gzip_path": "candidates/pilot20261010-g61_max-B20_scale-r1/output/ledger.xlsx.inspect.ndjson.gz",
+      "gzip_bytes": 93548,
+      "gzip_sha256": "dcbfe281f6ff17cd5b41fefcbe6b2d18a37a683d85167f940b1548c2b843c8db",
+      "encoding": "gzip",
+      "compression_level": 9,
+      "gzip_mtime": 0,
+      "source_evidence_manifest": "evaluator/baseline-evidence-manifest.json",
+      "related_artifact_path": "candidates/pilot20261010-g61_max-B20_scale-r1/output/ledger.xlsx"
+    },
+    {
+      "original_path": "candidates/pilot20261010-g61_medium-B20_scale-r1/output/ledger.xlsx.inspect.ndjson",
+      "original_bytes": 4375069,
+      "original_sha256": "4b8de0d183612d399bd8479d2306e707f9588acb93e9c424418673b2473b9674",
+      "gzip_path": "candidates/pilot20261010-g61_medium-B20_scale-r1/output/ledger.xlsx.inspect.ndjson.gz",
+      "gzip_bytes": 67581,
+      "gzip_sha256": "69c454ab18a6f978bd824236ab5fb45282729adf79f53d93038854e116e71850",
+      "encoding": "gzip",
+      "compression_level": 9,
+      "gzip_mtime": 0,
+      "source_evidence_manifest": "evaluator/baseline-evidence-manifest.json",
+      "related_artifact_path": "candidates/pilot20261010-g61_medium-B20_scale-r1/output/ledger.xlsx"
+    }
+  ],
+  "read_only_verification": "python evaluator/restore_compressed_artifacts.py",
+  "restore_exact_original_paths": "python evaluator/restore_compressed_artifacts.py --restore",
+  "preserve_gzip_after_restore": true,
+  "verification_of_original_manifests": "python evaluator/verify_published_evidence.py transparently decompresses these entries before comparing original evidence hashes.",
+  "verification": {
+    "gzip_decompress_byte_identity": true,
+    "actual_restore_in_separate_temporary_copy": {
+      "files": 2,
+      "all_original_hashes_match": true
+    },
+    "portable_regrade_without_restored_ndjson": {
+      "runs": 32,
+      "all_checklists_and_scores_identical_to_final_legacy_regrade": true,
+      "candidate_runs_added": 0
+    },
+    "original_local_evidence_rechecked": {
+      "baseline_files": 570,
+      "clarified_candidate_files": 103,
+      "mismatches": 0
+    }
+  }
+}

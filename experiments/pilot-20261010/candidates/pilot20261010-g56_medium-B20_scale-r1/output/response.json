@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "按政策完整读取并核对2818张发票、2282笔收款和37笔贷项；筛得2400行正余额新加坡元发票。仅APPLIED且有invoice_id的收款及按invoice_id关联的贷项抵扣，UNALLOCATED与UNMATCHED仅单列报告。",
+  "result": {
+    "balance_sgd": "320772.27",
+    "detail_file": "ledger_detail.csv",
+    "eligible_rows": 2400,
+    "invoice_ids_preserved": true,
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "fields selection, allocation, as_of, input_counts"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "CSV rows 2-2819; fields invoice_id, entity_id, jurisdiction, currency, due_date, amount"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "CSV rows 2-2283; fields invoice_id, amount, allocation; UNALLOCATED at row 736 and UNMATCHED at row 1784"
+    },
+    {
+      "source_id": "credits",
+      "locator": "CSV rows 2-38; fields invoice_id, amount"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "path": "inputs/holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d",
+      "source_id": "holdings-versions"
+    },
+    {
+      "path": "inputs/quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec",
+      "source_id": "quotes-versions"
+    },
+    {
+      "path": "inputs/valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28",
+      "source_id": "valuation_policy"
+    }
+  ],
+  "fixture_origin": "NEW_SYNTHETIC",
+  "scenario_id": "B17.reconcile",
+  "schema_version": "RECON-0.1",
+  "suite_label": "HISTORY-RECONSTRUCTED"
+}

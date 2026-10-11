@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "citations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "locator"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "executed_actions": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "commercial_is_data_permission": {
+          "type": "boolean"
+        },
+        "entity_disambiguation_fields": {
+          "type": "array"
+        },
+        "fx_rule": {
+          "enum": [
+            "AS_OF_FINAL_ONLY",
+            "LATEST_AVAILABLE",
+            "ANY_FINAL_DATE",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "refund_is_revenue": {
+          "type": "boolean"
+        },
+        "source_count": {
+          "type": "integer"
+        },
+        "source_ids": {
+          "type": "array"
+        },
+        "tax_deadline_day": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "commercial_is_data_permission",
+        "entity_disambiguation_fields",
+        "fx_rule",
+        "refund_is_revenue",
+        "source_count",
+        "source_ids",
+        "tax_deadline_day"
+      ],
+      "type": "object"
+    },
+    "scenario_id": {
+      "const": "B01.discovery"
+    },
+    "schema_version": {
+      "const": "RECON-0.1"
+    },
+    "summary": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "summary",
+    "result",
+    "citations",
+    "executed_actions"
+  ],
+  "title": "新编候选输出契约；无期望答案",
+  "type": "object"
+}

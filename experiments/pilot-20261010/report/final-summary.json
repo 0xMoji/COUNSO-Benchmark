@@ -1,0 +1,30 @@
+{
+  "effective_candidate_runs": 40,
+  "baseline_runs": 32,
+  "contract_validation_runs": 8,
+  "excluded_infra_attempts": 1,
+  "total_candidate_attempts": 41,
+  "transport_controls_not_candidate_results": 3,
+  "ai_reviews": 40,
+  "real_human_reviews": 0,
+  "baseline_raw_scores_immutable": true,
+  "baseline_regraded_outputs": 32,
+  "baseline_regrade_new_candidate_runs": 0,
+  "new_task_scored_outputs": 8,
+  "definite_noncritical_baseline_artifact_issues": 2,
+  "demonstrated_critical_business_failures": 0,
+  "do_not_interpret_as_model_ranking": true,
+  "phase_score_states": {
+    "BASELINE": {
+      "FULL_SCORE_KNOWN": 16,
+      "CONTAINS_UNKNOWN": 16
+    },
+    "CONTRACT_CLARIFICATION": {
+      "FULL_SCORE_KNOWN": 7,
+      "CONTAINS_UNKNOWN": 1
+    }
+  },
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "snapshot": "UNKNOWN"
+}

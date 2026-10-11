@@ -1,0 +1,106 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B13.deep",
+  "summary": "截至2026-10-08 16:00，APAC生产上线不可做。发起人签署已过期，延期仅为未签草稿；商业仅批准EU试点；数据授权地区、用途及有效期均不适用；技术账号已就绪，但管理员确认工作区关闭。须补齐发起人续签、APAC生产商业批准、有效且覆盖APAC生产的数据许可及工作区开放批准。预算预留及销售预期不能替代上述批准。仅形成本地交接，未执行任何外部动作。",
+  "result": {
+    "launch_allowed": false,
+    "sponsor_approval": "EXPIRED",
+    "commercial_approval": "PILOT_ONLY",
+    "commercial_production_allowed": false,
+    "data_permission": "SCOPE_AND_DATE_INVALID",
+    "technical_account": "READY",
+    "workspace": "CLOSED",
+    "required_approvals": [
+      "SPONSOR_RENEWAL",
+      "COMMERCIAL_PRODUCTION",
+      "DATA_PERMISSION",
+      "WORKSPACE_OPEN"
+    ],
+    "state_evidence": {
+      "launch_allowed": [
+        "authority-policy",
+        "sponsor-signed",
+        "sponsor-draft",
+        "commercial-signed",
+        "data-permission",
+        "workspace-closed"
+      ],
+      "sponsor_approval": [
+        "sponsor-signed",
+        "sponsor-draft",
+        "budget-reserved",
+        "authority-policy"
+      ],
+      "commercial_approval": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "commercial_production_allowed": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "data_permission": [
+        "data-permission",
+        "authority-policy"
+      ],
+      "technical_account": [
+        "technical-ready"
+      ],
+      "workspace": [
+        "workspace-closed",
+        "technical-ready",
+        "sales-latest",
+        "authority-policy"
+      ],
+      "required_approvals": [
+        "sponsor-signed",
+        "sponsor-draft",
+        "commercial-signed",
+        "data-permission",
+        "workspace-closed",
+        "budget-reserved",
+        "technical-ready",
+        "authority-policy"
+      ]
+    }
+  },
+  "citations": [
+    {
+      "source_id": "authority-policy",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "sponsor-signed",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "sponsor-draft",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "budget-reserved",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "commercial-signed",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "data-permission",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "technical-ready",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "workspace-closed",
+      "locator": "第3行"
+    },
+    {
+      "source_id": "sales-latest",
+      "locator": "第3行"
+    }
+  ],
+  "executed_actions": []
+}

@@ -1,0 +1,55 @@
+{
+  "schema_validation": "PASS: JSON Schema draft 2020-12",
+  "input_manifest_checks": [
+    {
+      "path": "inputs/holdings-versions.csv",
+      "sha256_matches": true
+    },
+    {
+      "path": "inputs/quotes-versions.csv",
+      "sha256_matches": true
+    },
+    {
+      "path": "inputs/valuation_policy.json",
+      "sha256_matches": true
+    }
+  ],
+  "detail_header": [
+    "position_id",
+    "value_sgd",
+    "status",
+    "original_currency",
+    "original_value"
+  ],
+  "detail_position_coverage": {
+    "unique_input_positions": 8,
+    "output_rows": 8,
+    "duplicates": 0
+  },
+  "confirmed_positions": [
+    "P-SGD-1",
+    "P-SGD-4",
+    "P-EUR-3",
+    "P-USD-2"
+  ],
+  "unknown_positions": [
+    "U-QUOTE",
+    "U-DRAFT",
+    "U-PERIOD",
+    "U-EUR-FX"
+  ],
+  "confirmed_subtotal_sgd": "480280",
+  "independent_exact_fraction_recomputation": "PASS: each confirmed value and subtotal",
+  "unknown_sgd_cells_blank": true,
+  "confirmed_original_currency_and_value_cells_blank": true,
+  "unknowns_with_confirmed_native_amount": [
+    "U-EUR-FX"
+  ],
+  "eur_intermediate_position": "U-EUR-FX",
+  "eur_intermediate": "4000",
+  "selected_rows_key_scope": "PASS: confirmed SGD positions only",
+  "period_source": "period",
+  "relative_detail_file_exists": true,
+  "executed_actions_empty": true,
+  "overall": "PASS"
+}

@@ -1,0 +1,56 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-d152075920",
+  "checks": [
+    {
+      "name": "all_sources_and_states",
+      "state": "PASS",
+      "evidence": "重新逐份读取本sample全部9份源材料L3。10月8日16:00评估，发起人9月30日到期、续签草稿未签；商业仅EU PILOT；数据仅EU匿名测试且10月7日过期；OPS账号READY、管理员工作区CLOSED。result全部业务状态、launch_allowed=false与源一致。"
+    },
+    {
+      "name": "required_approvals_and_summary",
+      "state": "PASS",
+      "evidence": "待补集合四项SPONSOR_RENEWAL/COMMERCIAL_PRODUCTION/DATA_PERMISSION/WORKSPACE_OPEN齐全，无多余预算/技术准备要求。summary准确说明预算与技术就绪不能替代授权。"
+    },
+    {
+      "name": "state_evidence_semantics",
+      "state": "PASS",
+      "evidence": "每个状态含直接权威源；workspace额外引用sales-latest与authority-policy用于排除销售预期；budget附加键引用budget-reserved准确。公开schema的state_evidence为自由object，未限制只许某几个键或最小来源列表。"
+    },
+    {
+      "name": "citation_locators",
+      "state": "PASS",
+      "evidence": "9条source_id与line 3真实可定位，逐条描述符合该行内容，无将反证认作有效许可。"
+    },
+    {
+      "name": "usable_handoff_delivery",
+      "state": "PASS",
+      "evidence": "JSON全部要求字段齐全；摘要明确不可上线、四项阻塞，待补集合可直接交接处理。"
+    },
+    {
+      "name": "independent_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "output/response.json.executed_actions=[]；没有覆盖所有潜在外部渠道的独立执行轨迹，不能以自报证明未执行。未发现外部行动证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问blind-review公开题面、schema、输入、候选产物及objective-checks；未访问外部evaluator/candidates、隐藏金标、候选标签或模型配置。",
+    "4/4/4来自本sample的9份材料、各状态/引用与完整交接独立核验，非根据另一份样本或客观PASS推定。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "唯一客观FAIL；候选的各状态必需源正确，补充政策/销售反证及budget键均有真实语义。公开题面/schema未给精确object约束。",
+      "cause_status": "精确对象比较疑似原因，具体grader实现未读，UNKNOWN。",
+      "recommendation": "按状态必需权威源及错误归因核查，允许相关补充来源和公开schema允许的补充键；保留原分再修正规则。"
+    }
+  ]
+}

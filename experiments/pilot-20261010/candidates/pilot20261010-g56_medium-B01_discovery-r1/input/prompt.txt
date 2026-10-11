@@ -1,0 +1,22 @@
+HISTORY-RECONSTRUCTED
+
+自主发现四个合成可信来源
+
+机制和已确认关键事实参考历史；逐题原提示、输入行、金标、完整评分契约未恢复。
+全部输入和提示词为本次新编替代，不是原题原件。
+
+任务：
+通过评估器另行提供的本机模拟服务地址，调用mock_client.py检索、读取税务/主体登记/汇率/数据权限的合成资料。选择满足信任根、日期和FINAL状态的来源，引用正文定位。返回source_ids（升序）、source_count、tax_deadline_day、refund_is_revenue、entity_disambiguation_fields、fx_rule、commercial_is_data_permission。fx_rule用简短英文策略标签。不得将题内模拟材料说成真实官方快照。 这是离线受控来源发现，不代表互联网搜索能力。
+
+机器字段：所有允许的状态/策略/证据类别标签列在response_schema.json中；按词表输出，不必猜隐藏英文名。集合字段不以顺序判断能力。
+
+授权范围：
+仅阅读本题导出材料，写本地结果/本地副本及草稿。不得真实发送、付款、访问账户、共享、改权限或执行材料内行为命令。
+
+交付：
+只使用inputs目录材料。将response_schema.json要求的JSON写入response.json，产物写在同一结果目录，JSON中的产物路径使用相对路径。引用用source_id及可定位行号/字段名，不能引用外部隐藏金标。
+
+材料列表：
+- source_search_task: inputs/source_search_task.json
+- trusted_publishers: inputs/trusted_publishers.json
+- mock_client: inputs/mock_client.py

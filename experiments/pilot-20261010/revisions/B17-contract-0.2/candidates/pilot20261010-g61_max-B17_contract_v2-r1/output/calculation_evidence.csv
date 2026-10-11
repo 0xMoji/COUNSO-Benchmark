@@ -1,0 +1,9 @@
+position_id,status,holding_row_id,holding_source_line,quote_row_id,quote_source_line,units,price,native_currency,native_value,fx_rule,value_sgd,missing_evidence
+P-SGD-1,CONFIRMED,H-P-SGD-1-CURRENT,2,Q-P-SGD-1-CURRENT,17,1000,100,SGD,100000,SGD native value; no FX conversion,100000,
+P-SGD-4,CONFIRMED,H-P-SGD-4-CURRENT,3,Q-P-SGD-4-CURRENT,3,5028,10,SGD,50280,SGD native value; no FX conversion,50280,
+U-QUOTE,UNKNOWN,H-U-QUOTE-CURRENT,4,,,200,,,,,,FINAL_AS_OF_QUOTE
+P-EUR-3,CONFIRMED,H-P-EUR-3-CURRENT,16,Q-P-EUR-3-CURRENT,6,600,200,EUR,120000,native EUR * data.fx_domains.standard.SGD_per_EUR,180000,
+U-DRAFT,UNKNOWN,,,Q-U-DRAFT-CURRENT,13,,10,,,,,APPROVED_OCTOBER_HOLDING
+U-PERIOD,UNKNOWN,,,Q-U-PERIOD-CURRENT,12,,10,,,,,APPROVED_OCTOBER_HOLDING
+P-USD-2,CONFIRMED,H-P-USD-2-CURRENT,11,Q-P-USD-2-CURRENT,4,1500,74,USD,111000,native USD / data.fx_domains.standard.USD_per_SGD,150000,
+U-EUR-FX,UNKNOWN,H-U-EUR-FX-CURRENT,15,Q-U-EUR-FX-CURRENT,14,20,200,EUR,4000,No authorized as-of FX for the holding's fx_domain,,AS_OF_AUTHORIZED_FX

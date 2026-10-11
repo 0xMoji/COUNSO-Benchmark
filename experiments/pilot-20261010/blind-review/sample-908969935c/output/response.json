@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "已完整读取2818行发票、2282行收款和37行贷项。按SG、SGD、到期日早于2026-07-10且逐单余额大于0筛出2400行；余额合计SGD 320772.27。仅按invoice_id汇总明确标为APPLIED的收款和贷项。UNALLOCATED SGD 212.96、UNMATCHED SGD 168.00单独报告，未抵减余额。CSV和Ledger工作表保留发票文本主键及前导0。",
+  "result": {
+    "eligible_rows": 2400,
+    "balance_sgd": "320772.27",
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "invoice_ids_preserved": true,
+    "detail_file": "ledger.csv",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "$.selection, $.allocation, $.input_counts, $.as_of"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "CSV lines 2-2819 (all 2818 rows): invoice_id, entity_id, jurisdiction, currency, due_date, amount"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "CSV lines 2-2283 (all 2282 rows): invoice_id, amount, allocation; line 736 allocation=UNALLOCATED amount=212.96; line 1784 allocation=UNMATCHED amount=168.00"
+    },
+    {
+      "source_id": "credits",
+      "locator": "CSV lines 2-38 (all 37 rows): invoice_id, amount; aggregate all rows by textual invoice_id"
+    }
+  ],
+  "executed_actions": []
+}

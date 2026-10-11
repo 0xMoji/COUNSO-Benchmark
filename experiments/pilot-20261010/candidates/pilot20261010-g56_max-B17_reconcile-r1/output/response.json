@@ -1,0 +1,67 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按目标持仓期间、批准状态、估值日最终报价和授权汇率核对。四个头寸可确认，四个头寸保留为未知；因此仅报告确认小计。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "valuation_detail.csv",
+    "eur_intermediate": "P-EUR-3=120000.00 EUR; U-EUR-FX=4000.00 EUR (original-currency value only; AS_OF_AUTHORIZED_FX missing)",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "holdings-versions.period",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.allowed_holding_status, data.allowed_quote_state, data.as_of, data.fx_domains, data.holding_period, data.rules, data.version_selection (lines 3-24)"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "selected approved October rows: lines 2, 3, 11, and 16; unresolved/excluded evidence rows: lines 4-7, 9-10, 12-13, 15, and 18-20; row identifiers are in holding_row_id"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "selected FINAL 2026-10-08 rows: lines 3, 4, 6, and 17; unresolved/excluded evidence rows: lines 2, 5, 7-11, 15-16, and 18; row identifiers are in quote_row_id"
+    }
+  ],
+  "executed_actions": []
+}

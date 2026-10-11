@@ -1,0 +1,95 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "确认小计为 480280.00 SGD；4 个头寸仍未知。可确定 EUR 原币中间值为 124000 EUR，其中 U-EUR-FX 的 4000 EUR 因缺少 as-of 授权汇率而不计入 SGD 确认小计。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "detail.csv",
+    "eur_intermediate": "124000 EUR (P-EUR-3: 120000; U-EUR-FX: 4000 unconverted)",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ],
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    },
+    "period_source": "valuation_policy.data.holding_period=2026-10; use holdings-versions.period, not entered date.",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-QUOTE",
+      "U-DRAFT",
+      "U-PERIOD",
+      "U-EUR-FX"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period=2026-10; data.as_of=2026-10-08; data.rules"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.version_selection; same position and target period, latest APPROVED version_date; quote requires as_of FINAL"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.standard (2026-10-08; SGD_per_EUR=1.50; USD_per_SGD=0.74)"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.restricted-domain (date=2026-10-01)"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "lines 2, 3, 11, 16: selected approved October rows; rows 8, 17, 21, 14 are older approved versions; rows 12, 13, 19, 10 are later drafts"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "lines 3, 4, 6, 17: selected as-of FINAL quotes"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "lines 4, 7, 9, 15: U-QUOTE, U-DRAFT, U-PERIOD, U-EUR-FX"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "lines 7, 12, 13, 14, 18: quote evidence for unknown positions"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "lines 5, 6, 18, 20: September holdings excluded by target period"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "lines 2, 5, 10, 16: wrong-date final quotes; lines 8, 9, 11, 15, 18: indicative quotes"
+    }
+  ],
+  "executed_actions": []
+}

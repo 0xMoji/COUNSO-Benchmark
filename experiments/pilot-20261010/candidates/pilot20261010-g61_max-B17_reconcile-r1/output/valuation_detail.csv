@@ -1,0 +1,9 @@
+position_id,valuation_status,holding_period,selected_approved_holding_row_id,holding_source_line,units,currency,fx_domain,selected_final_as_of_quote_row_id,quote_source_line,as_of_quote_price,native_value,fx_rate_direction,fx_rate_value,fx_date,fx_policy_locator,sgd_value,missing_evidence,notes
+P-EUR-3,CONFIRMED,2026-10,H-P-EUR-3-CURRENT,16,600,EUR,standard,Q-P-EUR-3-CURRENT,6,200,120000,MULTIPLY_BY_SGD_per_EUR,1.50,2026-10-08,data.fx_domains.standard.SGD_per_EUR,180000.00,,按period=2026-10且APPROVED筛选后，以最新version_date选持仓。
+P-SGD-1,CONFIRMED,2026-10,H-P-SGD-1-CURRENT,2,1000,SGD,standard,Q-P-SGD-1-CURRENT,17,100,100000,SGD_IDENTITY,1,,,100000,,按period=2026-10且APPROVED筛选后，以最新version_date选持仓。
+P-SGD-4,CONFIRMED,2026-10,H-P-SGD-4-CURRENT,3,5028,SGD,standard,Q-P-SGD-4-CURRENT,3,10,50280,SGD_IDENTITY,1,,,50280,,按period=2026-10且APPROVED筛选后，以最新version_date选持仓。
+P-USD-2,CONFIRMED,2026-10,H-P-USD-2-CURRENT,11,1500,USD,standard,Q-P-USD-2-CURRENT,4,74,111000,DIVIDE_BY_USD_per_SGD,0.74,2026-10-08,data.fx_domains.standard.USD_per_SGD,150000,,按period=2026-10且APPROVED筛选后，以最新version_date选持仓。
+U-DRAFT,UNKNOWN,,,,,,,Q-U-DRAFT-CURRENT,13,10,,,,,,,APPROVED_OCTOBER_HOLDING,无目标期间APPROVED持仓，不能采用草稿或九月持仓单位。
+U-EUR-FX,UNKNOWN,2026-10,H-U-EUR-FX-CURRENT,15,20,EUR,restricted-domain,Q-U-EUR-FX-CURRENT,14,200,4000,,,,,,AS_OF_AUTHORIZED_FX,缺少该fx_domain的估值日授权汇率；错日汇率不补缺。 按period=2026-10且APPROVED筛选后，以最新version_date选持仓。 可确定20 × 200 = 4000 EUR；SGD金额仍未知。
+U-PERIOD,UNKNOWN,,,,,,,Q-U-PERIOD-CURRENT,12,10,,,,,,,APPROVED_OCTOBER_HOLDING,无目标期间APPROVED持仓，不能采用草稿或九月持仓单位。
+U-QUOTE,UNKNOWN,2026-10,H-U-QUOTE-CURRENT,4,200,USD,standard,,,,,,,,,,FINAL_AS_OF_QUOTE,无估值日FINAL报价，不能采用指示报价或错日报价。 按period=2026-10且APPROVED筛选后，以最新version_date选持仓。

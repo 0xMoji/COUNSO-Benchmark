@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "按 policy 选取 jurisdiction=SG、currency=SGD、due_date 早于 2026-07-10 的发票；仅扣减明确关联发票的 APPLIED 收款与按 invoice_id 关联的 credit，并保留逐单余额大于 0 的 2,400 行。UNALLOCATED 与 UNMATCHED 收款单列报告，不抵减余额。",
+  "result": {
+    "balance_sgd": "320772.27",
+    "detail_file": "detail.csv",
+    "eligible_rows": 2400,
+    "invoice_ids_preserved": true,
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "policy.json: $.selection; $.allocation; $.as_of; $.input_counts"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "invoices.csv: header fields invoice_id, entity_id, jurisdiction, currency, due_date, amount; data rows 2-2819"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "receipts.csv: header fields receipt_id, invoice_id, entity_id, amount, allocation; data rows 2-2283"
+    },
+    {
+      "source_id": "credits",
+      "locator": "credits.csv: header fields credit_id, invoice_id, amount; data rows 2-38"
+    }
+  ],
+  "executed_actions": []
+}

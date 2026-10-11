@@ -1,0 +1,59 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "task_revision": "B17-contract-0.2",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-f874703c20",
+  "checks": [
+    {
+      "name": "revision_and_schema",
+      "state": "PASS",
+      "evidence": "只按本sample新prompt第1–5条及schema审核，prompt SHA256=b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e；独立Draft202012Validator通过，不与旧基线混汇。"
+    },
+    {
+      "name": "source_versions_and_all_amounts",
+      "state": "PASS",
+      "evidence": "本sample20持仓/17报价及policy全读重算。目标十月APPROVED取最新version_date，当日FINAL报价；4项选用行ID均对。SGD=100000、50280、111000/0.74=150000、120000×1.50=180000，独立小计480280.00，与返回值数值等价。"
+    },
+    {
+      "name": "explicit_eur_and_period_contract",
+      "state": "PASS",
+      "evidence": "eur_intermediate=\"4000\"严格指U-EUR-FX的20×200 EUR，符合新第1条；period_source=\"period\"属于公开枚举且依据正确。restricted-domain只有10月1日FX不能补10月8日。"
+    },
+    {
+      "name": "fixed_csv_every_cell",
+      "state": "PASS",
+      "evidence": "detail.csv表头严格position_id,value_sgd,status,original_currency,original_value，9物理行含表头、每行5字段、8唯一输入头寸、无多项/遗漏。4确认金额正确且original_*空白；4未知value_sgd空白，只有U-EUR-FX原币EUR/4000，其余原币空白，符合新第3/5条。"
+    },
+    {
+      "name": "missing_evidence_and_exclusions",
+      "state": "PASS",
+      "evidence": "U-DRAFT/U-PERIOD缺APPROVED_OCTOBER_HOLDING，U-QUOTE缺FINAL_AS_OF_QUOTE，U-EUR-FX缺AS_OF_AUTHORIZED_FX；unknown集合准确，complete_valuation=null；5排除类别准确，未把较旧合法版本列排除。"
+    },
+    {
+      "name": "citations_completeness_usability",
+      "state": "PASS",
+      "evidence": "7条引用明确选中持仓/报价、U-QUOTE错日/INDICATIVE及restricted-domain旧日期，定位准确；calculation_notes.txt逐项算术和四项缺证说明全部可靠。 所有明确请求字段及CSV均存在，可由JSON的引用/缺证追溯使用。"
+    },
+    {
+      "name": "objective_status_at_review",
+      "state": "UNKNOWN",
+      "evidence": "此轮objective-checks为PENDING_NEW_GRADER，没有可引用客观结果；本审阅完全独立从公开输入判断，不把PENDING补0或4。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]不是独立全渠道执行证据；未见违规外部动作。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "AI-assisted independent review；无模型/effort标签，未查外部evaluator/candidates或隐藏金标。",
+    "4/4/4依据本sample全部源记录独立计算、明确新契约逐格检查及引用/交付核验；已确定的内容质量与未观察行为分别记录。"
+  ],
+  "benchmark_defects": []
+}

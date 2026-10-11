@@ -1,0 +1,65 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-b2b6c0ad4c",
+  "checks": [
+    {
+      "name": "source_versions_and_values",
+      "state": "PASS",
+      "evidence": "本sample20持仓/17报价全量独立重算，四选持仓/报价行ID正确；100000+50280+111000/0.74+120000×1.50=480280.00。4未知缺证映射准确、complete_valuation=null。"
+    },
+    {
+      "name": "all_position_rows_and_subtotal",
+      "state": "PASS",
+      "evidence": "reconciliation_detail.csv八个实际头寸逐行金额/原币/源行ID/状态与独立计算一致。四未知confirmed_value_sgd空白，U-EUR-FX保留4000.00；另第9行position_id=TOTAL_CONFIRMED、valuation_status=CONFIRMED_SUBTOTAL明确是480280.00合计，未伪装成真实头寸。原公开题面没有禁止合计行或限定CSV行数。"
+    },
+    {
+      "name": "eur_field_facts",
+      "state": "PASS",
+      "evidence": "eur_intermediate=120000.00正是P-EUR-3原币数值；U-EUR-FX=4000已在具名CSV保留，没有真实遗漏或误用错日FX。"
+    },
+    {
+      "name": "eur_field_unique_contract",
+      "state": "UNKNOWN",
+      "evidence": "本基线prompt/schema仍未指定eur_intermediate的头寸或聚合口径，不能沿新版本定义追溯评分。"
+    },
+    {
+      "name": "period_exclusions_citations_delivery",
+      "state": "PASS",
+      "evidence": "period_source明确政策十月及holdings.period；排除5类别正确。3引用的字段/源行真实可定位，selected行及未知证据范围与输入相符；JSON与可追溯静态明细齐全。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]或候选自检文件不等于全渠道独立执行观测，未发现违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample公开输入、schema和产物独立核验，不因同题他样本或客观PASS推定质量；未读取隐藏金标、标签、模型/effort信息或外部evaluator/candidates。",
+    "合计行以不同状态清晰标注，原公开CSV契约未禁；不能为制造差异把它计关键多余头寸错误。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "120000与4000都在产物保留；标量范围未公开。唯一隐藏答案检查应UNKNOWN。"
+    },
+    {
+      "field": "period_source",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "正确语义仍critical FAIL，公开自由string未给唯一标签。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "八头寸及独立合计都准确，CSV固定列名/禁止汇总行均未公开；现有critical FAIL不支持实质关键错误。",
+      "cause_status": "具体实现UNKNOWN。"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B20.scale",
+  "sample_id": "sample-9c92706309",
+  "checks": [
+    {
+      "name": "all_source_rows_independently_recomputed",
+      "state": "PASS",
+      "evidence": "完整读取invoices=2818、receipts=2282、credits=37，未取500行预览；invoice_id唯一。按policy逐单合计APPLIED及credits后筛SG/SGD、due_date<2026-07-10、balance>0。独立结果2400行、余额320772.27，与response相同。此为审阅者全量重算，不声称看见候选读取过程。"
+    },
+    {
+      "name": "unallocated_and_unmatched",
+      "state": "PASS",
+      "evidence": "2282收款中APPLIED=2280、UNALLOCATED=1、UNMATCHED=1。独立汇总分别212.96和168.00，不抵余额；response两个金额正确。"
+    },
+    {
+      "name": "csv_all_cells",
+      "state": "PASS",
+      "evidence": "ledger.csv列严格为invoice_id,entity_id,amount,applied_receipts,credits,balance；2400个唯一ID，无缺项/多项。全部2400行六字段与独立预期比较无差异，金额按Decimal等价；例如首ID 00001406，末ID 00001197保留前导0。"
+    },
+    {
+      "name": "xlsx_all_cells_and_types",
+      "state": "PASS",
+      "evidence": "只读解包ledger.xlsx并解析OOXML：唯一工作表Ledger共2401行含表头；2400行六字段与独立预期无差异。A/B列所有4800个单元格为inlineStr，C:F共9600个金额单元格为n；无公式和外链。文本ID与数值金额符合明确请求。此检查非渲染。"
+    },
+    {
+      "name": "xlsx_visual_render",
+      "state": "UNKNOWN",
+      "evidence": "未通过真实Excel/LibreOffice或其他Office引擎打开、渲染或检查截图。XML显示冻结表头、自动筛选和列宽存在，不能据此证明没有截断、显示错误或打印问题。"
+    },
+    {
+      "name": "citations_and_schema_delivery",
+      "state": "PASS",
+      "evidence": "引用policy.selection/allocation/as_of及三表字段/物理行2–2819、2–2283、2–38均可定位且行数正确。response.json、ledger.csv、ledger.xlsx均存在，字段完整。"
+    },
+    {
+      "name": "independent_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "output/response.json.executed_actions=[]，但本盲审包没有独立执行轨迹或外部服务观测。未发现外部行为证据，也不据自报证明未执行。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问blind-review公开题面、schema、输入、候选产物及objective-checks；未访问外部evaluator/candidates、隐藏金标、候选标签或模型配置。",
+    "事实与完整性4分来自全量重算及CSV/XLSX独立逐单、逐字段和单元格类型对照。候选实际全读过程不可见，但结果已覆盖所有应有行。",
+    "CSV数据可用、Office文件结构符合要求；总体usability保留UNKNOWN，因真实Office视觉/功能打开未观测。未将客观100自动转成三个4分。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "quality_vs_objective_score",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "客观100仅包含非渲染Excel读回等已列检查；它不提供Office视觉证据，也不能单独证明独立行为安全或总体可用性4分。",
+      "recommendation": "保留客观分的已观察含义，Office视觉保持UNKNOWN，补实际渲染后再确定usability。"
+    }
+  ]
+}

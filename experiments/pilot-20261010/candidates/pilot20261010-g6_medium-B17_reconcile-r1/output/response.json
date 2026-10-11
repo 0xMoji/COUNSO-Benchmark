@@ -1,0 +1,67 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按2026-10目标期间、最新获批持仓和2026-10-08最终报价核对，确认小计为SGD 480,280；4个头寸仍缺授权证据，不能给出完整估值。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280",
+    "detail_file": "valuation_detail.csv",
+    "eur_intermediate": "120000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    "period_source": "valuation_policy.data.holding_period (2026-10); holdings-versions.period",
+    "selected_holding_rows": {
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-DRAFT",
+      "U-EUR-FX",
+      "U-PERIOD",
+      "U-QUOTE"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.holding_period, data.as_of, data.allowed_holding_status, data.allowed_quote_state, data.version_selection, data.fx_domains, data.rules (lines 3-24)"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "rows 2-21; selected approved October rows 2,3,11,16; unknown U-QUOTE row 4, U-DRAFT row 7, U-PERIOD row 9, U-EUR-FX row 15"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "rows 2-18; selected final as-of rows 3,4,6,17; unavailable final as-of U-QUOTE row 18"
+    }
+  ],
+  "executed_actions": []
+}

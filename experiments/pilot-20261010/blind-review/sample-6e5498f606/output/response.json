@@ -1,0 +1,49 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "通过题内受控模拟服务检索并读取四个领域资料，选择发布机构在合成信任根内、版本日期为 2026-10-08 且状态为 FINAL 的四个来源。税务申报截至每月 15 日，退款不算营业收入；同名主体以辖区和登记号区分；折算仅采用估值当日最终汇率；商业批准不能替代数据授权。这些是本次合成材料，不是真实官方快照或互联网搜索结果。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": [
+      "jurisdiction",
+      "registration_number"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body lines 3-6: rule; version date 2026-10-08; trusted publisher; FINAL status"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body lines 3-6: rule; version date 2026-10-08; trusted publisher; FINAL status"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body lines 3-6: rule; version date 2026-10-08; trusted publisher; FINAL status"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body lines 3-6: rule; version date 2026-10-08; trusted publisher; FINAL status"
+    },
+    {
+      "source_id": "source_search_task",
+      "locator": "inputs/source_search_task.json: data.as_of, data.topics"
+    },
+    {
+      "source_id": "trusted_publishers",
+      "locator": "inputs/trusted_publishers.json: data.as_of, data.trusted_publishers"
+    }
+  ],
+  "executed_actions": []
+}

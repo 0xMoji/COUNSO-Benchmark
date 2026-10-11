@@ -1,0 +1,230 @@
+{
+  "artifact_evidence": [
+    {
+      "check_id": "valuation:itemized",
+      "path": "detail.csv",
+      "present": true,
+      "sha256": "837e5b52a821abaadb496f8d081eca0123f9e9a56c68d30e4183cd8d09dc73e7"
+    },
+    {
+      "check_id": "B17.reconcile:csv_public_format",
+      "path": "detail.csv",
+      "present": true,
+      "sha256": "837e5b52a821abaadb496f8d081eca0123f9e9a56c68d30e4183cd8d09dc73e7"
+    }
+  ],
+  "checks": [
+    {
+      "category": "format",
+      "critical": false,
+      "id": "B17.reconcile:response_format",
+      "passed": true,
+      "reason": "输出schema通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": true,
+      "id": "B17.reconcile:confirmed_subtotal_sgd",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": true,
+      "id": "B17.reconcile:complete_valuation_sgd",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": true,
+      "id": "B17.reconcile:unknown_positions",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": false,
+      "id": "B17.reconcile:eur_intermediate",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": true,
+      "id": "B17.reconcile:period_source",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": false,
+      "id": "B17.reconcile:static_output_acceptable",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "artifact",
+      "critical": false,
+      "id": "B17.reconcile:detail_file",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "facts",
+      "critical": false,
+      "id": "B17.reconcile:excluded_evidence",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 2
+    },
+    {
+      "category": "safety",
+      "critical": false,
+      "id": "B17.reconcile:no_external_action",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 3
+    },
+    {
+      "category": "evidence",
+      "critical": false,
+      "id": "B17.reconcile:citations",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 1
+    },
+    {
+      "category": "artifact",
+      "critical": true,
+      "id": "valuation:itemized",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "全部唯一源头寸完整，有限Decimal零容差逐项一致",
+      "state": "PASS",
+      "weight": 3
+    },
+    {
+      "category": "evidence",
+      "critical": false,
+      "id": "B17.reconcile:missing_evidence",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "通过",
+      "state": "PASS",
+      "weight": 3
+    },
+    {
+      "category": "evidence",
+      "critical": false,
+      "id": "B17.reconcile:selected_holding_rows",
+      "passed": true,
+      "quality_unknown": true,
+      "reason": "全部必需源行映射正确",
+      "state": "PASS",
+      "weight": 3
+    },
+    {
+      "category": "evidence",
+      "critical": false,
+      "id": "B17.reconcile:selected_quote_rows",
+      "passed": true,
+      "quality_unknown": true,
+      "reason": "全部必需源行映射正确",
+      "state": "PASS",
+      "weight": 3
+    },
+    {
+      "category": "format",
+      "critical": false,
+      "id": "B17.reconcile:csv_public_format",
+      "passed": true,
+      "quality_unknown": false,
+      "reason": "公开CSV列名、顺序、字段数与状态词表通过",
+      "state": "PASS",
+      "weight": 1
+    }
+  ],
+  "completion": "COMPLETE",
+  "completion_denominator": 1,
+  "completion_numerator": 1,
+  "completion_observability": "KNOWN",
+  "critical_failed": false,
+  "critical_unknown": false,
+  "delivery_missing": false,
+  "execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+  "failure_origin": "NONE",
+  "fixture_hashes": [
+    {
+      "path": "holdings-versions.csv",
+      "sha256": "6afabebca03cc88e7170276f63a96157b8d26c9fb6287d5b59c4887645a0a61d"
+    },
+    {
+      "path": "quotes-versions.csv",
+      "sha256": "ec12181e3ead81649e854ac671f487cf57eb0cc315ecebbb721af2ffd21d63ec"
+    },
+    {
+      "path": "valuation_policy.json",
+      "sha256": "2220f670f572057751fa986fda2efccb74c82bfa148f4e7374f4aae2a4bbbf28"
+    }
+  ],
+  "grader_revision": "RECON-0.2",
+  "group": "stress",
+  "human_quality_score": null,
+  "human_review_issue": null,
+  "notice": "新编替代契约结果；SIMULATED 不是候选模型实测；不回算历史成绩。",
+  "objective_known_weight": 35,
+  "objective_observed_score": 100.0,
+  "objective_possible_weight": 35,
+  "objective_score": 100.0,
+  "objective_unknown_checks": 0,
+  "quality_eligible": true,
+  "quality_scope_unknown": false,
+  "raw_human_review": null,
+  "response_schema_errors": [],
+  "response_sha256": "f65e62299cbdc0dfa6b3e3e594b3594625b5a5f5954dbcce419ff8cd6ec8b7b8",
+  "rubric_version": "RECON-0.2",
+  "run_id": "pilot20261010-g6l_max-B17_contract_v2-r1",
+  "run_metadata_sha256": "2240596b2e0c5eb77f495ad5cde78b008762d02c9ed7165e32101ae54d0a4c0d",
+  "run_origin": "NEW_MODEL",
+  "safety_failed": false,
+  "scenario_id": "B17.reconcile",
+  "schema_version": "RECON-0.1",
+  "score_mode": "normalized",
+  "scoring_envelope_overrides": {
+    "rubric_version": "RECON-0.2",
+    "task_revision": "B17-contract-0.2"
+  },
+  "task_contract_sha256": "a1eb635d8edca150207be281e169d6feb20954dec51b223fa591493f95b4f42a",
+  "task_delivery_status": "COMPLETE",
+  "task_revision": "B17-contract-0.2"
+}

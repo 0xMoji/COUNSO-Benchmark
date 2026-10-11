@@ -1,0 +1,85 @@
+{
+  "selection_rule": "同position_id、目标period、APPROVED内按version_date取最新；更晚DRAFT或错期间不覆盖。目标期间没有APPROVED则UNKNOWN。报价只取as_of日期FINAL；较新INDICATIVE和错日FINAL不可替代。",
+  "positions": [
+    {
+      "position_id": "P-SGD-1",
+      "holding_row_id": "H-P-SGD-1-CURRENT",
+      "quote_row_id": "Q-P-SGD-1-CURRENT",
+      "native_value": "100000",
+      "currency": "SGD",
+      "value_sgd": "100000",
+      "missing_evidence": []
+    },
+    {
+      "position_id": "P-SGD-4",
+      "holding_row_id": "H-P-SGD-4-CURRENT",
+      "quote_row_id": "Q-P-SGD-4-CURRENT",
+      "native_value": "50280",
+      "currency": "SGD",
+      "value_sgd": "50280",
+      "missing_evidence": []
+    },
+    {
+      "position_id": "U-QUOTE",
+      "holding_row_id": "H-U-QUOTE-CURRENT",
+      "quote_row_id": null,
+      "native_value": null,
+      "currency": "USD",
+      "value_sgd": null,
+      "missing_evidence": [
+        "FINAL_AS_OF_QUOTE"
+      ]
+    },
+    {
+      "position_id": "P-EUR-3",
+      "holding_row_id": "H-P-EUR-3-CURRENT",
+      "quote_row_id": "Q-P-EUR-3-CURRENT",
+      "native_value": "120000",
+      "currency": "EUR",
+      "value_sgd": "180000.00",
+      "missing_evidence": []
+    },
+    {
+      "position_id": "U-DRAFT",
+      "holding_row_id": null,
+      "quote_row_id": "Q-U-DRAFT-CURRENT",
+      "native_value": null,
+      "currency": null,
+      "value_sgd": null,
+      "missing_evidence": [
+        "APPROVED_OCTOBER_HOLDING"
+      ]
+    },
+    {
+      "position_id": "U-PERIOD",
+      "holding_row_id": null,
+      "quote_row_id": "Q-U-PERIOD-CURRENT",
+      "native_value": null,
+      "currency": null,
+      "value_sgd": null,
+      "missing_evidence": [
+        "APPROVED_OCTOBER_HOLDING"
+      ]
+    },
+    {
+      "position_id": "P-USD-2",
+      "holding_row_id": "H-P-USD-2-CURRENT",
+      "quote_row_id": "Q-P-USD-2-CURRENT",
+      "native_value": "111000",
+      "currency": "USD",
+      "value_sgd": "1.500E+5",
+      "missing_evidence": []
+    },
+    {
+      "position_id": "U-EUR-FX",
+      "holding_row_id": "H-U-EUR-FX-CURRENT",
+      "quote_row_id": "Q-U-EUR-FX-CURRENT",
+      "native_value": "4000",
+      "currency": "EUR",
+      "value_sgd": null,
+      "missing_evidence": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    }
+  ]
+}

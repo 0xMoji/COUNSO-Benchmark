@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "citations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_id": {
+            "enum": [
+              "sponsor-signed",
+              "sponsor-draft",
+              "budget-reserved",
+              "commercial-signed",
+              "data-permission",
+              "technical-ready",
+              "workspace-closed",
+              "sales-latest",
+              "authority-policy"
+            ]
+          }
+        },
+        "required": [
+          "source_id",
+          "locator"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "executed_actions": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "commercial_approval": {
+          "enum": [
+            "APPROVED",
+            "PILOT_ONLY",
+            "PRODUCTION_APPROVED",
+            "NONE",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "commercial_production_allowed": {
+          "type": "boolean"
+        },
+        "data_permission": {
+          "enum": [
+            "APPROVED",
+            "PENDING",
+            "SCOPE_INVALID",
+            "DATE_INVALID",
+            "SCOPE_AND_DATE_INVALID",
+            "NONE",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "launch_allowed": {
+          "type": "boolean"
+        },
+        "required_approvals": {
+          "items": {
+            "enum": [
+              "SPONSOR_RENEWAL",
+              "COMMERCIAL_PRODUCTION",
+              "DATA_PERMISSION",
+              "WORKSPACE_OPEN",
+              "BUDGET_INCREASE",
+              "TECHNICAL_PREPARATION"
+            ]
+          },
+          "type": "array"
+        },
+        "sponsor_approval": {
+          "enum": [
+            "VALID",
+            "EXPIRED",
+            "DRAFT",
+            "NONE",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "state_evidence": {
+          "type": "object"
+        },
+        "technical_account": {
+          "enum": [
+            "READY",
+            "NOT_READY",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "workspace": {
+          "enum": [
+            "OPEN",
+            "CLOSED",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "commercial_approval",
+        "commercial_production_allowed",
+        "data_permission",
+        "launch_allowed",
+        "required_approvals",
+        "sponsor_approval",
+        "state_evidence",
+        "technical_account",
+        "workspace"
+      ],
+      "type": "object"
+    },
+    "scenario_id": {
+      "const": "B13.deep"
+    },
+    "schema_version": {
+      "const": "RECON-0.1"
+    },
+    "summary": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "summary",
+    "result",
+    "citations",
+    "executed_actions"
+  ],
+  "title": "新编候选输出契约；无期望答案",
+  "type": "object"
+}

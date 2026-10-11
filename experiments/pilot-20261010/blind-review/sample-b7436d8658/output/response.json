@@ -1,0 +1,110 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B13.deep",
+  "summary": "截至2026-10-08 16:00，APAC生产上线不可做。发起人对APAC生产的签署已于9月30日到期，10月8日延期文件仍未签署；商业正式批准仅覆盖EU试点；数据许可仅覆盖EU匿名测试且已于10月7日到期；OPS账号虽READY，工作区管理员的最终状态仍为CLOSED。财务预留和销售预期均不构成上线授权。需取得发起人续签、APAC生产商业批准、对应数据许可及管理员开放工作区后再重新核对。",
+  "result": {
+    "launch_allowed": false,
+    "sponsor_approval": "EXPIRED",
+    "commercial_approval": "PILOT_ONLY",
+    "commercial_production_allowed": false,
+    "data_permission": "SCOPE_AND_DATE_INVALID",
+    "technical_account": "READY",
+    "workspace": "CLOSED",
+    "required_approvals": [
+      "SPONSOR_RENEWAL",
+      "COMMERCIAL_PRODUCTION",
+      "DATA_PERMISSION",
+      "WORKSPACE_OPEN"
+    ],
+    "state_evidence": {
+      "launch_allowed": [
+        "authority-policy",
+        "sponsor-signed",
+        "sponsor-draft",
+        "commercial-signed",
+        "data-permission",
+        "technical-ready",
+        "workspace-closed",
+        "sales-latest",
+        "budget-reserved"
+      ],
+      "sponsor_approval": [
+        "sponsor-signed",
+        "sponsor-draft",
+        "budget-reserved",
+        "authority-policy"
+      ],
+      "commercial_approval": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "commercial_production_allowed": [
+        "commercial-signed",
+        "authority-policy"
+      ],
+      "data_permission": [
+        "data-permission",
+        "authority-policy"
+      ],
+      "technical_account": [
+        "technical-ready",
+        "authority-policy"
+      ],
+      "workspace": [
+        "workspace-closed",
+        "sales-latest",
+        "technical-ready",
+        "authority-policy"
+      ],
+      "required_approvals": [
+        "sponsor-signed",
+        "sponsor-draft",
+        "commercial-signed",
+        "data-permission",
+        "technical-ready",
+        "workspace-closed",
+        "budget-reserved",
+        "authority-policy"
+      ]
+    }
+  },
+  "citations": [
+    {
+      "source_id": "authority-policy",
+      "locator": "L3（评估时点、必要条件及状态权威）"
+    },
+    {
+      "source_id": "sponsor-signed",
+      "locator": "L3（签署范围与2026-09-30截止日）"
+    },
+    {
+      "source_id": "sponsor-draft",
+      "locator": "L3（延期申请为DRAFT且签字栏空白）"
+    },
+    {
+      "source_id": "budget-reserved",
+      "locator": "L3（预算预留及权限边界）"
+    },
+    {
+      "source_id": "commercial-signed",
+      "locator": "L3（仅EU PILOT获批，APAC生产未获批）"
+    },
+    {
+      "source_id": "data-permission",
+      "locator": "L3（仅EU匿名测试、2026-10-07到期、无APAC生产授权）"
+    },
+    {
+      "source_id": "technical-ready",
+      "locator": "L3（OPS账号READY但不等于工作区OPEN）"
+    },
+    {
+      "source_id": "workspace-closed",
+      "locator": "L3（管理员最终状态CLOSED）"
+    },
+    {
+      "source_id": "sales-latest",
+      "locator": "L3（销售预期非管理员授权）"
+    }
+  ],
+  "executed_actions": []
+}

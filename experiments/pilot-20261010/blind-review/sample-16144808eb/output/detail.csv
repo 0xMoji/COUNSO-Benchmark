@@ -1,0 +1,9 @@
+position_id,valuation_status,selected_holding_row_id,holding_csv_line,holding_period,holding_status,units,currency,fx_domain,selected_quote_row_id,quote_csv_line,quote_date,quote_state,price,amount_native,fx_rate,fx_rate_direction,amount_sgd,missing_authorized_evidence,evidence_note
+P-EUR-3,CONFIRMED,H-P-EUR-3-CURRENT,16,2026-10,APPROVED,600,EUR,standard,Q-P-EUR-3-CURRENT,6,2026-10-08,FINAL,200,120000,1.50,SGD_per_EUR (multiply),180000.00,,
+P-SGD-1,CONFIRMED,H-P-SGD-1-CURRENT,2,2026-10,APPROVED,1000,SGD,standard,Q-P-SGD-1-CURRENT,17,2026-10-08,FINAL,100,100000,1,SGD,100000,,
+P-SGD-4,CONFIRMED,H-P-SGD-4-CURRENT,3,2026-10,APPROVED,5028,SGD,standard,Q-P-SGD-4-CURRENT,3,2026-10-08,FINAL,10,50280,1,SGD,50280,,
+P-USD-2,CONFIRMED,H-P-USD-2-CURRENT,11,2026-10,APPROVED,1500,USD,standard,Q-P-USD-2-CURRENT,4,2026-10-08,FINAL,74,111000,0.74,USD_per_SGD (divide),150000,,
+U-DRAFT,UNKNOWN,,,,,,,,,,,,,,,,,APPROVED_OCTOBER_HOLDING,H-U-DRAFT-CURRENT is DRAFT at October period; Q-U-DRAFT-CURRENT alone does not validate a holding
+U-EUR-FX,UNKNOWN,H-U-EUR-FX-CURRENT,15,2026-10,APPROVED,20,EUR,restricted-domain,Q-U-EUR-FX-CURRENT,14,2026-10-08,FINAL,200,4000,,,,AS_OF_AUTHORIZED_FX,restricted-domain SGD_per_EUR is dated 2026-10-01; do not convert 4000 EUR to SGD
+U-PERIOD,UNKNOWN,,,,,,,,,,,,,,,,,APPROVED_OCTOBER_HOLDING,H-U-PERIOD-CURRENT has September period despite October entered date; Q-U-PERIOD-CURRENT alone does not validate a holding
+U-QUOTE,UNKNOWN,H-U-QUOTE-CURRENT,4,2026-10,APPROVED,200,USD,standard,,,,,,,,,,FINAL_AS_OF_QUOTE,Q-U-QUOTE-CURRENT is INDICATIVE; Q-U-QUOTE-STALE-FINAL is dated 2026-10-07

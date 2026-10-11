@@ -1,0 +1,11 @@
+{
+  "completion": "UNVERIFIED",
+  "failure_origin": "UNKNOWN",
+  "model_snapshot": "未填写",
+  "notice": "模板不是运行结果；没有调用模型。模拟自测必须使用SIMULATED。",
+  "rubric_version": "RECON-0.1",
+  "run_id": "请换成唯一运行ID",
+  "run_origin": "NEW_MODEL",
+  "scenario_id": "B20.scale",
+  "started_at": "未填写"
+}

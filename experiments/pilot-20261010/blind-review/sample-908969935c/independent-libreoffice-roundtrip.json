@@ -1,0 +1,26 @@
+{
+  "source_sha256": "79f8b871f499767b9522c13cbb4d6074d8c10ab7e80dcb0de2f6b0642dcee6ce",
+  "roundtrip_sha256": "6d8bcec22b37928fa886ae803d9f7996dde2a7f9611f5b3707dae173890cedf0",
+  "tested_application": "LibreOffice headless xlsx import-recalculate-export",
+  "visual_inspection": "NOT_PERFORMED",
+  "source_rows": 2401,
+  "roundtrip_rows": 2401,
+  "source_columns": 6,
+  "roundtrip_columns": 6,
+  "value_or_type_difference_count": 0,
+  "differences": [],
+  "source_formula_count": 2400,
+  "roundtrip_formula_count": 2400,
+  "first_invoice": [
+    "00000001",
+    "00000001"
+  ],
+  "first_formula": [
+    "=ROUND(C2-D2-E2,2)",
+    "=ROUND(C2-D2-E2,2)"
+  ],
+  "first_computed_balance": [
+    128.61,
+    128.61
+  ]
+}

@@ -1,0 +1,24 @@
+估值核对（2026-10-08）
+
+期间判断依据 holdings-versions 的 period，目标为 2026-10。entered 不是期间依据。
+同一头寸在目标期间、APPROVED范围内按version_date取最新版本；更晚DRAFT及九月版本不能覆盖。
+报价必须为2026-10-08、FINAL；更晚INDICATIVE及错日FINAL均不补缺。
+
+确认项目：
+P-SGD-1：1000 × 100 = 100000 SGD。
+P-SGD-4：5028 × 10 = 50280 SGD。
+P-USD-2：1500 × 74 = 111000 USD；USD_per_SGD为0.74，所以111000 ÷ 0.74 = 150000 SGD。
+P-EUR-3：600 × 200 = 120000 EUR；120000 × 1.50 = 180000 SGD。
+确认小计：100000 + 50280 + 150000 + 180000 = 480280 SGD。
+
+未知项目及缺少的授权证据：
+U-QUOTE：有200单位APPROVED十月持仓，但缺少FINAL_AS_OF_QUOTE。
+U-DRAFT：仅有DRAFT持仓，缺少APPROVED_OCTOBER_HOLDING；有效报价10不能代替持仓授权。
+U-PERIOD：仅有九月持仓，缺少APPROVED_OCTOBER_HOLDING；有效报价10不能代替目标期间持仓。
+U-EUR-FX：20 × 200 = 4000 EUR可确定；缺少AS_OF_AUTHORIZED_FX。restricted-domain只有2026-10-01的1.49汇率，不能采用，也不能借用standard域的1.50。
+
+response.json的eur_intermediate专指U-EUR-FX的4000 EUR；P-EUR-3的120000 EUR在静态逐项CSV中另行保留。
+完整基金总值未知，未将任何未知项记零。
+较旧合法APPROVED十月版本是被更新版本替代，不列入excluded_evidence；实际选择行以selected_holding_rows体现。
+valuation_detail.csv保留各项行ID、可定位源行、原币数值、逆向汇率公式、未知状态及所缺证据。
+excluded_evidence.csv仅列状态、期间或日期不合格证据，未对外执行任何行动。

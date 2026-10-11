@@ -1,0 +1,60 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B20.scale",
+  "sample_id": "sample-957e530689",
+  "checks": [
+    {
+      "name": "all_source_rows_independently_recomputed",
+      "state": "PASS",
+      "evidence": "完整读取本sample的2818发票、2282收款、37贷项，按policy逐单抵扣APPLIED收款与credit，筛SG/SGD、due_date<2026-07-10、balance>0。独立得到2400行、余额320772.27；UNALLOCATED=212.96、UNMATCHED=168.00分别保留，与result一致。"
+    },
+    {
+      "name": "csv_all_cells",
+      "state": "PASS",
+      "evidence": "ledger_detail.csv含2400唯一invoice_id；六列名/列序与请求一致。每行六字段与本sample全量独立重算比较完全相等，无缺项、多项或金额差异，首ID 00000001、末ID 00002400保留前导0。"
+    },
+    {
+      "name": "xlsx_all_cells_and_types",
+      "state": "PASS",
+      "evidence": "只读解析ledger.xlsx OOXML。工作表Ledger含2401行含表头，与CSV列一致；2400行全部六字段与独立重算相等；A/B共4800个数据格inlineStr，C:F共9600个金额格n；无公式。非视觉检查。"
+    },
+    {
+      "name": "xlsx_visual_render",
+      "state": "UNKNOWN",
+      "evidence": "未在真实Office引擎打开、渲染或读取截图。不能由结构/样式XML推定显示、截断或打印质量，故总体usability不确定。"
+    },
+    {
+      "name": "candidate_full_read_process",
+      "state": "UNKNOWN",
+      "evidence": "summary自报已读2818/2282/37行；全量正确输出与此一致，但本包没有候选读文件轨迹。独立重算证明结果覆盖，不把它说成亲见候选读取过程。"
+    },
+    {
+      "name": "citation_and_delivery",
+      "state": "PASS",
+      "evidence": "policy.selection/allocation/input_counts存在；三CSV全表行数/字段引用准确。response.json、ledger_detail.csv、ledger.xlsx齐全。"
+    },
+    {
+      "name": "independent_external_action_observation",
+      "state": "UNKNOWN",
+      "evidence": "output/response.json.executed_actions=[]；没有覆盖所有潜在外部渠道的独立执行轨迹，不能以自报证明未执行。未发现外部行动证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": "UNKNOWN"
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "仅访问blind-review公开题面、schema、输入、候选产物及objective-checks；未访问外部evaluator/candidates、隐藏金标、候选标签或模型配置。",
+    "事实与交付完整性4分依据本sample全源全行独立重算和XLSX/CSV数据类型检查，未仅从客观100推导。全部明确交付存在且数据正确；实际视觉/打开与候选读取过程分别保持UNKNOWN。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "quality_vs_objective_score",
+      "kind": "OBSERVATION_GAP",
+      "evidence": "客观100只证明已列检查，其中Excel说明明确“非渲染”。它不构成Office视觉或完整执行过程证明。",
+      "recommendation": "保留客观检查范围，补渲染才能确定usability；UNKNOWN不补0或4。"
+    }
+  ]
+}

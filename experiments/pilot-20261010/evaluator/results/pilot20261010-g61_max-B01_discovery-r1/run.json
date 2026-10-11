@@ -1,0 +1,18 @@
+{
+  "run_id": "pilot20261010-g61_max-B01_discovery-r1",
+  "scenario_id": "B01.discovery",
+  "run_origin": "NEW_MODEL",
+  "completion": "COMPLETE",
+  "failure_origin": "NONE",
+  "rubric_version": "RECON-0.1",
+  "model_snapshot": "UNKNOWN",
+  "model_requested": "gpt-6.1-sol",
+  "effort_requested": "max",
+  "actual_model_effort_independently_confirmed": false,
+  "tool_request_accepted": true,
+  "started_at": "2026-10-10T23:08:00Z",
+  "finished_at_observed": "2026-10-10T23:10:25.222101+00:00",
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "session_id": "bcda6b2e-2c73-4eb2-b0a3-466fb0702dea"
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B20.scale",
+  "summary": "按policy筛选并关联全部发票、收款和贷项；逐单余额大于零的明细已输出为CSV及XLSX，未分配与未匹配收款单独汇总且未抵减余额。",
+  "result": {
+    "balance_sgd": "320772.27",
+    "detail_file": "ledger_detail.csv",
+    "eligible_rows": 2400,
+    "invoice_ids_preserved": true,
+    "unallocated_sgd": "212.96",
+    "unmatched_sgd": "168.00",
+    "workbook": "ledger.xlsx"
+  },
+  "citations": [
+    {
+      "source_id": "policy",
+      "locator": "fields: selection, allocation, input_counts"
+    },
+    {
+      "source_id": "invoices",
+      "locator": "lines 1-2819; fields: invoice_id, entity_id, jurisdiction, currency, due_date, amount"
+    },
+    {
+      "source_id": "receipts",
+      "locator": "lines 1-2283; fields: invoice_id, amount, allocation"
+    },
+    {
+      "source_id": "credits",
+      "locator": "lines 1-38; fields: invoice_id, amount"
+    }
+  ],
+  "executed_actions": []
+}

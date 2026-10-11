@@ -1,0 +1,71 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-d208c3ba50",
+  "checks": [
+    {
+      "name": "core_valuation_and_selection",
+      "state": "PASS",
+      "evidence": "独立全读本sample20持仓/17报价及policy，筛十月最新APPROVED和10月8日FINAL。4选持仓/报价ID正确；100000+50280+111000/0.74+120000×1.50=480280.00，与候选480280等值。4未知JSON缺证映射全对，完整估值null。"
+    },
+    {
+      "name": "native_currency_preservation",
+      "state": "PASS",
+      "evidence": "eur_intermediate说明124000=120000 P-EUR-3+4000 U-EUR-FX，后者未折SGD；detail.csv两项source_amount亦准确。全部确认SGD金额正确、四未知SGD留空。"
+    },
+    {
+      "name": "eur_field_unique_contract",
+      "state": "UNKNOWN",
+      "evidence": "基线公开自由string未定义单一头寸或汇总口径，不能拿0.2后来的定义追罚。具名124000分解真实。"
+    },
+    {
+      "name": "csv_rectangularity_and_field_alignment",
+      "state": "FAIL",
+      "evidence": "detail.csv表头16列，物理行6 U-QUOTE有17字段，其余7数据行16字段。该行多空字段导致fx_domain=\"\"、fx_rate=\"standard\"、missing_authorized_evidence=\"\"、notes=\"FINAL_AS_OF_QUOTE\"，真正说明落到额外第17列。独立csv.DictReader出现None尾字段。JSON的U-QUOTE缺证标签正确、该行SGD仍空，故为真实普通格式/元数据错误，非未知当零或关键估值错误。"
+    },
+    {
+      "name": "period_and_citations",
+      "state": "PASS",
+      "evidence": "period_source说明政策目标十月及报价as_of，实际所选行均是period=2026-10而非录入日；policy.rules[0]被引用。10条字段/行定位真实，缺证来源可追踪；没有用销售或外部来源补缺。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]无全渠道独立执行轨迹，未观察违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 3,
+    "completeness": 3,
+    "usability": 3
+  },
+  "factual_severity": "NON_CRITICAL_FORMAT_AND_METADATA_ERROR",
+  "evidence": [
+    "仅审匿名公开输入/schema、客观记录和产物，未读隐藏答案、模型/配置标签或外部evaluator/candidates。",
+    "facts3：关键数字与状态可靠，但一行结构化字段陈述失真；completeness3：明确CSV交付存在但局部格式不完整；usability3：需修正单行错位才能可靠机器读入，属少量整理。依据SCORING普通缺项/格式最高完整性3，未启用关键错误整体0。",
+    "将真实CSV错位与其他客观误罚分开：不能把该行格式问题扩大成全部明细或确认小计错误；也不能因为金额正确忽略实际CSV缺陷。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "confirmed_subtotal_sgd",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "480280与480280.00有限Decimal等价，公开string无两位要求。"
+    },
+    {
+      "field": "eur_intermediate",
+      "kind": "UNDERSPECIFIED_BUSINESS_SCOPE",
+      "evidence": "公开未定义对象范围，候选具名原币合计正确；唯一标量正确值仍UNKNOWN。"
+    },
+    {
+      "field": "period_source",
+      "kind": "UNDISCLOSED_LABEL_CONSTRAINT",
+      "evidence": "所用目标期间/实际版本正确，公开没有唯一标签，critical FAIL不证明期间选错。"
+    },
+    {
+      "field": "valuation:itemized",
+      "kind": "MIXED_REAL_FORMAT_DEFECT_AND_UNDISCLOSED_CONTRACT",
+      "evidence": "独立确认U-QUOTE行17对16列的真实错位；同时其余7行及所有关键金额正确，固定列名本来未公开。此应按普通局部格式缺陷评分，不能把整个critical FAIL直接映射关键事实0。",
+      "cause_status": "未读grader，无法判断原FAIL究竟是错位还是另有隐藏列名规则。"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "已通过题内受控模拟服务筛选出四个截至 2026-10-08、发布者在合成信任清单内且状态为 FINAL 的来源。全部资料均为合成材料，不代表真实官方快照。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": ["jurisdiction", "registration_number"],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": ["SRC-101", "SRC-102", "SRC-103", "SRC-104"],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {"source_id": "SRC-101", "locator": "body: 合成规则（申报期截至每月15日；退款不算营业收入）；版本日期/资料状态/发布机构"},
+    {"source_id": "SRC-102", "locator": "body: 合成规则（以辖区和登记号区分）；版本日期/资料状态/发布机构"},
+    {"source_id": "SRC-103", "locator": "body: 合成规则（估值当日最终汇率）；版本日期/资料状态/发布机构"},
+    {"source_id": "SRC-104", "locator": "body: 合成规则（商业批准不能替代数据授权）；版本日期/资料状态/发布机构"}
+  ],
+  "executed_actions": []
+}

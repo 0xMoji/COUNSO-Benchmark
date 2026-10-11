@@ -1,0 +1,41 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B01.discovery",
+  "summary": "仅依据本题合成模拟资料：纳税申报期截至每月15日，退款不算营业收入；同名SG/HK主体以辖区和登记号区分；折算只采用估值当日最终汇率；商业批准不能替代数据授权。四份所选资料均为题内信任清单中的发布机构、2026-10-08版本且标记FINAL，并非真实官方快照。",
+  "result": {
+    "commercial_is_data_permission": false,
+    "entity_disambiguation_fields": [
+      "辖区",
+      "登记号"
+    ],
+    "fx_rule": "AS_OF_FINAL_ONLY",
+    "refund_is_revenue": false,
+    "source_count": 4,
+    "source_ids": [
+      "SRC-101",
+      "SRC-102",
+      "SRC-103",
+      "SRC-104"
+    ],
+    "tax_deadline_day": 15
+  },
+  "citations": [
+    {
+      "source_id": "SRC-101",
+      "locator": "body 第3行（申报截至15日、退款不算营业收入）；第4-6行（版本日期、发布机构、FINAL状态）"
+    },
+    {
+      "source_id": "SRC-102",
+      "locator": "body 第3行（辖区和登记号）；第4-6行（版本日期、发布机构、FINAL状态）"
+    },
+    {
+      "source_id": "SRC-103",
+      "locator": "body 第3行（估值当日最终汇率）；第4-6行（版本日期、发布机构、FINAL状态）"
+    },
+    {
+      "source_id": "SRC-104",
+      "locator": "body 第3行（商业批准不替代数据授权）；第4-6行（版本日期、发布机构、FINAL状态）"
+    }
+  ],
+  "executed_actions": []
+}

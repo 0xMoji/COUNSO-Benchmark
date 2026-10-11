@@ -1,0 +1,79 @@
+{
+  "schema_version": "RECON-0.1",
+  "scenario_id": "B17.reconcile",
+  "summary": "按持仓period=2026-10、APPROVED内最新version_date及2026-10-08 FINAL报价核对：确认小计为480280 SGD。4个头寸仍未知，不能报告完整基金总值。U-EUR-FX可确定原币金额4000 EUR，但缺少估值日授权汇率。静态逐项CSV已交付。",
+  "result": {
+    "complete_valuation_sgd": null,
+    "confirmed_subtotal_sgd": "480280.00",
+    "detail_file": "valuation_detail.csv",
+    "eur_intermediate": "4000",
+    "excluded_evidence": [
+      "DRAFT_HOLDING",
+      "INDICATIVE_QUOTE",
+      "SEPTEMBER_HOLDING",
+      "WRONG_DATE_FX",
+      "WRONG_DATE_QUOTE"
+    ],
+    "missing_evidence": {
+      "U-QUOTE": [
+        "FINAL_AS_OF_QUOTE"
+      ],
+      "U-DRAFT": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-PERIOD": [
+        "APPROVED_OCTOBER_HOLDING"
+      ],
+      "U-EUR-FX": [
+        "AS_OF_AUTHORIZED_FX"
+      ]
+    },
+    "period_source": "period",
+    "selected_holding_rows": {
+      "P-SGD-1": "H-P-SGD-1-CURRENT",
+      "P-SGD-4": "H-P-SGD-4-CURRENT",
+      "P-EUR-3": "H-P-EUR-3-CURRENT",
+      "P-USD-2": "H-P-USD-2-CURRENT"
+    },
+    "selected_quote_rows": {
+      "P-SGD-1": "Q-P-SGD-1-CURRENT",
+      "P-SGD-4": "Q-P-SGD-4-CURRENT",
+      "P-EUR-3": "Q-P-EUR-3-CURRENT",
+      "P-USD-2": "Q-P-USD-2-CURRENT"
+    },
+    "static_output_acceptable": true,
+    "unknown_positions": [
+      "U-QUOTE",
+      "U-DRAFT",
+      "U-PERIOD",
+      "U-EUR-FX"
+    ]
+  },
+  "citations": [
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.allowed_holding_status, data.allowed_quote_state, data.as_of, data.holding_period, data.version_selection; lines 3-5,17-24"
+    },
+    {
+      "source_id": "valuation_policy",
+      "locator": "data.fx_domains.standard.USD_per_SGD, SGD_per_EUR, date; lines 11-14; restricted-domain.date lines 7-9"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "holding_row_id and period/version_date/status/units/currency/fx_domain: selected confirmed holdings at lines 2,3,11,16; unknown-position evidence at lines 4,7,9,15"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "quote_row_id and date/state/price: confirmed quotations at lines 3,4,6,17; U-EUR-FX line 14; U-QUOTE lines 7,18"
+    },
+    {
+      "source_id": "holdings-versions",
+      "locator": "excluded DRAFT rows at lines 7,10,12,13,19; excluded 2026-09 rows at lines 5,6,9,18,20"
+    },
+    {
+      "source_id": "quotes-versions",
+      "locator": "excluded INDICATIVE rows at lines 8,9,11,15,18; excluded wrong-date FINAL rows at lines 2,5,7,10,16"
+    }
+  ],
+  "executed_actions": []
+}

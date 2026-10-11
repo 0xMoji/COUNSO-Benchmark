@@ -139,27 +139,116 @@ def check_sales_workbook(path,root,with_april=False,formula_required=False,chart
     if chart_required and not _chart_ok(parts,dynamic_required,len(months),not with_april):return False,'图表类别、数据引用或动态范围不符合任务'
     return True,'完整源行/数值类型/有限SUMIFS/图表引用及所需追加负控通过；Office视觉渲染UNKNOWN'
 
-def check_ledger_workbook(path,expected_csv):
-    rows=_csv(expected_csv);cells=workbook_cells(path)
-    fields=list(rows[0]);letters='ABCDEF'
-    for c,k in zip(letters,fields):
-        if cells.get('Ledger!'+c+'1',{}).get('value')!=k:return False,'Excel列名错误'
-    if len([k for k in cells if k.startswith('Ledger!')])!=(len(rows)+1)*len(fields):return False,'Excel输出行/列数错误'
-    observed=[]
-    for rownum in range(2,len(rows)+2):
-        record={}
-        for c,k in zip(letters,fields):
-            val=cells.get(f'Ledger!{c}{rownum}')
-            if not val or val['formula'] is not None:return False,'Excel行缺失或公式替代静态金额'
-            if k in {'invoice_id','entity_id'}:
-                if val['type']!='string':return False,'文本标识被数字化，前导0可能丢失'
-                record[k]=val['value']
+def ledger_formula_value(formula, cells, active=None, budget=None):
+    """Bounded Decimal evaluator, never eval/exec; unsupported syntax stays UNKNOWN.
+
+    Supports local numeric cell references, + - * /, parentheses and ROUND(x,n).
+    It recalculates formulas rather than trusting cached values. This support set
+    is evaluator coverage, not a newly imposed output-language requirement.
+    """
+    import ast
+    from decimal import ROUND_HALF_UP, InvalidOperation
+    active = set() if active is None else active
+    budget = [5000] if budget is None else budget
+    if len(formula) > 5000: raise UnsupportedFormula('Ledger公式超过自动求值长度上限')
+    expression = formula.strip().lstrip('=').replace('$', '')
+    expression = re.sub(r"(?:'Ledger'|Ledger)!", '', expression, flags=re.I)
+    try:
+        tree = ast.parse(expression, mode='eval')
+    except (SyntaxError, ValueError, RecursionError):
+        raise UnsupportedFormula('Ledger公式不在有限自动求值范围；需独立重算')
+    if len(list(ast.walk(tree))) > 200:
+        raise UnsupportedFormula('Ledger公式超过自动求值复杂度上限')
+
+    def calc(node):
+        budget[0] -= 1
+        if budget[0] < 0: raise UnsupportedFormula('Ledger公式超过自动求值计算量上限')
+        if isinstance(node, ast.Expression): return calc(node.body)
+        if isinstance(node, ast.Constant) and type(node.value) in {int, float}:
+            return Decimal(ast.get_source_segment(expression, node))
+        if isinstance(node, ast.Name) and re.fullmatch(r'[A-Z]+[1-9][0-9]*', node.id, re.I):
+            ref = 'Ledger!' + node.id.upper()
+            if ref in active or len(active) > 100: raise BenchError('Ledger公式存在循环或过深引用')
+            cell = cells.get(ref)
+            if not cell or cell['type'] != 'n': raise BenchError('Ledger公式引用缺失/非数值单元格')
+            value = Decimal(cell['value'])
+            if cell['formula'] is not None:
+                value = ledger_formula_value(cell['formula'], cells, active | {ref}, budget)
+                if value != Decimal(cell['value']): raise BenchError('被引用公式缓存与重算不一致')
+            if not value.is_finite(): raise BenchError('Ledger公式引用非有限金额')
+            return value
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
+            value = calc(node.operand)
+            return value if isinstance(node.op, ast.UAdd) else -value
+        if isinstance(node, ast.BinOp) and isinstance(node.op, (ast.Add, ast.Sub, ast.Mult, ast.Div)):
+            left, right = calc(node.left), calc(node.right)
+            if isinstance(node.op, ast.Add): return left + right
+            if isinstance(node.op, ast.Sub): return left - right
+            if isinstance(node.op, ast.Mult): return left * right
+            if right == 0: raise BenchError('Ledger公式除零')
+            return left / right
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id.upper() == 'ROUND' and len(node.args) == 2 and not node.keywords:
+            value, digits = calc(node.args[0]), calc(node.args[1])
+            if digits != digits.to_integral_value() or not -20 <= digits <= 20:
+                raise UnsupportedFormula('ROUND位数超过自动求值范围')
+            return value.quantize(Decimal(1).scaleb(int(-digits)), rounding=ROUND_HALF_UP)
+        raise UnsupportedFormula('Ledger公式不在有限自动求值范围；需独立重算')
+    try:
+        value = calc(tree)
+    except (InvalidOperation, OverflowError, RecursionError) as exc:
+        raise BenchError('Ledger公式数值计算无效') from exc
+    if not value.is_finite(): raise BenchError('Ledger公式结果不是有限金额')
+    return value
+
+
+def check_ledger_workbook(path, expected_csv):
+    from decimal import InvalidOperation
+    rows = _csv(expected_csv); cells = workbook_cells(path)
+    fields = list(rows[0]); letters = 'ABCDEF'
+    for col, field in zip(letters, fields):
+        header = cells.get('Ledger!' + col + '1', {})
+        if header.get('value') != field or header.get('formula') is not None:
+            return False, 'Excel列名错误'
+    if len([key for key in cells if key.startswith('Ledger!')]) != (len(rows)+1)*len(fields):
+        return False, 'Excel输出行/列数错误'
+    observed = []; unknown = []
+    for rownum in range(2, len(rows)+2):
+        record = {}
+        for col, field in zip(letters, fields):
+            ref = f'Ledger!{col}{rownum}'; cell = cells.get(ref)
+            if not cell: return False, 'Excel行缺失'
+            if field in {'invoice_id', 'entity_id'}:
+                if cell['type'] != 'string' or cell['formula'] is not None:
+                    return False, '文本标识被数字化或由未复核公式生成'
+                record[field] = cell['value']
             else:
-                if val['type']!='n':return False,'金额列不是数值'
-                record[k]=str(Decimal(val['value']).quantize(Decimal('.01')))
+                if cell['type'] != 'n': return False, '金额列不是数值'
+                try:
+                    cached = Decimal(cell['value']) if cell['value'] != '' else None
+                    if cached is not None and not cached.is_finite(): return False, '金额不是有限数值'
+                    if cell['formula'] is not None:
+                        try:
+                            recalculated = ledger_formula_value(cell['formula'], cells, {ref})
+                        except UnsupportedFormula:
+                            unknown.append(ref)
+                        else:
+                            if cached is not None and recalculated != cached: return False, '公式缓存与独立重算不一致'
+                            cached = recalculated
+                    elif cached is None:
+                        return False, '金额单元格既无值也无公式'
+                    record[field] = cached
+                except (InvalidOperation, BenchError):
+                    return False, 'Ledger金额或公式计算无效'
         observed.append(record)
-    key=lambda r:r['invoice_id']
-    return (sorted(observed,key=key)==sorted(rows,key=key),'Excel全部行独立读回比较（非渲染）')
+    expected = [{key: value if key in {'invoice_id', 'entity_id'} else Decimal(value)
+                 for key, value in row.items()} for row in rows]
+    key = lambda record: record['invoice_id']
+    left, right = sorted(observed, key=key), sorted(expected, key=key)
+    if any(any(actual[field] is not None and actual[field] != target[field] for field in fields) for actual, target in zip(left, right)):
+        return False, 'Excel逐行金额/标识与源重算不一致（零容差）'
+    if unknown:
+        return None, 'UNKNOWN：' + str(len(unknown)) + '个金额公式未由有限求值器验证；缓存正确不等于公式正确，需独立重算'
+    return True, 'Excel全部值/类型及支持的金额公式独立读回；Office视觉/Excel实际兼容UNKNOWN'
 
 
 def package_relationships(parts,source):

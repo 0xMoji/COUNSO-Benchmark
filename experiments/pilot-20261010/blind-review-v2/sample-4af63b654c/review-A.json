@@ -1,0 +1,49 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "task_revision": "B17-contract-0.2",
+  "scenario_id": "B17.reconcile",
+  "sample_id": "sample-4af63b654c",
+  "checks": [
+    {
+      "name": "revised_contract_and_schema",
+      "state": "PASS",
+      "evidence": "本sample最终prompt SHA256=b7e71eb36792bed08e3f8eba979fc5ffe1a38063997e4fe677f5602baee2c73e；仅按其第1–5条和schema审核，独立Schema验证通过，与基线不混汇。"
+    },
+    {
+      "name": "all_source_and_amount_recomputation",
+      "state": "PASS",
+      "evidence": "20持仓/17报价及policy全部独立重算，4确认行映射正确；SGD值100000/50280/150000/180000，合计480280.00等值返回480280。USD方向111000÷0.74正确；未知4项缺证映射准确且complete_valuation=null。"
+    },
+    {
+      "name": "fixed_csv_and_explicit_fields",
+      "state": "PASS",
+      "evidence": "detail.csv 8唯一头寸、每行5字段、固定表头/列序准确，4确认金额及original_*空白正确。4未知SGD空白，仅U-EUR-FX原币EUR/4000，其余原币空白。eur_intermediate=4000、period_source=period、选行键仅4个确认头寸、5排除类别都符合新契约。"
+    },
+    {
+      "name": "citations_completeness_and_usability",
+      "state": "PASS",
+      "evidence": "3条政策字段引用加20条持仓物理行2–21与17条报价物理行2–18都存在，可精确定位；result选行ID关联到使用版本。JSON和CSV全部明确要求齐全，来源/限制可追踪，可直接使用。"
+    },
+    {
+      "name": "objective_score_at_review",
+      "state": "UNKNOWN",
+      "evidence": "objective-checks仍PENDING_NEW_GRADER，本评分不依赖客观PASS。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]只有自报，无独立全渠道执行轨迹，未发现违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "AI-assisted independent review；仅匿名公开输入/产物，不读隐藏金标、模型/effort标签或evaluator/candidates。",
+    "全4依据该sample全部8项计算、明确新契约与引用/交付独立核验，不是他样本外推。"
+  ],
+  "benchmark_defects": []
+}

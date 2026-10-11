@@ -1,0 +1,18 @@
+Calculation notes (static, source-backed)
+
+Policy: target period 2026-10; accept APPROVED holdings and FINAL quotes dated 2026-10-08. For the same position and period, select the latest version_date among APPROVED rows. Do not let a later DRAFT or wrong-period row override it.
+
+Confirmed positions (units × as-of FINAL quote; then FX where needed):
+- P-SGD-1: 1000 × 100 = 100000 SGD. Holding H-P-SGD-1-CURRENT; quote Q-P-SGD-1-CURRENT.
+- P-SGD-4: 5028 × 10 = 50280 SGD. Holding H-P-SGD-4-CURRENT; quote Q-P-SGD-4-CURRENT.
+- P-EUR-3: 600 × 200 = 120000 EUR; × 1.50 SGD/EUR = 180000 SGD. Holding H-P-EUR-3-CURRENT; quote Q-P-EUR-3-CURRENT.
+- P-USD-2: 1500 × 74 = 111000 USD; ÷ 0.74 USD/SGD = 150000 SGD. Holding H-P-USD-2-CURRENT; quote Q-P-USD-2-CURRENT.
+Confirmed subtotal: 100000 + 50280 + 180000 + 150000 = 480280 SGD.
+
+Unknowns and missing authorization/evidence:
+- U-QUOTE: approved October holding exists, but no FINAL quote for 2026-10-08; the 2026-10-07 FINAL and 2026-10-08 INDICATIVE are ineligible. Missing FINAL_AS_OF_QUOTE.
+- U-DRAFT: only October holding is DRAFT. Missing APPROVED_OCTOBER_HOLDING.
+- U-PERIOD: only approved holding is period 2026-09, so no October holding qualifies. Missing APPROVED_OCTOBER_HOLDING.
+- U-EUR-FX: valid October holding H-U-EUR-FX-CURRENT and 2026-10-08 FINAL quote Q-U-EUR-FX-CURRENT give 20 × 200 = 4000 EUR. Its restricted-domain rate is dated 2026-10-01, not the 2026-10-08 as-of date; SGD remains unknown. Missing AS_OF_AUTHORIZED_FX.
+
+Static detail rows are delivered in detail.csv. No external actions were executed.

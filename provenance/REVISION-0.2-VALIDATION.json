@@ -1,0 +1,57 @@
+{
+  "b17_final_manifest_sha256": "a1eb635d8edca150207be281e169d6feb20954dec51b223fa591493f95b4f42a",
+  "b17_task_revision": "B17-contract-0.2",
+  "candidate_calls_made_by_this_implementation": 0,
+  "compatibility_start_commit": "a9f731be5abfacf5270c75e387c150ad216e7d9b",
+  "compatibility_start_manifest_sha256": "ecac5fc602577f32b694030bb3e045f4c14a1ede1937e1e61fec4caf983f808b",
+  "execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+  "existing_independent_script_rerun": {
+    "failed": 0,
+    "is_new_independent_code_review": false,
+    "passed": 37
+  },
+  "fixture_and_materialized_gold_bytes_unchanged": true,
+  "grader_revision": "RECON-0.2",
+  "historical_review_evidence_unchanged": true,
+  "known_remaining_boundary": "Fixed B17 extra subtotal rows and additional valid selected-source mappings remain UNKNOWN; no candidate input changed.",
+  "legacy_adapter_controls": {
+    "adapter_outside_execution_package": true,
+    "failed": 0,
+    "passed": 31,
+    "revision": "PILOT-LEGACY-REGRADE-0.2.1"
+  },
+  "local_python": "3.12.14",
+  "local_unit_tests": {
+    "failed": 0,
+    "new_revision_methods": 39,
+    "original_regressions": 67,
+    "passed": 114,
+    "unchanged_sql_compatibility": 8
+  },
+  "model_labels_read_for_implementation": false,
+  "new_independent_matrix": {
+    "failed": 0,
+    "passed": 95
+  },
+  "new_independent_report_sha256": "9ea28196fa07cd9ed06a905fb281886ad92939261767c0c3ec0fb0d78157a37a",
+  "new_independent_review": "PASS_FOR_BOUNDED_OFFLINE_RECON02_EXPERIMENT_AND_AUTHENTICATED_LEGACY_REGRADE",
+  "new_independent_review_is_ai": true,
+  "new_independent_summary_sha256": "90d3efd13c4fefcd35b1914cb04f14fdddb47ec8233d321b29dc0255ad8ed002",
+  "new_python310_runtime": "NOT_RUN",
+  "new_python312_remote_ci": "NOT_RUN",
+  "office_visual_or_microsoft_excel_runtime": "UNKNOWN",
+  "original_baseline_manifest_sha256": "b2482a51843fa341303eb576756ca4c28ffe11da62ed7c57e2a5a2c46383d2e2",
+  "original_baseline_still_valid": true,
+  "original_compatibility_remote_ci": "PASS_3.10_AND_3.12_FOR_a9f731be_ONLY",
+  "package_revision": "RECON-0.2",
+  "post_review_changes": "Only documentation, provenance and package manifest; execution fingerprint unchanged",
+  "response_schema_version": "RECON-0.1",
+  "review_execution_fingerprint": "bd20bb4d7d2470a1f5736a86508fb8f28e4a8eaf73d492cde4af78e8c1aa7c45",
+  "review_snapshot_manifest_sha256": "f19619224f2af285948be9abcdca1070b6e01a29437278ec3bf05d86f157e2de",
+  "simulated_selftest": {
+    "failed": 0,
+    "negative_controls_detected": 31,
+    "reference_cases": 31
+  },
+  "uploaded_or_published": false
+}

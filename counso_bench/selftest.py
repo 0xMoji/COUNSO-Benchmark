@@ -46,7 +46,7 @@ def selftest(output):
     for case in scenarios():
         sid=case['id'];contract=contracts(sid);out=output/sid
         response=materialize_reference(case,contract,out);observations=observed_reference(case,response,out)
-        run={'run_id':'SIMULATED-REFERENCE-'+sid,'scenario_id':sid,'run_origin':'SIMULATED','completion':'COMPLETE','failure_origin':'NONE','rubric_version':'RECON-0.1','human_review':{'reviewer':'DETERMINISTIC_REFERENCE_SELFTEST','facts':4,'completeness':4,'usability':4,'evidence':'这是金标模拟/工具自测，不是候选人工实测审核。'}}
+        run={'run_id':'SIMULATED-REFERENCE-'+sid,'scenario_id':sid,'run_origin':'SIMULATED','completion':'COMPLETE','failure_origin':'NONE','rubric_version':'RECON-0.2','task_revision':case.get('task_revision','RECON-0.1'),'human_review':{'reviewer':'DETERMINISTIC_REFERENCE_SELFTEST','facts':4,'completeness':4,'usability':4,'evidence':'这是金标模拟/工具自测，不是候选人工实测审核。'}}
         if observations:run['session_id']=observations['session_id']
         write_json(out/'response.json',response);write_json(out/'run.json',run)
         report=score_response(case,contract['checks'],response,run,out,ROOT,observations)

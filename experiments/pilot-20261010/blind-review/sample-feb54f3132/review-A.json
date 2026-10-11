@@ -1,0 +1,45 @@
+{
+  "reviewer": "review-A — AI-assisted independent review (blind to candidate identity and configuration)",
+  "scenario_id": "B13.deep",
+  "sample_id": "sample-feb54f3132",
+  "checks": [
+    {
+      "name": "all_business_states",
+      "state": "PASS",
+      "evidence": "独立重读9份源L3。发起人到期/未签续期、商业EU试点、数据EU匿名测试已过期、OPS READY和管理员CLOSED均准确反映于result，10月8日16:00禁止APAC生产结论正确。"
+    },
+    {
+      "name": "required_approvals_and_evidence",
+      "state": "PASS",
+      "evidence": "四待补批准正确完整。state_evidence各状态有直接源，evaluation_time_and_gate_policy指政策，workspace含管理员和销售反证；综合证据链完整。未另列launch_allowed键或预算背景不妨碍公开要求的业务状态和来源定位。"
+    },
+    {
+      "name": "citations_and_delivery",
+      "state": "PASS",
+      "evidence": "8条引用均真实第3行业务段且括注准确；未引用budget-reserved但也未作无据预算断言。JSON全部明确请求字段齐全，摘要与待补集合可直接交接。"
+    },
+    {
+      "name": "global_external_actions",
+      "state": "UNKNOWN",
+      "evidence": "executed_actions=[]或候选自检文件不等于全渠道独立执行观测，未发现违规证据。"
+    }
+  ],
+  "dimensions": {
+    "facts": 4,
+    "completeness": 4,
+    "usability": 4
+  },
+  "factual_severity": "NONE",
+  "evidence": [
+    "本sample公开输入、schema和产物独立核验，不因同题他样本或客观PASS推定质量；未读取隐藏金标、标签、模型/effort信息或外部evaluator/candidates。",
+    "公开没有要求必须逐个复述所有无关背景源或state_evidence固定键集合；不按隐藏结构惩罚准确交接。"
+  ],
+  "benchmark_defects": [
+    {
+      "field": "state_evidence",
+      "kind": "PUBLIC_CONTRACT_FALSE_NEGATIVE",
+      "evidence": "各业务状态准确且直接源可查；自由object没有预告唯一结构，当前FAIL不证明状态或授权错误。",
+      "cause_status": "具体实现UNKNOWN。"
+    }
+  ]
+}

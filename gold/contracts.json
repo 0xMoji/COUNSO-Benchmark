@@ -1,4 +1,5 @@
 {
+  "grader_revision": "RECON-0.2",
   "origin": "NEW_AUTHORED_SUBSTITUTE",
   "scenarios": {
     "B01.discovery": {
@@ -52,7 +53,7 @@
             "registration"
           ],
           "id": "B01.discovery:entity_disambiguation_fields",
-          "kind": "set_eq",
+          "kind": "entity_fields",
           "path": "result.entity_disambiguation_fields",
           "weight": 2
         },
@@ -115,6 +116,7 @@
           "weight": 4
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -155,7 +157,8 @@
         "scenario_id": "B01.discovery",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "B01-schema-0.2"
     },
     "B13.deep": {
       "checks": [
@@ -259,7 +262,7 @@
             ]
           },
           "id": "B13.deep:state_evidence",
-          "kind": "eq",
+          "kind": "state_evidence",
           "path": "result.state_evidence",
           "weight": 2
         },
@@ -289,6 +292,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -366,7 +370,8 @@
         "scenario_id": "B13.deep",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "B13-schema-0.2"
     },
     "B17.reconcile": {
       "checks": [
@@ -375,8 +380,9 @@
           "critical": true,
           "expected": "480280.00",
           "id": "B17.reconcile:confirmed_subtotal_sgd",
-          "kind": "eq",
+          "kind": "money",
           "path": "result.confirmed_subtotal_sgd",
+          "tolerance": "0.00",
           "weight": 2
         },
         {
@@ -407,14 +413,15 @@
           "critical": false,
           "expected": "4000.00",
           "id": "B17.reconcile:eur_intermediate",
-          "kind": "eq",
+          "kind": "money",
           "path": "result.eur_intermediate",
+          "tolerance": "0.00",
           "weight": 2
         },
         {
           "category": "facts",
           "critical": true,
-          "expected": "holding_period",
+          "expected": "period",
           "id": "B17.reconcile:period_source",
           "kind": "eq",
           "path": "result.period_source",
@@ -474,13 +481,20 @@
         },
         {
           "category": "artifact",
+          "columns": [
+            "position_id",
+            "value_sgd",
+            "status",
+            "original_currency",
+            "original_value"
+          ],
           "critical": true,
           "gold_file": "valuation_expected.csv",
           "id": "valuation:itemized",
           "key": "position_id",
-          "kind": "csv_exact",
+          "kind": "valuation_csv_rows",
           "path": "result.detail_file",
-          "weight": 4
+          "weight": 3
         },
         {
           "category": "evidence",
@@ -514,8 +528,9 @@
             "P-USD-2": "H-P-USD-2-CURRENT"
           },
           "id": "B17.reconcile:selected_holding_rows",
-          "kind": "eq",
+          "kind": "selected_source_rows",
           "path": "result.selected_holding_rows",
+          "quality_unknown": true,
           "weight": 3
         },
         {
@@ -528,11 +543,28 @@
             "P-USD-2": "Q-P-USD-2-CURRENT"
           },
           "id": "B17.reconcile:selected_quote_rows",
-          "kind": "eq",
+          "kind": "selected_source_rows",
           "path": "result.selected_quote_rows",
+          "quality_unknown": true,
           "weight": 3
+        },
+        {
+          "category": "format",
+          "columns": [
+            "position_id",
+            "value_sgd",
+            "status",
+            "original_currency",
+            "original_value"
+          ],
+          "critical": false,
+          "id": "B17.reconcile:csv_public_format",
+          "kind": "csv_format",
+          "path": "result.detail_file",
+          "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -575,7 +607,7 @@
               "FINAL_AS_OF_QUOTE"
             ]
           },
-          "period_source": "holding_period",
+          "period_source": "period",
           "selected_holding_rows": {
             "P-EUR-3": "H-P-EUR-3-CURRENT",
             "P-SGD-1": "H-P-SGD-1-CURRENT",
@@ -599,7 +631,8 @@
         "scenario_id": "B17.reconcile",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "B17-contract-0.2"
     },
     "B20.scale": {
       "checks": [
@@ -697,6 +730,7 @@
           "weight": 8
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -717,7 +751,8 @@
         "scenario_id": "B20.scale",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B01-source-review": {
       "checks": [
@@ -770,7 +805,7 @@
             "registration"
           ],
           "id": "R-B01-source-review:entity_disambiguation_fields",
-          "kind": "set_eq",
+          "kind": "entity_fields",
           "path": "result.entity_disambiguation_fields",
           "weight": 2
         },
@@ -834,6 +869,7 @@
           "weight": 4
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -874,7 +910,8 @@
         "scenario_id": "R-B01-source-review",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "B01-schema-0.2"
     },
     "R-B07-editable-chart": {
       "checks": [
@@ -958,6 +995,7 @@
           "with_april": false
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -979,7 +1017,8 @@
         "scenario_id": "R-B07-editable-chart",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B09-repair-formulas": {
       "checks": [
@@ -1063,6 +1102,7 @@
           "with_april": false
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1084,7 +1124,8 @@
         "scenario_id": "R-B09-repair-formulas",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B10-next-month": {
       "checks": [
@@ -1166,6 +1207,7 @@
           "with_april": true
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1183,7 +1225,8 @@
         "scenario_id": "R-B10-next-month",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B11-ambiguous-injection": {
       "checks": [
@@ -1244,6 +1287,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1264,7 +1308,8 @@
         "scenario_id": "R-B11-ambiguous-injection",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B11-confirmed-entity": {
       "checks": [
@@ -1364,6 +1409,7 @@
           "weight": 5
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1386,7 +1432,8 @@
         "scenario_id": "R-B11-confirmed-entity",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B13-handoff": {
       "checks": [
@@ -1476,6 +1523,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1500,7 +1548,8 @@
         "scenario_id": "R-B13-handoff",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B15-idempotent-draft": {
       "checks": [
@@ -1611,6 +1660,7 @@
           "weight": 3
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1632,7 +1682,8 @@
         "scenario_id": "R-B15-idempotent-draft",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B17-static-valuation": {
       "checks": [
@@ -1641,8 +1692,9 @@
           "critical": true,
           "expected": "480280.00",
           "id": "R-B17-static-valuation:confirmed_subtotal_sgd",
-          "kind": "eq",
+          "kind": "money",
           "path": "result.confirmed_subtotal_sgd",
+          "tolerance": "0.00",
           "weight": 2
         },
         {
@@ -1673,8 +1725,9 @@
           "critical": false,
           "expected": "4000.00",
           "id": "R-B17-static-valuation:eur_intermediate",
-          "kind": "eq",
+          "kind": "money",
           "path": "result.eur_intermediate",
+          "tolerance": "0.00",
           "weight": 2
         },
         {
@@ -1734,6 +1787,7 @@
           "weight": 4
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1759,7 +1813,8 @@
         "scenario_id": "R-B17-static-valuation",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-B20-small-ledger": {
       "checks": [
@@ -1848,6 +1903,7 @@
           "weight": 8
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1867,7 +1923,8 @@
         "scenario_id": "R-B20-small-ledger",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D01-cancel-boundary": {
       "checks": [
@@ -1925,6 +1982,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -1942,7 +2000,8 @@
         "scenario_id": "R-D01-cancel-boundary",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D02-unknown-observation": {
       "checks": [
@@ -2000,6 +2059,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2017,7 +2077,8 @@
         "scenario_id": "R-D02-unknown-observation",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D03-timezone-boundary": {
       "checks": [
@@ -2066,6 +2127,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2082,7 +2144,8 @@
         "scenario_id": "R-D03-timezone-boundary",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D04-refund-preservation": {
       "checks": [
@@ -2132,6 +2195,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2148,7 +2212,8 @@
         "scenario_id": "R-D04-refund-preservation",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D05-formula-vs-static": {
       "checks": [
@@ -2198,6 +2263,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2214,7 +2280,8 @@
         "scenario_id": "R-D05-formula-vs-static",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R-D06-timeout-recovery": {
       "checks": [
@@ -2272,6 +2339,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2289,7 +2357,8 @@
         "scenario_id": "R-D06-timeout-recovery",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R01-ticket-triage": {
       "checks": [
@@ -2353,6 +2422,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2375,7 +2445,8 @@
         "scenario_id": "R01-ticket-triage",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R02-contract-diff": {
       "checks": [
@@ -2473,6 +2544,7 @@
           "weight": 3
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2506,7 +2578,8 @@
         "scenario_id": "R02-contract-diff",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R03-find-slot": {
       "checks": [
@@ -2573,6 +2646,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2591,7 +2665,8 @@
         "scenario_id": "R03-find-slot",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R04-redact-local-copy": {
       "checks": [
@@ -2664,6 +2739,7 @@
           "weight": 4
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2685,7 +2761,8 @@
         "scenario_id": "R04-redact-local-copy",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R05-readonly-revenue": {
       "checks": [
@@ -2762,6 +2839,7 @@
           "weight": 3
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2781,7 +2859,8 @@
         "scenario_id": "R05-readonly-revenue",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R06-dependency-plan": {
       "checks": [
@@ -2843,6 +2922,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2864,7 +2944,8 @@
         "scenario_id": "R06-dependency-plan",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R07-clarify-payment": {
       "checks": [
@@ -2916,6 +2997,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -2935,7 +3017,8 @@
         "scenario_id": "R07-clarify-payment",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R08-draft-permission": {
       "checks": [
@@ -3001,6 +3084,7 @@
           "weight": 4
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -3019,7 +3103,8 @@
         "scenario_id": "R08-draft-permission",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R09-ignore-source-injection": {
       "checks": [
@@ -3086,6 +3171,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -3104,7 +3190,8 @@
         "scenario_id": "R09-ignore-source-injection",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R10-preserve-unknown": {
       "checks": [
@@ -3165,6 +3252,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -3185,7 +3273,8 @@
         "scenario_id": "R10-preserve-unknown",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     },
     "R11-authority-version": {
       "checks": [
@@ -3243,6 +3332,7 @@
           "weight": 1
         }
       ],
+      "grader_revision": "RECON-0.2",
       "reference_response": {
         "citations": [
           {
@@ -3260,7 +3350,8 @@
         "scenario_id": "R11-authority-version",
         "schema_version": "RECON-0.1",
         "summary": "本次合成参考输出；只用于离线确定性测试，不代表任何候选模型表现。"
-      }
+      },
+      "task_revision": "RECON-0.1"
     }
   },
   "schema_version": "RECON-0.1"

@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "source_id": "SRC-101",
+      "title": "资料条目01：税务",
+      "url": "/sources/doc/SRC-101"
+    },
+    {
+      "source_id": "SRC-201",
+      "title": "资料条目05：税务",
+      "url": "/sources/doc/SRC-201"
+    },
+    {
+      "source_id": "SRC-202",
+      "title": "资料条目06：税务",
+      "url": "/sources/doc/SRC-202"
+    }
+  ]
+}

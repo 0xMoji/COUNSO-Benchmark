@@ -1,8 +1,14 @@
 # Counso 基准题集：历史重建版
 
-HISTORY-RECONSTRUCTED · RECON-0.1 · 全部业务材料为合成数据
+HISTORY-RECONSTRUCTED · RECON-0.2 · 全部业务材料为合成数据
 
 这是可以离线运行、导出候选输入、核验真实文件并保留审计证据的替代评测包。它恢复了可核实的历史机制与关键事实，并补写缺失题目。没有恢复原文件字节、完整原提示词、原金标或完整原注册表；同为31题不表示逐题等同。
+
+## 当前修订状态
+
+本版从已修复Python 3.10兼容性的独立分支开始，修正真实盲审发现的字段等价、欠定义契约与OOXML误罚。响应格式仍为RECON-0.1，评分版本为RECON-0.2；新B17必须标记B17-contract-0.2。新代码已通过[独立AI有界复审](docs/INDEPENDENT_REVIEW_RECON_0.2.zh.md)，仍未上传；这不是实际真人质量评审。原独立审查仅是历史证据，不覆盖本版变更。
+
+先读[修订说明与新运行/旧回算边界](docs/REVISION-0.2.md)及[控制测试清单](docs/REVISION-0.2-CONTROLS.md)。所有原业务输入与逐项金额金标保持不变。新B17的提示、schema、三业务文件逐字对应最终固定契约；额外合计行的剩余歧义保留UNKNOWN。
 
 ## 交付范围
 
@@ -10,7 +16,7 @@ HISTORY-RECONSTRUCTED · RECON-0.1 · 全部业务材料为合成数据
 - 新编评分分组：23个 normalized、2个 supplemental、6个 diagnostic；后两组另列
 - 仅 B01.discovery、B13.deep、B17.reconcile、B20.scale 四个原变体ID得到证实并沿用。其他R前缀ID均为新编；家族机制参考也单独标记
 - 原始逐行数据不可得，已生成确定性合成CSV、原生可编辑XLSX、模拟来源材料与草稿服务
-- 没有调用候选模型、付费API、真实邮箱或Counso；没有新模型排名
+- 本工具自身不调用候选模型、付费API、真实邮箱或Counso；真实试跑与旧输出回算证据独立保存，本包不发布模型排名
 
 ## 快速运行
 
@@ -48,6 +54,6 @@ selftest是金标参考输出、模拟工具与负控的一致性测试；其中
 2. [题卡与覆盖](docs/CASEBOOK.md)：31题及新编/历史参考来源
 3. [评分说明](docs/SCORING.md)：完成、质量、UNKNOWN与分母
 4. [来源与缺口](provenance/RECONSTRUCTION-LEDGER.md)：核实了什么、补写了什么
-5. [最终验证](docs/FINAL-VERIFICATION.md)与[独立审阅](INDEPENDENT_REVIEW.md)：控制测试与剩余限制
+5. 历史证据：[最终验证](docs/FINAL-VERIFICATION.md)与[独立审阅](INDEPENDENT_REVIEW.md)：控制测试与剩余限制
 
 目录名称保留重建含义。旧历史结果和新运行永远分开保存，不把旧分数重贴为新规则成绩。

@@ -1,0 +1,9 @@
+position_id,status,period,as_of,holding_row_id,holding_source_locator,quote_row_id,quote_source_locator,units,price,currency,native_value,fx_domain,fx_formula,value_sgd,missing_evidence,note
+P-EUR-3,CONFIRMED,2026-10,2026-10-08,H-P-EUR-3-CURRENT,holdings-versions: line 16,Q-P-EUR-3-CURRENT,quotes-versions: line 6,600,200,EUR,120000,standard,EUR * 1.50 SGD_per_EUR,180000.00,,
+P-SGD-1,CONFIRMED,2026-10,2026-10-08,H-P-SGD-1-CURRENT,holdings-versions: line 2,Q-P-SGD-1-CURRENT,quotes-versions: line 17,1000,100,SGD,100000,standard,SGD identity (1),100000,,
+P-SGD-4,CONFIRMED,2026-10,2026-10-08,H-P-SGD-4-CURRENT,holdings-versions: line 3,Q-P-SGD-4-CURRENT,quotes-versions: line 3,5028,10,SGD,50280,standard,SGD identity (1),50280,,
+P-USD-2,CONFIRMED,2026-10,2026-10-08,H-P-USD-2-CURRENT,holdings-versions: line 11,Q-P-USD-2-CURRENT,quotes-versions: line 4,1500,74,USD,111000,standard,USD / 0.74 USD_per_SGD,150000,,
+U-DRAFT,UNKNOWN,2026-10,2026-10-08,,,Q-U-DRAFT-CURRENT,quotes-versions: line 13,,10,,,,,,APPROVED_OCTOBER_HOLDING,Only DRAFT holding exists for October; units cannot be treated as approved.
+U-EUR-FX,UNKNOWN,2026-10,2026-10-08,H-U-EUR-FX-CURRENT,holdings-versions: line 15,Q-U-EUR-FX-CURRENT,quotes-versions: line 14,20,200,EUR,4000,restricted-domain,,,AS_OF_AUTHORIZED_FX,Available restricted-domain FX is dated 2026-10-01; cannot use standard-domain FX without authorization.
+U-PERIOD,UNKNOWN,2026-10,2026-10-08,,,Q-U-PERIOD-CURRENT,quotes-versions: line 12,,10,,,,,,APPROVED_OCTOBER_HOLDING,Holding period is September despite its October entered date; October approved holding is missing.
+U-QUOTE,UNKNOWN,2026-10,2026-10-08,H-U-QUOTE-CURRENT,holdings-versions: line 4,,,200,,USD,,standard,,,FINAL_AS_OF_QUOTE,Only as-of INDICATIVE and wrong-date FINAL quotes exist; neither supplies an authorized as-of final price.

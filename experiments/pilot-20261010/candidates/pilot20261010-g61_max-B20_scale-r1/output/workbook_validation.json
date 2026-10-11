@@ -1,0 +1,39 @@
+{
+  "row_count": 2400,
+  "worksheet": "Ledger",
+  "columns": [
+    "invoice_id",
+    "entity_id",
+    "amount",
+    "applied_receipts",
+    "credits",
+    "balance"
+  ],
+  "identifier_values_verified_as_strings": true,
+  "identifier_number_format": "@",
+  "all_monetary_cells_verified_as_numbers": true,
+  "balance_formula": "=ROUND(Crow-Drow-Erow,2)",
+  "every_ledger_cell_compared_to_csv": true,
+  "balance_cents": 32077227,
+  "balance_sgd": "320772.27",
+  "inspections": [
+    {
+      "range": "A1:F5",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Ledger\",\"address\":\"A1:F5\",\"rows\":5,\"cols\":6,\"values\":[[\"invoice_id\",\"entity_id\",\"amount\",\"applied_receipts\",\"credits\",\"balance\"],[\"00000001\",\"SG-001\",163.61,25,10,128.61],[\"00000002\",\"SG-002\",165.62,26,10,129.62],[\"00000003\",\"SG-003\",167.63,27,10,130.63],[\"00000004\",\"SG-004\",169.64,28,10,131.64]]}"
+    },
+    {
+      "range": "A1200:F1204",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Ledger\",\"address\":\"A1200:F1204\",\"rows\":5,\"cols\":6,\"values\":[[\"00001199\",\"SG-079\",171.71,33,0,138.71],[\"00001200\",\"SG-080\",162.61,34,0,128.61],[\"00001201\",\"SG-001\",164.62,35,0,129.62],[\"00001202\",\"SG-002\",166.63,36,0,130.63],[\"00001203\",\"SG-003\",168.64,37,0,131.64]]}"
+    },
+    {
+      "range": "A2398:F2401",
+      "inspection": "{\"kind\":\"table\",\"sheet\":\"Ledger\",\"address\":\"A2398:F2401\",\"rows\":4,\"cols\":6,\"values\":[[\"00002397\",\"SG-077\",137.69,0,0,137.69],[\"00002398\",\"SG-078\",138.7,0,0,138.7],[\"00002399\",\"SG-079\",128.6,0,0,128.6],[\"00002400\",\"SG-080\",129.61,0,0,129.61]]}"
+    },
+    {
+      "formula_error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}"
+    }
+  ],
+  "preview": "ledger_preview.png",
+  "preview_only_invoice_display_mask": "00000000; restored to @ before XLSX export",
+  "exporter": "@oai/artifact-tool"
+}

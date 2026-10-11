@@ -1,0 +1,18 @@
+{
+  "run_id": "pilot20261010-g6l_medium-B01_discovery-r1",
+  "scenario_id": "B01.discovery",
+  "run_origin": "NEW_MODEL",
+  "completion": "COMPLETE",
+  "failure_origin": "NONE",
+  "rubric_version": "RECON-0.1",
+  "model_snapshot": "UNKNOWN",
+  "model_requested": "gpt-6-luna",
+  "effort_requested": "medium",
+  "actual_model_effort_independently_confirmed": false,
+  "tool_request_accepted": true,
+  "started_at": "UNKNOWN",
+  "finished_at_observed": "2026-10-10T23:03:35.228389+00:00",
+  "tokens": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "session_id": "38783d2c-2dba-4f75-ae29-4dbd64613ec2"
+}

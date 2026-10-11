@@ -1,16 +1,16 @@
 {
-  "packageDir": "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/unseen_same_schema",
+  "packageDir": "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/unseen_same_schema",
   "kind": "planner",
-  "artifactDir": "candidate-results/u-22c0a0e5b612e55ac4c2/unseen_same_schema",
+  "artifactDir": "candidate-results/u-a7cb1a40c71dfb953a84/unseen_same_schema",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
-  "caseId": "G-UI-EDIT-C1",
+  "caseId": "G-UI-EDIT-M1",
   "fixtureId": "unseen_same_schema",
   "fixtureHashes": {
-    "unseen_same_schema": "07ad69c57a1c4c55e5af3fbb8104f45a238ed2f760659265636a7dd7c7134b79"
+    "unseen_same_schema": "042e2d20af8f223103a5cded128ceaf85bbc9b7a8473758e4b83d9c4cb4a5bbb"
   },
-  "candidatePackageSha256": "90a49c3bf5cf5ea479500424a3a0f8466872b40b401ec305bab59e094b6700b0",
+  "candidatePackageSha256": "ffa7c8dc5781409e72190d0f3e1e001854513991abc89ddf7b87ceb30f984f0f",
   "testIds": [
     "P-unseen_same_schema-legacy",
     "P-unseen_same_schema-draft_baseline",
@@ -31,21 +31,21 @@
   "fixtureReplacements": {
     "advanced_authority": {
       "draft.json": {
-        "draft_id": "CAL-UNSEEN-PLAN-008",
+        "draft_id": "PLAN-B-009",
         "allocations": [
           {
-            "allocation_id": "CAL-UNSEEN-LINE-001",
-            "work_item_id": "CAL-UNSEEN-W-0001",
-            "resource_id": "CAL-UNSEEN-R-00001",
-            "date": "2027-01-28",
-            "minutes": 90
+            "allocation_id": "DL-B01",
+            "work_item_id": "WI-X01",
+            "resource_id": "R-0002",
+            "date": "2026-12-07",
+            "minutes": 60
           },
           {
-            "allocation_id": "CAL-UNSEEN-LINE-002",
-            "work_item_id": "CAL-UNSEEN-W-0002",
-            "resource_id": "CAL-UNSEEN-R-00002",
-            "date": "2027-01-29",
-            "minutes": 135
+            "allocation_id": "DL-B02",
+            "work_item_id": "WI-Y01",
+            "resource_id": "R-0200",
+            "date": "2026-12-08",
+            "minutes": 60
           }
         ]
       }
@@ -53,10 +53,10 @@
   },
   "actionTimeoutMs": 5000,
   "observerModule": "runtime/candidate-observer.mjs",
-  "observerSha256": "3212c4001df792481d1ff08d097aee1db4b39ed58733dbd12cb04b1c09764ec6",
+  "observerSha256": "81629e3ff360234321785cabc06aca84cad2383dae136800c326bfbdb7b56325",
   "hostMetadata": {
     "draft.json": {
-      "revision": "219",
+      "revision": "88",
       "canWrite": true
     },
     "resources.json": {
@@ -67,14 +67,14 @@
   "browserChannel": "chrome",
   "expectedChromeVersion": "154.0.8037.97",
   "registeredHealthControl": {
-    "packageDir": "candidate-inputs/references/ref-g-ui-edit-c1/frame",
-    "packageSha256": "d12b902a9130edee66082f557abcfdef6d8d5951eec9b1748f438f52fc15e4aa",
+    "packageDir": "candidate-inputs/references/ref-g-ui-edit-m1/frame",
+    "packageSha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
     "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
-    "fixtureDir": "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/unseen_same_schema",
-    "fixtureSha256": "07ad69c57a1c4c55e5af3fbb8104f45a238ed2f760659265636a7dd7c7134b79",
+    "fixtureDir": "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/unseen_same_schema",
+    "fixtureSha256": "042e2d20af8f223103a5cded128ceaf85bbc9b7a8473758e4b83d9c4cb4a5bbb",
     "hostMetadata": {
       "draft.json": {
-        "revision": "219",
+        "revision": "88",
         "canWrite": true
       },
       "resources.json": {

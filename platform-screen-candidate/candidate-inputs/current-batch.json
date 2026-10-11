@@ -4,14 +4,14 @@
   "adapter_version": "CANDIDATE-ADAPTER-SUBSET-3",
   "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v4",
   "base_fingerprint": "5ba0c9645cb97ec29f4e60cd6a929e851c144bcf5060bc68dde57ecb73c94c6d",
-  "local_batch_sha256": "1f5e17b19ebb621651838326d7cbb3040cfe2c24ec59ed975032f5c1aa1562a5",
+  "local_batch_sha256": "ab301d173eeab9a4b8f5357a75071e864a70213283de980992fc366c5710bc15",
   "execution_freeze": {
     "mode": "COMBINED_VERIFIED",
     "control_base_manifest_path": "docs/CONTROL_BASE_FREEZE.json",
     "control_base_manifest_sha256": "e329d311f1c94aa2403860d5318ff203aa6d25b7efd74abef2cb20c9e283707f",
     "control_base_fingerprint": "5ba0c9645cb97ec29f4e60cd6a929e851c144bcf5060bc68dde57ecb73c94c6d",
-    "execution_fingerprint": "a925edcb4b4cf19626f1bcb8bd1423a0c40db21c7b44a6a874bcdf8a2aae64b0",
-    "combined_manifest_sha256": "ab963095fa9e004399887d8ec1c88720674afc1a54c0a56f1b0fc50515950109",
+    "execution_fingerprint": "a7c5c19127e9975fc67d8680bfc6b4debcfd20b48dfeed399c62b0f6c3d9a77d",
+    "combined_manifest_sha256": "5068fb648f74612dc4237ef13c020e8a1f704314b17019c6a340a2eaaf381c9d",
     "grader_base_deltas": {
       "runtime/model.mjs": {
         "before_sha256": "02f1030d60217d0875a685d40e1c566161df1881af19fbe9601aee3a04aff7de",
@@ -53,7 +53,7 @@
     ".github/workflows/candidate-ui-acceptance.yml": "3a6c7681cfffdc48d8cbd406b767935f9cbcabfa3e8258b560ca1194a2fa024a",
     "runtime/acceptance-driver.mjs": "adf3710298de61ebec7efb7d126546e13fb54d0f4f0e3c4f736a4757950e3405",
     "runtime/acceptance-observer.mjs": "f27d81aec283bfe88527da39ede9b482582859087bdb11aee77d1006527d73cb",
-    "runtime/candidate-observer.mjs": "3212c4001df792481d1ff08d097aee1db4b39ed58733dbd12cb04b1c09764ec6",
+    "runtime/candidate-observer.mjs": "81629e3ff360234321785cabc06aca84cad2383dae136800c326bfbdb7b56325",
     "runtime/package-path.mjs": "02630cc35fd18381b663447e7fb8ddc7ddcf9902d9cc3dc793a0376259c3bdf7",
     "runtime/candidate-ci-entry.mjs": "a224dc0cd78432eab93d0a2e1af6bdec6d421e0a9971d1dc084b847a444a220c",
     "runtime/ci-run.mjs": "8694cb80663c301e92ed5b7205f24d20530810ba2988e222e960291a363d4eb0",
@@ -83,437 +83,78 @@
     "runtime/vendor/viz/lib/utils.ts": "4acbc7165a8d54738ff62b51414e772c08fe78434e524e6d8770180d3ba2925f"
   },
   "content_files": {
-    "candidate-inputs/configs/u-1660d929c7086c8f4666/primary.json": "319ad69de5230926c006aea01494880b64d70989e4e984032fdd2d07b41966c7",
-    "candidate-inputs/configs/u-1660d929c7086c8f4666/unseen_same_schema.json": "3ac3e0ae8000f3c7c61bc3789e8384d121dda403bedd23263a5c240616c9a65a",
-    "candidate-inputs/configs/u-22c0a0e5b612e55ac4c2/primary.json": "d32c585149e8f42239f7f64b994d1fa196bcf7978721725bdc0beb61f873fd07",
-    "candidate-inputs/configs/u-22c0a0e5b612e55ac4c2/unseen_same_schema.json": "ba5e0ee7c7bbe05c0929a219778e00aca86b93fea217cf2c9e1a6cd7caba4f4c",
-    "candidate-inputs/fixtures/u-1660d929c7086c8f4666/primary/dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-    "candidate-inputs/fixtures/u-1660d929c7086c8f4666/unseen_same_schema/dataset.json": "d9d1359d41e58e8cb8cb005bd09fbbb73a2cc5341bb01847c01877bbe5a9789c",
-    "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/primary/draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
-    "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/primary/resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355",
-    "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/unseen_same_schema/draft.json": "70ba9276d1d642bb25115a295b008593ebbeadddaead9296ead4fb08b67ecd5c",
-    "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/unseen_same_schema/resources.json": "3ab9eab1401bca49a47482ea7cda4b9d4a6611276f6c1a7f32a0cf3fedbf21aa",
-    "candidate-inputs/packages/u-1660d929c7086c8f4666/frame/dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-    "candidate-inputs/packages/u-1660d929c7086c8f4666/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
-    "candidate-inputs/packages/u-1660d929c7086c8f4666/frame/index.tsx": "2b662fba74820903e16fe365089a9834d4bbc064a0312f6af8648417fcbdac27",
-    "candidate-inputs/packages/u-1660d929c7086c8f4666/frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
-    "candidate-inputs/packages/u-1660d929c7086c8f4666/response.json": "9387d060ce6361cf16b02a2f52c4212bb7d3e1318ee0d2f154eaa2f8113d46e6",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame/draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame/index.tsx": "4c70bead025f91a954ec24ae3de532bb9902eabc7c9ea898d47e842aea4c67c2",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame/resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355",
-    "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/response.json": "a7632c17ce0b12bdad482f0fce85ca4c36113d00582a31387cd3c8338ac939f2",
-    "candidate-inputs/references/ref-g-ui-create-c1/frame/dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-    "candidate-inputs/references/ref-g-ui-create-c1/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
-    "candidate-inputs/references/ref-g-ui-create-c1/frame/index.tsx": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
-    "candidate-inputs/references/ref-g-ui-create-c1/frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
-    "candidate-inputs/references/ref-g-ui-edit-c1/frame/draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
-    "candidate-inputs/references/ref-g-ui-edit-c1/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
-    "candidate-inputs/references/ref-g-ui-edit-c1/frame/index.tsx": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
-    "candidate-inputs/references/ref-g-ui-edit-c1/frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-    "candidate-inputs/references/ref-g-ui-edit-c1/frame/resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355"
+    "candidate-inputs/configs/u-a7cb1a40c71dfb953a84/primary.json": "7c10e62b951094d3e018828f2bec7e479b4488d9e2ce5658ce4a69f5baa8f088",
+    "candidate-inputs/configs/u-a7cb1a40c71dfb953a84/unseen_same_schema.json": "0dd90cad4b69cb767bbcb600d9c59d2aa340b931e3c0306cfdfc5544679130cd",
+    "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/primary/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+    "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/primary/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+    "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/unseen_same_schema/draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+    "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/unseen_same_schema/resources.json": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame/index.tsx": "078f4a29bfe7c4ed5176439d6b91e5b03d3c91ef80213d80f53161b76e628fa5",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+    "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/response.json": "c17bb1171d66665b7b2743f847bbf7b6f7803104038172086a0e493f773ae65e",
+    "candidate-inputs/references/ref-g-ui-edit-m1/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+    "candidate-inputs/references/ref-g-ui-edit-m1/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+    "candidate-inputs/references/ref-g-ui-edit-m1/frame/index.tsx": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
+    "candidate-inputs/references/ref-g-ui-edit-m1/frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+    "candidate-inputs/references/ref-g-ui-edit-m1/frame/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad"
   },
   "control_gate_sha256": "faae3ce1cd6d36eebcbb36e9df2711a3105cff9b85efb206e5e998b80979cf63",
   "candidates": [
     {
-      "subject_id": "u-1660d929c7086c8f4666",
+      "subject_id": "u-a7cb1a40c71dfb953a84",
       "role": "CANDIDATE",
-      "case_id": "G-UI-CREATE-C1",
-      "kind": "dashboard",
-      "output_dir": "candidate-inputs/packages/u-1660d929c7086c8f4666",
-      "package_dir": "candidate-inputs/packages/u-1660d929c7086c8f4666/frame",
-      "package_sha256": "5f7d4798ec822c7907729f607c9c0d701c356515e2f9390d9e41f2dce3fd653c",
-      "response_sha256": "9387d060ce6361cf16b02a2f52c4212bb7d3e1318ee0d2f154eaa2f8113d46e6",
-      "raw_final_response_sha256": "1b0dcda97337d6333357c2742e4b8eba4b9ef4378c36d368e9011b6e82370bc1",
-      "bundle_sha256": "305ef47730358de079cdb0a82bec56e447038e8f25f23cad4e46a4b3d711cfc2",
-      "compile_preflight": {
-        "state": "COMPILED",
-        "diagnostic": null,
-        "error": null,
-        "compiled_graph": {
-          "manifest_sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
-          "graph_sha256": "19063ef335d94d8bdbcd88bd0ee75997c43aea7e2c959e71e3a392d158560d4c",
-          "source_files_read": {
-            "index.tsx": "2b662fba74820903e16fe365089a9834d4bbc064a0312f6af8648417fcbdac27"
-          }
-        }
-      },
-      "registration": {
-        "anonymous_run_id": "u-1660d929c7086c8f4666",
-        "case_id": "G-UI-CREATE-C1",
-        "public_input_sha256": "0a3cc0b77d68e5320641255d86c0ca9e7a96d91a91162cc2bebc6e7ff67ec938",
-        "output_files": {
-          "frame/dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-          "frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
-          "frame/index.tsx": "2b662fba74820903e16fe365089a9834d4bbc064a0312f6af8648417fcbdac27",
-          "frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
-          "response.json": "9387d060ce6361cf16b02a2f52c4212bb7d3e1318ee0d2f154eaa2f8113d46e6"
-        },
-        "raw_final_response_sha256": "1b0dcda97337d6333357c2742e4b8eba4b9ef4378c36d368e9011b6e82370bc1",
-        "run_origin": "NEW_NATIVE_AGENT",
-        "failure_origin": "NONE",
-        "source_observation": "ob-f2390852a0ffbe5708a271ed13f1ad2f",
-        "execution_fingerprint": "a925edcb4b4cf19626f1bcb8bd1423a0c40db21c7b44a6a874bcdf8a2aae64b0",
-        "native_generation_fingerprint": "5ba0c9645cb97ec29f4e60cd6a929e851c144bcf5060bc68dde57ecb73c94c6d"
-      },
-      "configs": [
-        {
-          "config_path": "candidate-inputs/configs/u-1660d929c7086c8f4666/primary.json",
-          "config_sha256": "319ad69de5230926c006aea01494880b64d70989e4e984032fdd2d07b41966c7",
-          "fixture_id": "primary",
-          "fixture_files": {
-            "dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852"
-          },
-          "fixture_sha256": "f00fdc6907a7e9f8b60fcff60c80258682b495aa92f8d2680b74be3b83139121",
-          "test_ids": [
-            "D-primary-baseline",
-            "D-primary-keyboard",
-            "D-primary-linked_scope",
-            "D-primary-reset",
-            "D-primary-empty",
-            "D-primary-late_result",
-            "D-primary-late_error",
-            "D-primary-retry",
-            "D-primary-retention"
-          ],
-          "test_plan_sha256": {
-            "D-primary-baseline": "34e0f1b92a82c65f99f95c814e02a39cb8e2d62f1f410096ce992cfbaffc9f09",
-            "D-primary-keyboard": "d3505671eb8525ba2e97ff078412d4d490fc50307942cf1a2603fd936c203088",
-            "D-primary-linked_scope": "c3e6c6393904b4ef7a7db156dc49019174599e84f56272198eae11985aed344a",
-            "D-primary-reset": "38b9d322b993533c660632d7fbb8d7855aab28e36972a473d415c3fd8ed57cf8",
-            "D-primary-empty": "4b346e68677206b4112fe50ed30ede99f04045525aefc1d1f27bf4d8971b8e00",
-            "D-primary-late_result": "196a4b38d55f95158027718d2a2bd8bfac6040ca27d3c162821c3252fdd24562",
-            "D-primary-late_error": "56c125f96981080721f374a07b67791689d80add6a70d6440b8583c5bc18156c",
-            "D-primary-retry": "6b81eb3aac3dc1614834d62573d1e175b69d9ade5f0e9ba459a733fe725c3f65",
-            "D-primary-retention": "ba87ffd7d8b0ceeb755c4969b53a43f2a2f2fe9acf5b887cde497472d682a3ef"
-          }
-        },
-        {
-          "config_path": "candidate-inputs/configs/u-1660d929c7086c8f4666/unseen_same_schema.json",
-          "config_sha256": "3ac3e0ae8000f3c7c61bc3789e8384d121dda403bedd23263a5c240616c9a65a",
-          "fixture_id": "unseen_same_schema",
-          "fixture_files": {
-            "dataset.json": "d9d1359d41e58e8cb8cb005bd09fbbb73a2cc5341bb01847c01877bbe5a9789c"
-          },
-          "fixture_sha256": "e2adf5d2dc58817aa4c0b9e1e073653ea0958587d842d2d1d5647ae58ee7f259",
-          "test_ids": [
-            "D-unseen_same_schema-baseline",
-            "D-unseen_same_schema-keyboard",
-            "D-unseen_same_schema-linked_scope",
-            "D-unseen_same_schema-reset",
-            "D-unseen_same_schema-empty",
-            "D-unseen_same_schema-late_result",
-            "D-unseen_same_schema-late_error",
-            "D-unseen_same_schema-retry",
-            "D-unseen_same_schema-retention",
-            "D-unseen_same_schema-generalization"
-          ],
-          "test_plan_sha256": {
-            "D-unseen_same_schema-baseline": "0f808eaf0b15d5ad6cf328c62ea89bdb24ef434d72c619964b0fd0bdfd9dbbd2",
-            "D-unseen_same_schema-keyboard": "4bba66d14bda634e0134c01243ad5a7dc00a5c6452c405691eb8ff34c1354d6e",
-            "D-unseen_same_schema-linked_scope": "afe1d3daf5fb7da1d77aa23a7875f811cc103185e2d65cfdb79e50007d4033dc",
-            "D-unseen_same_schema-reset": "bf8464a0e028e0a1693bf23656af2a492665bc4f445a725f7e468197076fbe23",
-            "D-unseen_same_schema-empty": "5ffd02409ed4e1a27ab76a7c303e3c89a459838337f00e89ff051fb285689568",
-            "D-unseen_same_schema-late_result": "2e02127f6a92e4355fe917ec661d4a4bb1b1325a30c784229942101c22b64252",
-            "D-unseen_same_schema-late_error": "1500b42f174c77813e3e9ee3fc0ba6cf8747003ab53ef41d885f981a829acacd",
-            "D-unseen_same_schema-retry": "ef5121e0c281ff488d0da11cfa14a588eb5198db130e1c9313147a69406facb5",
-            "D-unseen_same_schema-retention": "9bd7e61f18a24d1158974487373f09ee730acda86aae9543b1d0dd343f7f3d36",
-            "D-unseen_same_schema-generalization": "24ca679838633df38a4d91e164f242370a3a121440e166ae1d48abb4dd4f792f"
-          }
-        }
-      ],
-      "test_matrix": [
-        {
-          "test_id": "D-primary-baseline",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-E1",
-            "D-E2"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "34e0f1b92a82c65f99f95c814e02a39cb8e2d62f1f410096ce992cfbaffc9f09"
-        },
-        {
-          "test_id": "D-primary-keyboard",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-E3"
-          ],
-          "requirements": [],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "d3505671eb8525ba2e97ff078412d4d490fc50307942cf1a2603fd936c203088"
-        },
-        {
-          "test_id": "D-primary-linked_scope",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-M1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "c3e6c6393904b4ef7a7db156dc49019174599e84f56272198eae11985aed344a"
-        },
-        {
-          "test_id": "D-primary-reset",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-M2"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "38b9d322b993533c660632d7fbb8d7855aab28e36972a473d415c3fd8ed57cf8"
-        },
-        {
-          "test_id": "D-primary-empty",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-M3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "4b346e68677206b4112fe50ed30ede99f04045525aefc1d1f27bf4d8971b8e00"
-        },
-        {
-          "test_id": "D-primary-late_result",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-H1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_late_result",
-          "test_plan_sha256": "196a4b38d55f95158027718d2a2bd8bfac6040ca27d3c162821c3252fdd24562"
-        },
-        {
-          "test_id": "D-primary-late_error",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-H1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_late_error",
-          "test_plan_sha256": "56c125f96981080721f374a07b67791689d80add6a70d6440b8583c5bc18156c"
-        },
-        {
-          "test_id": "D-primary-retry",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-H2",
-            "D-H3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_retryable_failure",
-          "test_plan_sha256": "6b81eb3aac3dc1614834d62573d1e175b69d9ade5f0e9ba459a733fe725c3f65"
-        },
-        {
-          "test_id": "D-primary-retention",
-          "fixture_id": "primary",
-          "atom_ids": [
-            "D-H3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "ba87ffd7d8b0ceeb755c4969b53a43f2a2f2fe9acf5b887cde497472d682a3ef"
-        },
-        {
-          "test_id": "D-unseen_same_schema-baseline",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-E1",
-            "D-E2"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "0f808eaf0b15d5ad6cf328c62ea89bdb24ef434d72c619964b0fd0bdfd9dbbd2"
-        },
-        {
-          "test_id": "D-unseen_same_schema-keyboard",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-E3"
-          ],
-          "requirements": [],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "4bba66d14bda634e0134c01243ad5a7dc00a5c6452c405691eb8ff34c1354d6e"
-        },
-        {
-          "test_id": "D-unseen_same_schema-linked_scope",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-M1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "afe1d3daf5fb7da1d77aa23a7875f811cc103185e2d65cfdb79e50007d4033dc"
-        },
-        {
-          "test_id": "D-unseen_same_schema-reset",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-M2"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "bf8464a0e028e0a1693bf23656af2a492665bc4f445a725f7e468197076fbe23"
-        },
-        {
-          "test_id": "D-unseen_same_schema-empty",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-M3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "5ffd02409ed4e1a27ab76a7c303e3c89a459838337f00e89ff051fb285689568"
-        },
-        {
-          "test_id": "D-unseen_same_schema-late_result",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-H1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_late_result",
-          "test_plan_sha256": "2e02127f6a92e4355fe917ec661d4a4bb1b1325a30c784229942101c22b64252"
-        },
-        {
-          "test_id": "D-unseen_same_schema-late_error",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-H1"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_late_error",
-          "test_plan_sha256": "1500b42f174c77813e3e9ee3fc0ba6cf8747003ab53ef41d885f981a829acacd"
-        },
-        {
-          "test_id": "D-unseen_same_schema-retry",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-H2",
-            "D-H3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "dashboard_retryable_failure",
-          "test_plan_sha256": "ef5121e0c281ff488d0da11cfa14a588eb5198db130e1c9313147a69406facb5"
-        },
-        {
-          "test_id": "D-unseen_same_schema-retention",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-H3"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "9bd7e61f18a24d1158974487373f09ee730acda86aae9543b1d0dd343f7f3d36"
-        },
-        {
-          "test_id": "D-unseen_same_schema-generalization",
-          "fixture_id": "unseen_same_schema",
-          "atom_ids": [
-            "D-H4"
-          ],
-          "requirements": [
-            "host_ledger"
-          ],
-          "schedule_id": "ordinary",
-          "test_plan_sha256": "24ca679838633df38a4d91e164f242370a3a121440e166ae1d48abb4dd4f792f"
-        }
-      ],
-      "full_delivery_package_sha256": "5f7d4798ec822c7907729f607c9c0d701c356515e2f9390d9e41f2dce3fd653c",
-      "executed_frontend_subset_sha256": "5f7d4798ec822c7907729f607c9c0d701c356515e2f9390d9e41f2dce3fd653c",
-      "frontend_subset_files": {
-        "dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-        "functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
-        "index.tsx": "2b662fba74820903e16fe365089a9834d4bbc064a0312f6af8648417fcbdac27",
-        "manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4"
-      }
-    },
-    {
-      "subject_id": "u-22c0a0e5b612e55ac4c2",
-      "role": "CANDIDATE",
-      "case_id": "G-UI-EDIT-C1",
+      "case_id": "G-UI-EDIT-M1",
       "kind": "planner",
-      "output_dir": "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2",
-      "package_dir": "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame",
-      "package_sha256": "90a49c3bf5cf5ea479500424a3a0f8466872b40b401ec305bab59e094b6700b0",
-      "response_sha256": "a7632c17ce0b12bdad482f0fce85ca4c36113d00582a31387cd3c8338ac939f2",
-      "raw_final_response_sha256": "70c151e9cf7171f8ad642ae8254c8406282c82fdc0ec4273a674cd30ea2e56dd",
-      "bundle_sha256": "61696dd9a0929ff1503066ca911648f8ade3d4407975412deea243eb09866156",
+      "output_dir": "candidate-inputs/packages/u-a7cb1a40c71dfb953a84",
+      "package_dir": "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame",
+      "package_sha256": "ffa7c8dc5781409e72190d0f3e1e001854513991abc89ddf7b87ceb30f984f0f",
+      "response_sha256": "c17bb1171d66665b7b2743f847bbf7b6f7803104038172086a0e493f773ae65e",
+      "raw_final_response_sha256": "f25d6957b85666fc12ad40b8f598ade3eb22d0e17ed4470548857844e3943e09",
+      "bundle_sha256": "fcff01f5b09ced98d9f46f1c84e2841f8e0b5ad14ec7f304076ed0ab054694f6",
       "compile_preflight": {
         "state": "COMPILED",
         "diagnostic": null,
         "error": null,
         "compiled_graph": {
           "manifest_sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-          "graph_sha256": "a37b8ba6cead2114a19c36a0e8dbaa5d2ae783ca72897f46797fb0299105473f",
+          "graph_sha256": "412bbef74eaad38e7d2495ddd17232c0217c9429a8daaa6aaa29ae8565fd5b65",
           "source_files_read": {
-            "index.tsx": "4c70bead025f91a954ec24ae3de532bb9902eabc7c9ea898d47e842aea4c67c2"
+            "index.tsx": "078f4a29bfe7c4ed5176439d6b91e5b03d3c91ef80213d80f53161b76e628fa5"
           }
         }
       },
       "registration": {
-        "anonymous_run_id": "u-22c0a0e5b612e55ac4c2",
-        "case_id": "G-UI-EDIT-C1",
-        "public_input_sha256": "5c630dadf226b51b11d80842def6c8415b45db6039f438ff77e91bd74af57f1b",
+        "anonymous_run_id": "u-a7cb1a40c71dfb953a84",
+        "case_id": "G-UI-EDIT-M1",
+        "public_input_sha256": "7b1b62abb4ae54bf19d509a6bcf7bf2a35821d2b5481a29e09468cd770302910",
         "output_files": {
-          "frame/draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
+          "frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
           "frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
-          "frame/index.tsx": "4c70bead025f91a954ec24ae3de532bb9902eabc7c9ea898d47e842aea4c67c2",
+          "frame/index.tsx": "078f4a29bfe7c4ed5176439d6b91e5b03d3c91ef80213d80f53161b76e628fa5",
           "frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-          "frame/resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355",
-          "response.json": "a7632c17ce0b12bdad482f0fce85ca4c36113d00582a31387cd3c8338ac939f2"
+          "frame/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+          "response.json": "c17bb1171d66665b7b2743f847bbf7b6f7803104038172086a0e493f773ae65e"
         },
-        "raw_final_response_sha256": "70c151e9cf7171f8ad642ae8254c8406282c82fdc0ec4273a674cd30ea2e56dd",
+        "raw_final_response_sha256": "f25d6957b85666fc12ad40b8f598ade3eb22d0e17ed4470548857844e3943e09",
         "run_origin": "NEW_NATIVE_AGENT",
         "failure_origin": "NONE",
-        "source_observation": "ob-cc24a1a38a725720667e1e9f911cc8ee",
-        "execution_fingerprint": "a925edcb4b4cf19626f1bcb8bd1423a0c40db21c7b44a6a874bcdf8a2aae64b0",
+        "source_observation": "ob-8326933aa819fd7c26d36e1655d921ee",
+        "execution_fingerprint": "a7c5c19127e9975fc67d8680bfc6b4debcfd20b48dfeed399c62b0f6c3d9a77d",
         "native_generation_fingerprint": "5ba0c9645cb97ec29f4e60cd6a929e851c144bcf5060bc68dde57ecb73c94c6d"
       },
       "configs": [
         {
-          "config_path": "candidate-inputs/configs/u-22c0a0e5b612e55ac4c2/primary.json",
-          "config_sha256": "d32c585149e8f42239f7f64b994d1fa196bcf7978721725bdc0beb61f873fd07",
+          "config_path": "candidate-inputs/configs/u-a7cb1a40c71dfb953a84/primary.json",
+          "config_sha256": "7c10e62b951094d3e018828f2bec7e479b4488d9e2ce5658ce4a69f5baa8f088",
           "fixture_id": "primary",
           "fixture_files": {
-            "draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
-            "resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355"
+            "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+            "resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad"
           },
-          "fixture_sha256": "2576fc45635d60e152081680c30a30bd944238147ab9e621046a322b987639c6",
+          "fixture_sha256": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c",
           "test_ids": [
             "P-primary-legacy",
             "P-primary-draft_baseline",
@@ -531,31 +172,31 @@
             "P-primary-ambiguous_ack"
           ],
           "test_plan_sha256": {
-            "P-primary-legacy": "e9fc8883c4484be21f1e382f16474db7d3ff83ee803b942989b8452ab4ceb4c8",
+            "P-primary-legacy": "8ce2828d0443eff0b92a9afef4af9015a8e6d92f4a6afc09205d061325bba4aa",
             "P-primary-draft_baseline": "5f0fe7df681d405a023ca17f5f17282a576c6f3699ffe84c1c997f65d2816b4f",
-            "P-primary-keyboard": "412c8c18c00aeab7b3fa6f0a6eaa6a2ca03e588ade57427076b79f7a20688ff3",
-            "P-primary-validation": "c4e8863d854918773391ab9d680bea5cee49152efa6bc4d0e00a98d2c8b09af1",
-            "P-primary-cumulative_capacity": "5fc3ff4dd2aaa3020d814989707ddb0e0941299bc3e04f2d3230f45667020508",
-            "P-primary-cumulative_demand": "be5d7e76e6404503f87cb815458f3eb990dc4e05615c378985e5a209a2233211",
-            "P-primary-save": "d67a450d910e4d4fb286c49e05190dd2b9a3990b8b00a246a30e016d7256efd2",
-            "P-primary-preserve": "e1e1720f35dd13a8e94506b70a492c4113fc41c9d4ae15a2e45d82fcd77c2359",
-            "P-primary-conflict": "13e5690d92ec7a724e0a16e16f6527a0d78cd548a1913a1d773740655038da72",
-            "P-primary-readonly": "7428ffa6440a3df6e07a092a4dcdb3cd350f728e3845de6e829ca8433b64f789",
-            "P-primary-midflight_readonly": "13bb23b6bd07f675b4f3e877ac723537ebcc20a0bfb2795c19d6d423e4351f37",
-            "P-primary-late_ack": "58917ac10bc8b0d838626ba743be9c219c068b084b20116724932b114b4e90ab",
-            "P-primary-retry_failure": "42b30e34928f84dc717effd4de5e5ebf382b9c1326d188c5118f004217a43677",
-            "P-primary-ambiguous_ack": "f3353758436dfb27f3528486627cbae7b661cb44c59aa4440659a84cd169b842"
+            "P-primary-keyboard": "f66294c39548f7341913bd896394f17495a177cb5181750096c84e30ee79db49",
+            "P-primary-validation": "0b55abee2b72d7c72c2b2c17922eb15d7f6ad840f9b4bac555c043b86c033678",
+            "P-primary-cumulative_capacity": "dd1963e7ea257f032a0efc49efa33dfdb99704e4846dd6809e1b12337e4fa4b6",
+            "P-primary-cumulative_demand": "233d838931a9ad1388240d29086652295ccdbb90bb979684b6f743e2fb4f89e2",
+            "P-primary-save": "e97a7239258c8dceac7844df1e3ddc1773b19b9fe780eed794c93b33117d9058",
+            "P-primary-preserve": "d18fc70a7ddb890859af207c7b7798ee95fbfe7ce546d875500e4445e39f6a34",
+            "P-primary-conflict": "1cad49717796f9c2397e82bfd99f098897ee82dd8e9bcecbb3a37f10ef1bad65",
+            "P-primary-readonly": "acc9b1fbe1110bc0fe429cafdfcee314483f8aa24e49a52627d7fdb48af048ae",
+            "P-primary-midflight_readonly": "e7f79304b3ea9c55422415be1f2e7e4a32cb559bc542c9fd47c3ae87f3470682",
+            "P-primary-late_ack": "39eec9b301e16c07e3f28d036a445065cd2bfa009c928e63d7ca89c48d238bbc",
+            "P-primary-retry_failure": "9627c62c5764625d99aaecc4cd00221eacff487d8fbb49c2cbbf2a0c2dcdfa11",
+            "P-primary-ambiguous_ack": "63c13dbe5dc71763d29b314e22fe7943bfbdd481ccf36736a37fd31507661962"
           }
         },
         {
-          "config_path": "candidate-inputs/configs/u-22c0a0e5b612e55ac4c2/unseen_same_schema.json",
-          "config_sha256": "ba5e0ee7c7bbe05c0929a219778e00aca86b93fea217cf2c9e1a6cd7caba4f4c",
+          "config_path": "candidate-inputs/configs/u-a7cb1a40c71dfb953a84/unseen_same_schema.json",
+          "config_sha256": "0dd90cad4b69cb767bbcb600d9c59d2aa340b931e3c0306cfdfc5544679130cd",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
-            "draft.json": "70ba9276d1d642bb25115a295b008593ebbeadddaead9296ead4fb08b67ecd5c",
-            "resources.json": "3ab9eab1401bca49a47482ea7cda4b9d4a6611276f6c1a7f32a0cf3fedbf21aa"
+            "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+            "resources.json": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d"
           },
-          "fixture_sha256": "07ad69c57a1c4c55e5af3fbb8104f45a238ed2f760659265636a7dd7c7134b79",
+          "fixture_sha256": "042e2d20af8f223103a5cded128ceaf85bbc9b7a8473758e4b83d9c4cb4a5bbb",
           "test_ids": [
             "P-unseen_same_schema-legacy",
             "P-unseen_same_schema-draft_baseline",
@@ -574,21 +215,21 @@
             "P-unseen_same_schema-generalization"
           ],
           "test_plan_sha256": {
-            "P-unseen_same_schema-legacy": "7a6f908b936de2c81ba399fe5bca95c189f14d8338e370bf5bcae6c947a3ac04",
+            "P-unseen_same_schema-legacy": "092e80cb1d7f76d84867e0f2dd9b2cb841102b1bf94c73308bdc060d20b5c6a5",
             "P-unseen_same_schema-draft_baseline": "de20e8adbf614b87e8c0cb28011ede70048807e46412eb72bf8ef2a4600c4283",
-            "P-unseen_same_schema-keyboard": "d40854884b8970aedb8e744918ce63f8d890b4ac8411ea4c3f6778b048ab488e",
-            "P-unseen_same_schema-validation": "ca13bcc1d40a1fb57fff962ba722de0a699687a5a92696d0cada915dcbf51eac",
-            "P-unseen_same_schema-cumulative_capacity": "e4927dea6e8d1496f96c200e31237bf69f64e62e6e4b71a8d9421d1347f1c0ed",
-            "P-unseen_same_schema-cumulative_demand": "49921bafc6c811e1f2043426f4c5749030b28d61f998fa39ef813e8978fc7bc6",
-            "P-unseen_same_schema-save": "4b7d66400d6d7aa4a05490417f2bb1eab767afe0a9ec1d3c3064ca57c34c5d9c",
-            "P-unseen_same_schema-preserve": "73b7180527959c08a4e2a04be0f399cff36c40e7698253e7962e89de88e9da00",
-            "P-unseen_same_schema-conflict": "813529db1adb2e56119f545aaaf1b5af55cb6ac58e933be9b82d5a12ed46e936",
-            "P-unseen_same_schema-readonly": "3edfa4dc5d8ab8a22684ef655b5d3f0e200ec745b7b8274fc34f2624a318fc19",
-            "P-unseen_same_schema-midflight_readonly": "bdfe5be93a2fcda91fc612a2090e855fec56161b1ffbd565f7921fb0b2e1ce7a",
-            "P-unseen_same_schema-late_ack": "efe4f77e0a3afded126efa051017f3df2cf271db4a71f23ca286c8bc5157a1b5",
-            "P-unseen_same_schema-retry_failure": "c1ea2548eb5ba72c783e9b41c760b022541f2d6c39db67e4f0837a48cb0f761a",
-            "P-unseen_same_schema-ambiguous_ack": "f77979415bc07a396435262fded5cfff6cd03d088d9e665de9216b5cbd152b11",
-            "P-unseen_same_schema-generalization": "2a10a8d34d79cc36b1dc68c7fe6ce7cffff2a22c3c74649e96aad4dd5d5113ed"
+            "P-unseen_same_schema-keyboard": "c9c4df1dce9beea8afa8d1f7adb682f0bc3e25b2ce18d3084e4f0d383762a316",
+            "P-unseen_same_schema-validation": "6d5e0599da018d974edf3b3c464176e5651609d3ff651f609768efcb7b255a6d",
+            "P-unseen_same_schema-cumulative_capacity": "f67058aae5be61d7bdd74cf7b80d08166bef37cc3e217d68e2a86b9543b2c6fa",
+            "P-unseen_same_schema-cumulative_demand": "9242ec81e0b983cf070b27e7bd9e318441239ed312c1b18078fe8b3ed0189fe6",
+            "P-unseen_same_schema-save": "66d3bc6650994ace18bd40f4e4e6e9f0b49bb7706ed8f2c523b9ab4042bbdc40",
+            "P-unseen_same_schema-preserve": "72079e318ed254a04a1c5ead7fd848899b3218c571125212bd4ad80fdb7bb3fd",
+            "P-unseen_same_schema-conflict": "fe8141c926b31522f3dab00b0b0cffdfa0fd5ce623668c1d4507838f7b3a2768",
+            "P-unseen_same_schema-readonly": "38f3f3dc1ae8053ae718e359902855ed0183e9ecc67187676ca51b777f0337b2",
+            "P-unseen_same_schema-midflight_readonly": "abb18b9d2ac87482b71e2b0772b4870d04695bc0e37070165240bd0d1b199b70",
+            "P-unseen_same_schema-late_ack": "a733e124191a81f1f2b2e905eeaa6826d1d0bd2b655f9b88f92d0de2af0834e7",
+            "P-unseen_same_schema-retry_failure": "15999b66a185f8149618489cf177fb07a39e948277469e6e95984e79051f1fe9",
+            "P-unseen_same_schema-ambiguous_ack": "7f8d35aba23f81538958e3c10b9632491c24a3ed1520799c425092f872c3338d",
+            "P-unseen_same_schema-generalization": "1058529a544917a9da66a00bd49d27da0aed928d6878129d36456fce5bb1c9bf"
           }
         }
       ],
@@ -604,7 +245,7 @@
             "download"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "e9fc8883c4484be21f1e382f16474db7d3ff83ee803b942989b8452ab4ceb4c8"
+          "test_plan_sha256": "8ce2828d0443eff0b92a9afef4af9015a8e6d92f4a6afc09205d061325bba4aa"
         },
         {
           "test_id": "P-primary-draft_baseline",
@@ -626,7 +267,7 @@
           ],
           "requirements": [],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "412c8c18c00aeab7b3fa6f0a6eaa6a2ca03e588ade57427076b79f7a20688ff3"
+          "test_plan_sha256": "f66294c39548f7341913bd896394f17495a177cb5181750096c84e30ee79db49"
         },
         {
           "test_id": "P-primary-validation",
@@ -638,7 +279,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "c4e8863d854918773391ab9d680bea5cee49152efa6bc4d0e00a98d2c8b09af1"
+          "test_plan_sha256": "0b55abee2b72d7c72c2b2c17922eb15d7f6ad840f9b4bac555c043b86c033678"
         },
         {
           "test_id": "P-primary-cumulative_capacity",
@@ -650,7 +291,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "5fc3ff4dd2aaa3020d814989707ddb0e0941299bc3e04f2d3230f45667020508"
+          "test_plan_sha256": "dd1963e7ea257f032a0efc49efa33dfdb99704e4846dd6809e1b12337e4fa4b6"
         },
         {
           "test_id": "P-primary-cumulative_demand",
@@ -662,7 +303,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "be5d7e76e6404503f87cb815458f3eb990dc4e05615c378985e5a209a2233211"
+          "test_plan_sha256": "233d838931a9ad1388240d29086652295ccdbb90bb979684b6f743e2fb4f89e2"
         },
         {
           "test_id": "P-primary-save",
@@ -674,7 +315,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_duplicate_save",
-          "test_plan_sha256": "d67a450d910e4d4fb286c49e05190dd2b9a3990b8b00a246a30e016d7256efd2"
+          "test_plan_sha256": "e97a7239258c8dceac7844df1e3ddc1773b19b9fe780eed794c93b33117d9058"
         },
         {
           "test_id": "P-primary-preserve",
@@ -686,7 +327,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "e1e1720f35dd13a8e94506b70a492c4113fc41c9d4ae15a2e45d82fcd77c2359"
+          "test_plan_sha256": "d18fc70a7ddb890859af207c7b7798ee95fbfe7ce546d875500e4445e39f6a34"
         },
         {
           "test_id": "P-primary-conflict",
@@ -698,7 +339,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_conflict",
-          "test_plan_sha256": "13e5690d92ec7a724e0a16e16f6527a0d78cd548a1913a1d773740655038da72"
+          "test_plan_sha256": "1cad49717796f9c2397e82bfd99f098897ee82dd8e9bcecbb3a37f10ef1bad65"
         },
         {
           "test_id": "P-primary-readonly",
@@ -710,7 +351,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_predeclared_readonly",
-          "test_plan_sha256": "7428ffa6440a3df6e07a092a4dcdb3cd350f728e3845de6e829ca8433b64f789"
+          "test_plan_sha256": "acc9b1fbe1110bc0fe429cafdfcee314483f8aa24e49a52627d7fdb48af048ae"
         },
         {
           "test_id": "P-primary-midflight_readonly",
@@ -722,7 +363,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_midflight_readonly",
-          "test_plan_sha256": "13bb23b6bd07f675b4f3e877ac723537ebcc20a0bfb2795c19d6d423e4351f37"
+          "test_plan_sha256": "e7f79304b3ea9c55422415be1f2e7e4a32cb559bc542c9fd47c3ae87f3470682"
         },
         {
           "test_id": "P-primary-late_ack",
@@ -734,7 +375,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_late_ack",
-          "test_plan_sha256": "58917ac10bc8b0d838626ba743be9c219c068b084b20116724932b114b4e90ab"
+          "test_plan_sha256": "39eec9b301e16c07e3f28d036a445065cd2bfa009c928e63d7ca89c48d238bbc"
         },
         {
           "test_id": "P-primary-retry_failure",
@@ -746,7 +387,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_retryable_failure",
-          "test_plan_sha256": "42b30e34928f84dc717effd4de5e5ebf382b9c1326d188c5118f004217a43677"
+          "test_plan_sha256": "9627c62c5764625d99aaecc4cd00221eacff487d8fbb49c2cbbf2a0c2dcdfa11"
         },
         {
           "test_id": "P-primary-ambiguous_ack",
@@ -758,7 +399,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_ambiguous_ack",
-          "test_plan_sha256": "f3353758436dfb27f3528486627cbae7b661cb44c59aa4440659a84cd169b842"
+          "test_plan_sha256": "63c13dbe5dc71763d29b314e22fe7943bfbdd481ccf36736a37fd31507661962"
         },
         {
           "test_id": "P-unseen_same_schema-legacy",
@@ -771,7 +412,7 @@
             "download"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "7a6f908b936de2c81ba399fe5bca95c189f14d8338e370bf5bcae6c947a3ac04"
+          "test_plan_sha256": "092e80cb1d7f76d84867e0f2dd9b2cb841102b1bf94c73308bdc060d20b5c6a5"
         },
         {
           "test_id": "P-unseen_same_schema-draft_baseline",
@@ -793,7 +434,7 @@
           ],
           "requirements": [],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "d40854884b8970aedb8e744918ce63f8d890b4ac8411ea4c3f6778b048ab488e"
+          "test_plan_sha256": "c9c4df1dce9beea8afa8d1f7adb682f0bc3e25b2ce18d3084e4f0d383762a316"
         },
         {
           "test_id": "P-unseen_same_schema-validation",
@@ -805,7 +446,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "ca13bcc1d40a1fb57fff962ba722de0a699687a5a92696d0cada915dcbf51eac"
+          "test_plan_sha256": "6d5e0599da018d974edf3b3c464176e5651609d3ff651f609768efcb7b255a6d"
         },
         {
           "test_id": "P-unseen_same_schema-cumulative_capacity",
@@ -817,7 +458,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "e4927dea6e8d1496f96c200e31237bf69f64e62e6e4b71a8d9421d1347f1c0ed"
+          "test_plan_sha256": "f67058aae5be61d7bdd74cf7b80d08166bef37cc3e217d68e2a86b9543b2c6fa"
         },
         {
           "test_id": "P-unseen_same_schema-cumulative_demand",
@@ -829,7 +470,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "49921bafc6c811e1f2043426f4c5749030b28d61f998fa39ef813e8978fc7bc6"
+          "test_plan_sha256": "9242ec81e0b983cf070b27e7bd9e318441239ed312c1b18078fe8b3ed0189fe6"
         },
         {
           "test_id": "P-unseen_same_schema-save",
@@ -841,7 +482,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_duplicate_save",
-          "test_plan_sha256": "4b7d66400d6d7aa4a05490417f2bb1eab767afe0a9ec1d3c3064ca57c34c5d9c"
+          "test_plan_sha256": "66d3bc6650994ace18bd40f4e4e6e9f0b49bb7706ed8f2c523b9ab4042bbdc40"
         },
         {
           "test_id": "P-unseen_same_schema-preserve",
@@ -853,7 +494,7 @@
             "host_ledger"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "73b7180527959c08a4e2a04be0f399cff36c40e7698253e7962e89de88e9da00"
+          "test_plan_sha256": "72079e318ed254a04a1c5ead7fd848899b3218c571125212bd4ad80fdb7bb3fd"
         },
         {
           "test_id": "P-unseen_same_schema-conflict",
@@ -865,7 +506,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_conflict",
-          "test_plan_sha256": "813529db1adb2e56119f545aaaf1b5af55cb6ac58e933be9b82d5a12ed46e936"
+          "test_plan_sha256": "fe8141c926b31522f3dab00b0b0cffdfa0fd5ce623668c1d4507838f7b3a2768"
         },
         {
           "test_id": "P-unseen_same_schema-readonly",
@@ -877,7 +518,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_predeclared_readonly",
-          "test_plan_sha256": "3edfa4dc5d8ab8a22684ef655b5d3f0e200ec745b7b8274fc34f2624a318fc19"
+          "test_plan_sha256": "38f3f3dc1ae8053ae718e359902855ed0183e9ecc67187676ca51b777f0337b2"
         },
         {
           "test_id": "P-unseen_same_schema-midflight_readonly",
@@ -889,7 +530,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_midflight_readonly",
-          "test_plan_sha256": "bdfe5be93a2fcda91fc612a2090e855fec56161b1ffbd565f7921fb0b2e1ce7a"
+          "test_plan_sha256": "abb18b9d2ac87482b71e2b0772b4870d04695bc0e37070165240bd0d1b199b70"
         },
         {
           "test_id": "P-unseen_same_schema-late_ack",
@@ -901,7 +542,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_late_ack",
-          "test_plan_sha256": "efe4f77e0a3afded126efa051017f3df2cf271db4a71f23ca286c8bc5157a1b5"
+          "test_plan_sha256": "a733e124191a81f1f2b2e905eeaa6826d1d0bd2b655f9b88f92d0de2af0834e7"
         },
         {
           "test_id": "P-unseen_same_schema-retry_failure",
@@ -913,7 +554,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_retryable_failure",
-          "test_plan_sha256": "c1ea2548eb5ba72c783e9b41c760b022541f2d6c39db67e4f0837a48cb0f761a"
+          "test_plan_sha256": "15999b66a185f8149618489cf177fb07a39e948277469e6e95984e79051f1fe9"
         },
         {
           "test_id": "P-unseen_same_schema-ambiguous_ack",
@@ -925,7 +566,7 @@
             "host_ledger"
           ],
           "schedule_id": "planner_ambiguous_ack",
-          "test_plan_sha256": "f77979415bc07a396435262fded5cfff6cd03d088d9e665de9216b5cbd152b11"
+          "test_plan_sha256": "7f8d35aba23f81538958e3c10b9632491c24a3ed1520799c425092f872c3338d"
         },
         {
           "test_id": "P-unseen_same_schema-generalization",
@@ -938,819 +579,34 @@
             "download"
           ],
           "schedule_id": "ordinary",
-          "test_plan_sha256": "2a10a8d34d79cc36b1dc68c7fe6ce7cffff2a22c3c74649e96aad4dd5d5113ed"
+          "test_plan_sha256": "1058529a544917a9da66a00bd49d27da0aed928d6878129d36456fce5bb1c9bf"
         }
       ],
-      "full_delivery_package_sha256": "90a49c3bf5cf5ea479500424a3a0f8466872b40b401ec305bab59e094b6700b0",
-      "executed_frontend_subset_sha256": "90a49c3bf5cf5ea479500424a3a0f8466872b40b401ec305bab59e094b6700b0",
+      "full_delivery_package_sha256": "ffa7c8dc5781409e72190d0f3e1e001854513991abc89ddf7b87ceb30f984f0f",
+      "executed_frontend_subset_sha256": "ffa7c8dc5781409e72190d0f3e1e001854513991abc89ddf7b87ceb30f984f0f",
       "frontend_subset_files": {
-        "draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
+        "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
         "functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
-        "index.tsx": "4c70bead025f91a954ec24ae3de532bb9902eabc7c9ea898d47e842aea4c67c2",
+        "index.tsx": "078f4a29bfe7c4ed5176439d6b91e5b03d3c91ef80213d80f53161b76e628fa5",
         "manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-        "resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355"
+        "resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad"
       }
     }
   ],
   "references": [
     {
-      "reference_id": "ref-g-ui-create-c1",
-      "case_id": "G-UI-CREATE-C1",
-      "kind": "dashboard",
-      "package_dir": "candidate-inputs/references/ref-g-ui-create-c1/frame",
-      "package_files": {
-        "dataset.json": "c1c05bddd007030213fe578d08c4918f1ab17999c6dc222fbe59bb71f6510852",
-        "functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
-        "index.tsx": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
-        "manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4"
-      },
-      "package_sha256": "a2b307480bb1e320db99b0bfa9560e4cd1e0b23e47923e8760f984cc4899ea92",
-      "bundle_sha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
-      "fixture_plans": [
-        {
-          "id": "primary",
-          "plans": [
-            {
-              "test_id": "D-primary-baseline",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-E1",
-                "D-E2"
-              ],
-              "steps": [
-                {
-                  "kind": "observe",
-                  "checkpoint": "baseline"
-                }
-              ],
-              "oracle_kind": "dashboard_scope",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "34e0f1b92a82c65f99f95c814e02a39cb8e2d62f1f410096ce992cfbaffc9f09"
-            },
-            {
-              "test_id": "D-primary-keyboard",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-E3"
-              ],
-              "steps": [
-                {
-                  "kind": "focus",
-                  "hook": "team-filter"
-                },
-                {
-                  "kind": "press_active",
-                  "key": "Tab"
-                },
-                {
-                  "kind": "press_active",
-                  "key": "Shift+Tab"
-                },
-                {
-                  "kind": "focus",
-                  "hook": "status-bar",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "press",
-                  "hook": "status-bar",
-                  "source_key": "OPEN",
-                  "key": "Enter"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "keyboard_selection"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                }
-              ],
-              "oracle_kind": "dashboard_keyboard",
-              "requirements": [],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "d3505671eb8525ba2e97ff078412d4d490fc50307942cf1a2603fd936c203088"
-            },
-            {
-              "test_id": "D-primary-linked_scope",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-M1"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "status-bar",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "fill",
-                  "hook": "created-from",
-                  "value": "2027-01-08"
-                },
-                {
-                  "kind": "fill",
-                  "hook": "created-to",
-                  "value": "2027-01-12"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "linked_scope"
-                }
-              ],
-              "oracle_kind": "dashboard_scope",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "c3e6c6393904b4ef7a7db156dc49019174599e84f56272198eae11985aed344a"
-            },
-            {
-              "test_id": "D-primary-reset",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-M2"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "reset"
-                },
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "replaceFiles",
-                    "fixture_role": "updated_same_schema"
-                  }
-                },
-                {
-                  "kind": "click",
-                  "hook": "refresh-data"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "reset_after_refresh"
-                }
-              ],
-              "oracle_kind": "dashboard_reset",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "38b9d322b993533c660632d7fbb8d7855aab28e36972a473d415c3fd8ed57cf8"
-            },
-            {
-              "test_id": "D-primary-empty",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-M3"
-              ],
-              "steps": [
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "IN_PROGRESS"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "WAITING"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "CLOSED"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "empty"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                }
-              ],
-              "oracle_kind": "dashboard_empty",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "4b346e68677206b4112fe50ed30ede99f04045525aefc1d1f27bf4d8971b8e00"
-            },
-            {
-              "test_id": "D-primary-late_result",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-H1"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "hold",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "host_wait_pending"
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": ""
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "newer_result"
-                },
-                {
-                  "kind": "host_release_pending"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "after_older_result"
-                }
-              ],
-              "oracle_kind": "dashboard_latest_intent",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_late_result",
-              "test_plan_sha256": "196a4b38d55f95158027718d2a2bd8bfac6040ca27d3c162821c3252fdd24562"
-            },
-            {
-              "test_id": "D-primary-late_error",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-H1"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "hold",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "host_wait_pending"
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": ""
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "newer_result"
-                },
-                {
-                  "kind": "host_release_pending",
-                  "outcome": "function_fail"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "after_older_error"
-                }
-              ],
-              "oracle_kind": "dashboard_latest_intent",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_late_error",
-              "test_plan_sha256": "56c125f96981080721f374a07b67791689d80add6a70d6440b8583c5bc18156c"
-            },
-            {
-              "test_id": "D-primary-retry",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-H2",
-                "D-H3"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "function_fail",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "failed_intent"
-                },
-                {
-                  "kind": "click",
-                  "hook": "retry-load"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "retried_intent"
-                }
-              ],
-              "oracle_kind": "dashboard_retry",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_retryable_failure",
-              "test_plan_sha256": "6b81eb3aac3dc1614834d62573d1e175b69d9ade5f0e9ba459a733fe725c3f65"
-            },
-            {
-              "test_id": "D-primary-retention",
-              "fixture_id": "primary",
-              "atom_ids": [
-                "D-H3"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "refresh-data"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "retained_selection"
-                }
-              ],
-              "oracle_kind": "dashboard_retention",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "ba87ffd7d8b0ceeb755c4969b53a43f2a2f2fe9acf5b887cde497472d682a3ef"
-            }
-          ]
-        },
-        {
-          "id": "unseen_same_schema",
-          "plans": [
-            {
-              "test_id": "D-unseen_same_schema-baseline",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-E1",
-                "D-E2"
-              ],
-              "steps": [
-                {
-                  "kind": "observe",
-                  "checkpoint": "baseline"
-                }
-              ],
-              "oracle_kind": "dashboard_scope",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "0f808eaf0b15d5ad6cf328c62ea89bdb24ef434d72c619964b0fd0bdfd9dbbd2"
-            },
-            {
-              "test_id": "D-unseen_same_schema-keyboard",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-E3"
-              ],
-              "steps": [
-                {
-                  "kind": "focus",
-                  "hook": "team-filter"
-                },
-                {
-                  "kind": "press_active",
-                  "key": "Tab"
-                },
-                {
-                  "kind": "press_active",
-                  "key": "Shift+Tab"
-                },
-                {
-                  "kind": "focus",
-                  "hook": "status-bar",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "press",
-                  "hook": "status-bar",
-                  "source_key": "OPEN",
-                  "key": "Enter"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "keyboard_selection"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                }
-              ],
-              "oracle_kind": "dashboard_keyboard",
-              "requirements": [],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "4bba66d14bda634e0134c01243ad5a7dc00a5c6452c405691eb8ff34c1354d6e"
-            },
-            {
-              "test_id": "D-unseen_same_schema-linked_scope",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-M1"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "status-bar",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "fill",
-                  "hook": "created-from",
-                  "value": "2027-01-18"
-                },
-                {
-                  "kind": "fill",
-                  "hook": "created-to",
-                  "value": "2027-01-22"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "linked_scope"
-                }
-              ],
-              "oracle_kind": "dashboard_scope",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "afe1d3daf5fb7da1d77aa23a7875f811cc103185e2d65cfdb79e50007d4033dc"
-            },
-            {
-              "test_id": "D-unseen_same_schema-reset",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-M2"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "reset"
-                },
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "replaceFiles",
-                    "fixture_role": "updated_same_schema"
-                  }
-                },
-                {
-                  "kind": "click",
-                  "hook": "refresh-data"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "reset_after_refresh"
-                }
-              ],
-              "oracle_kind": "dashboard_reset",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "bf8464a0e028e0a1693bf23656af2a492665bc4f445a725f7e468197076fbe23"
-            },
-            {
-              "test_id": "D-unseen_same_schema-empty",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-M3"
-              ],
-              "steps": [
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "OPEN"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "IN_PROGRESS"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "WAITING"
-                },
-                {
-                  "kind": "clear_status",
-                  "hook": "status-option",
-                  "source_key": "CLOSED"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "empty"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                }
-              ],
-              "oracle_kind": "dashboard_empty",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "5ffd02409ed4e1a27ab76a7c303e3c89a459838337f00e89ff051fb285689568"
-            },
-            {
-              "test_id": "D-unseen_same_schema-late_result",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-H1"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "hold",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "host_wait_pending"
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": ""
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "newer_result"
-                },
-                {
-                  "kind": "host_release_pending"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "after_older_result"
-                }
-              ],
-              "oracle_kind": "dashboard_latest_intent",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_late_result",
-              "test_plan_sha256": "2e02127f6a92e4355fe917ec661d4a4bb1b1325a30c784229942101c22b64252"
-            },
-            {
-              "test_id": "D-unseen_same_schema-late_error",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-H1"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "hold",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "host_wait_pending"
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": ""
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "newer_result"
-                },
-                {
-                  "kind": "host_release_pending",
-                  "outcome": "function_fail"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "after_older_error"
-                }
-              ],
-              "oracle_kind": "dashboard_latest_intent",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_late_error",
-              "test_plan_sha256": "1500b42f174c77813e3e9ee3fc0ba6cf8747003ab53ef41d885f981a829acacd"
-            },
-            {
-              "test_id": "D-unseen_same_schema-retry",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-H2",
-                "D-H3"
-              ],
-              "steps": [
-                {
-                  "kind": "host_control",
-                  "control": {
-                    "op": "setFault",
-                    "command": "callFunction",
-                    "effect": "function_fail",
-                    "phase": "before_process",
-                    "count": 1
-                  }
-                },
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "failed_intent"
-                },
-                {
-                  "kind": "click",
-                  "hook": "retry-load"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "retried_intent"
-                }
-              ],
-              "oracle_kind": "dashboard_retry",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "dashboard_retryable_failure",
-              "test_plan_sha256": "ef5121e0c281ff488d0da11cfa14a588eb5198db130e1c9313147a69406facb5"
-            },
-            {
-              "test_id": "D-unseen_same_schema-retention",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-H3"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "refresh-data"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "retained_selection"
-                }
-              ],
-              "oracle_kind": "dashboard_retention",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "9bd7e61f18a24d1158974487373f09ee730acda86aae9543b1d0dd343f7f3d36"
-            },
-            {
-              "test_id": "D-unseen_same_schema-generalization",
-              "fixture_id": "unseen_same_schema",
-              "atom_ids": [
-                "D-H4"
-              ],
-              "steps": [
-                {
-                  "kind": "select",
-                  "hook": "team-filter",
-                  "value": "CAL-UNSEEN-TEAM-0001"
-                },
-                {
-                  "kind": "click",
-                  "hook": "status-bar",
-                  "source_key": "WAITING"
-                },
-                {
-                  "kind": "click",
-                  "hook": "reset-filters"
-                },
-                {
-                  "kind": "observe",
-                  "checkpoint": "unseen_reset"
-                }
-              ],
-              "oracle_kind": "dashboard_generalization",
-              "requirements": [
-                "host_ledger"
-              ],
-              "schedule_id": "ordinary",
-              "test_plan_sha256": "24ca679838633df38a4d91e164f242370a3a121440e166ae1d48abb4dd4f792f"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "reference_id": "ref-g-ui-edit-c1",
-      "case_id": "G-UI-EDIT-C1",
+      "reference_id": "ref-g-ui-edit-m1",
+      "case_id": "G-UI-EDIT-M1",
       "kind": "planner",
-      "package_dir": "candidate-inputs/references/ref-g-ui-edit-c1/frame",
+      "package_dir": "candidate-inputs/references/ref-g-ui-edit-m1/frame",
       "package_files": {
-        "draft.json": "9d729d71c703694685045ad392ff1eb87afa3a782a0fa8d143f2c32b1ae6c0ba",
+        "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
         "functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
         "index.tsx": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
         "manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
-        "resources.json": "9ee24dc2f87fce2ce80389654c783e2debaec67f6768f19d392ae4ca17442355"
+        "resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad"
       },
-      "package_sha256": "d12b902a9130edee66082f557abcfdef6d8d5951eec9b1748f438f52fc15e4aa",
+      "package_sha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
       "bundle_sha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
       "fixture_plans": [
         {
@@ -1766,22 +622,22 @@
                 {
                   "kind": "select",
                   "hook": "legacy-team-filter",
-                  "value": "CAL-TEAM-001"
+                  "value": "TEAM-S1"
                 },
                 {
                   "kind": "select",
                   "hook": "legacy-date-filter",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "legacy-search",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "click",
                   "hook": "resource-row",
-                  "source_key": "CAL-R-00001"
+                  "source_key": "R-007"
                 },
                 {
                   "kind": "select",
@@ -1807,7 +663,7 @@
                 "download"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "e9fc8883c4484be21f1e382f16474db7d3ff83ee803b942989b8452ab4ceb4c8"
+              "test_plan_sha256": "8ce2828d0443eff0b92a9afef4af9015a8e6d92f4a6afc09205d061325bba4aa"
             },
             {
               "test_id": "P-primary-draft_baseline",
@@ -1850,12 +706,12 @@
                 {
                   "kind": "focus",
                   "hook": "resource-row",
-                  "source_key": "CAL-R-00001"
+                  "source_key": "R-007"
                 },
                 {
                   "kind": "press",
                   "hook": "resource-row",
-                  "source_key": "CAL-R-00001",
+                  "source_key": "R-007",
                   "key": "Enter"
                 },
                 {
@@ -1874,7 +730,7 @@
               "oracle_kind": "planner_keyboard",
               "requirements": [],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "412c8c18c00aeab7b3fa6f0a6eaa6a2ca03e588ade57427076b79f7a20688ff3"
+              "test_plan_sha256": "f66294c39548f7341913bd896394f17495a177cb5181750096c84e30ee79db49"
             },
             {
               "test_id": "P-primary-validation",
@@ -1886,17 +742,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -1915,9 +771,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00001",
-                    "date": "2027-01-16",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-007",
+                    "date": "2026-11-09",
                     "minutes": 14
                   },
                   "probe_kind": "invalid_quantity"
@@ -1926,9 +782,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00001",
-                    "date": "2027-01-16",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-007",
+                    "date": "2026-11-09",
                     "minutes": 0
                   },
                   "probe_kind": "zero_quantity"
@@ -1937,9 +793,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00001",
-                    "date": "2027-01-16",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-007",
+                    "date": "2026-11-09",
                     "minutes": 15.5
                   },
                   "probe_kind": "fractional_quantity"
@@ -1948,10 +804,10 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00001",
-                    "date": "2027-01-17",
-                    "minutes": 105
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-007",
+                    "date": "2026-11-10",
+                    "minutes": 75
                   },
                   "probe_kind": "capacity_overflow"
                 },
@@ -1959,9 +815,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00001",
-                    "date": "2027-01-18",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-007",
+                    "date": "2026-11-11",
                     "minutes": 15
                   },
                   "probe_kind": "invalid_date"
@@ -1970,9 +826,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00002",
-                    "date": "2027-01-16",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-014",
+                    "date": "2026-11-09",
                     "minutes": 15
                   },
                   "probe_kind": "wrong_skill"
@@ -1981,9 +837,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-W-0001",
-                    "resource_id": "CAL-R-00003",
-                    "date": "2027-01-16",
+                    "work_item_id": "WI-0008",
+                    "resource_id": "R-021",
+                    "date": "2026-11-09",
                     "minutes": 15
                   },
                   "probe_kind": "wrong_team"
@@ -1991,22 +847,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "285"
+                  "value": "195"
                 },
                 {
                   "kind": "click",
@@ -2022,7 +878,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "c4e8863d854918773391ab9d680bea5cee49152efa6bc4d0e00a98d2c8b09af1"
+              "test_plan_sha256": "0b55abee2b72d7c72c2b2c17922eb15d7f6ad840f9b4bac555c043b86c033678"
             },
             {
               "test_id": "P-primary-cumulative_capacity",
@@ -2034,22 +890,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "15"
+                  "value": "75"
                 },
                 {
                   "kind": "click",
@@ -2058,22 +914,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0080"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "195"
+                  "value": "180"
                 },
                 {
                   "kind": "click",
@@ -2089,7 +945,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "5fc3ff4dd2aaa3020d814989707ddb0e0941299bc3e04f2d3230f45667020508"
+              "test_plan_sha256": "dd1963e7ea257f032a0efc49efa33dfdb99704e4846dd6809e1b12337e4fa4b6"
             },
             {
               "test_id": "P-primary-cumulative_demand",
@@ -2101,22 +957,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "135"
+                  "value": "15"
                 },
                 {
                   "kind": "click",
@@ -2125,22 +981,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-17"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "90"
+                  "value": "120"
                 },
                 {
                   "kind": "click",
@@ -2156,7 +1012,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "be5d7e76e6404503f87cb815458f3eb990dc4e05615c378985e5a209a2233211"
+              "test_plan_sha256": "233d838931a9ad1388240d29086652295ccdbb90bb979684b6f743e2fb4f89e2"
             },
             {
               "test_id": "P-primary-save",
@@ -2168,17 +1024,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2231,7 +1087,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_duplicate_save",
-              "test_plan_sha256": "d67a450d910e4d4fb286c49e05190dd2b9a3990b8b00a246a30e016d7256efd2"
+              "test_plan_sha256": "e97a7239258c8dceac7844df1e3ddc1773b19b9fe780eed794c93b33117d9058"
             },
             {
               "test_id": "P-primary-preserve",
@@ -2243,17 +1099,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2267,17 +1123,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2299,7 +1155,7 @@
                 {
                   "kind": "click",
                   "hook": "resource-row",
-                  "source_key": "CAL-R-00001"
+                  "source_key": "R-007"
                 },
                 {
                   "kind": "observe",
@@ -2308,7 +1164,7 @@
                 {
                   "kind": "fill",
                   "hook": "draft-line-minutes",
-                  "source_key": "CAL-LINE-001",
+                  "source_key": "DL-0001",
                   "value": "60"
                 },
                 {
@@ -2321,7 +1177,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "e1e1720f35dd13a8e94506b70a492c4113fc41c9d4ae15a2e45d82fcd77c2359"
+              "test_plan_sha256": "d18fc70a7ddb890859af207c7b7798ee95fbfe7ce546d875500e4445e39f6a34"
             },
             {
               "test_id": "P-primary-conflict",
@@ -2333,17 +1189,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2383,7 +1239,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_conflict",
-              "test_plan_sha256": "13e5690d92ec7a724e0a16e16f6527a0d78cd548a1913a1d773740655038da72"
+              "test_plan_sha256": "1cad49717796f9c2397e82bfd99f098897ee82dd8e9bcecbb3a37f10ef1bad65"
             },
             {
               "test_id": "P-primary-readonly",
@@ -2406,17 +1262,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2441,7 +1297,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_predeclared_readonly",
-              "test_plan_sha256": "7428ffa6440a3df6e07a092a4dcdb3cd350f728e3845de6e829ca8433b64f789"
+              "test_plan_sha256": "acc9b1fbe1110bc0fe429cafdfcee314483f8aa24e49a52627d7fdb48af048ae"
             },
             {
               "test_id": "P-primary-midflight_readonly",
@@ -2453,17 +1309,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2513,7 +1369,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_midflight_readonly",
-              "test_plan_sha256": "13bb23b6bd07f675b4f3e877ac723537ebcc20a0bfb2795c19d6d423e4351f37"
+              "test_plan_sha256": "e7f79304b3ea9c55422415be1f2e7e4a32cb559bc542c9fd47c3ae87f3470682"
             },
             {
               "test_id": "P-primary-late_ack",
@@ -2525,17 +1381,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2567,7 +1423,7 @@
                 {
                   "kind": "fill",
                   "hook": "draft-line-minutes",
-                  "source_key": "CAL-LINE-001",
+                  "source_key": "DL-0001",
                   "value": "75"
                 },
                 {
@@ -2587,7 +1443,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_late_ack",
-              "test_plan_sha256": "58917ac10bc8b0d838626ba743be9c219c068b084b20116724932b114b4e90ab"
+              "test_plan_sha256": "39eec9b301e16c07e3f28d036a445065cd2bfa009c928e63d7ca89c48d238bbc"
             },
             {
               "test_id": "P-primary-retry_failure",
@@ -2599,17 +1455,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2665,7 +1521,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_retryable_failure",
-              "test_plan_sha256": "42b30e34928f84dc717effd4de5e5ebf382b9c1326d188c5118f004217a43677"
+              "test_plan_sha256": "9627c62c5764625d99aaecc4cd00221eacff487d8fbb49c2cbbf2a0c2dcdfa11"
             },
             {
               "test_id": "P-primary-ambiguous_ack",
@@ -2677,17 +1533,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-W-0001"
+                  "value": "WI-0008"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-R-00001"
+                  "value": "R-007"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-16"
+                  "value": "2026-11-09"
                 },
                 {
                   "kind": "fill",
@@ -2727,7 +1583,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_ambiguous_ack",
-              "test_plan_sha256": "f3353758436dfb27f3528486627cbae7b661cb44c59aa4440659a84cd169b842"
+              "test_plan_sha256": "63c13dbe5dc71763d29b314e22fe7943bfbdd481ccf36736a37fd31507661962"
             }
           ]
         },
@@ -2744,22 +1600,22 @@
                 {
                   "kind": "select",
                   "hook": "legacy-team-filter",
-                  "value": "CAL-UNSEEN-TEAM-001"
+                  "value": "D-006"
                 },
                 {
                   "kind": "select",
                   "hook": "legacy-date-filter",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
                   "hook": "legacy-search",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "click",
                   "hook": "resource-row",
-                  "source_key": "CAL-UNSEEN-R-00001"
+                  "source_key": "R-0002"
                 },
                 {
                   "kind": "select",
@@ -2785,7 +1641,7 @@
                 "download"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "7a6f908b936de2c81ba399fe5bca95c189f14d8338e370bf5bcae6c947a3ac04"
+              "test_plan_sha256": "092e80cb1d7f76d84867e0f2dd9b2cb841102b1bf94c73308bdc060d20b5c6a5"
             },
             {
               "test_id": "P-unseen_same_schema-draft_baseline",
@@ -2828,12 +1684,12 @@
                 {
                   "kind": "focus",
                   "hook": "resource-row",
-                  "source_key": "CAL-UNSEEN-R-00001"
+                  "source_key": "R-0002"
                 },
                 {
                   "kind": "press",
                   "hook": "resource-row",
-                  "source_key": "CAL-UNSEEN-R-00001",
+                  "source_key": "R-0002",
                   "key": "Enter"
                 },
                 {
@@ -2852,7 +1708,7 @@
               "oracle_kind": "planner_keyboard",
               "requirements": [],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "d40854884b8970aedb8e744918ce63f8d890b4ac8411ea4c3f6778b048ab488e"
+              "test_plan_sha256": "c9c4df1dce9beea8afa8d1f7adb682f0bc3e25b2ce18d3084e4f0d383762a316"
             },
             {
               "test_id": "P-unseen_same_schema-validation",
@@ -2864,17 +1720,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -2893,9 +1749,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00001",
-                    "date": "2027-01-28",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0002",
+                    "date": "2026-12-07",
                     "minutes": 14
                   },
                   "probe_kind": "invalid_quantity"
@@ -2904,9 +1760,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00001",
-                    "date": "2027-01-28",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0002",
+                    "date": "2026-12-07",
                     "minutes": 0
                   },
                   "probe_kind": "zero_quantity"
@@ -2915,9 +1771,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-local-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00001",
-                    "date": "2027-01-28",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0002",
+                    "date": "2026-12-07",
                     "minutes": 15.5
                   },
                   "probe_kind": "fractional_quantity"
@@ -2926,10 +1782,10 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00001",
-                    "date": "2027-01-29",
-                    "minutes": 105
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0002",
+                    "date": "2026-12-08",
+                    "minutes": 75
                   },
                   "probe_kind": "capacity_overflow"
                 },
@@ -2937,9 +1793,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00001",
-                    "date": "2027-01-30",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0002",
+                    "date": "2026-12-09",
                     "minutes": 15
                   },
                   "probe_kind": "invalid_date"
@@ -2948,9 +1804,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00002",
-                    "date": "2027-01-28",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0020",
+                    "date": "2026-12-07",
                     "minutes": 15
                   },
                   "probe_kind": "wrong_skill"
@@ -2959,9 +1815,9 @@
                   "kind": "allocation_probe",
                   "allocation": {
                     "allocation_id": "driver-probe",
-                    "work_item_id": "CAL-UNSEEN-W-0001",
-                    "resource_id": "CAL-UNSEEN-R-00003",
-                    "date": "2027-01-28",
+                    "work_item_id": "WI-X01",
+                    "resource_id": "R-0200",
+                    "date": "2026-12-07",
                     "minutes": 15
                   },
                   "probe_kind": "wrong_team"
@@ -2969,22 +1825,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "255"
+                  "value": "225"
                 },
                 {
                   "kind": "click",
@@ -3000,7 +1856,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "ca13bcc1d40a1fb57fff962ba722de0a699687a5a92696d0cada915dcbf51eac"
+              "test_plan_sha256": "6d5e0599da018d974edf3b3c464176e5651609d3ff651f609768efcb7b255a6d"
             },
             {
               "test_id": "P-unseen_same_schema-cumulative_capacity",
@@ -3012,22 +1868,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "45"
+                  "value": "15"
                 },
                 {
                   "kind": "click",
@@ -3036,22 +1892,22 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0002"
+                  "value": "WI-X10"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
                   "hook": "plan-minutes",
-                  "value": "225"
+                  "value": "180"
                 },
                 {
                   "kind": "click",
@@ -3067,7 +1923,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "e4927dea6e8d1496f96c200e31237bf69f64e62e6e4b71a8d9421d1347f1c0ed"
+              "test_plan_sha256": "f67058aae5be61d7bdd74cf7b80d08166bef37cc3e217d68e2a86b9543b2c6fa"
             },
             {
               "test_id": "P-unseen_same_schema-cumulative_demand",
@@ -3079,17 +1935,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3103,17 +1959,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3134,7 +1990,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "49921bafc6c811e1f2043426f4c5749030b28d61f998fa39ef813e8978fc7bc6"
+              "test_plan_sha256": "9242ec81e0b983cf070b27e7bd9e318441239ed312c1b18078fe8b3ed0189fe6"
             },
             {
               "test_id": "P-unseen_same_schema-save",
@@ -3146,17 +2002,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3209,7 +2065,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_duplicate_save",
-              "test_plan_sha256": "4b7d66400d6d7aa4a05490417f2bb1eab767afe0a9ec1d3c3064ca57c34c5d9c"
+              "test_plan_sha256": "66d3bc6650994ace18bd40f4e4e6e9f0b49bb7706ed8f2c523b9ab4042bbdc40"
             },
             {
               "test_id": "P-unseen_same_schema-preserve",
@@ -3221,17 +2077,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3245,17 +2101,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3277,7 +2133,7 @@
                 {
                   "kind": "click",
                   "hook": "resource-row",
-                  "source_key": "CAL-UNSEEN-R-00001"
+                  "source_key": "R-0002"
                 },
                 {
                   "kind": "observe",
@@ -3286,8 +2142,8 @@
                 {
                   "kind": "fill",
                   "hook": "draft-line-minutes",
-                  "source_key": "CAL-UNSEEN-LINE-001",
-                  "value": "75"
+                  "source_key": "DL-B01",
+                  "value": "45"
                 },
                 {
                   "kind": "observe",
@@ -3299,7 +2155,7 @@
                 "host_ledger"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "73b7180527959c08a4e2a04be0f399cff36c40e7698253e7962e89de88e9da00"
+              "test_plan_sha256": "72079e318ed254a04a1c5ead7fd848899b3218c571125212bd4ad80fdb7bb3fd"
             },
             {
               "test_id": "P-unseen_same_schema-conflict",
@@ -3311,17 +2167,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3361,7 +2217,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_conflict",
-              "test_plan_sha256": "813529db1adb2e56119f545aaaf1b5af55cb6ac58e933be9b82d5a12ed46e936"
+              "test_plan_sha256": "fe8141c926b31522f3dab00b0b0cffdfa0fd5ce623668c1d4507838f7b3a2768"
             },
             {
               "test_id": "P-unseen_same_schema-readonly",
@@ -3384,17 +2240,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3419,7 +2275,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_predeclared_readonly",
-              "test_plan_sha256": "3edfa4dc5d8ab8a22684ef655b5d3f0e200ec745b7b8274fc34f2624a318fc19"
+              "test_plan_sha256": "38f3f3dc1ae8053ae718e359902855ed0183e9ecc67187676ca51b777f0337b2"
             },
             {
               "test_id": "P-unseen_same_schema-midflight_readonly",
@@ -3431,17 +2287,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3491,7 +2347,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_midflight_readonly",
-              "test_plan_sha256": "bdfe5be93a2fcda91fc612a2090e855fec56161b1ffbd565f7921fb0b2e1ce7a"
+              "test_plan_sha256": "abb18b9d2ac87482b71e2b0772b4870d04695bc0e37070165240bd0d1b199b70"
             },
             {
               "test_id": "P-unseen_same_schema-late_ack",
@@ -3503,17 +2359,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3545,8 +2401,8 @@
                 {
                   "kind": "fill",
                   "hook": "draft-line-minutes",
-                  "source_key": "CAL-UNSEEN-LINE-001",
-                  "value": "90"
+                  "source_key": "DL-B01",
+                  "value": "60"
                 },
                 {
                   "kind": "observe",
@@ -3565,7 +2421,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_late_ack",
-              "test_plan_sha256": "efe4f77e0a3afded126efa051017f3df2cf271db4a71f23ca286c8bc5157a1b5"
+              "test_plan_sha256": "a733e124191a81f1f2b2e905eeaa6826d1d0bd2b655f9b88f92d0de2af0834e7"
             },
             {
               "test_id": "P-unseen_same_schema-retry_failure",
@@ -3577,17 +2433,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3643,7 +2499,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_retryable_failure",
-              "test_plan_sha256": "c1ea2548eb5ba72c783e9b41c760b022541f2d6c39db67e4f0837a48cb0f761a"
+              "test_plan_sha256": "15999b66a185f8149618489cf177fb07a39e948277469e6e95984e79051f1fe9"
             },
             {
               "test_id": "P-unseen_same_schema-ambiguous_ack",
@@ -3655,17 +2511,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3705,7 +2561,7 @@
                 "host_ledger"
               ],
               "schedule_id": "planner_ambiguous_ack",
-              "test_plan_sha256": "f77979415bc07a396435262fded5cfff6cd03d088d9e665de9216b5cbd152b11"
+              "test_plan_sha256": "7f8d35aba23f81538958e3c10b9632491c24a3ed1520799c425092f872c3338d"
             },
             {
               "test_id": "P-unseen_same_schema-generalization",
@@ -3717,7 +2573,7 @@
                 {
                   "kind": "fill",
                   "hook": "legacy-search",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "click",
@@ -3726,17 +2582,17 @@
                 {
                   "kind": "select",
                   "hook": "plan-work-item",
-                  "value": "CAL-UNSEEN-W-0001"
+                  "value": "WI-X01"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-resource",
-                  "value": "CAL-UNSEEN-R-00001"
+                  "value": "R-0002"
                 },
                 {
                   "kind": "select",
                   "hook": "plan-date",
-                  "value": "2027-01-28"
+                  "value": "2026-12-07"
                 },
                 {
                   "kind": "fill",
@@ -3766,7 +2622,7 @@
                 "download"
               ],
               "schedule_id": "ordinary",
-              "test_plan_sha256": "2a10a8d34d79cc36b1dc68c7fe6ce7cffff2a22c3c74649e96aad4dd5d5113ed"
+              "test_plan_sha256": "1058529a544917a9da66a00bd49d27da0aed928d6878129d36456fce5bb1c9bf"
             }
           ]
         }
@@ -3774,12 +2630,12 @@
     }
   ],
   "publication": {
-    "local_batch_sha256": "1f5e17b19ebb621651838326d7cbb3040cfe2c24ec59ed975032f5c1aa1562a5",
-    "execution_fingerprint": "a925edcb4b4cf19626f1bcb8bd1423a0c40db21c7b44a6a874bcdf8a2aae64b0",
+    "local_batch_sha256": "ab301d173eeab9a4b8f5357a75071e864a70213283de980992fc366c5710bc15",
+    "execution_fingerprint": "a7c5c19127e9975fc67d8680bfc6b4debcfd20b48dfeed399c62b0f6c3d9a77d",
     "control_gate_sha256": "faae3ce1cd6d36eebcbb36e9df2711a3105cff9b85efb206e5e998b80979cf63",
-    "reviewed_authority_sha256": "0bb4b4b8dc0c7672eda5fa4fa3b580e59a6dc4bbad4f16f07bacb166f285a324",
-    "source_review_observation": "ob-4e7bea1b767c31ae5e012cbc1c559883",
-    "publisher_observation": "ob-ce7139b5fd7d223d602001701a416fd3",
+    "reviewed_authority_sha256": "27fdcab80413b549cbf3ad05785731b1937ce15e46cd90f9f395170a68841ced",
+    "source_review_observation": "ob-efd25a18cc5bca872f7e4c9b73f27953",
+    "publisher_observation": "ob-f8dc577c8485d618d6d63b6d8d4ef2fd",
     "repository": "0xMoji/counso-benchmark-reconstructed",
     "branch": "eval/counso-ui-probe",
     "repository_prefix": "platform-screen-candidate",

@@ -1,16 +1,16 @@
 {
-  "packageDir": "candidate-inputs/packages/u-22c0a0e5b612e55ac4c2/frame",
-  "fixtureDir": "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/primary",
+  "packageDir": "candidate-inputs/packages/u-a7cb1a40c71dfb953a84/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/primary",
   "kind": "planner",
-  "artifactDir": "candidate-results/u-22c0a0e5b612e55ac4c2/primary",
+  "artifactDir": "candidate-results/u-a7cb1a40c71dfb953a84/primary",
   "interfacePath": "runtime/ui-interface.json",
   "scopePath": "runtime/ui-scope.json",
-  "caseId": "G-UI-EDIT-C1",
+  "caseId": "G-UI-EDIT-M1",
   "fixtureId": "primary",
   "fixtureHashes": {
-    "primary": "2576fc45635d60e152081680c30a30bd944238147ab9e621046a322b987639c6"
+    "primary": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c"
   },
-  "candidatePackageSha256": "90a49c3bf5cf5ea479500424a3a0f8466872b40b401ec305bab59e094b6700b0",
+  "candidatePackageSha256": "ffa7c8dc5781409e72190d0f3e1e001854513991abc89ddf7b87ceb30f984f0f",
   "testIds": [
     "P-primary-legacy",
     "P-primary-draft_baseline",
@@ -30,21 +30,21 @@
   "fixtureReplacements": {
     "advanced_authority": {
       "draft.json": {
-        "draft_id": "CAL-PLAN-008",
+        "draft_id": "PLAN-A-004",
         "allocations": [
           {
-            "allocation_id": "CAL-LINE-001",
-            "work_item_id": "CAL-W-0001",
-            "resource_id": "CAL-R-00001",
-            "date": "2027-01-16",
+            "allocation_id": "DL-0001",
+            "work_item_id": "WI-0008",
+            "resource_id": "R-007",
+            "date": "2026-11-09",
             "minutes": 75
           },
           {
-            "allocation_id": "CAL-LINE-002",
-            "work_item_id": "CAL-W-0003",
-            "resource_id": "CAL-R-00003",
-            "date": "2027-01-17",
-            "minutes": 75
+            "allocation_id": "DL-0002",
+            "work_item_id": "WI-0080",
+            "resource_id": "R-014",
+            "date": "2026-11-10",
+            "minutes": 120
           }
         ]
       }
@@ -52,10 +52,10 @@
   },
   "actionTimeoutMs": 5000,
   "observerModule": "runtime/candidate-observer.mjs",
-  "observerSha256": "3212c4001df792481d1ff08d097aee1db4b39ed58733dbd12cb04b1c09764ec6",
+  "observerSha256": "81629e3ff360234321785cabc06aca84cad2383dae136800c326bfbdb7b56325",
   "hostMetadata": {
     "draft.json": {
-      "revision": "105",
+      "revision": "41",
       "canWrite": true
     },
     "resources.json": {
@@ -66,14 +66,14 @@
   "browserChannel": "chrome",
   "expectedChromeVersion": "154.0.8037.97",
   "registeredHealthControl": {
-    "packageDir": "candidate-inputs/references/ref-g-ui-edit-c1/frame",
-    "packageSha256": "d12b902a9130edee66082f557abcfdef6d8d5951eec9b1748f438f52fc15e4aa",
+    "packageDir": "candidate-inputs/references/ref-g-ui-edit-m1/frame",
+    "packageSha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
     "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
-    "fixtureDir": "candidate-inputs/fixtures/u-22c0a0e5b612e55ac4c2/primary",
-    "fixtureSha256": "2576fc45635d60e152081680c30a30bd944238147ab9e621046a322b987639c6",
+    "fixtureDir": "candidate-inputs/fixtures/u-a7cb1a40c71dfb953a84/primary",
+    "fixtureSha256": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c",
     "hostMetadata": {
       "draft.json": {
-        "revision": "105",
+        "revision": "41",
         "canWrite": true
       },
       "resources.json": {

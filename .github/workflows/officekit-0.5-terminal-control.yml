@@ -1,0 +1,38 @@
+name: Synthetic terminal evidence control
+on:
+  push:
+    branches: ['eval/counso-ui-probe']
+    paths:
+      - 'officekit-terminal-probe-0.5.2/**'
+      - '.github/workflows/officekit-0.5-terminal-control.yml'
+permissions:
+  contents: read
+jobs:
+  terminal-capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify official existing browser
+        run: |
+          node --version
+          google-chrome --version
+          python3 office-capability-kit-0.5/scripts/verify_source.py
+      - name: Install original exact official Playwright package
+        working-directory: office-capability-kit-0.5/adapters/standalone-ui
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Exercise intentional wait failure and preserve real terminal state
+        timeout-minutes: 2
+        run: node officekit-terminal-probe-0.5.2/control.mjs --execute-ci --output ui-terminal-evidence
+      - name: Preserve private synthetic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: officekit-0.5.2-terminal-evidence
+          path: ui-terminal-evidence/
+          if-no-files-found: error
+          retention-days: 7

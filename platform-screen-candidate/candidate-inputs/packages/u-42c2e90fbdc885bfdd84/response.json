@@ -1,0 +1,11 @@
+{
+  "artifacts": [
+    "frame/manifest.json",
+    "frame/index.tsx",
+    "frame/functions/load-data.ts",
+    "frame/dataset.json"
+  ],
+  "limitations": [
+    "This delivers a controlled synthetic Frame package only; native Counso deployment or publication was not verified."
+  ]
+}

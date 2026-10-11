@@ -1,4 +1,7 @@
-# Connecting an existing model controller
+# Agent-first handoff; advanced controller transport
+
+For ordinary use, follow [AGENT_QUICKSTART.md](AGENT_QUICKSTART.md): `prepare-agent`, the fixed public `call.py` tools, and independent `grade-agent`. The existing agent platform supplies the model; no API/key or custom controller is needed. The JSONL interface below remains an optional advanced integration, not a prerequisite for ordinary agent use.
+
 
 The runner separates tasks/scoring from the model provider and platform. It does not collect API keys or launch an arbitrary candidate program. Use an agent or wrapper you already trust and have configured. Connecting a controller is an integration task; the transport's existence is not evidence that Counso, any named model or a production service has been exercised.
 

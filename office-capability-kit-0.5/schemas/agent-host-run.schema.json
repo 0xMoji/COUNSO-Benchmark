@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "agent_bridge": {
+      "additionalProperties": true,
+      "properties": {
+        "environment_status": {
+          "enum": [
+            "SUPPORTED",
+            "UNKNOWN",
+            "UNSUPPORTED"
+          ]
+        },
+        "final_accepted": {
+          "type": "boolean"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "public_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "protocol",
+        "run_id",
+        "environment_status",
+        "final_accepted",
+        "public_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "case_id": {
+      "enum": [
+        "office-data",
+        "office-evidence",
+        "office-tools",
+        "office-recovery",
+        "ui-dashboard",
+        "ui-planner"
+      ]
+    },
+    "core_model_calls": {
+      "const": 0
+    },
+    "external_model_calls": {
+      "anyOf": [
+        {
+          "const": 0
+        },
+        {
+          "const": "UNKNOWN"
+        }
+      ]
+    },
+    "host_receipt": {
+      "required": [
+        "schema_version",
+        "issuer",
+        "run_id",
+        "case_id",
+        "public_manifest_sha256",
+        "run_manifest_sha256",
+        "report_sha256",
+        "evidence_provenance",
+        "trust_boundary"
+      ],
+      "type": "object"
+    },
+    "kit_version": {
+      "type": "string"
+    },
+    "live_model_capability": {
+      "const": "UNKNOWN"
+    },
+    "live_service_capability": {
+      "const": "UNKNOWN"
+    },
+    "model_calls": {
+      "enum": [
+        0,
+        "UNKNOWN"
+      ]
+    },
+    "old_release_modified": {
+      "const": false
+    },
+    "provider": {
+      "properties": {
+        "is_live_model": {
+          "type": "boolean"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "live_capability": {
+          "const": "UNKNOWN"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "kind",
+        "is_live_model",
+        "live_capability"
+      ],
+      "type": "object"
+    },
+    "rank_stability": {
+      "const": "NOT_MEASURED"
+    },
+    "raw_artifacts": {
+      "items": {
+        "$ref": "evidence.schema.json"
+      },
+      "type": "array"
+    },
+    "result": {
+      "$ref": "result.schema.json"
+    },
+    "run_id": {
+      "pattern": "^[0-9a-f]{32}$",
+      "type": "string"
+    },
+    "run_kind": {
+      "enum": [
+        "ENGINEERING_FIXTURE_ONLY",
+        "EXTERNAL_FILE_IMPORT",
+        "UI_ADAPTER_IMPORT_UNVERIFIED",
+        "LOCAL_TOOL_SESSION_EXTERNAL_CONTROLLER",
+        "RECORDED_ACTION_REPLAY",
+        "INDEPENDENT_VERIFIED_AGENT_HOST_GRADE"
+      ]
+    },
+    "schema_version": {
+      "const": "0.5.0"
+    },
+    "source_host_receipt": {
+      "required": [
+        "schema_version",
+        "issuer",
+        "run_id",
+        "case_id",
+        "public_manifest_sha256",
+        "run_manifest_sha256",
+        "report_sha256",
+        "evidence_provenance",
+        "trust_boundary"
+      ],
+      "type": "object"
+    },
+    "timing": {
+      "properties": {
+        "boundary": {
+          "type": "string"
+        },
+        "clock": {
+          "const": "perf_counter_ns"
+        },
+        "duration_ns": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "finished_at": {
+          "type": "string"
+        },
+        "started_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "started_at",
+        "finished_at",
+        "duration_ns",
+        "clock",
+        "boundary"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kit_version",
+    "case_id",
+    "run_kind",
+    "provider",
+    "model_calls",
+    "live_model_capability",
+    "live_service_capability",
+    "old_release_modified",
+    "rank_stability",
+    "timing",
+    "result",
+    "raw_artifacts",
+    "run_id",
+    "agent_bridge"
+  ],
+  "title": "Operator-hosted agent run or independent verified host grade",
+  "type": "object"
+}

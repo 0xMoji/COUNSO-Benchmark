@@ -12,10 +12,10 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 NAME = "office_capability_kit"
-VERSION = "0.5.0.dev0"
+VERSION = "0.5.1"
 DIST_INFO = f"{NAME}-{VERSION}.dist-info"
 ROOT = Path(__file__).resolve().parents[2]
-METADATA = "Metadata-Version: 2.1\nName: office-capability-kit\nVersion: 0.5.0.dev0\nSummary: Evidence-typed office fixture runner; not a live model benchmark\nRequires-Python: >=3.11\n\nPrivate development kit. Code and fixture licensing awaits owner approval.\n"
+METADATA = "Metadata-Version: 2.1\nName: office-capability-kit\nVersion: 0.5.1\nSummary: Evidence-typed office fixture runner; not a live model benchmark\nRequires-Python: >=3.11\n\nPrivate development kit. Code and fixture licensing awaits owner approval.\n"
 WHEEL = "Wheel-Version: 1.0\nGenerator: officekit-stdlib-backend\nRoot-Is-Purelib: true\nTag: py3-none-any\n"
 ENTRY = "[console_scripts]\nofficekit = officekit.cli:main\n"
 
@@ -34,6 +34,13 @@ def _payload():
         for path in sorted(source_root.rglob("*")):
             if path.is_file() and "__pycache__" not in path.parts and path.suffix in {".py", ".json", ".csv", ".txt"}:
                 yield package_root+"/"+path.relative_to(source_root).as_posix(), path.read_bytes()
+    # Agent handoff includes only UI public inputs/interface/mapping, never its evaluator/runtime.
+    for case_id in ("ui-dashboard", "ui-planner"):
+        for path in sorted((ROOT/"tasks"/"ui"/case_id/"public").rglob("*")):
+            if path.is_file() and path.suffix in {".json", ".txt"}:
+                yield "officekit/agent_ui/"+case_id+"/"+path.name, path.read_bytes()
+    yield "officekit/agent_ui/TOOL_INTERFACE.json", (ROOT/"tasks"/"ui"/"TOOL_INTERFACE.json").read_bytes()
+    yield "officekit/agent_ui/action-mapping.json", (ROOT/"adapters"/"standalone-ui"/"action-mapping.json").read_bytes()
     yield DIST_INFO+"/METADATA", METADATA.encode()
     yield DIST_INFO+"/WHEEL", WHEEL.encode()
     yield DIST_INFO+"/entry_points.txt", ENTRY.encode()
@@ -75,6 +82,9 @@ def build_sdist(sdist_directory, config_settings=None):
         paths = [ROOT/"pyproject.toml"]
         for folder in [ROOT/"src"/"officekit",ROOT/"tasks"/"office",ROOT/"schemas"]:
             paths += [p for p in sorted(folder.rglob("*")) if p.is_file() and "__pycache__" not in p.parts and p.suffix in {".py", ".json", ".csv", ".txt"}]
+        for case_id in ("ui-dashboard", "ui-planner"):
+            paths += [p for p in sorted((ROOT/"tasks"/"ui"/case_id/"public").rglob("*")) if p.is_file() and p.suffix in {".json", ".txt"}]
+        paths += [ROOT/"tasks"/"ui"/"TOOL_INTERFACE.json", ROOT/"adapters"/"standalone-ui"/"action-mapping.json"]
         for path in paths:
             stream.add(path,arcname=prefix+"/"+path.relative_to(ROOT).as_posix())
     return name

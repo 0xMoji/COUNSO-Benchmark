@@ -1,0 +1,80 @@
+{
+  "dashboard": {
+    "chart_axis": "height",
+    "chart_count": {
+      "label": "{status} count"
+    },
+    "chart_glyph": {
+      "label": "{status} plotted count"
+    },
+    "chart_plot": {
+      "label": "{status} plot"
+    },
+    "chart_status": {
+      "name": "Select {status}",
+      "role": "button"
+    },
+    "created_from": {
+      "label": "Created from"
+    },
+    "created_to": {
+      "label": "Created to"
+    },
+    "displayed_scope": {
+      "name": "Displayed scope",
+      "role": "region"
+    },
+    "metrics": {
+      "active_count": {
+        "label": "Active count",
+        "unit": "tickets"
+      },
+      "overdue_active_count": {
+        "label": "Overdue active count",
+        "unit": "tickets"
+      },
+      "remaining_effort_hours": {
+        "label": "Remaining effort",
+        "unit": "hours"
+      },
+      "ticket_count": {
+        "label": "Ticket count",
+        "unit": "tickets"
+      }
+    },
+    "refresh": {
+      "name": "Refresh data",
+      "role": "button"
+    },
+    "reset": {
+      "name": "Reset filters",
+      "role": "button"
+    },
+    "retry": {
+      "name": "Retry load",
+      "role": "button"
+    },
+    "status_filter": {
+      "name": "{status}",
+      "role": "checkbox"
+    },
+    "team": {
+      "name": "Team",
+      "role": "combobox"
+    },
+    "tickets": {
+      "columns": {
+        "due_at": "Due time UTC",
+        "remaining_minutes": "Remaining minutes",
+        "status": "Status",
+        "team_id": "Team ID",
+        "ticket_id": "Ticket ID"
+      },
+      "name": "Tickets",
+      "role": "table"
+    }
+  },
+  "optional": true,
+  "schema_version": "standalone-actions-1",
+  "scope": "Visible accessibility controls and semantic columns. Alternative legitimate names/columns can be mapped; absent mapping is an integration defect, not a material business error."
+}

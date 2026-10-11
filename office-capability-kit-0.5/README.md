@@ -1,8 +1,21 @@
-# office-capability-kit 0.5 development source toolkit
+# office-capability-kit 0.5.1 agent-first development toolkit
 
 A platform-independent development toolkit for synthetic office files, local tool transactions and generated standalone interactive web apps. Six tasks are registered: the Python runner implements four office tasks and the Node adapter contains two UI acceptance plans. Deterministic reference and replay providers check the instrument; their results are not model scores.
 
 This source-only package contains implementation, synthetic input examples, schemas, tests, dependencies/lockfile, dependency notices and a CI template. It contains no precomputed run results, model samples or browser receipts. Run outputs are created locally by the caller. Browser acceptance, live-model capability and native platform integration remain unverified until actually executed.
+
+## Start with your existing agent
+
+The model is supplied by your agent platform. Export a public task, start its trusted synthetic tool host when required, give only the public directory to the agent, then independently grade its delivery. No model API, key, custom controller or extra model is required. See [AGENT_QUICKSTART.md](docs/AGENT_QUICKSTART.md) for the complete operator/agent workflow and unsupported-environment preflight.
+
+```sh
+.venv/bin/officekit prepare-agent --case office-recovery --output .local-runs/task-public --archive .local-runs/task-public.zip
+.venv/bin/officekit host-agent --bundle .local-runs/task-public --output .local-runs/operator-run
+# The existing agent reads TASK.md and runs the included call.py/submit.py.
+.venv/bin/officekit grade-agent --bundle .local-runs/task-public --run .local-runs/operator-run --output .local-runs/grade
+```
+
+Install the kit using the clean-install commands below first. The host command stays running in the operator terminal while the agent uses the same public workspace. UI cases export static-app tasks and use the separate real-browser acceptance command. Chat-only/file-inaccessible platforms report ENVIRONMENT_UNSUPPORTED; no platform name alone proves native compatibility.
 
 ## Verify source bytes
 

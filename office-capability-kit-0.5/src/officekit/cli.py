@@ -7,6 +7,8 @@ from .exchange import prepare,grade,grade_ui
 from .providers import ReferenceProvider, ReplayProvider, StdioSessionProvider
 from .registry import REGISTRY
 from .runner import run
+from .agent_packages import prepare_agent
+from .agent_bridge import host_agent,grade_host_agent
 
 
 def main(argv=None):
@@ -36,6 +38,20 @@ def main(argv=None):
     ui_import=sub.add_parser("grade-ui",help="Aggregate a repository UI adapter report; imported browser claims remain UNKNOWN")
     ui_import.add_argument("--report",required=True)
     ui_import.add_argument("--output",required=True)
+    pack=sub.add_parser("prepare-agent",help="Export a self-contained public package for an existing shell/files agent; no API or controller")
+    pack.add_argument("--case",choices=list(REGISTRY),required=True)
+    pack.add_argument("--output",required=True)
+    pack.add_argument("--archive",help="Optional fresh public-only ZIP outside the task directory")
+    host=sub.add_parser("host-agent",help="Operator serves actual synthetic tools to public call.py; keeps evaluator/ledger private")
+    host.add_argument("--bundle",required=True)
+    host.add_argument("--output",required=True,help="Fresh operator-only run directory, disjoint from the public task")
+    host.add_argument("--max-tool-calls",type=int,default=32)
+    host.add_argument("--timeout",type=float,default=900)
+    judge=sub.add_parser("grade-agent",help="Independently grade the operator's original host run, never candidate ledger/state")
+    judge.add_argument("--bundle",required=True)
+    judge.add_argument("--run",required=True)
+    judge.add_argument("--receipt",help="Separately retained original operator host receipt")
+    judge.add_argument("--output",required=True)
     args=parser.parse_args(argv)
     if args.command=="list":
         print(json.dumps(REGISTRY,indent=2,sort_keys=True));return 0
@@ -47,10 +63,19 @@ def main(argv=None):
         allowed={"office-data":{"wrong-total","forbidden-query","missing-file"},"office-evidence":{"wrong-entity","null-entity"},"office-tools":{"unbound-claim"},"office-recovery":{"duplicate-retry","unbound-claim"}}
         if args.mutation and args.mutation not in allowed.get(args.case,set()):parser.error("Mutation is not defined for this case")
     try:
-        if args.command=="prepare":
+        if args.command=="prepare-agent":
+            result=prepare_agent(args.case,args.output,args.archive)
+            print(json.dumps({"type":"public_agent_task","case":args.case,"task":str(Path(args.output).absolute()/"TASK.md"),"task_fingerprint":result["task_fingerprint"],"archive":str(Path(args.archive).absolute()) if args.archive else None,"model_api_required":False},sort_keys=True));return 0
+        if args.command=="host-agent":
+            report=host_agent(args.bundle,args.output,args.max_tool_calls,args.timeout)
+        elif args.command=="grade-agent":
+            report=grade_host_agent(args.bundle,args.run,args.output,args.receipt)
+        elif args.command=="prepare":
             result=prepare(args.case,args.output)
             print(json.dumps({"type":"public_bundle","case":args.case,"bundle":str(Path(args.output).absolute()/"public_bundle.json"),"live_capability":"UNKNOWN"},sort_keys=True));return 0
-        if args.command=="grade-ui":
+        if args.command in ("host-agent","grade-agent"):
+            pass
+        elif args.command=="grade-ui":
             report=grade_ui(args.report,args.output)
         elif args.command=="grade":
             report=grade(args.bundle,args.artifacts,args.candidate,args.output,args.ledger,args.state)
@@ -59,5 +84,5 @@ def main(argv=None):
             report=run(args.case,provider,args.output,args.max_tool_calls)
     except (ValueError,OSError,KeyError,NotImplementedError) as exc:
         print(f"officekit: {exc}",file=sys.stderr);return 2
-    print(json.dumps({"type":"run_result","case":report["case_id"],"provider_kind":report["provider"]["kind"],"judgment":report["result"]["judgment"],"score_lower":report["result"]["score_lower"],"score_upper":report["result"]["score_upper"],"quality_complete":report["result"]["quality_complete"],"report":str(Path(args.output).absolute()/"report.json"),"live_capability":"UNKNOWN"},sort_keys=True))
+    print(json.dumps({"type":"run_result","case":report["case_id"],"provider_kind":report["provider"]["kind"],"judgment":report["result"]["judgment"],"score_lower":report["result"]["score_lower"],"score_upper":report["result"]["score_upper"],"quality_complete":report["result"]["quality_complete"],"report":str(Path(args.output).absolute()/"report.json"),"operator_host_receipt":str(Path(args.output).absolute()/"host_receipt.json") if args.command=="host-agent" else None,"live_capability":"UNKNOWN"},sort_keys=True))
     return 0 if report["result"]["judgment"]=="PASS" else 1

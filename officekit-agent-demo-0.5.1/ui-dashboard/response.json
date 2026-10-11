@@ -1,0 +1,4 @@
+{
+  "artifacts": ["index.html", "app.js", "styles.css", "action-mapping.json"],
+  "limitations": ["Static package prepared. Functional browser behavior requires independent evaluation with the supplied synthetic HTTP host. Native Dust Frames and A2UI runtimes are not part of this standalone HTML adapter."]
+}

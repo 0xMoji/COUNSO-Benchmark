@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support operations · Ticket dashboard</title>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<main>
+<header class="page-header"><div><p class="eyebrow">SUPPORT OPERATIONS</p><h1>Ticket dashboard</h1><p class="subtitle">A shared view of workload, deadlines, and remaining effort.</p></div><span class="environment">Synthetic source · Read only</span></header>
+<section class="filters card" aria-label="Requested filters">
+<div class="filter-heading"><h2>Filter tickets</h2><div class="actions"><button id="refresh" type="button">Refresh data</button><button id="reset" type="button">Reset filters</button></div></div>
+<div class="filter-grid">
+<label class="field">Team<select id="team" disabled><option value="">All teams</option></select></label>
+<label class="field">Created from<input id="from" type="date" disabled></label>
+<label class="field">Created to<input id="to" type="date" disabled></label>
+<fieldset><legend>Status</legend><div id="status-options"><label><input type="checkbox" value="OPEN" checked disabled>OPEN</label><label><input type="checkbox" value="IN_PROGRESS" checked disabled>IN_PROGRESS</label><label><input type="checkbox" value="WAITING" checked disabled>WAITING</label><label><input type="checkbox" value="CLOSED" checked disabled>CLOSED</label></div></fieldset>
+</div><p class="hint">Created dates are UTC: start included, end excluded. All teams uses every team; clearing all statuses matches no tickets.</p>
+</section>
+<div id="message" class="notice" role="status" aria-live="polite">Reading source…</div>
+<div id="failure" class="failure" role="alert" hidden><span id="error-text"></span><button id="retry" type="button">Retry load</button></div>
+<p id="invalidation" class="notice" hidden></p>
+<section id="displayed-scope" class="scope card" role="region" aria-label="Displayed scope"><h2>Displayed scope</h2><p id="scope-text">No successful results yet.</p><p id="revision" class="hint"></p></section>
+<div id="results" hidden>
+<section class="metrics" aria-label="Business metrics">
+<article class="card metric"><h2>Ticket count</h2><output id="ticket-count" aria-label="Ticket count">0 tickets</output><p>All matching records</p></article>
+<article class="card metric"><h2>Active count</h2><output id="active-count" aria-label="Active count">0 tickets</output><p>Open, in progress, or waiting</p></article>
+<article class="card metric"><h2>Overdue active count</h2><output id="overdue-count" aria-label="Overdue active count">0 tickets</output><p>Due strictly before source as-of</p></article>
+<article class="card metric"><h2>Remaining effort</h2><output id="effort" aria-label="Remaining effort">0 hours</output><p>Active remaining minutes ÷ 60</p></article>
+</section>
+<section class="card chart-card" aria-label="Active-status chart"><div class="section-heading"><div><h2>Active tickets by status</h2><p class="hint">Select a bar to filter to that status. Counts share one linear, zero-baseline scale.</p></div><span id="chart-scale" class="hint"></span></div><div class="chart" id="chart"></div></section>
+<section class="card table-card"><div class="section-heading"><h2>Tickets</h2><span id="row-count" class="hint"></span></div><p id="empty" class="empty" hidden>No matching tickets. This scope loaded successfully.</p><div class="table-scroll"><table aria-label="Tickets"><thead><tr><th>Ticket ID</th><th>Team ID</th><th>Team</th><th>Status</th><th>Created time UTC</th><th>Due time UTC</th><th class="numeric">Remaining minutes</th></tr></thead><tbody id="ticket-rows"></tbody></table></div></section>
+</div>
+<footer>Overdue and effort calculations use the displayed source snapshot, never your device clock.</footer>
+</main>
+</body>
+</html>

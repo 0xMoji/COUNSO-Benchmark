@@ -15,9 +15,9 @@
     "A late success acknowledges exactly the snapshot submitted. Newer local edits remain unsaved and cannot be overwritten or marked saved by that older acknowledgement.",
     "Failure retains local edits and a truthful dirty/error state; retrying a write requires explicit user Save and the verified currently permitted revision, not an automatic fallback.",
     "Preserve original resource-ID sort and actual CSV export of the filtered/sorted capacity view; the export is a local download, not an external transmission.",
-    "Load the existing ./draft.json and use its exact returned revision and canWrite. Save only that existing file in the same Frame package; null read results do not authorize creating replacement files or guessing a permission/error cause.",
+    "Read the existing synthetic draft through draft_read (GET /api/draft), using its exact returned revision and canWrite. Save only that same existing draft through draft_save (POST /api/draft); null read results do not authorize creating replacement files or guessing a permission/error cause.",
     "While a save is pending, repeated clicks cannot create duplicate commits. Success requires a confirmed new revision and independently verified stored contents; a success label alone is not persistence evidence.",
-    "save_failed is an unconfirmed save outcome, not proof that authority is unchanged. Retain local edits and re-read the actual file to determine whether the submitted snapshot was stored before an explicit further Save. Never auto-retry blindly or overwrite using a constructed revision.",
+    "save_failed is an unconfirmed save outcome, not proof that authority is unchanged. Retain local edits and re-read the actual draft through draft_read to determine whether the submitted snapshot was stored before an explicit further Save. Never auto-retry blindly or overwrite using a constructed revision.",
     "draft_id identifies the existing source draft and remains unchanged. Editing an existing allocation preserves its allocation_id; explicit removal and adding a new line may use a new stable unique local key. Identity rules are source-bound, not hidden generated-ID expectations."
   ],
   "scope": "synthetic standalone adapter; native platform UNKNOWN"

@@ -5,7 +5,7 @@ backend-path = ["src"]
 
 [project]
 name = "office-capability-kit"
-version = "0.5.0.dev0"
+version = "0.5.1"
 description = "Portable, evidence-typed office task fixture runner. Not a live model benchmark."
 requires-python = ">=3.11"
 dependencies = []

@@ -7,6 +7,7 @@ on:
     branches: ['eval/counso-ui-probe']
     paths:
       - 'office-capability-kit-0.5/**'
+      - 'officekit-agent-demo-0.5.1/**'
       - '.github/workflows/officekit-0.5-ui-control.yml'
 permissions:
   contents: read
@@ -45,6 +46,10 @@ jobs:
         run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-planner --mutation late-ack-clears-edits --output ui-late-ack-evidence
       - name: Verify expected source-controls result patterns
         run: node tests/ui/verify-browser-controls.mjs ui-reference-evidence ui-wrong-scope-evidence ui-old-response-evidence ui-wrong-geometry-evidence ui-late-ack-evidence
+      - name: Independently exercise the agent-produced dashboard demo
+        run: |
+          node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-dashboard --candidate-dir ../officekit-agent-demo-0.5.1/ui-dashboard --mapping ../officekit-agent-demo-0.5.1/ui-dashboard/action-mapping.json --output ui-agent-demo-evidence
+          node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync('ui-agent-demo-evidence/ui-dashboard.report.json'));const m=JSON.parse(fs.readFileSync('ui-agent-demo-evidence/evidence-manifest.json'));if(r.tested_level!=='ACTUAL_BROWSER_SYNTHETIC'||!r.candidate_digest||r.atoms.length!==11||m.origin!=='EVALUATOR_STANDALONE_BROWSER_RUNNER'||m.execution!=='actual_browser')throw Error('Missing actual demo evidence');console.log(JSON.stringify({kind:'AGENT_DEMO_OBSERVATION_NOT_PERFORMANCE_TABLE',counts:Object.fromEntries(['PASS','FAIL','UNKNOWN'].map(s=>[s,r.atoms.filter(a=>a.status===s).length]))}));"
       - name: Preserve synthetic browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

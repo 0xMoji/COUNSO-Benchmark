@@ -11,9 +11,9 @@
     "During pending/failed loads preserve requested filters. Retained previous results must be visibly identified as prior scope/revision; they must not be claimed as results of newer filters.",
     "Retry performs a new permitted read for current intent. Old response/error completion cannot change newer results/error state.",
     "Refresh preserves still-valid filters; if an entity actually disappears, an explicit explained invalidation may choose a valid default rather than keep a nonexistent identity.",
-    "Initial source data is loaded with readFile(./dataset.json). Scope changes, Refresh and Retry invoke declared deterministic load-data with stable-ID scope input; returned echoed scope binds the response to that request. An equivalent request-management architecture is accepted if actual source calls and latest-intent behavior meet these rules.",
+    "Initial source data is read from dashboard_source (GET /api/dashboard-source). Scope changes, Refresh and Retry invoke dashboard_load (POST /api/dashboard-load) with the declared stable-ID and UTC-date scope; returned echoed scope binds the response to that request. An equivalent request-management architecture is accepted if actual source calls and latest-intent behavior meet these rules.",
     "Function scope team_ids=[] means all teams; statuses=[] means no statuses. The team select all-teams option value is the empty string. Status controls use the complete public enum. Date input controls use YYYY-MM-DD values; displayed equivalent calendar wording is allowed.",
-    "Use one linear zero-baseline bar chart and common count-to-length scale, horizontal or vertical. Publish the real status-plot/status-glyph geometry hooks and plot data-eval-axis height/width. Two CSS pixels of rounding or zero-marker decoration are allowed; numeric labels do not substitute for correct plotted lengths."
+    "Use one linear zero-baseline bar chart and common count-to-length scale, horizontal or vertical. Expose each plotted status and its plot through unambiguous accessibility labels or the optional action-mapping.json; declare chart_axis as height or width in that mapping. Two CSS pixels of rounding or zero-marker decoration are allowed; numeric labels do not substitute for correct plotted lengths."
   ],
   "scope": "synthetic standalone adapter; native platform UNKNOWN"
 }

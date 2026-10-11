@@ -1,5 +1,5 @@
 {
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
   "case_id": "G-UI-EDIT-M1",
   "checks": [
     {

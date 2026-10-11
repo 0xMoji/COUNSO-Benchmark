@@ -28,6 +28,12 @@ test('read-only, path escapes and missing revisions cause zero commits', async (
   assert.equal((await request(s,'writeFile',{path:'./draft.json',content:'x'})).result.error.code,'save_failed');
   assert.equal(s.events.filter(x=>x.type==='FILE_COMMITTED').length,0);
 });
+test('host retains exact file allowlists while legal relative path spellings agree',async()=>{
+ const s=session();for(const fileId of ['./draft.json','draft.json',s.root+'/draft.json'])assert.equal((await request(s,'getFile',{fileId})).result.revision,'1');
+ for(const fileId of ['./missing.json','/outside.json','../draft.json','https://example.invalid/draft.json'])assert.equal((await request(s,'getFile',{fileId})).result.fileBlob,null);
+ for(const target of ['./dataset.json','./missing.json','/outside.json','../draft.json'])assert.equal((await request(s,'writeFile',{path:target,content:'x',revision:'1'})).result.error.code,'invalid_path');
+ assert.equal(s.events.filter(x=>x.type==='FILE_COMMITTED').length,0);
+});
 test('functions are name-bound deterministic data, not candidate function code', async () => {
   const s = session(); assert.deepEqual((await request(s,'callFunction',{functionIdOrSlug:'load-data',input:{}})).result,{synthetic:true});
   assert.equal((await request(s,'callFunction',{functionIdOrSlug:'another-frame/load-data',input:{}})).error.code,'invalid_function_reference');

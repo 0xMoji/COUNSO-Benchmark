@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "origin": "COORDINATOR_REGISTERED_UI_BATCH",
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
   "repository": "0xMoji/counso-benchmark-reconstructed",
   "branch": "eval/counso-ui-probe",
   "browser": {
@@ -23,8 +23,8 @@
   },
   "authority_files": {
     ".github/workflows/ui-acceptance.yml": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
-    "VERSION": "8bcf4f3fa68c77fff082646314bbdf10fdd487fe27bf8baa3e559e0962647acf",
-    "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": "d41f23cc7c20d445628fa953c59eb2e8f9b78d705d9a0e222efb437c184bd015",
+    "VERSION": "32ea6b1995dc7c07f095b96a133fa8e247d133bfc13b9e3510b1849ee01fde39",
+    "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": "51c98f803de4e7d46bf11a81310a521662cc65228be40c644c2f4ac299dc71bb",
     "dataset/cases/G-UI-CREATE-M1/evaluator/initial_host_files.json": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
     "dataset/cases/G-UI-CREATE-M1/evaluator/mutation_control_plan.json": "0726f7813a1f4b5e834ba05c203ef64ae3d521b45ed7e6f8f5d1c9b97b0f237f",
     "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
@@ -38,16 +38,16 @@
     "dataset/cases/G-UI-CREATE-M1/evaluator/unseen_host_files.json": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
     "dataset/cases/G-UI-CREATE-M1/public/SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
     "dataset/cases/G-UI-CREATE-M1/public/SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
-    "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": "ae5a6e978089971e782484c54be10bf3ffc2bf1223b29f27d097ab211cb7209d",
-    "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": "ac9f872c28f8f305ec481a123d4c67424f5606070fd2aae7f045f9a1e2ae8c93",
+    "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": "6a0bfb68c4f0f1928f2351665a5a36c51c5683b1a83a760b9ea435d735fc884a",
+    "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": "a1940dfe1b069ffba823ed275d6f80d6b86d691df05f826a4c2b7c8e434b38e7",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
     "dataset/cases/G-UI-CREATE-M1/public/interaction_contract.json": "8d76c07d730fdec16611af93e0688659855e8367ae2eaa5ae0ffc82899eddb28",
     "dataset/cases/G-UI-CREATE-M1/public/prompt.txt": "616b7bd27234c221d317d8c6786aca3e2297c5d4e7534163ad7347594e6db623",
     "dataset/cases/G-UI-CREATE-M1/public/response_schema.json": "f05648b55adde27736149bcb2f4f70fac9c2758c0aeb457d6b744083a32fbdfd",
-    "dataset/cases/G-UI-CREATE-M1/public/task_contract.json": "111a9ce8ce2c23d544cf01a8f28aea43227e27b5fa2c53378ebd06dd83bb77cc",
-    "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": "75dc156e27b52864aba64fe6e69a17248fe3eabf6a3525ad88ec964df4a9c990",
+    "dataset/cases/G-UI-CREATE-M1/public/task_contract.json": "da8e25a73ee5e31c9bb8b0bd5dce7ffb3de07ff1960b06e059b44ad5bdbdfd9c",
+    "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": "7b2f86a18726a4945a7c70f581cdbd49bfdf6907ccd23d3f38b44059b4808a18",
     "dataset/cases/G-UI-EDIT-M1/evaluator/initial_host_files.json": "b7f917a24eddf14a07250a29549cbed96c3950baad01532f877144257ca9dab8",
     "dataset/cases/G-UI-EDIT-M1/evaluator/mutation_control_plan.json": "221972c5f6f352ccfa9f082a0bf1deb88be59267124832e5560a5ccd585020c0",
     "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -63,8 +63,8 @@
     "dataset/cases/G-UI-EDIT-M1/evaluator/unseen_host_files.json": "4927af2fc0aefc9e3a3d85b23e27f7198d58d2a834126b05df8ea8c9b2fdafeb",
     "dataset/cases/G-UI-EDIT-M1/public/SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
     "dataset/cases/G-UI-EDIT-M1/public/SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
-    "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": "a6b7b48400d02179b755ce55db5acb0bc8e2a7a374967c3947c9ae507ac8e293",
-    "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": "75faa1829900489d9afa7a1711833dc17fbd274b5a51f05340765e34b2c49886",
+    "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": "245ca779817890f7b0b73c9180209a65ad993803a7875e585459053429007b41",
+    "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": "88112384c47ef613dbcf7bd70ccdf606f5dd41a1ab6eead29667c773a80ae288",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/index.tsx": "3c6a29981d6fb558c743d6b79f3414811c960c936bbe0f4ab3705c6f5402d115",
@@ -73,9 +73,9 @@
     "dataset/cases/G-UI-EDIT-M1/public/interaction_contract.json": "580e8480ae50fe9d9e03f25a9d37cfdeea7b9a52a7583e445074e3df96414d85",
     "dataset/cases/G-UI-EDIT-M1/public/prompt.txt": "ece0bb2f1369d5780bed0398dae66b07cbdd7d018e73c2bf9ea9af317b1c9f9d",
     "dataset/cases/G-UI-EDIT-M1/public/response_schema.json": "d5d8d3f99e1b7863036f2c91db7fccd733928a63d1cb18350e3c41f49e4dece2",
-    "dataset/cases/G-UI-EDIT-M1/public/task_contract.json": "bc6354ae073c1a08a7e4c3a1728d746307d20e4dc64624f99833b0349c216ec9",
+    "dataset/cases/G-UI-EDIT-M1/public/task_contract.json": "1d973da85877403d6025c05950badabec35ec9b73536e14fb79e9ac751893e02",
     "docs/UI_ACCEPTANCE_PLAN.json": "aa3ea845a6ea5d4c26973166dabdd8f13cc11bb2db77fe8d8ceb275fce3b17cf",
-    "platform_screen/__init__.py": "a60d724b9a96d091c886c4093834d1aee081ce64632bd6dbeee29c8dbcf71759",
+    "platform_screen/__init__.py": "7c503dcde4424b6edd8da7724953244bd9ed17a25c9bcd14c8346aec6590c692",
     "platform_screen/__main__.py": "48610bb79e1f535d00d832e3f305bb6d70f18e40895e86f8440926cbccfd87ec",
     "platform_screen/analysis.py": "bde5cbfaafdcc33bea24240d3e3d3945f883781500e996b9551ddc052c053119",
     "platform_screen/build.py": "0389cf97af80db89c4962ac83ce2174b19c9874bd9fa11cdf6213210137d31bc",
@@ -94,8 +94,8 @@
     "runtime/README.md": "f6aebb1047d9d4f7f384eb755586b3b71934d372e8a9139b6a8ac45eda0431b2",
     "runtime/VENDOR_MANIFEST.json": "caf3ecbc2e58086d13596b525ad5d61019e7f2a1ec14b0b6f4271143b1b988e1",
     "runtime/acceptance-driver.mjs": "78b4da67b10cff61b7533be0db061011dcc5aa120983d6dbbdf160604fa48ea3",
-    "runtime/acceptance-driver.test.mjs": "6cd5e4a2a352d4643a1872f488658ed6b783792b38c5fac5eae7752e233e764b",
-    "runtime/acceptance-observer.mjs": "1ee35c9579e409aeb81bf70394f3e7aef6c4f26d108055cc3e9eaa23aa9adaf8",
+    "runtime/acceptance-driver.test.mjs": "cf11b60a554a4397d982278843d859ead3caf5bdc2fdf7fe7fc965c6fa5da367",
+    "runtime/acceptance-observer.mjs": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
     "runtime/ci-entry.mjs": "cdd4ccf3ccb95ed98042c5a45cbf378928389c57395be4bcfbde5aaac39953df",
     "runtime/ci-run.mjs": "8694cb80663c301e92ed5b7205f24d20530810ba2988e222e960291a363d4eb0",
     "runtime/compiler-attribution.test.mjs": "09b8b583967fefea153601efbd11494bf5b6f00c48933b86590e0f0c91028240",
@@ -107,7 +107,7 @@
     "runtime/runtime-hashes.mjs": "baf1a34fd8250b6d4e6efc18f43afa7bc5cdab96098ec771c25aca961072c072",
     "runtime/sdk.ts": "c0b929683228580597d5d2c3c2d379e5d485d83976f1450775a4d6609f6af4b1",
     "runtime/server.mjs": "8c4ed93a5055d845abea6e6c5fd97e984e9df7a9e067a196c998642310e076f1",
-    "runtime/test-offline.mjs": "cf602b124ae9e8d45bcdd3b5971035de5e9f6fd258946332f5142ebd2a16b955",
+    "runtime/test-offline.mjs": "401bb3bd1498e801c17b1a7cce112a0ce70bcddfc304c74f9a7b7a9e2927aa31",
     "runtime/ui-interface.json": "ba1f02e879d2ea12a45b5b03ddb5154f833fb4a7f01293d8d0561a9e34ae63cb",
     "runtime/ui-scope.json": "8d971acb1d3c5f5328278aa23ca7f7b7c02d505de5d627fbb3b214d37073798e",
     "runtime/vendor/LICENSE": "bcc09bd98ae787f6ef5357a088d065f9479bf07cf85f6c66e5d7e3b52a7881c7",
@@ -174,7 +174,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/ref-dashboard/primary.json",
-          "config_sha256": "8e1354aae9b3e10f514dd0e142c3d5091070eb57fd0e6753c2404d12e9f31860",
+          "config_sha256": "341e41f0f792d2fee69c32ffae4d810bd9b6f0b4a393b8eedfd7b65d2bd7a293",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -205,7 +205,7 @@
         },
         {
           "config_path": "ci-inputs/configs/ref-dashboard/unseen_same_schema.json",
-          "config_sha256": "6305f11c2efe77c0c5d5e7597329894803bd770107eb3c657d8edcedeaa5a27b",
+          "config_sha256": "8a56df70d7c862479047a8ab96383915705318d6654f7f0105a92b34631a00a8",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -495,7 +495,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/ref-planner/primary.json",
-          "config_sha256": "97701ee113bf6e1d20fee2143c8ca5d46a6584ff8dd1cfa49e0d1896841805c8",
+          "config_sha256": "af27c7dcc11e52c1ffd3221e567bc7a94bed1bbbdeb4581e56cec57185f03da5",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -537,7 +537,7 @@
         },
         {
           "config_path": "ci-inputs/configs/ref-planner/unseen_same_schema.json",
-          "config_sha256": "36821fdadfedf56b07ddb2d746e2fad1f00b5bbecf0ba1a50faab1acd7ff355a",
+          "config_sha256": "35f5e7a5cf6e7112a81674d1027be85503c3af1e88301aa08158f5885ab9104a",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -956,7 +956,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-wrong-chart-geometry/primary.json",
-          "config_sha256": "1dfcab0e31e2ba5e477e478f1bfc126e4cb1fb6cbe5004ec6263f28bd96f4b2c",
+          "config_sha256": "c847540da03b54a0d0da99db33216901c836605436f46b42f2c8246036ea3619",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -971,7 +971,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json",
-          "config_sha256": "efea4679fb55fc1e707e334f1a44303aef601642a00626065acdc2f8501547e3",
+          "config_sha256": "53a90f69fae35ef490fb1c64db02b1490c571e57c660a0504e1ce320f739ec8d",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1262,7 +1262,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-primary-hardcoded/primary.json",
-          "config_sha256": "7cf66c1cc8812c9173bffdd6584cc74b80a2b7894c552a8ac7ef9bf962a13465",
+          "config_sha256": "1070a171cecffc5d3c0492e3f598a1bc2d8d1df3a218a686a71f5dc1cb462e0c",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -1277,7 +1277,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json",
-          "config_sha256": "ef4029698dba5736f36d88a573ccc4dbef820df337de434be6335c1a65b8293b",
+          "config_sha256": "bbb254560b8242cc406bf71be5354404f6a8d9652351b638e2b2b29f320f6f1a",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1568,7 +1568,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-old-response/primary.json",
-          "config_sha256": "7ced2a08c51966bd514cd860ea0f43fcb7f6c8a7c0195c94c9fe385f9c5efa66",
+          "config_sha256": "72d5854630aa4e6eace5967757308eb6c043b358a09df420969cb6ca82bab749",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -1585,7 +1585,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-old-response/unseen_same_schema.json",
-          "config_sha256": "68d13cff5a8f0bd61a0a71a71af9deaa73ba31afe3edcdd4d55caab1c5bb3719",
+          "config_sha256": "9dc63103113c9909061cfbdcc8c32dfd2e3cf2a37d426b473565002ae659334f",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1880,7 +1880,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-cumulative-overflow/primary.json",
-          "config_sha256": "f2a3f48c826442c3d6260a98822dfbc5da820899790b92d853b70b9318637396",
+          "config_sha256": "47c47741774cd5ae9932c2b610d09e940bc1ee9641a0e6117a1c499bdeec0397",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -1898,7 +1898,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json",
-          "config_sha256": "d06db1bc84475179d7b959fc74307e20b2b515e74788fcf768ee3b919e0839dd",
+          "config_sha256": "6f6650e2a05b3c3b8934f7a004d24ae82e93a2cb69b31653f9ac2d1b6ba68999",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -2313,7 +2313,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-false-saved/primary.json",
-          "config_sha256": "cfd7756dffc3d0d83f304bb52e7cf89627e970ee7fc83d1009fab1b2ee7afbb8",
+          "config_sha256": "aa96951606adca54ba0163e5f600b32abebb8b25aa62de1350df9662c7383d08",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -2329,7 +2329,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-false-saved/unseen_same_schema.json",
-          "config_sha256": "daed376c96f84db8aa21956ec0fbbfe9d688aff5fd1797efefbcf8c040a52daa",
+          "config_sha256": "cf62a816bf78567d22f0e4cc2e2b755839ca327b66ad022dc82c9aef36a3a7bb",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -2741,7 +2741,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-lateack-clears-edits/primary.json",
-          "config_sha256": "e686efd567384d0a71cf8425ee7812ee515f23c88b5e89c87f3f3f27de97a99e",
+          "config_sha256": "b7ca1dcae6b522645d44ed04b7cf2cbd6b7b6e8134193e74bcb1399ba7e291de",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -2757,7 +2757,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json",
-          "config_sha256": "5827a12c1a1ea666025c6114413d45a11cf30d0e69a2b80143ecbf330ebb2808",
+          "config_sha256": "9bad03c90edc0bbba6422d499389319fbd830f2c9154dd300e9c913cece77350",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -3148,22 +3148,22 @@
     }
   ],
   "content_files": {
-    "ci-inputs/configs/d-old-response/primary.json": "7ced2a08c51966bd514cd860ea0f43fcb7f6c8a7c0195c94c9fe385f9c5efa66",
-    "ci-inputs/configs/d-old-response/unseen_same_schema.json": "68d13cff5a8f0bd61a0a71a71af9deaa73ba31afe3edcdd4d55caab1c5bb3719",
-    "ci-inputs/configs/d-primary-hardcoded/primary.json": "7cf66c1cc8812c9173bffdd6584cc74b80a2b7894c552a8ac7ef9bf962a13465",
-    "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": "ef4029698dba5736f36d88a573ccc4dbef820df337de434be6335c1a65b8293b",
-    "ci-inputs/configs/d-wrong-chart-geometry/primary.json": "1dfcab0e31e2ba5e477e478f1bfc126e4cb1fb6cbe5004ec6263f28bd96f4b2c",
-    "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": "efea4679fb55fc1e707e334f1a44303aef601642a00626065acdc2f8501547e3",
-    "ci-inputs/configs/p-cumulative-overflow/primary.json": "f2a3f48c826442c3d6260a98822dfbc5da820899790b92d853b70b9318637396",
-    "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": "d06db1bc84475179d7b959fc74307e20b2b515e74788fcf768ee3b919e0839dd",
-    "ci-inputs/configs/p-false-saved/primary.json": "cfd7756dffc3d0d83f304bb52e7cf89627e970ee7fc83d1009fab1b2ee7afbb8",
-    "ci-inputs/configs/p-false-saved/unseen_same_schema.json": "daed376c96f84db8aa21956ec0fbbfe9d688aff5fd1797efefbcf8c040a52daa",
-    "ci-inputs/configs/p-lateack-clears-edits/primary.json": "e686efd567384d0a71cf8425ee7812ee515f23c88b5e89c87f3f3f27de97a99e",
-    "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": "5827a12c1a1ea666025c6114413d45a11cf30d0e69a2b80143ecbf330ebb2808",
-    "ci-inputs/configs/ref-dashboard/primary.json": "8e1354aae9b3e10f514dd0e142c3d5091070eb57fd0e6753c2404d12e9f31860",
-    "ci-inputs/configs/ref-dashboard/unseen_same_schema.json": "6305f11c2efe77c0c5d5e7597329894803bd770107eb3c657d8edcedeaa5a27b",
-    "ci-inputs/configs/ref-planner/primary.json": "97701ee113bf6e1d20fee2143c8ca5d46a6584ff8dd1cfa49e0d1896841805c8",
-    "ci-inputs/configs/ref-planner/unseen_same_schema.json": "36821fdadfedf56b07ddb2d746e2fad1f00b5bbecf0ba1a50faab1acd7ff355a",
+    "ci-inputs/configs/d-old-response/primary.json": "72d5854630aa4e6eace5967757308eb6c043b358a09df420969cb6ca82bab749",
+    "ci-inputs/configs/d-old-response/unseen_same_schema.json": "9dc63103113c9909061cfbdcc8c32dfd2e3cf2a37d426b473565002ae659334f",
+    "ci-inputs/configs/d-primary-hardcoded/primary.json": "1070a171cecffc5d3c0492e3f598a1bc2d8d1df3a218a686a71f5dc1cb462e0c",
+    "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": "bbb254560b8242cc406bf71be5354404f6a8d9652351b638e2b2b29f320f6f1a",
+    "ci-inputs/configs/d-wrong-chart-geometry/primary.json": "c847540da03b54a0d0da99db33216901c836605436f46b42f2c8246036ea3619",
+    "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": "53a90f69fae35ef490fb1c64db02b1490c571e57c660a0504e1ce320f739ec8d",
+    "ci-inputs/configs/p-cumulative-overflow/primary.json": "47c47741774cd5ae9932c2b610d09e940bc1ee9641a0e6117a1c499bdeec0397",
+    "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": "6f6650e2a05b3c3b8934f7a004d24ae82e93a2cb69b31653f9ac2d1b6ba68999",
+    "ci-inputs/configs/p-false-saved/primary.json": "aa96951606adca54ba0163e5f600b32abebb8b25aa62de1350df9662c7383d08",
+    "ci-inputs/configs/p-false-saved/unseen_same_schema.json": "cf62a816bf78567d22f0e4cc2e2b755839ca327b66ad022dc82c9aef36a3a7bb",
+    "ci-inputs/configs/p-lateack-clears-edits/primary.json": "b7ca1dcae6b522645d44ed04b7cf2cbd6b7b6e8134193e74bcb1399ba7e291de",
+    "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": "9bad03c90edc0bbba6422d499389319fbd830f2c9154dd300e9c913cece77350",
+    "ci-inputs/configs/ref-dashboard/primary.json": "341e41f0f792d2fee69c32ffae4d810bd9b6f0b4a393b8eedfd7b65d2bd7a293",
+    "ci-inputs/configs/ref-dashboard/unseen_same_schema.json": "8a56df70d7c862479047a8ab96383915705318d6654f7f0105a92b34631a00a8",
+    "ci-inputs/configs/ref-planner/primary.json": "af27c7dcc11e52c1ffd3221e567bc7a94bed1bbbdeb4581e56cec57185f03da5",
+    "ci-inputs/configs/ref-planner/unseen_same_schema.json": "35f5e7a5cf6e7112a81674d1027be85503c3af1e88301aa08158f5885ab9104a",
     "ci-inputs/fixtures/d-old-response/primary/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "ci-inputs/fixtures/d-old-response/unseen_same_schema/dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
     "ci-inputs/fixtures/d-primary-hardcoded/primary/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
@@ -3194,22 +3194,22 @@
     "ci-inputs/mutations/p-cumulative-overflow.patch": "50afeb8f1e21edc9827059949ee6cebead23e8549f967b776adff3e5d0e810f9",
     "ci-inputs/mutations/p-false-saved.patch": "dbab6b58979e32a8c300af164b494a710a7c80a26991332d54e5ec4a36d89e29",
     "ci-inputs/mutations/p-lateack-clears-edits.patch": "0e0a381443e986202acd8b511439ebd80b851beb04456580868311c64ab1d8d0",
-    "ci-inputs/objective/d-old-response.delivery.json": "dc0272a6013bf506c22da1e253f5c0deb54655c1d17f2e1a2a70629fbd543c38",
-    "ci-inputs/objective/d-old-response.json": "32f3335ffa2f4db1cecad604885aae644f5d2a92c792a23c2591946e5b0f703b",
-    "ci-inputs/objective/d-primary-hardcoded.delivery.json": "282588a845a469e4b98df3ad569c6ab32180a717b658d26b0d3f1973a175d2cf",
-    "ci-inputs/objective/d-primary-hardcoded.json": "42ea6826979ca5ebc857018d1325456b6c53cf023596fd4ed2b0e26c5c34dc09",
-    "ci-inputs/objective/d-wrong-chart-geometry.delivery.json": "1b33c2c46aaec9d21da27d8ac460ce6250891fa37cf13fa3db9120917f4cf483",
-    "ci-inputs/objective/d-wrong-chart-geometry.json": "52375c872ed446cd3c226fc5d0f7edaed56d0dd9d1b1d63e06c1889821c25592",
-    "ci-inputs/objective/p-cumulative-overflow.delivery.json": "677fcc3676ae0615a33469a5df3b4fe952ad0199d84d228518f8489222290152",
-    "ci-inputs/objective/p-cumulative-overflow.json": "c36cf91c48ac515dd71250a6acebe06eb9181d529793864ca325364921e0654c",
-    "ci-inputs/objective/p-false-saved.delivery.json": "574de1bb41f49e4317982a62562924d5a97bd581ba65fd71fccb70dcb74db1db",
-    "ci-inputs/objective/p-false-saved.json": "a61e31fc98f8ba90e3384c7e5c8ceeeff811386d662c34b0eb6662dc7b62c477",
-    "ci-inputs/objective/p-lateack-clears-edits.delivery.json": "da743f63aa4b0e4c732fd96efef7c9e016a0a127405bd231b5a4ca1fa09ba829",
-    "ci-inputs/objective/p-lateack-clears-edits.json": "a39a2bd079f39a5b51c20d186ccd79797a9758947a7214196c9d1394d60d9084",
-    "ci-inputs/objective/ref-dashboard.delivery.json": "840af8ceef8bc87d73bd5a98a7ba9ab87a127f387942e88dc8b913cc61c60d47",
-    "ci-inputs/objective/ref-dashboard.json": "6e41dce6ba0902032c153a3868671280321cba0123788bb4bff571acd4df5d3b",
-    "ci-inputs/objective/ref-planner.delivery.json": "a4ff4641ea4c7ff19b7f86b8c05e091654c12c4c177ebc4023e8168a62ae3c34",
-    "ci-inputs/objective/ref-planner.json": "409e3f41b679b66cdc2081ffdf87b5cc7f08c6aef64e1af74b2e2e45b108e48e",
+    "ci-inputs/objective/d-old-response.delivery.json": "2c1adc0bf88016fa52031a063f6e0fc91c25d5d6da31e4c57cbfa81c72bc5629",
+    "ci-inputs/objective/d-old-response.json": "0cded433e72c995d5d729739d5b2884ef0c668d24184fb2fdaf9ead16b80a5b3",
+    "ci-inputs/objective/d-primary-hardcoded.delivery.json": "de88e19141b95964ea806d09720a2a2f20900df926a71ea3ac663fd9f12b97b9",
+    "ci-inputs/objective/d-primary-hardcoded.json": "56bbc78dc6e33b2bf8dd8e58d7014d1e58f9fcb410968902de93f8176a0d5e81",
+    "ci-inputs/objective/d-wrong-chart-geometry.delivery.json": "3e4b665fdc4de3cfebfa8a378a381abae4fd3eaf5a5eb558ac2765ae8e100caa",
+    "ci-inputs/objective/d-wrong-chart-geometry.json": "f3cade2f143613f91f04118a1f042fa831095b51f2121ff1a9acab566b96b554",
+    "ci-inputs/objective/p-cumulative-overflow.delivery.json": "0abe3da97cd5aaeca0cc981ef39f3855060b4a0b3e5e0cb8619bd3b111a9a1d2",
+    "ci-inputs/objective/p-cumulative-overflow.json": "08d2e289ffd9e0c5f626a02380c5a404d310285d3887da0686739a55abec7ac6",
+    "ci-inputs/objective/p-false-saved.delivery.json": "cde2509a3a376f588da65f5a20a75015892289223f2b775afd845a97d1109698",
+    "ci-inputs/objective/p-false-saved.json": "044474f8c1afd4d7a47a3a31265f27e9e9166e883f53ff6b828a053a63993eb7",
+    "ci-inputs/objective/p-lateack-clears-edits.delivery.json": "2c602e12a91852667297f8ee4875ee7b5a315c7ddebb8cc05f9ff90cab50d28f",
+    "ci-inputs/objective/p-lateack-clears-edits.json": "98898a62277f430cb45255cd3cf83778aa582e14f3a905998ea06d211a530114",
+    "ci-inputs/objective/ref-dashboard.delivery.json": "c79010a0e75d072ff2cad2ed74ebb9f8aedf3e1171554df571bc86f3d95fa976",
+    "ci-inputs/objective/ref-dashboard.json": "512928355c3679c25fac9713c2128b2927f3228d217c9e6c8e81f23edb2a2296",
+    "ci-inputs/objective/ref-planner.delivery.json": "91078859ebc05c0600c92d1217b2551d784e76362e325fa4c4eb0218c4477e0b",
+    "ci-inputs/objective/ref-planner.json": "a8d23e45b3391f721a1c3c0f1423215730d0cea5208fc5b9a3004f313e0da0d2",
     "ci-inputs/packages/d-old-response/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "ci-inputs/packages/d-old-response/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
     "ci-inputs/packages/d-old-response/frame/index.tsx": "6d4bc2ac88c78189198472fa85c3ea0cd09ecf2eee5a483c48a40a8967d7c9cd",
@@ -3256,7 +3256,7 @@
     "ci-inputs/packages/ref-planner/response.json": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195"
   },
   "preparation": {
-    "created_utc": "2026-10-11T03:02:37.476830+00:00",
+    "created_utc": "2026-10-11T03:22:49.201489+00:00",
     "mode": "OFFLINE_STATIC_ONLY",
     "browser_functionality": "UNKNOWN",
     "native_counso": "UNKNOWN",

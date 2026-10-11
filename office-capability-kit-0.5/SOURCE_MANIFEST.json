@@ -138,8 +138,8 @@
     },
     {
       "path": "docs/CONNECT_A_MODEL.md",
-      "bytes": 6174,
-      "sha256": "5e6b36035877d5cf3922f93bd93aa0f29bf4873c4153cc64aa6f425c8e29e4cf"
+      "bytes": 6477,
+      "sha256": "a7fd1b197b7f70a5b493b2012b70e60338d2d02845c872daad3cd38fe696630f"
     },
     {
       "path": "docs/INTEGRATION_CONTRACT.json",
@@ -298,8 +298,8 @@
     },
     {
       "path": "src/officekit/providers.py",
-      "bytes": 11863,
-      "sha256": "fe127e46201bc3ce93d79c0bd243d6a3262a99ad2aefc4767c259043ee954a2f"
+      "bytes": 12554,
+      "sha256": "adceb22a989f4246ac17115c62ed8980dbf0b520e17f0090108e37f924586c1b"
     },
     {
       "path": "src/officekit/registry.py",
@@ -503,8 +503,8 @@
     },
     {
       "path": "tests/test_core_runner.py",
-      "bytes": 21584,
-      "sha256": "a2fd05325e38b69829d04c84f8c17e0cb4b3d9d6d6ae84f33b4939e3dfb69d8b"
+      "bytes": 21906,
+      "sha256": "d05048f1eed733826ea1be2595faad4edcf018dbdabd13eda76b380f4d9ddb0c"
     },
     {
       "path": "tests/test_core_typed.py",

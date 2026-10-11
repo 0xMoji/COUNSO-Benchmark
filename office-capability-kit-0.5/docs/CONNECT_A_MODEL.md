@@ -16,10 +16,10 @@ officekit grade --bundle public-task --artifacts candidate-result --candidate ca
 
 Start `officekit session --case office-recovery --output connected-result --max-tool-calls 32` as a subprocess in a trusted controller. Read its stdout line by line and write a complete JSON object followed by a newline to stdin. Do not feed evaluator files, private archives or hidden expected answers to the model.
 
-1. The first stdout object has `type: ready`, the public prompt and the exact task-local tools.
+1. The first stdout object has `type: ready`, the public prompt, the exact task-local tools and the existing public `final_result_schema`. Give this complete ready object to the model.
 2. Send one request: `{"op":"tool","tool":"files.read_input","arguments":{"file":"request.json"}}`.
 3. Read the `tool_result` response. Pass the actual result to the model before asking for the next action. Tool identities and schemas are those from the ready message; an unrelated service-wide help page grants no additional tool operations.
-4. End with `{"op":"final","result":{"artifacts":[],"completed_actions":[],"facts":{},"text":"..."}}`. Use actual artifact paths and accepted event/resource identifiers returned by tools when claiming completion.
+4. End with `{"op":"final","result":{"artifacts":["outputs/<allowed filename>"],"completed_actions":[],"facts":{},"text":"..."}}`, matching `final_result_schema`. `result.artifacts` contains relative path strings: take `file.artifact` or `files[].artifact` from actual tool results, rather than copying the full descriptor object. Use accepted current-run event/resource identifiers returned by tools when claiming completion.
 
 Malformed or unsupported requests consume the fixed request budget and produce protocol evidence. Nothing is executed as code from a JSONL request. The tool service is a synthetic local store. Candidate files are restricted to declared `outputs/` paths. It cannot send real mail, alter a real calendar or read the user's accounts.
 

@@ -137,6 +137,16 @@ class ReplayProvider:
         return CandidateResult(**final)
 
 
+def public_final_schema():
+    """The already shipped public candidate schema, never evaluator state."""
+    from importlib.resources import files
+    try:
+        schema = files("officekit.schemas").joinpath("candidate.schema.json")
+    except ModuleNotFoundError:
+        schema = Path(__file__).resolve().parents[2]/"schemas"/"candidate.schema.json"
+    return json.loads(schema.read_text(encoding="utf-8"))
+
+
 class StdioSessionProvider:
     """Trusted local wrapper protocol, JSONL request/result loop on stdin/stdout.
 
@@ -154,7 +164,7 @@ class StdioSessionProvider:
         self.output_stream.flush()
 
     def execute(self,session) -> CandidateResult:
-        self._emit({"type":"ready","protocol":"officekit-jsonl-session-v1","case_id":session.case_id,"prompt":session.prompt,"tools":session.tool_descriptions,"max_tool_calls":session.max_tool_calls,"live_controller_identity":"UNKNOWN","instructions":"Send {op:tool,tool:<name>,arguments:{...}}; inspect each tool_result before next action. End with {op:final,result:{artifacts:[],completed_actions:[],facts:{},text:<text>}}."})
+        self._emit({"type":"ready","protocol":"officekit-jsonl-session-v1","case_id":session.case_id,"prompt":session.prompt,"tools":session.tool_descriptions,"max_tool_calls":session.max_tool_calls,"live_controller_identity":"UNKNOWN","final_result_schema":public_final_schema(),"instructions":"Send {op:tool,tool:<name>,arguments:{...}}; inspect each tool_result before next action. End with {op:final,result:{artifacts:[<relative path string>],completed_actions:[],facts:{},text:<text>}} matching final_result_schema. result.artifacts is an array of relative path strings such as outputs/<allowed filename>: take file.artifact or files[].artifact from tool results; do not include descriptor objects."})
         # At most the fixed tool budget plus a final message. Invalid requests also consume budget.
         for _ in range(session.max_tool_calls+1):
             line=self.input_stream.readline(1_000_001)

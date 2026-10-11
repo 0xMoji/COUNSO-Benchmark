@@ -312,6 +312,9 @@ class CoreTests(unittest.TestCase):
         try:
             ready=json.loads(child.stdout.readline())
             self.assertEqual(ready["type"],"ready")
+            self.assertEqual(ready["final_result_schema"],json.loads((ROOT/"schemas"/"candidate.schema.json").read_text()))
+            self.assertEqual(ready["final_result_schema"]["properties"]["artifacts"]["items"],{"type":"string"})
+            self.assertIn("do not include descriptor objects",ready["instructions"])
             def call(tool,args):
                 child.stdin.write(json.dumps({"op":"tool","tool":tool,"arguments":args})+"\n");child.stdin.flush()
                 message=json.loads(child.stdout.readline())

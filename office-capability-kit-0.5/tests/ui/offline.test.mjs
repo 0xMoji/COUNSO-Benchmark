@@ -348,7 +348,7 @@ test('report reducer actual-channel known FAIL survives missing required probe w
 test('report reducer prepared/offline self-claimed FAIL stays UNKNOWN even with browser flags',()=>{const atoms=[{id:'D-M1',dimension:'ui_functional',weight:15}],dependencies={'D-M1':['completed','missing']};const claimed={probe_id:'completed',actual_browser_executed:true,atom_checks:{'D-M1':[{status:'FAIL',error_class:'BUSINESS_FACT'}]}};for(const tested_level of ['BROWSER_PREPARED_NOT_EXECUTED','OFFLINE_CONTROL_ONLY']){const atom=makeTypedReport({case_id:'ui-dashboard',atoms,dependencies,probes:[claimed],tested_level}).atoms[0];assert.equal(atom.status,'UNKNOWN');assert.equal(atom.coverage.status,'UNKNOWN');}const unexecuted=makeTypedReport({case_id:'ui-dashboard',atoms,dependencies,probes:[{...claimed,actual_browser_executed:false}],tested_level:'ACTUAL_BROWSER_SYNTHETIC'}).atoms[0];assert.equal(unexecuted.status,'UNKNOWN');});
 import {createHash} from 'node:crypto';
 import {publicCandidateIdentity, executionMode} from '../../adapters/standalone-ui/browser-acceptance.mjs';
-import {downloadArtifactPath} from '../../adapters/standalone-ui/planner-probes.mjs';
+import {downloadArtifactPath,sameDraftContent} from '../../adapters/standalone-ui/planner-probes.mjs';
 test('probe evidence hash binds its receipt artifact; missing delivery/transfer receipts do not invent paths/hashes',async()=>{const dir=await mkdtemp(pathJoin(tmpdir(),'officekit-evidence-binding-'));try{await mkdir(pathJoin(dir,'neutral'));const bytes='{"control_only":true,"actual_browser_executed":false}\n';await writeFile(pathJoin(dir,'neutral','receipt.json'),bytes);const digest=createHash('sha256').update(bytes).digest('hex');const atoms=[{id:'D-M1',dimension:'ui_functional',weight:15}],dependencies={'D-M1':['receipt','delivery','transfer']},probes=[{probe_id:'receipt',actual_browser_executed:true,artifact:'neutral/receipt.json',sha256:digest,atom_checks:{'D-M1':[{status:'PASS'}]}},...['delivery','transfer'].map(probe_id=>({probe_id,actual_browser_executed:true,atom_checks:{'D-M1':[{status:'PASS'}]}}))];const r=makeTypedReport({case_id:'ui-dashboard',atoms,dependencies,probes,tested_level:'ACTUAL_BROWSER_SYNTHETIC',artifact:'ui-dashboard.report.json'});const evidence=r.atoms[0].evidence;assert.equal(evidence[0].artifact,'neutral/receipt.json');assert.equal(evidence[0].sha256,createHash('sha256').update(await readFile(pathJoin(dir,evidence[0].artifact))).digest('hex'));for(const e of evidence.slice(1)){assert.equal(Object.hasOwn(e,'artifact'),false);assert.equal(Object.hasOwn(e,'sha256'),false);}}finally{await rm(dir,{recursive:true,force:true});}});
 test('public candidate manifest and download evidence contain no machine root/path',()=>{const identity={root:'/private/machine/work/package',files:[{path:'index.html',sha256:'a'.repeat(64),bytes:1}],digest:'b'.repeat(64)};const exposed=publicCandidateIdentity(identity);assert.deepEqual(Object.keys(exposed),['files','digest']);assert.equal(JSON.stringify(exposed).includes('/private/machine'),false);assert.equal(downloadArtifactPath('/private/machine/output','/private/machine/output/planner-public-add-save/capacity.csv'),'planner-public-add-save/capacity.csv');});
 
@@ -365,3 +365,74 @@ test('browser execution mode dispatch supports ordinary Chrome and preserves exp
  assert.throws(() => executionMode(['--execute-ci', '--execute-browser'], { GITHUB_ACTIONS: 'true' }), /Choose one browser execution mode/);
  assert.equal(process.env.GITHUB_ACTIONS, before);
 });
+
+// Pure draft-content observer controls: no model, browser or network execution.
+import {sha} from '../../adapters/standalone-ui/browser-session.mjs';
+{
+const draft = () => ({
+ draft_id: 'synthetic-draft',
+ allocations: [
+  { allocation_id: 'source-1', work_item_id: 'work-1', resource_id: 'resource-1', date: '2030-01-07', minutes: 45 },
+  { work_item_id: 'work-2', resource_id: 'resource-2', date: '2030-01-08', minutes: 30, allocation_id: 'local-1' },
+ ],
+});
+const tableDecoded = value => ({
+ draft_id: value.draft_id,
+ allocations: value.allocations.map(row => ({
+  allocation_id: row.allocation_id, work_item_id: row.work_item_id,
+  resource_id: row.resource_id, date: row.date, minutes: Number(String(row.minutes)),
+ })),
+});
+const reorderObjectKeys = value => Array.isArray(value) ? value.map(reorderObjectKeys) :
+ value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).reverse().map(([key, child]) => [key, reorderObjectKeys(child)])) : value;
+
+test('planner content accepts table-decoded allocation key order while artifact hashes retain serialization identity', () => {
+ const authority = draft(), visible = tableDecoded(authority);
+ assert.notEqual(sha(authority), sha(visible), 'Reproduce the old observer false negative');
+ assert.equal(sameDraftContent(authority, visible), true);
+ assert.equal(sameDraftContent(visible, authority), true);
+ assert.equal(sameDraftContent(authority, structuredClone(authority)), true);
+ assert.equal(sameDraftContent(authority, reorderObjectKeys(authority)), true);
+ assert.notEqual(sha(authority), sha(reorderObjectKeys(authority)), 'Do not redefine artifact/source/receipt hashing');
+});
+
+for (const [name, change] of [
+ ['draft identity', value => { value.draft_id = 'other-draft'; }],
+ ['allocation identity', value => { value.allocations[1].allocation_id = 'other-allocation'; }],
+ ['work identity', value => { value.allocations[1].work_item_id = 'other-work'; }],
+ ['resource identity', value => { value.allocations[1].resource_id = 'other-resource'; }],
+ ['date', value => { value.allocations[1].date = '2030-01-09'; }],
+ ['minutes', value => { value.allocations[1].minutes = 45; }],
+ ['minutes type', value => { value.allocations[1].minutes = '30'; }],
+ ['allocation order', value => { value.allocations.reverse(); }],
+ ['missing allocation', value => { value.allocations.pop(); }],
+ ['extra allocation', value => { value.allocations.push(structuredClone(value.allocations[0])); }],
+ ['missing field', value => { delete value.allocations[1].date; }],
+ ['extra field', value => { value.allocations[1].unexpected = true; }],
+]) {
+ test(`planner content rejects changed ${name} even with reordered object keys`, () => {
+  const authority = draft(), changed = tableDecoded(authority);
+  change(changed);
+  assert.equal(sameDraftContent(authority, changed), false);
+  assert.equal(sameDraftContent(authority, reorderObjectKeys(changed)), false);
+  assert.equal(sameDraftContent(changed, authority), false);
+ });
+}
+
+test('planner content retains the late-ack newer-draft distinction', () => {
+ const submitted = draft(), current = tableDecoded(submitted);
+ current.allocations[1].minutes = 45;
+ const storedSubmitted = reorderObjectKeys(submitted);
+ assert.equal(sameDraftContent(storedSubmitted, submitted), true, 'Authority saved submitted A');
+ assert.equal(sameDraftContent(current, tableDecoded(current)), true, 'Current B remains local');
+ assert.equal(sameDraftContent(current, submitted), false, 'B is still distinct from acknowledged A');
+ assert.equal(sameDraftContent(tableDecoded(storedSubmitted), current), false, 'Clearing B on late acknowledgement remains a failing control');
+});
+
+test('planner content comparator does not mutate either input', () => {
+ const authority = draft(), visible = tableDecoded(authority);
+ const before = [JSON.stringify(authority), JSON.stringify(visible)];
+ assert.equal(sameDraftContent(authority, visible), true);
+ assert.deepEqual([JSON.stringify(authority), JSON.stringify(visible)], before);
+});
+}

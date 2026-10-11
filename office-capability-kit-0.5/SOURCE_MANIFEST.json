@@ -83,8 +83,8 @@
     },
     {
       "path": "adapters/standalone-ui/planner-probes.mjs",
-      "bytes": 20477,
-      "sha256": "bfdc05c65c6a96b914903f964beaa84223c94978e76a9249cc694646303599ef"
+      "bytes": 20811,
+      "sha256": "0ed7677eff0da499c827c6b368ca400de4041c91454921484bcbfe6936c8cba9"
     },
     {
       "path": "adapters/standalone-ui/reference/api-contract.mjs",
@@ -523,8 +523,8 @@
     },
     {
       "path": "tests/ui/offline.test.mjs",
-      "bytes": 39817,
-      "sha256": "f47a0d90f84e870ea1d0023f910cd10c990f67a432b8ec4476a2d76bf46cff5c"
+      "bytes": 43855,
+      "sha256": "b5623e9cb34f75f2a6b770f2e2fc431628eddaff0380fa0e56bc6fd4d0a3574a"
     },
     {
       "path": "tests/ui/verify-browser-controls.mjs",

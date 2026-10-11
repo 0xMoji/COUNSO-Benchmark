@@ -1,0 +1,196 @@
+{
+  "packageDir": "candidate-inputs/packages/u-0e207937fa38d9df6530/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-0e207937fa38d9df6530/unseen_same_schema",
+  "kind": "dashboard",
+  "artifactDir": "candidate-results/u-0e207937fa38d9df6530/unseen_same_schema",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-CREATE-M1",
+  "fixtureId": "unseen_same_schema",
+  "fixtureHashes": {
+    "unseen_same_schema": "15f810a99440310a9eb5a5a8c76df6410b8c1fb2affc765a5dc316399886a93b"
+  },
+  "candidatePackageSha256": "a4ba173aa3156439d20c4de08fafc6b191eb7bc555c3fca26c9a53cee2574f6c",
+  "testIds": [
+    "D-unseen_same_schema-baseline",
+    "D-unseen_same_schema-keyboard",
+    "D-unseen_same_schema-linked_scope",
+    "D-unseen_same_schema-reset",
+    "D-unseen_same_schema-empty",
+    "D-unseen_same_schema-late_result",
+    "D-unseen_same_schema-late_error",
+    "D-unseen_same_schema-retry",
+    "D-unseen_same_schema-retention",
+    "D-unseen_same_schema-generalization"
+  ],
+  "fixtureReplacements": {
+    "updated_same_schema": {
+      "dataset.json": {
+        "schema_version": "support-snapshot-1",
+        "snapshot_revision": "support-B-029-updated-control",
+        "as_of": "2026-12-02T15:30:00Z",
+        "default_created_from": "2026-11-29",
+        "default_created_to": "2026-12-03",
+        "teams": [
+          {
+            "team_id": "T-B-0007",
+            "display_name": "Amber Desk"
+          },
+          {
+            "team_id": "T-B-0070",
+            "display_name": "Amber Desk"
+          },
+          {
+            "team_id": "T-B-0700",
+            "display_name": "Indigo Desk"
+          }
+        ],
+        "tickets": [
+          {
+            "ticket_id": "CASE-0007",
+            "team_id": "T-B-0007",
+            "status": "OPEN",
+            "priority": "P2",
+            "created_at": "2026-12-01T08:00:00Z",
+            "due_at": "2026-12-02T14:00:00Z",
+            "remaining_minutes": 150
+          },
+          {
+            "ticket_id": "CASE-0070",
+            "team_id": "T-B-0007",
+            "status": "OPEN",
+            "priority": "P1",
+            "created_at": "2026-11-30T10:00:00Z",
+            "due_at": "2026-12-01T16:00:00Z",
+            "remaining_minutes": 45
+          },
+          {
+            "ticket_id": "CASE-0700",
+            "team_id": "T-B-0007",
+            "status": "WAITING",
+            "priority": "P3",
+            "created_at": "2026-12-02T09:00:00Z",
+            "due_at": "2026-12-02T15:30:00Z",
+            "remaining_minutes": 30
+          },
+          {
+            "ticket_id": "CASE-0701",
+            "team_id": "T-B-0007",
+            "status": "CLOSED",
+            "priority": "P2",
+            "created_at": "2026-11-29T09:00:00Z",
+            "due_at": "2026-12-01T12:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CASE-0801",
+            "team_id": "T-B-0070",
+            "status": "IN_PROGRESS",
+            "priority": "P2",
+            "created_at": "2026-12-01T11:00:00Z",
+            "due_at": "2026-12-03T09:00:00Z",
+            "remaining_minutes": 75
+          },
+          {
+            "ticket_id": "CASE-0802",
+            "team_id": "T-B-0070",
+            "status": "OPEN",
+            "priority": "P1",
+            "created_at": "2026-12-02T10:00:00Z",
+            "due_at": "2026-12-02T15:29:00Z",
+            "remaining_minutes": 165
+          },
+          {
+            "ticket_id": "CASE-0803",
+            "team_id": "T-B-0070",
+            "status": "OPEN",
+            "priority": "P3",
+            "created_at": "2026-12-02T11:00:00Z",
+            "due_at": "2026-12-03T12:00:00Z",
+            "remaining_minutes": 15
+          },
+          {
+            "ticket_id": "CASE-0804",
+            "team_id": "T-B-0070",
+            "status": "CLOSED",
+            "priority": "P3",
+            "created_at": "2026-11-30T09:00:00Z",
+            "due_at": "2026-12-01T08:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CASE-0901",
+            "team_id": "T-B-0700",
+            "status": "OPEN",
+            "priority": "P2",
+            "created_at": "2026-12-01T16:00:00Z",
+            "due_at": "2026-12-02T13:00:00Z",
+            "remaining_minutes": 90
+          },
+          {
+            "ticket_id": "CASE-0902",
+            "team_id": "T-B-0700",
+            "status": "IN_PROGRESS",
+            "priority": "P1",
+            "created_at": "2026-12-02T08:00:00Z",
+            "due_at": "2026-12-02T15:00:00Z",
+            "remaining_minutes": 60
+          },
+          {
+            "ticket_id": "CASE-0903",
+            "team_id": "T-B-0700",
+            "status": "OPEN",
+            "priority": "P3",
+            "created_at": "2026-12-02T12:00:00Z",
+            "due_at": "2026-12-03T15:30:00Z",
+            "remaining_minutes": 105
+          },
+          {
+            "ticket_id": "CASE-0904",
+            "team_id": "T-B-0700",
+            "status": "CLOSED",
+            "priority": "P2",
+            "created_at": "2026-11-29T18:00:00Z",
+            "due_at": "2026-12-01T18:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "CASE-0905",
+            "team_id": "T-B-0700",
+            "status": "CLOSED",
+            "priority": "P1",
+            "created_at": "2026-12-01T14:00:00Z",
+            "due_at": "2026-12-02T10:00:00Z",
+            "remaining_minutes": 0
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/candidate-observer.mjs",
+  "observerSha256": "102ca50529b03a6c7b5873eb6b8dc01d6b83da4527ef84c27b60be42950d0e1d",
+  "hostMetadata": {
+    "dataset.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "candidate-inputs/references/ref-g-ui-create-m1/frame",
+    "packageSha256": "ca88ed8f8915bb2885a08f8398c0ee1cd727edc184aced1a4177ea432c9cc5fc",
+    "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
+    "fixtureDir": "candidate-inputs/fixtures/u-0e207937fa38d9df6530/unseen_same_schema",
+    "fixtureSha256": "15f810a99440310a9eb5a5a8c76df6410b8c1fb2affc765a5dc316399886a93b",
+    "hostMetadata": {
+      "dataset.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "D-unseen_same_schema-baseline",
+    "baselineTestPlanSha256": "0f808eaf0b15d5ad6cf328c62ea89bdb24ef434d72c619964b0fd0bdfd9dbbd2"
+  }
+}

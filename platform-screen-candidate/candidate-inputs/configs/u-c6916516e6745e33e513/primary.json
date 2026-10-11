@@ -1,0 +1,186 @@
+{
+  "packageDir": "candidate-inputs/packages/u-c6916516e6745e33e513/frame",
+  "fixtureDir": "candidate-inputs/fixtures/u-c6916516e6745e33e513/primary",
+  "kind": "dashboard",
+  "artifactDir": "candidate-results/u-c6916516e6745e33e513/primary",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-CREATE-M1",
+  "fixtureId": "primary",
+  "fixtureHashes": {
+    "primary": "bfed50e39fabb37012d7e2c6fb2bf3f632fc756835ae53a7eccb12f591cdb966"
+  },
+  "candidatePackageSha256": "03671eaefb29c39bd1a0a4f54194a9682684d98746d4c242f310d4c2dc80f4d2",
+  "testIds": [
+    "D-primary-baseline",
+    "D-primary-keyboard",
+    "D-primary-linked_scope",
+    "D-primary-reset",
+    "D-primary-empty",
+    "D-primary-late_result",
+    "D-primary-late_error",
+    "D-primary-retry",
+    "D-primary-retention"
+  ],
+  "fixtureReplacements": {
+    "updated_same_schema": {
+      "dataset.json": {
+        "schema_version": "support-snapshot-1",
+        "snapshot_revision": "support-A-017-updated-control",
+        "as_of": "2026-11-02T12:00:00Z",
+        "default_created_from": "2026-10-30",
+        "default_created_to": "2026-11-03",
+        "teams": [
+          {
+            "team_id": "TEAM-S1",
+            "display_name": "North Support"
+          },
+          {
+            "team_id": "TEAM-S2",
+            "display_name": "Northern Support"
+          },
+          {
+            "team_id": "TEAM-S3",
+            "display_name": "East Support"
+          }
+        ],
+        "tickets": [
+          {
+            "ticket_id": "TK-0101",
+            "team_id": "TEAM-S1",
+            "status": "OPEN",
+            "priority": "P1",
+            "created_at": "2026-11-01T09:00:00Z",
+            "due_at": "2026-11-02T10:00:00Z",
+            "remaining_minutes": 105
+          },
+          {
+            "ticket_id": "TK-0102",
+            "team_id": "TEAM-S1",
+            "status": "IN_PROGRESS",
+            "priority": "P2",
+            "created_at": "2026-11-01T09:30:00Z",
+            "due_at": "2026-11-02T14:00:00Z",
+            "remaining_minutes": 120
+          },
+          {
+            "ticket_id": "TK-0103",
+            "team_id": "TEAM-S1",
+            "status": "CLOSED",
+            "priority": "P2",
+            "created_at": "2026-10-30T08:00:00Z",
+            "due_at": "2026-11-01T09:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "TK-0104",
+            "team_id": "TEAM-S1",
+            "status": "WAITING",
+            "priority": "P1",
+            "created_at": "2026-11-02T09:00:00Z",
+            "due_at": "2026-11-02T12:00:00Z",
+            "remaining_minutes": 45
+          },
+          {
+            "ticket_id": "TK-0201",
+            "team_id": "TEAM-S2",
+            "status": "OPEN",
+            "priority": "P1",
+            "created_at": "2026-10-31T10:00:00Z",
+            "due_at": "2026-11-01T16:00:00Z",
+            "remaining_minutes": 150
+          },
+          {
+            "ticket_id": "TK-0202",
+            "team_id": "TEAM-S2",
+            "status": "OPEN",
+            "priority": "P2",
+            "created_at": "2026-11-01T13:00:00Z",
+            "due_at": "2026-11-02T09:00:00Z",
+            "remaining_minutes": 30
+          },
+          {
+            "ticket_id": "TK-0203",
+            "team_id": "TEAM-S2",
+            "status": "IN_PROGRESS",
+            "priority": "P3",
+            "created_at": "2026-11-02T08:30:00Z",
+            "due_at": "2026-11-03T09:00:00Z",
+            "remaining_minutes": 75
+          },
+          {
+            "ticket_id": "TK-0204",
+            "team_id": "TEAM-S2",
+            "status": "CLOSED",
+            "priority": "P3",
+            "created_at": "2026-10-30T15:00:00Z",
+            "due_at": "2026-11-01T11:00:00Z",
+            "remaining_minutes": 0
+          },
+          {
+            "ticket_id": "TK-0301",
+            "team_id": "TEAM-S3",
+            "status": "WAITING",
+            "priority": "P2",
+            "created_at": "2026-11-01T16:00:00Z",
+            "due_at": "2026-11-02T11:59:00Z",
+            "remaining_minutes": 60
+          },
+          {
+            "ticket_id": "TK-0302",
+            "team_id": "TEAM-S3",
+            "status": "IN_PROGRESS",
+            "priority": "P1",
+            "created_at": "2026-11-02T08:00:00Z",
+            "due_at": "2026-11-02T11:00:00Z",
+            "remaining_minutes": 105
+          },
+          {
+            "ticket_id": "TK-0303",
+            "team_id": "TEAM-S3",
+            "status": "WAITING",
+            "priority": "P3",
+            "created_at": "2026-11-02T10:00:00Z",
+            "due_at": "2026-11-03T12:00:00Z",
+            "remaining_minutes": 15
+          },
+          {
+            "ticket_id": "TK-0304",
+            "team_id": "TEAM-S3",
+            "status": "CLOSED",
+            "priority": "P2",
+            "created_at": "2026-10-31T15:00:00Z",
+            "due_at": "2026-11-02T10:00:00Z",
+            "remaining_minutes": 0
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/candidate-observer.mjs",
+  "observerSha256": "102ca50529b03a6c7b5873eb6b8dc01d6b83da4527ef84c27b60be42950d0e1d",
+  "hostMetadata": {
+    "dataset.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "candidate-inputs/references/ref-g-ui-create-m1/frame",
+    "packageSha256": "ca88ed8f8915bb2885a08f8398c0ee1cd727edc184aced1a4177ea432c9cc5fc",
+    "bundleSha256": "5e68111348b1a592ee17505f61cc58e09b503fb7e983f02d1b9bf210b15857c4",
+    "fixtureDir": "candidate-inputs/fixtures/u-c6916516e6745e33e513/primary",
+    "fixtureSha256": "bfed50e39fabb37012d7e2c6fb2bf3f632fc756835ae53a7eccb12f591cdb966",
+    "hostMetadata": {
+      "dataset.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "D-primary-baseline",
+    "baselineTestPlanSha256": "34e0f1b92a82c65f99f95c814e02a39cb8e2d62f1f410096ce992cfbaffc9f09"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "artifacts": [
+    "frame/manifest.json",
+    "frame/index.tsx",
+    "frame/functions/load-data.ts",
+    "frame/dataset.json"
+  ],
+  "limitations": [
+    "The deliverable is a controlled Frame package; native Counso deployment or live publication was not performed or verified."
+  ]
+}

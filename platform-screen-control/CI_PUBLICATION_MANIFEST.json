@@ -1,0 +1,1152 @@
+{
+  "schema_version": 2,
+  "scope": "SYNTHETIC_REFERENCE_MUTATION_CONTROLS_NOT_CANDIDATE_RUNS",
+  "repository": "0xMoji/counso-benchmark-reconstructed",
+  "branch": "eval/counso-ui-probe",
+  "publication_subset_of_reviewed_snapshot": true,
+  "full_local_review_fingerprint": "96246266cdd18301a433d17e3586c19b9b35d0cc5aa8aeefec76a68e32870e42",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "batch_sha256": "fdc3ce1f6ac0e5efbf4b48f0c597b7bc9ef174cbc40c11db91d311856e672c6c",
+  "github_job": "controls",
+  "phases_in_order": [
+    "reference-create",
+    "dashboard-mutations",
+    "reference-edit",
+    "planner-mutations"
+  ],
+  "workflow_timeout_minutes": 10,
+  "phase_seconds": {
+    "reference-create": 90,
+    "dashboard-mutations": 90,
+    "reference-edit": 120,
+    "planner-mutations": 90
+  },
+  "preserve_previous_probe_tree": true,
+  "base_probe_commit": "a81cbc78a28c840370dc84cae633746d77e53ff3",
+  "destination_manifest": "platform-screen-control/CI_PUBLICATION_MANIFEST.json",
+  "file_sha256_algorithm": "SHA256 raw file bytes. files keys are repository destination paths; source_relative_path resolves within the named local snapshot. aggregate = SHA256(json.dumps(files,sort_keys=True).encode()) using Python default separators/ensure_ascii=True. This manifest itself is excluded from the self-hash map and bound by outer publication receipt.",
+  "files": {
+    ".github/workflows/counso-platform-screen-control.yml": {
+      "source_relative_path": ".github/workflows/ui-acceptance.yml",
+      "sha256": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
+      "bytes": 3833
+    },
+    "platform-screen-control/.github/workflows/ui-acceptance.yml": {
+      "source_relative_path": ".github/workflows/ui-acceptance.yml",
+      "sha256": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
+      "bytes": 3833
+    },
+    "platform-screen-control/PREREGISTRATION.json": {
+      "source_relative_path": "PREREGISTRATION.json",
+      "sha256": "b3dd049b87e158019867ec8466f96e16335dc1a412da4342c9cc729d6fad0d75",
+      "bytes": 6164
+    },
+    "platform-screen-control/README.md": {
+      "source_relative_path": "README.md",
+      "sha256": "9eca15ff43992e342df1fe9df2f784e10e9de9a5ed4558b5659a0629548ccc36",
+      "bytes": 2483
+    },
+    "platform-screen-control/RUNBOOK.md": {
+      "source_relative_path": "RUNBOOK.md",
+      "sha256": "1fb187cc9391bafc2cb914a1240eb8b083b18ce93d9bc1dcfdcf6048d2761ee7",
+      "bytes": 3485
+    },
+    "platform-screen-control/VERSION": {
+      "source_relative_path": "VERSION",
+      "sha256": "8bcf4f3fa68c77fff082646314bbdf10fdd487fe27bf8baa3e559e0962647acf",
+      "bytes": 40
+    },
+    "platform-screen-control/ci-inputs/configs/d-old-response/primary.json": {
+      "source_relative_path": "ci-inputs/configs/d-old-response/primary.json",
+      "sha256": "7ced2a08c51966bd514cd860ea0f43fcb7f6c8a7c0195c94c9fe385f9c5efa66",
+      "bytes": 5857
+    },
+    "platform-screen-control/ci-inputs/configs/d-old-response/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/d-old-response/unseen_same_schema.json",
+      "sha256": "68d13cff5a8f0bd61a0a71a71af9deaa73ba31afe3edcdd4d55caab1c5bb3719",
+      "bytes": 6251
+    },
+    "platform-screen-control/ci-inputs/configs/d-primary-hardcoded/primary.json": {
+      "source_relative_path": "ci-inputs/configs/d-primary-hardcoded/primary.json",
+      "sha256": "7cf66c1cc8812c9173bffdd6584cc74b80a2b7894c552a8ac7ef9bf962a13465",
+      "bytes": 5846
+    },
+    "platform-screen-control/ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json",
+      "sha256": "ef4029698dba5736f36d88a573ccc4dbef820df337de434be6335c1a65b8293b",
+      "bytes": 6229
+    },
+    "platform-screen-control/ci-inputs/configs/d-wrong-chart-geometry/primary.json": {
+      "source_relative_path": "ci-inputs/configs/d-wrong-chart-geometry/primary.json",
+      "sha256": "1dfcab0e31e2ba5e477e478f1bfc126e4cb1fb6cbe5004ec6263f28bd96f4b2c",
+      "bytes": 5858
+    },
+    "platform-screen-control/ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json",
+      "sha256": "efea4679fb55fc1e707e334f1a44303aef601642a00626065acdc2f8501547e3",
+      "bytes": 6241
+    },
+    "platform-screen-control/ci-inputs/configs/p-cumulative-overflow/primary.json": {
+      "source_relative_path": "ci-inputs/configs/p-cumulative-overflow/primary.json",
+      "sha256": "f2a3f48c826442c3d6260a98822dfbc5da820899790b92d853b70b9318637396",
+      "bytes": 2432
+    },
+    "platform-screen-control/ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json",
+      "sha256": "d06db1bc84475179d7b959fc74307e20b2b515e74788fcf768ee3b919e0839dd",
+      "bytes": 2517
+    },
+    "platform-screen-control/ci-inputs/configs/p-false-saved/primary.json": {
+      "source_relative_path": "ci-inputs/configs/p-false-saved/primary.json",
+      "sha256": "cfd7756dffc3d0d83f304bb52e7cf89627e970ee7fc83d1009fab1b2ee7afbb8",
+      "bytes": 2350
+    },
+    "platform-screen-control/ci-inputs/configs/p-false-saved/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/p-false-saved/unseen_same_schema.json",
+      "sha256": "daed376c96f84db8aa21956ec0fbbfe9d688aff5fd1797efefbcf8c040a52daa",
+      "bytes": 2424
+    },
+    "platform-screen-control/ci-inputs/configs/p-lateack-clears-edits/primary.json": {
+      "source_relative_path": "ci-inputs/configs/p-lateack-clears-edits/primary.json",
+      "sha256": "e686efd567384d0a71cf8425ee7812ee515f23c88b5e89c87f3f3f27de97a99e",
+      "bytes": 2390
+    },
+    "platform-screen-control/ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json",
+      "sha256": "5827a12c1a1ea666025c6114413d45a11cf30d0e69a2b80143ecbf330ebb2808",
+      "bytes": 2464
+    },
+    "platform-screen-control/ci-inputs/configs/ref-dashboard/primary.json": {
+      "source_relative_path": "ci-inputs/configs/ref-dashboard/primary.json",
+      "sha256": "8e1354aae9b3e10f514dd0e142c3d5091070eb57fd0e6753c2404d12e9f31860",
+      "bytes": 6028
+    },
+    "platform-screen-control/ci-inputs/configs/ref-dashboard/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/ref-dashboard/unseen_same_schema.json",
+      "sha256": "6305f11c2efe77c0c5d5e7597329894803bd770107eb3c657d8edcedeaa5a27b",
+      "bytes": 6542
+    },
+    "platform-screen-control/ci-inputs/configs/ref-planner/primary.json": {
+      "source_relative_path": "ci-inputs/configs/ref-planner/primary.json",
+      "sha256": "97701ee113bf6e1d20fee2143c8ca5d46a6584ff8dd1cfa49e0d1896841805c8",
+      "bytes": 2723
+    },
+    "platform-screen-control/ci-inputs/configs/ref-planner/unseen_same_schema.json": {
+      "source_relative_path": "ci-inputs/configs/ref-planner/unseen_same_schema.json",
+      "sha256": "36821fdadfedf56b07ddb2d746e2fad1f00b5bbecf0ba1a50faab1acd7ff355a",
+      "bytes": 2983
+    },
+    "platform-screen-control/ci-inputs/current-batch.json": {
+      "source_relative_path": "ci-inputs/current-batch.json",
+      "sha256": "fdc3ce1f6ac0e5efbf4b48f0c597b7bc9ef174cbc40c11db91d311856e672c6c",
+      "bytes": 134936
+    },
+    "platform-screen-control/ci-inputs/current-batch.sha256": {
+      "source_relative_path": "ci-inputs/current-batch.sha256",
+      "sha256": "85024b437daa80ffdfcb41fbb2b84f5dbd5ca51a45f7ecf3a4ec29ca16de5fc8",
+      "bytes": 65
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-old-response/primary/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-old-response/primary/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-old-response/unseen_same_schema/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-old-response/unseen_same_schema/dataset.json",
+      "sha256": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
+      "bytes": 3558
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-primary-hardcoded/primary/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-primary-hardcoded/primary/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-primary-hardcoded/unseen_same_schema/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-primary-hardcoded/unseen_same_schema/dataset.json",
+      "sha256": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
+      "bytes": 3558
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-wrong-chart-geometry/primary/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-wrong-chart-geometry/primary/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/fixtures/d-wrong-chart-geometry/unseen_same_schema/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/d-wrong-chart-geometry/unseen_same_schema/dataset.json",
+      "sha256": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
+      "bytes": 3558
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-cumulative-overflow/primary/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-cumulative-overflow/primary/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-cumulative-overflow/primary/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-cumulative-overflow/primary/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-cumulative-overflow/unseen_same_schema/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-cumulative-overflow/unseen_same_schema/draft.json",
+      "sha256": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+      "bytes": 368
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-cumulative-overflow/unseen_same_schema/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-cumulative-overflow/unseen_same_schema/resources.json",
+      "sha256": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+      "bytes": 2830
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-false-saved/primary/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-false-saved/primary/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-false-saved/primary/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-false-saved/primary/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-false-saved/unseen_same_schema/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-false-saved/unseen_same_schema/draft.json",
+      "sha256": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+      "bytes": 368
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-false-saved/unseen_same_schema/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-false-saved/unseen_same_schema/resources.json",
+      "sha256": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+      "bytes": 2830
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-lateack-clears-edits/primary/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-lateack-clears-edits/primary/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-lateack-clears-edits/primary/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-lateack-clears-edits/primary/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema/draft.json",
+      "sha256": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+      "bytes": 368
+    },
+    "platform-screen-control/ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema/resources.json",
+      "sha256": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+      "bytes": 2830
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-dashboard/primary/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-dashboard/primary/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-dashboard/unseen_same_schema/dataset.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-dashboard/unseen_same_schema/dataset.json",
+      "sha256": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
+      "bytes": 3558
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-planner/primary/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-planner/primary/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-planner/primary/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-planner/primary/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-planner/unseen_same_schema/draft.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-planner/unseen_same_schema/draft.json",
+      "sha256": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+      "bytes": 368
+    },
+    "platform-screen-control/ci-inputs/fixtures/ref-planner/unseen_same_schema/resources.json": {
+      "source_relative_path": "ci-inputs/fixtures/ref-planner/unseen_same_schema/resources.json",
+      "sha256": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+      "bytes": 2830
+    },
+    "platform-screen-control/ci-inputs/mutations/d-old-response.patch": {
+      "source_relative_path": "ci-inputs/mutations/d-old-response.patch",
+      "sha256": "97e0bdc60e7b77dbcbcc0f405b8837fdfbe389d234e9568b809cbb7f706e7ab6",
+      "bytes": 1020
+    },
+    "platform-screen-control/ci-inputs/mutations/d-primary-hardcoded.patch": {
+      "source_relative_path": "ci-inputs/mutations/d-primary-hardcoded.patch",
+      "sha256": "91c4154b6ad408be17634e1767860183e16c66fa3e8c1992f135385af82733ef",
+      "bytes": 3734
+    },
+    "platform-screen-control/ci-inputs/mutations/d-wrong-chart-geometry.patch": {
+      "source_relative_path": "ci-inputs/mutations/d-wrong-chart-geometry.patch",
+      "sha256": "2553103eef754228eec8a41ca760ffaa3e552727366269e30c6d414a1baae7f0",
+      "bytes": 3450
+    },
+    "platform-screen-control/ci-inputs/mutations/p-cumulative-overflow.patch": {
+      "source_relative_path": "ci-inputs/mutations/p-cumulative-overflow.patch",
+      "sha256": "50afeb8f1e21edc9827059949ee6cebead23e8549f967b776adff3e5d0e810f9",
+      "bytes": 882
+    },
+    "platform-screen-control/ci-inputs/mutations/p-false-saved.patch": {
+      "source_relative_path": "ci-inputs/mutations/p-false-saved.patch",
+      "sha256": "dbab6b58979e32a8c300af164b494a710a7c80a26991332d54e5ec4a36d89e29",
+      "bytes": 1301
+    },
+    "platform-screen-control/ci-inputs/mutations/p-lateack-clears-edits.patch": {
+      "source_relative_path": "ci-inputs/mutations/p-lateack-clears-edits.patch",
+      "sha256": "0e0a381443e986202acd8b511439ebd80b851beb04456580868311c64ab1d8d0",
+      "bytes": 1606
+    },
+    "platform-screen-control/ci-inputs/objective/d-old-response.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/d-old-response.delivery.json",
+      "sha256": "dc0272a6013bf506c22da1e253f5c0deb54655c1d17f2e1a2a70629fbd543c38",
+      "bytes": 1867
+    },
+    "platform-screen-control/ci-inputs/objective/d-old-response.json": {
+      "source_relative_path": "ci-inputs/objective/d-old-response.json",
+      "sha256": "32f3335ffa2f4db1cecad604885aae644f5d2a92c792a23c2591946e5b0f703b",
+      "bytes": 9154
+    },
+    "platform-screen-control/ci-inputs/objective/d-primary-hardcoded.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/d-primary-hardcoded.delivery.json",
+      "sha256": "282588a845a469e4b98df3ad569c6ab32180a717b658d26b0d3f1973a175d2cf",
+      "bytes": 1887
+    },
+    "platform-screen-control/ci-inputs/objective/d-primary-hardcoded.json": {
+      "source_relative_path": "ci-inputs/objective/d-primary-hardcoded.json",
+      "sha256": "42ea6826979ca5ebc857018d1325456b6c53cf023596fd4ed2b0e26c5c34dc09",
+      "bytes": 9154
+    },
+    "platform-screen-control/ci-inputs/objective/d-wrong-chart-geometry.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/d-wrong-chart-geometry.delivery.json",
+      "sha256": "1b33c2c46aaec9d21da27d8ac460ce6250891fa37cf13fa3db9120917f4cf483",
+      "bytes": 1899
+    },
+    "platform-screen-control/ci-inputs/objective/d-wrong-chart-geometry.json": {
+      "source_relative_path": "ci-inputs/objective/d-wrong-chart-geometry.json",
+      "sha256": "52375c872ed446cd3c226fc5d0f7edaed56d0dd9d1b1d63e06c1889821c25592",
+      "bytes": 9154
+    },
+    "platform-screen-control/ci-inputs/objective/p-cumulative-overflow.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/p-cumulative-overflow.delivery.json",
+      "sha256": "677fcc3676ae0615a33469a5df3b4fe952ad0199d84d228518f8489222290152",
+      "bytes": 1989
+    },
+    "platform-screen-control/ci-inputs/objective/p-cumulative-overflow.json": {
+      "source_relative_path": "ci-inputs/objective/p-cumulative-overflow.json",
+      "sha256": "c36cf91c48ac515dd71250a6acebe06eb9181d529793864ca325364921e0654c",
+      "bytes": 10020
+    },
+    "platform-screen-control/ci-inputs/objective/p-false-saved.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/p-false-saved.delivery.json",
+      "sha256": "574de1bb41f49e4317982a62562924d5a97bd581ba65fd71fccb70dcb74db1db",
+      "bytes": 1957
+    },
+    "platform-screen-control/ci-inputs/objective/p-false-saved.json": {
+      "source_relative_path": "ci-inputs/objective/p-false-saved.json",
+      "sha256": "a61e31fc98f8ba90e3384c7e5c8ceeeff811386d662c34b0eb6662dc7b62c477",
+      "bytes": 10020
+    },
+    "platform-screen-control/ci-inputs/objective/p-lateack-clears-edits.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/p-lateack-clears-edits.delivery.json",
+      "sha256": "da743f63aa4b0e4c732fd96efef7c9e016a0a127405bd231b5a4ca1fa09ba829",
+      "bytes": 1993
+    },
+    "platform-screen-control/ci-inputs/objective/p-lateack-clears-edits.json": {
+      "source_relative_path": "ci-inputs/objective/p-lateack-clears-edits.json",
+      "sha256": "a39a2bd079f39a5b51c20d186ccd79797a9758947a7214196c9d1394d60d9084",
+      "bytes": 10020
+    },
+    "platform-screen-control/ci-inputs/objective/ref-dashboard.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/ref-dashboard.delivery.json",
+      "sha256": "840af8ceef8bc87d73bd5a98a7ba9ab87a127f387942e88dc8b913cc61c60d47",
+      "bytes": 1863
+    },
+    "platform-screen-control/ci-inputs/objective/ref-dashboard.json": {
+      "source_relative_path": "ci-inputs/objective/ref-dashboard.json",
+      "sha256": "6e41dce6ba0902032c153a3868671280321cba0123788bb4bff571acd4df5d3b",
+      "bytes": 9154
+    },
+    "platform-screen-control/ci-inputs/objective/ref-planner.delivery.json": {
+      "source_relative_path": "ci-inputs/objective/ref-planner.delivery.json",
+      "sha256": "a4ff4641ea4c7ff19b7f86b8c05e091654c12c4c177ebc4023e8168a62ae3c34",
+      "bytes": 1949
+    },
+    "platform-screen-control/ci-inputs/objective/ref-planner.json": {
+      "source_relative_path": "ci-inputs/objective/ref-planner.json",
+      "sha256": "409e3f41b679b66cdc2081ffdf87b5cc7f08c6aef64e1af74b2e2e45b108e48e",
+      "bytes": 10020
+    },
+    "platform-screen-control/ci-inputs/packages/d-old-response/frame/dataset.json": {
+      "source_relative_path": "ci-inputs/packages/d-old-response/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/packages/d-old-response/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/d-old-response/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/ci-inputs/packages/d-old-response/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/d-old-response/frame/index.tsx",
+      "sha256": "6d4bc2ac88c78189198472fa85c3ea0cd09ecf2eee5a483c48a40a8967d7c9cd",
+      "bytes": 7784
+    },
+    "platform-screen-control/ci-inputs/packages/d-old-response/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/d-old-response/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/ci-inputs/packages/d-old-response/response.json": {
+      "source_relative_path": "ci-inputs/packages/d-old-response/response.json",
+      "sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "bytes": 261
+    },
+    "platform-screen-control/ci-inputs/packages/d-primary-hardcoded/frame/dataset.json": {
+      "source_relative_path": "ci-inputs/packages/d-primary-hardcoded/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/packages/d-primary-hardcoded/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/d-primary-hardcoded/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/ci-inputs/packages/d-primary-hardcoded/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/d-primary-hardcoded/frame/index.tsx",
+      "sha256": "d4044269f1592e187859ac03202afa62d9e75a16b53d03866c5025f87756d3f7",
+      "bytes": 10268
+    },
+    "platform-screen-control/ci-inputs/packages/d-primary-hardcoded/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/d-primary-hardcoded/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/ci-inputs/packages/d-primary-hardcoded/response.json": {
+      "source_relative_path": "ci-inputs/packages/d-primary-hardcoded/response.json",
+      "sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "bytes": 261
+    },
+    "platform-screen-control/ci-inputs/packages/d-wrong-chart-geometry/frame/dataset.json": {
+      "source_relative_path": "ci-inputs/packages/d-wrong-chart-geometry/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/packages/d-wrong-chart-geometry/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/d-wrong-chart-geometry/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/ci-inputs/packages/d-wrong-chart-geometry/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/d-wrong-chart-geometry/frame/index.tsx",
+      "sha256": "3fc4f5abb2e13e2e4c190600b0e648c8371b26406186128f4fc080a6795489ca",
+      "bytes": 7818
+    },
+    "platform-screen-control/ci-inputs/packages/d-wrong-chart-geometry/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/d-wrong-chart-geometry/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/ci-inputs/packages/d-wrong-chart-geometry/response.json": {
+      "source_relative_path": "ci-inputs/packages/d-wrong-chart-geometry/response.json",
+      "sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "bytes": 261
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/frame/draft.json": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/frame/index.tsx",
+      "sha256": "d6b3b6f12a453f04d445bff5de658c67ea038cbbe29d31cbf68b080ca9601420",
+      "bytes": 17944
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/frame/resources.json": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/packages/p-cumulative-overflow/response.json": {
+      "source_relative_path": "ci-inputs/packages/p-cumulative-overflow/response.json",
+      "sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "bytes": 287
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/frame/draft.json": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/frame/index.tsx",
+      "sha256": "d97f2d9e9ae4718e684899a0ce570a312e906b113434d62f03988e08e3bd9e8f",
+      "bytes": 18228
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/frame/resources.json": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/packages/p-false-saved/response.json": {
+      "source_relative_path": "ci-inputs/packages/p-false-saved/response.json",
+      "sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "bytes": 287
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/frame/draft.json": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/frame/index.tsx",
+      "sha256": "109ccee79da62203c6fe945d1a2a15be1a1a75e2c404f52a31b1cda6f407d23e",
+      "bytes": 18136
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/frame/resources.json": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/packages/p-lateack-clears-edits/response.json": {
+      "source_relative_path": "ci-inputs/packages/p-lateack-clears-edits/response.json",
+      "sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "bytes": 287
+    },
+    "platform-screen-control/ci-inputs/packages/ref-dashboard/frame/dataset.json": {
+      "source_relative_path": "ci-inputs/packages/ref-dashboard/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/ci-inputs/packages/ref-dashboard/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/ref-dashboard/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/ci-inputs/packages/ref-dashboard/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/ref-dashboard/frame/index.tsx",
+      "sha256": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
+      "bytes": 7807
+    },
+    "platform-screen-control/ci-inputs/packages/ref-dashboard/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/ref-dashboard/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/ci-inputs/packages/ref-dashboard/response.json": {
+      "source_relative_path": "ci-inputs/packages/ref-dashboard/response.json",
+      "sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "bytes": 261
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/frame/draft.json": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/frame/functions/load-data.ts": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/frame/index.tsx": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/frame/index.tsx",
+      "sha256": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
+      "bytes": 18120
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/frame/manifest.json": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/frame/resources.json": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/ci-inputs/packages/ref-planner/response.json": {
+      "source_relative_path": "ci-inputs/packages/ref-planner/response.json",
+      "sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "bytes": 287
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json",
+      "sha256": "d41f23cc7c20d445628fa953c59eb2e8f9b78d705d9a0e222efb437c184bd015",
+      "bytes": 9066
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/initial_host_files.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/initial_host_files.json",
+      "sha256": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
+      "bytes": 71
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/mutation_control_plan.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/mutation_control_plan.json",
+      "sha256": "0726f7813a1f4b5e834ba05c203ef64ae3d521b45ed7e6f8f5d1c9b97b0f237f",
+      "bytes": 1806
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/dataset.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/functions/load-data.ts": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/index.tsx": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/index.tsx",
+      "sha256": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
+      "bytes": 7807
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/reference_response.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/reference_response.json",
+      "sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "bytes": 261
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/response_schedules.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/response_schedules.json",
+      "sha256": "638ac58a39b01bb4cc98863671b20106e5807af96fcf3fd9b74b7772c6669205",
+      "bytes": 615
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/source_hashes.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/source_hashes.json",
+      "sha256": "ed71f204c92b256d32ce5e3210533e9143beb47ad5e43b90a4a9fb7d02ca27a8",
+      "bytes": 327
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/unseen/frame/dataset.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/unseen/frame/dataset.json",
+      "sha256": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
+      "bytes": 3558
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/unseen_host_files.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/unseen_host_files.json",
+      "sha256": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
+      "bytes": 71
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/SDK_API.d.ts": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/SDK_API.d.ts",
+      "sha256": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
+      "bytes": 3197
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/SDK_API.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/SDK_API.json",
+      "sha256": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
+      "bytes": 5863
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json",
+      "sha256": "ae5a6e978089971e782484c54be10bf3ffc2bf1223b29f27d097ab211cb7209d",
+      "bytes": 9119
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json",
+      "sha256": "ac9f872c28f8f305ec481a123d4c67424f5606070fd2aae7f045f9a1e2ae8c93",
+      "bytes": 1088
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/inputs/frame/dataset.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/dataset.json",
+      "sha256": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "bytes": 3305
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/inputs/frame/functions/load-data.ts": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/functions/load-data.ts",
+      "sha256": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+      "bytes": 196
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/inputs/frame/manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/manifest.json",
+      "sha256": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "bytes": 512
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/interaction_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/interaction_contract.json",
+      "sha256": "8d76c07d730fdec16611af93e0688659855e8367ae2eaa5ae0ffc82899eddb28",
+      "bytes": 30790
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/prompt.txt": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/prompt.txt",
+      "sha256": "616b7bd27234c221d317d8c6786aca3e2297c5d4e7534163ad7347594e6db623",
+      "bytes": 2053
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/response_schema.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/response_schema.json",
+      "sha256": "f05648b55adde27736149bcb2f4f70fac9c2758c0aeb457d6b744083a32fbdfd",
+      "bytes": 791
+    },
+    "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/task_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/task_contract.json",
+      "sha256": "111a9ce8ce2c23d544cf01a8f28aea43227e27b5fa2c53378ebd06dd83bb77cc",
+      "bytes": 9084
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json",
+      "sha256": "75dc156e27b52864aba64fe6e69a17248fe3eabf6a3525ad88ec964df4a9c990",
+      "bytes": 9960
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/initial_host_files.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/initial_host_files.json",
+      "sha256": "b7f917a24eddf14a07250a29549cbed96c3950baad01532f877144257ca9dab8",
+      "bytes": 139
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/mutation_control_plan.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/mutation_control_plan.json",
+      "sha256": "221972c5f6f352ccfa9f082a0bf1deb88be59267124832e5560a5ccd585020c0",
+      "bytes": 1865
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/draft.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/functions/load-data.ts": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/index.tsx": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/index.tsx",
+      "sha256": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
+      "bytes": 18120
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/resources.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/reference_response.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/reference_response.json",
+      "sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "bytes": 287
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/response_schedules.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/response_schedules.json",
+      "sha256": "a5a73044ce2593e778b29c07e5600c3f0be450d09ae399b4ebe3b2fc7a16d98f",
+      "bytes": 1181
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/source_hashes.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/source_hashes.json",
+      "sha256": "6ee2a878263c292da212d10e4ad182f2c4fc5eb29b39b332cd64c77f447a77e3",
+      "bytes": 565
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/unseen/frame/draft.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/unseen/frame/draft.json",
+      "sha256": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
+      "bytes": 368
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/unseen/frame/resources.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/unseen/frame/resources.json",
+      "sha256": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+      "bytes": 2830
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/unseen_host_files.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/unseen_host_files.json",
+      "sha256": "4927af2fc0aefc9e3a3d85b23e27f7198d58d2a834126b05df8ea8c9b2fdafeb",
+      "bytes": 139
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/SDK_API.d.ts": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/SDK_API.d.ts",
+      "sha256": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
+      "bytes": 3197
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/SDK_API.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/SDK_API.json",
+      "sha256": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
+      "bytes": 5863
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json",
+      "sha256": "a6b7b48400d02179b755ce55db5acb0bc8e2a7a374967c3947c9ae507ac8e293",
+      "bytes": 9943
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json",
+      "sha256": "75faa1829900489d9afa7a1711833dc17fbd274b5a51f05340765e34b2c49886",
+      "bytes": 1285
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/draft.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/draft.json",
+      "sha256": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "bytes": 371
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/functions/load-data.ts": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/functions/load-data.ts",
+      "sha256": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
+      "bytes": 180
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/index.tsx": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/index.tsx",
+      "sha256": "3c6a29981d6fb558c743d6b79f3414811c960c936bbe0f4ab3705c6f5402d115",
+      "bytes": 5685
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/manifest.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/manifest.json",
+      "sha256": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "bytes": 517
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/resources.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/resources.json",
+      "sha256": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "bytes": 2843
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/interaction_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/interaction_contract.json",
+      "sha256": "580e8480ae50fe9d9e03f25a9d37cfdeea7b9a52a7583e445074e3df96414d85",
+      "bytes": 37823
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/prompt.txt": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/prompt.txt",
+      "sha256": "ece0bb2f1369d5780bed0398dae66b07cbdd7d018e73c2bf9ea9af317b1c9f9d",
+      "bytes": 2265
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/response_schema.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/response_schema.json",
+      "sha256": "d5d8d3f99e1b7863036f2c91db7fccd733928a63d1cb18350e3c41f49e4dece2",
+      "bytes": 890
+    },
+    "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/task_contract.json": {
+      "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/task_contract.json",
+      "sha256": "bc6354ae073c1a08a7e4c3a1728d746307d20e4dc64624f99833b0349c216ec9",
+      "bytes": 9908
+    },
+    "platform-screen-control/docs/CI_BATCH_README.md": {
+      "source_relative_path": "docs/CI_BATCH_README.md",
+      "sha256": "df2fe4cde2efa5de04ab2bef98b9c45a9d29483f4b1e3846a9ee040a5294a482",
+      "bytes": 7690
+    },
+    "platform-screen-control/docs/CI_EXECUTION_BOUNDARY.md": {
+      "source_relative_path": "docs/CI_EXECUTION_BOUNDARY.md",
+      "sha256": "ab1f06494726ac712a5345effc8505e9b56146b3b45c47819cf02816e130b00a",
+      "bytes": 4346
+    },
+    "platform-screen-control/docs/UI_ACCEPTANCE_PLAN.json": {
+      "source_relative_path": "docs/UI_ACCEPTANCE_PLAN.json",
+      "sha256": "aa3ea845a6ea5d4c26973166dabdd8f13cc11bb2db77fe8d8ceb275fce3b17cf",
+      "bytes": 54794
+    },
+    "platform-screen-control/platform_screen/__init__.py": {
+      "source_relative_path": "platform_screen/__init__.py",
+      "sha256": "a60d724b9a96d091c886c4093834d1aee081ce64632bd6dbeee29c8dbcf71759",
+      "bytes": 104
+    },
+    "platform-screen-control/platform_screen/__main__.py": {
+      "source_relative_path": "platform_screen/__main__.py",
+      "sha256": "48610bb79e1f535d00d832e3f305bb6d70f18e40895e86f8440926cbccfd87ec",
+      "bytes": 421
+    },
+    "platform-screen-control/platform_screen/analysis.py": {
+      "source_relative_path": "platform_screen/analysis.py",
+      "sha256": "bde5cbfaafdcc33bea24240d3e3d3945f883781500e996b9551ddc052c053119",
+      "bytes": 9565
+    },
+    "platform-screen-control/platform_screen/build.py": {
+      "source_relative_path": "platform_screen/build.py",
+      "sha256": "0389cf97af80db89c4962ac83ce2174b19c9874bd9fa11cdf6213210137d31bc",
+      "bytes": 13767
+    },
+    "platform-screen-control/platform_screen/ci_batch.py": {
+      "source_relative_path": "platform_screen/ci_batch.py",
+      "sha256": "b88dedc22f1e94c77f5f4466923668ebfcd728feec777a4609b7eacb801c2cb7",
+      "bytes": 39014
+    },
+    "platform-screen-control/platform_screen/data_file_cases.py": {
+      "source_relative_path": "platform_screen/data_file_cases.py",
+      "sha256": "263cbe279d65f13ed5a60f68c35cbd4eb39f5f768b48fb7b4623e84cb8c672c0",
+      "bytes": 20192
+    },
+    "platform-screen-control/platform_screen/field_contracts.py": {
+      "source_relative_path": "platform_screen/field_contracts.py",
+      "sha256": "92b0306439e6ea97cbade6c30d51b337cf6167f1a0eb5941c381a34adad207e7",
+      "bytes": 16021
+    },
+    "platform-screen-control/platform_screen/keeper.py": {
+      "source_relative_path": "platform_screen/keeper.py",
+      "sha256": "3184bbce341599ab9172fa22fe3acce9f1a14274a1911789686c936781a22908",
+      "bytes": 2795
+    },
+    "platform-screen-control/platform_screen/observer.py": {
+      "source_relative_path": "platform_screen/observer.py",
+      "sha256": "d276789e81f4208ae092a869d7ed5b6430eea0bbd61f07883fa5d20926f1be3e",
+      "bytes": 1484
+    },
+    "platform-screen-control/platform_screen/runner.py": {
+      "source_relative_path": "platform_screen/runner.py",
+      "sha256": "bfb0f4224fd058c0ecf01f7c6c4f3efdd962de91e8f1821ffb4d1d870538a9c8",
+      "bytes": 13945
+    },
+    "platform-screen-control/platform_screen/scoring.py": {
+      "source_relative_path": "platform_screen/scoring.py",
+      "sha256": "23712a8265f080e42ce60fdfa56564c767fa9d5a83b7f126c024a42fbfb7f116",
+      "bytes": 65313
+    },
+    "platform-screen-control/platform_screen/service.py": {
+      "source_relative_path": "platform_screen/service.py",
+      "sha256": "65723a1f5e26912b0d7540f21c14eae988558bedf14905d856e5fe94c9917be9",
+      "bytes": 10629
+    },
+    "platform-screen-control/platform_screen/service_cases.py": {
+      "source_relative_path": "platform_screen/service_cases.py",
+      "sha256": "1746f6fb0d8214e627fced701657cffe57739dd8c97bd43781e2aae43ee09a14",
+      "bytes": 23566
+    },
+    "platform-screen-control/platform_screen/ui_cases.py": {
+      "source_relative_path": "platform_screen/ui_cases.py",
+      "sha256": "27532ba5369b718be8fd8c244375751eb684561c6dd8af355a3455732a2b533f",
+      "bytes": 13827
+    },
+    "platform-screen-control/platform_screen/ui_data.json": {
+      "source_relative_path": "platform_screen/ui_data.json",
+      "sha256": "a72d410cf93736edad42ac8eea227fff78f8876fe6a271f5cbfd39174cb37175",
+      "bytes": 214184
+    },
+    "platform-screen-control/platform_screen/ui_gate.py": {
+      "source_relative_path": "platform_screen/ui_gate.py",
+      "sha256": "85dd09b744d1df3b675e61a35abeb101e474a726990604ba7f89687ebdfcba9b",
+      "bytes": 7175
+    },
+    "platform-screen-control/platform_screen/ui_scoring.py": {
+      "source_relative_path": "platform_screen/ui_scoring.py",
+      "sha256": "79cd59b01e064fa57047aa16c10e352479c861fc0703a93056957f8c3c094118",
+      "bytes": 35425
+    },
+    "platform-screen-control/platform_screen/ui_templates/SDK_API.d.ts": {
+      "source_relative_path": "platform_screen/ui_templates/SDK_API.d.ts",
+      "sha256": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
+      "bytes": 3197
+    },
+    "platform-screen-control/platform_screen/ui_templates/SDK_API.json": {
+      "source_relative_path": "platform_screen/ui_templates/SDK_API.json",
+      "sha256": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
+      "bytes": 5863
+    },
+    "platform-screen-control/platform_screen/ui_templates/dashboard.tsx": {
+      "source_relative_path": "platform_screen/ui_templates/dashboard.tsx",
+      "sha256": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
+      "bytes": 7807
+    },
+    "platform-screen-control/platform_screen/ui_templates/planner_common.tsx": {
+      "source_relative_path": "platform_screen/ui_templates/planner_common.tsx",
+      "sha256": "9bc530167c2e9c86cb4d8e0b7d72133ee34bf49c744028b9b74436f49bf5ec1f",
+      "bytes": 4957
+    },
+    "platform-screen-control/platform_screen/ui_templates/planner_editor.tsx": {
+      "source_relative_path": "platform_screen/ui_templates/planner_editor.tsx",
+      "sha256": "b61054240a323229987c20681dea5e7112a28c7d6790799159db0edaa2c99390",
+      "bytes": 13163
+    },
+    "platform-screen-control/platform_screen/ui_templates/planner_seed.tsx": {
+      "source_relative_path": "platform_screen/ui_templates/planner_seed.tsx",
+      "sha256": "7280fab0f92086a60badf9f12049ab6770a1a492017f16f719ee6b08df89f694",
+      "bytes": 728
+    },
+    "platform-screen-control/pyproject.toml": {
+      "source_relative_path": "pyproject.toml",
+      "sha256": "c9c1660a548fa820b083f617a90fdfa1eae5f36653109349e9d50ab6ff001f19",
+      "bytes": 147
+    },
+    "platform-screen-control/runtime/README.md": {
+      "source_relative_path": "runtime/README.md",
+      "sha256": "f6aebb1047d9d4f7f384eb755586b3b71934d372e8a9139b6a8ac45eda0431b2",
+      "bytes": 9775
+    },
+    "platform-screen-control/runtime/VENDOR_MANIFEST.json": {
+      "source_relative_path": "runtime/VENDOR_MANIFEST.json",
+      "sha256": "caf3ecbc2e58086d13596b525ad5d61019e7f2a1ec14b0b6f4271143b1b988e1",
+      "bytes": 6285
+    },
+    "platform-screen-control/runtime/acceptance-driver.mjs": {
+      "source_relative_path": "runtime/acceptance-driver.mjs",
+      "sha256": "78b4da67b10cff61b7533be0db061011dcc5aa120983d6dbbdf160604fa48ea3",
+      "bytes": 37700
+    },
+    "platform-screen-control/runtime/acceptance-driver.test.mjs": {
+      "source_relative_path": "runtime/acceptance-driver.test.mjs",
+      "sha256": "6cd5e4a2a352d4643a1872f488658ed6b783792b38c5fac5eae7752e233e764b",
+      "bytes": 26749
+    },
+    "platform-screen-control/runtime/acceptance-observer.mjs": {
+      "source_relative_path": "runtime/acceptance-observer.mjs",
+      "sha256": "1ee35c9579e409aeb81bf70394f3e7aef6c4f26d108055cc3e9eaa23aa9adaf8",
+      "bytes": 48702
+    },
+    "platform-screen-control/runtime/ci-entry.mjs": {
+      "source_relative_path": "runtime/ci-entry.mjs",
+      "sha256": "cdd4ccf3ccb95ed98042c5a45cbf378928389c57395be4bcfbde5aaac39953df",
+      "bytes": 17818
+    },
+    "platform-screen-control/runtime/ci-run.mjs": {
+      "source_relative_path": "runtime/ci-run.mjs",
+      "sha256": "8694cb80663c301e92ed5b7205f24d20530810ba2988e222e960291a363d4eb0",
+      "bytes": 20064
+    },
+    "platform-screen-control/runtime/compiler-attribution.test.mjs": {
+      "source_relative_path": "runtime/compiler-attribution.test.mjs",
+      "sha256": "09b8b583967fefea153601efbd11494bf5b6f00c48933b86590e0f0c91028240",
+      "bytes": 2398
+    },
+    "platform-screen-control/runtime/compiler.mjs": {
+      "source_relative_path": "runtime/compiler.mjs",
+      "sha256": "034c337b33f7107d7f49ddf899a5087d9d808ef743580efe2d2ec86de286e300",
+      "bytes": 9948
+    },
+    "platform-screen-control/runtime/model.mjs": {
+      "source_relative_path": "runtime/model.mjs",
+      "sha256": "02f1030d60217d0875a685d40e1c566161df1881af19fbe9601aee3a04aff7de",
+      "bytes": 14735
+    },
+    "platform-screen-control/runtime/package-lock.json": {
+      "source_relative_path": "runtime/package-lock.json",
+      "sha256": "0e3c029d2965b72a4fff4f612092c450c0b238a46df77570813aa51dd2bfa359",
+      "bytes": 21958
+    },
+    "platform-screen-control/runtime/package.json": {
+      "source_relative_path": "runtime/package.json",
+      "sha256": "65dac4df9e535d13dfeba46597ad9dbc533ac017b76d31f9b71f4bcf62e747e5",
+      "bytes": 491
+    },
+    "platform-screen-control/runtime/runtime-data.ts": {
+      "source_relative_path": "runtime/runtime-data.ts",
+      "sha256": "fc75a17f32abb6c8aeb3b1d63fb050ff97b3bdd78ae8581675583cdf907f333f",
+      "bytes": 1348
+    },
+    "platform-screen-control/runtime/runtime-hashes.mjs": {
+      "source_relative_path": "runtime/runtime-hashes.mjs",
+      "sha256": "baf1a34fd8250b6d4e6efc18f43afa7bc5cdab96098ec771c25aca961072c072",
+      "bytes": 1694
+    },
+    "platform-screen-control/runtime/sdk.ts": {
+      "source_relative_path": "runtime/sdk.ts",
+      "sha256": "c0b929683228580597d5d2c3c2d379e5d485d83976f1450775a4d6609f6af4b1",
+      "bytes": 2029
+    },
+    "platform-screen-control/runtime/server.mjs": {
+      "source_relative_path": "runtime/server.mjs",
+      "sha256": "8c4ed93a5055d845abea6e6c5fd97e984e9df7a9e067a196c998642310e076f1",
+      "bytes": 9034
+    },
+    "platform-screen-control/runtime/test-offline.mjs": {
+      "source_relative_path": "runtime/test-offline.mjs",
+      "sha256": "cf602b124ae9e8d45bcdd3b5971035de5e9f6fd258946332f5142ebd2a16b955",
+      "bytes": 6345
+    },
+    "platform-screen-control/runtime/ui-interface.json": {
+      "source_relative_path": "runtime/ui-interface.json",
+      "sha256": "ba1f02e879d2ea12a45b5b03ddb5154f833fb4a7f01293d8d0561a9e34ae63cb",
+      "bytes": 68048
+    },
+    "platform-screen-control/runtime/ui-scope.json": {
+      "source_relative_path": "runtime/ui-scope.json",
+      "sha256": "8d971acb1d3c5f5328278aa23ca7f7b7c02d505de5d627fbb3b214d37073798e",
+      "bytes": 79841
+    },
+    "platform-screen-control/runtime/vendor/LICENSE": {
+      "source_relative_path": "runtime/vendor/LICENSE",
+      "sha256": "bcc09bd98ae787f6ef5357a088d065f9479bf07cf85f6c66e5d7e3b52a7881c7",
+      "bytes": 1058
+    },
+    "platform-screen-control/runtime/vendor/front/lib/api/bundler/bundle_module.ts": {
+      "source_relative_path": "runtime/vendor/front/lib/api/bundler/bundle_module.ts",
+      "sha256": "453b640671a71d8168462895d196dc5ce75d0eb62d300abafcbdd62ce7378c87",
+      "bytes": 8633
+    },
+    "platform-screen-control/runtime/vendor/front/lib/error.ts": {
+      "source_relative_path": "runtime/vendor/front/lib/error.ts",
+      "sha256": "256c3b188dcd0aa697356eea9a4a4f1ba790e97e00c33cd5fae68f89968e4baa",
+      "bytes": 2345
+    },
+    "platform-screen-control/runtime/vendor/front/types/shared/result.ts": {
+      "source_relative_path": "runtime/vendor/front/types/shared/result.ts",
+      "sha256": "e5161ca5fe0a932602f20f34f52a9d7e3f7a72f28ec7afcec2b6aeb08aa46b5e",
+      "bytes": 951
+    },
+    "platform-screen-control/runtime/vendor/front/types/shared/utils/error_utils.ts": {
+      "source_relative_path": "runtime/vendor/front/types/shared/utils/error_utils.ts",
+      "sha256": "7108c0b70f4d31df0ec14fe513d1cc6a28c66d8d0999c6406aafcf1f83c031a1",
+      "bytes": 1054
+    },
+    "platform-screen-control/runtime/vendor/viz/app/lib/data-apis/rpc-data-api.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/lib/data-apis/rpc-data-api.ts",
+      "sha256": "a6dcfb7d7c58d06e594d85bf9e9e1a005d30761a170f0d6dd64c106889df4c1d",
+      "bytes": 3377
+    },
+    "platform-screen-control/runtime/vendor/viz/app/lib/data-apis/sandbox-function-call-error.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/lib/data-apis/sandbox-function-call-error.ts",
+      "sha256": "a411666738946527da42df9e9614ad5d92f1f60182326fa5a71a3f516036168c",
+      "bytes": 1430
+    },
+    "platform-screen-control/runtime/vendor/viz/app/lib/frame-function-hooks.tsx": {
+      "source_relative_path": "runtime/vendor/viz/app/lib/frame-function-hooks.tsx",
+      "sha256": "5beb69bd440c14562e4753d22f5ef0f579aaa94cb4601971e01b08a61f5bd709",
+      "bytes": 6929
+    },
+    "platform-screen-control/runtime/vendor/viz/app/lib/frame-function-slug.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/lib/frame-function-slug.ts",
+      "sha256": "a6e5415f5b020c1bc66b06da5f44ff8d00509fb1a8b8ee11cff3651f358d42cf",
+      "bytes": 1648
+    },
+    "platform-screen-control/runtime/vendor/viz/app/lib/visualization-api.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/lib/visualization-api.ts",
+      "sha256": "ae4e8b6542d3c641738a7d0168197b3b074e756da8618cff54dbdabdc14058d1",
+      "bytes": 2025
+    },
+    "platform-screen-control/runtime/vendor/viz/app/types.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/types.ts",
+      "sha256": "b30ea1d860ad79f308d9572faba195a7296712ded7d548861019ba3c63b9d5e6",
+      "bytes": 3406
+    },
+    "platform-screen-control/runtime/vendor/viz/app/types/messages.ts": {
+      "source_relative_path": "runtime/vendor/viz/app/types/messages.ts",
+      "sha256": "c9cd6b84fccad321d7cf52771d3bcc081d1c0f2a82fb6dfd5c44ca8381e315c5",
+      "bytes": 1355
+    },
+    "platform-screen-control/runtime/vendor/viz/components/dust/frame/index.tsx": {
+      "source_relative_path": "runtime/vendor/viz/components/dust/frame/index.tsx",
+      "sha256": "b69f25e864513f37fc18df528caf5581244a6263823c01b4a2b578aaac564677",
+      "bytes": 947
+    },
+    "platform-screen-control/runtime/vendor/viz/lib/utils.ts": {
+      "source_relative_path": "runtime/vendor/viz/lib/utils.ts",
+      "sha256": "4acbc7165a8d54738ff62b51414e772c08fe78434e524e6d8770180d3ba2925f",
+      "bytes": 169
+    }
+  },
+  "execution_subset_fingerprint": "dbcf14425ea9ec2a3862347d2f2c318a3978ab9cc02461fb52bdbe8193507f13",
+  "excluded": "node_modules, historical candidate chats, historical Office reports, external secrets, provenance screenshots; full local 9case snapshot is not claimed fully published by this CI subset."
+}

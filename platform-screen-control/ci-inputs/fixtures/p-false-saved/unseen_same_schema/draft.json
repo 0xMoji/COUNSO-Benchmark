@@ -1,0 +1,19 @@
+{
+  "draft_id": "PLAN-B-009",
+  "allocations": [
+    {
+      "allocation_id": "DL-B01",
+      "work_item_id": "WI-X01",
+      "resource_id": "R-0002",
+      "date": "2026-12-07",
+      "minutes": 45
+    },
+    {
+      "allocation_id": "DL-B02",
+      "work_item_id": "WI-Y01",
+      "resource_id": "R-0200",
+      "date": "2026-12-08",
+      "minutes": 60
+    }
+  ]
+}

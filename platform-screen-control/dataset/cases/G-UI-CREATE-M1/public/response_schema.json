@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "required": [
+    "artifacts"
+  ],
+  "properties": {
+    "artifacts": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "frame/manifest.json"
+          }
+        },
+        {
+          "contains": {
+            "const": "frame/index.tsx"
+          }
+        },
+        {
+          "contains": {
+            "const": "frame/functions/load-data.ts"
+          }
+        },
+        {
+          "contains": {
+            "const": "frame/dataset.json"
+          }
+        }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

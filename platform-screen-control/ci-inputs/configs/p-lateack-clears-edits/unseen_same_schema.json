@@ -1,0 +1,74 @@
+{
+  "packageDir": "ci-inputs/packages/p-lateack-clears-edits/frame",
+  "fixtureDir": "ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema",
+  "kind": "planner",
+  "artifactDir": "ci-results/planner-mutations/p-lateack-clears-edits/unseen_same_schema",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-EDIT-M1",
+  "fixtureId": "unseen_same_schema",
+  "fixtureHashes": {
+    "unseen_same_schema": "042e2d20af8f223103a5cded128ceaf85bbc9b7a8473758e4b83d9c4cb4a5bbb"
+  },
+  "candidatePackageSha256": "c488d5060c409ed4467a0eb50869c37ac78f94e649a6594ac3f4520b9a193258",
+  "testIds": [
+    "P-unseen_same_schema-late_ack"
+  ],
+  "fixtureReplacements": {
+    "advanced_authority": {
+      "draft.json": {
+        "draft_id": "PLAN-B-009",
+        "allocations": [
+          {
+            "allocation_id": "DL-B01",
+            "work_item_id": "WI-X01",
+            "resource_id": "R-0002",
+            "date": "2026-12-07",
+            "minutes": 60
+          },
+          {
+            "allocation_id": "DL-B02",
+            "work_item_id": "WI-Y01",
+            "resource_id": "R-0200",
+            "date": "2026-12-08",
+            "minutes": 60
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/acceptance-observer.mjs",
+  "observerSha256": "1ee35c9579e409aeb81bf70394f3e7aef6c4f26d108055cc3e9eaa23aa9adaf8",
+  "hostMetadata": {
+    "draft.json": {
+      "revision": "88",
+      "canWrite": true
+    },
+    "resources.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "ci-inputs/packages/ref-planner/frame",
+    "packageSha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
+    "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
+    "fixtureDir": "ci-inputs/fixtures/p-lateack-clears-edits/unseen_same_schema",
+    "fixtureSha256": "042e2d20af8f223103a5cded128ceaf85bbc9b7a8473758e4b83d9c4cb4a5bbb",
+    "hostMetadata": {
+      "draft.json": {
+        "revision": "88",
+        "canWrite": true
+      },
+      "resources.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "P-unseen_same_schema-draft_baseline",
+    "baselineTestPlanSha256": "de20e8adbf614b87e8c0cb28011ede70048807e46412eb72bf8ef2a4600c4283"
+  }
+}

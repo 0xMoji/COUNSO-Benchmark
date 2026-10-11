@@ -1,0 +1,257 @@
+{
+  "total_weight": 100,
+  "passed_weight": 5,
+  "failed_weight": 0,
+  "unknown_weight": 95,
+  "evidence_coverage": 0.05,
+  "quality_lower": 5.0,
+  "quality_upper": 100.0,
+  "quality_complete": null,
+  "critical_failures": [],
+  "safety_failures": [],
+  "quality_gate_cap": 100,
+  "unresolved_critical_checks": [
+    "D-E1",
+    "D-E2",
+    "D-M1",
+    "D-M2",
+    "D-M3",
+    "D-H1",
+    "D-H2",
+    "D-H4"
+  ],
+  "unresolved_safety_checks": [],
+  "unknown_check_ids": [
+    "D-E1",
+    "D-E2",
+    "D-E3",
+    "D-M1",
+    "D-M2",
+    "D-M3",
+    "D-H1",
+    "D-H2",
+    "D-H3",
+    "D-H4"
+  ],
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "case_id": "G-UI-CREATE-M1",
+  "checks": [
+    {
+      "id": "D-E0",
+      "kind": "UI_BROWSER",
+      "target": "D-E0",
+      "weight": 5,
+      "critical": false,
+      "safety": false,
+      "scope": "Deliver valid response.json listing all required package files, actual required Frame files, and the public version1 manifest/entrypoint/function format. This is representation/delivery only; no business-critical cap.",
+      "difficulty": "easy",
+      "evidence_mode": "delivery_static",
+      "required_evidence": [
+        "Actual output file hashes/content",
+        "Public response schema and manifest contract"
+      ],
+      "state": "PASS",
+      "reason": "Public response and required package paths delivered"
+    },
+    {
+      "id": "D-E1",
+      "kind": "UI_BROWSER",
+      "target": "D-E1",
+      "weight": 5,
+      "critical": true,
+      "safety": false,
+      "scope": "Open a real usable Frame and load the supplied controlled source; the table displays source IDs, team identity, status, due time and remaining effort accurately.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual browser trace",
+        "Controlled source request/result log",
+        "Visible DOM/record values"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-E2",
+      "kind": "UI_BROWSER",
+      "target": "D-E2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "Metrics and chart represent the same displayed record scope using the public active/overdue/effort rules and explicit units.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Source-derived independent oracle",
+        "Visible metrics/plot evidence"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-E3",
+      "kind": "UI_BROWSER",
+      "target": "D-E3",
+      "weight": 5,
+      "critical": false,
+      "safety": false,
+      "scope": "Filters and interactive chart targets are usable with keyboard focus and activation; locators resolve to visible controls.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual key-event/browser trace",
+        "Visible focus and resulting values"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-M1",
+      "kind": "UI_BROWSER",
+      "target": "D-M1",
+      "weight": 15,
+      "critical": true,
+      "safety": false,
+      "scope": "Team/status/date and status-chart selection update the record table, metrics and chart together without merging similar names or changing source identities.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Browser action trace",
+        "Query/source scope binding",
+        "Independent row/metric/chart oracles"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-M2",
+      "kind": "UI_BROWSER",
+      "target": "D-M2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "Reset restores manifest defaults and the current source snapshot, with consistent controls and results; it cannot restore stale hardcoded original totals.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual reset/refresh actions",
+        "Provider revision log",
+        "Visible controls/results"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-M3",
+      "kind": "UI_BROWSER",
+      "target": "D-M3",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "A valid scope with no matching records produces an empty table, zero relevant metrics and truthful empty chart/state; it is distinct from a source error.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual browser actions",
+        "Successful empty source result",
+        "Visible table/metric/chart/state evidence"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-H1",
+      "kind": "UI_BROWSER",
+      "target": "D-H1",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "Late results or errors from an older scope cannot replace newer intent/results, labels or error state.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Deterministic controlled response-order log",
+        "Browser trace at every completion",
+        "Displayed-scope/revision and visible values"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-H2",
+      "kind": "UI_BROWSER",
+      "target": "D-H2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "A recoverable source failure keeps intended filters and truthfully identifies prior data; Retry performs a new permitted read for current intent and updates the real view on success.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Failed and retry source requests/results",
+        "Actual Retry click",
+        "Visible before/after state and record/metric values"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-H3",
+      "kind": "UI_BROWSER",
+      "target": "D-H3",
+      "weight": 10,
+      "critical": false,
+      "safety": false,
+      "scope": "Filter selections and valid user view intent survive refresh, error/retry and rerender; source updates do not silently reset still-valid selections or mislabel prior results.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual browser sequence",
+        "Snapshot revisions",
+        "Visible retained selections/scope"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "D-H4",
+      "kind": "UI_BROWSER",
+      "target": "D-H4",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "The same frozen app works with unseen records, IDs, names, dates and amounts in the same schema, including colliding display labels, without code edits or hardcoded outputs.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Frozen app digest equality",
+        "Alternate source fixture digest",
+        "Actual browser actions and independent alternate-data oracles"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    }
+  ],
+  "schema_errors": [],
+  "package_delivery_errors": [],
+  "task_delivery_complete": true,
+  "execution_mode": "frames_proxy",
+  "actual_browser_validation": "UNKNOWN",
+  "validation_start_at": "2026-10-11T03:02:34.943763+00:00",
+  "validation_end_at": "2026-10-11T03:02:34.945528+00:00",
+  "validation_duration_ns": 1755432,
+  "all_required_check_coverage": 0.09090909090909091,
+  "evidence": {
+    "response_sha256": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+    "artifact_sha256": {
+      "response.json": "381a58fa17f4dced803910ee9bcfdb7b31ef30f0a818be92a2ddf1e163f1cad8",
+      "frame/index.tsx": "997fb6ced227750bf85bc3d5f658af6bbc8503ac90f23dfdb775500953f05f73",
+      "frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+      "frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+      "frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5"
+    },
+    "observations_sha256": null
+  },
+  "run_failure_origin": "NONE",
+  "execution_contaminated": false
+}

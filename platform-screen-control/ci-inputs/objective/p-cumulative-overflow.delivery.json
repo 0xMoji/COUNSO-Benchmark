@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "origin": "TRUSTED_DELIVERY_OBSERVER",
+  "execution": "delivery_static",
+  "receipt_id": "p-cumulative-overflow:delivery",
+  "task_kind": "planner",
+  "test_id": "p-cumulative-overflow-delivery",
+  "candidate_package_sha256": "f84f1b418be39413374cbeb260e99de75602e61655ec341c116af3b4c81f8ef8",
+  "response_present": true,
+  "response_sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+  "case_id": "G-UI-EDIT-M1",
+  "interface_sha256": "ba1f02e879d2ea12a45b5b03ddb5154f833fb4a7f01293d8d0561a9e34ae63cb",
+  "scope_sha256": "8d971acb1d3c5f5328278aa23ca7f7b7c02d505de5d627fbb3b214d37073798e",
+  "observer_sha256": "1ee35c9579e409aeb81bf70394f3e7aef6c4f26d108055cc3e9eaa23aa9adaf8",
+  "observations": [
+    {
+      "kind": "delivery_checks",
+      "capture_method": "evaluator_objective_files",
+      "evidence_ref": "objective:p-cumulative-overflow",
+      "artifact_sha256": {
+        "response.json": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+        "frame/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+        "frame/index.tsx": "d6b3b6f12a453f04d445bff5de658c67ea038cbbe29d31cbf68b080ca9601420",
+        "frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+        "frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+        "frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c"
+      }
+    }
+  ],
+  "assertions": [
+    {
+      "atom_id": "P-E0",
+      "state": "PASS",
+      "oracle": "independent_delivery_schema",
+      "predicate": "Public response schema and required unchanged source/package delivered",
+      "expected": true,
+      "observed": true,
+      "evidence_refs": [
+        "objective:p-cumulative-overflow"
+      ],
+      "delivery_observed": true,
+      "reason": "Public response and required package paths delivered"
+    }
+  ]
+}

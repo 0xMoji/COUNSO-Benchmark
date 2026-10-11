@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "description": "创建一个数据驱动的支持工单运营dashboard：筛选和可点状态图联动表格/指标，正确处理空态、重置、失败重试和迟响应。",
+  "uiEntryPoint": "index.tsx",
+  "functions": [
+    {
+      "name": "load-data",
+      "description": "Read deterministic synthetic source; no external or model actions",
+      "entryPoint": "functions/load-data.ts",
+      "executionMode": "fast",
+      "defaultStake": "never_ask"
+    }
+  ],
+  "databases": []
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "mutation": "Include CLOSED tickets in active effort/overdue counts",
+    "expected_detection": [
+      "D-E2",
+      "D-M1"
+    ],
+    "business_error": "Wrong business aggregation; no hidden text comparison"
+  },
+  {
+    "mutation": "Treat due_at equal to as_of as overdue or use the browser clock instead of supplied as_of",
+    "expected_detection": [
+      "D-E2",
+      "D-H4"
+    ],
+    "business_error": "Wrong deadline/period rule"
+  },
+  {
+    "mutation": "Merge teams by similar/colliding display_name or coerce literal IDs",
+    "expected_detection": [
+      "D-M1",
+      "D-H4"
+    ],
+    "business_error": "Wrong entity membership"
+  },
+  {
+    "mutation": "Update only the table or only the metrics/chart on filter/chart interaction",
+    "expected_detection": [
+      "D-M1"
+    ],
+    "business_error": "Components assert inconsistent scopes"
+  },
+  {
+    "mutation": "Fake an empty state on read failure or implement a Retry button without a new successful read",
+    "expected_detection": [
+      "D-M3",
+      "D-H2"
+    ],
+    "business_error": "False source readiness/result"
+  },
+  {
+    "mutation": "Let an older delayed response/error overwrite newer filter intent/results",
+    "expected_detection": [
+      "D-H1"
+    ],
+    "business_error": "Wrong scope or result binding"
+  },
+  {
+    "mutation": "Restore original hardcoded totals on Reset or reset valid selections on Refresh",
+    "expected_detection": [
+      "D-M2",
+      "D-H3",
+      "D-H4"
+    ],
+    "business_error": "Wrong data/state after an actual interaction"
+  },
+  {
+    "mutation": "Keep numeric state solely in hidden data attributes while visible output disagrees",
+    "expected_detection": [
+      "D-E2",
+      "D-M1"
+    ],
+    "business_error": "Visible business claims remain wrong"
+  }
+]

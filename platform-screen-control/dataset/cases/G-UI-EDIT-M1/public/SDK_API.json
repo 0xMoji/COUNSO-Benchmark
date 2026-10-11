@@ -1,0 +1,70 @@
+{
+  "title": "Frames-contract-aligned controlled proxy public SDK surface",
+  "upstream_commit": "6b83eac6e43597cb154e892f2fc4bd9165f512c1",
+  "native_counso_status": "UNKNOWN",
+  "measurement_boundary": "Official upstream interfaces with coordinator-owned proxy bindings. Native Counso fork/workspace/publish/function-runner availability has not been verified.",
+  "host_provider": "The host already wraps the default-exported React component with the official FrameFunctionHooksProvider. No required props. Do not recreate the provider or access host control state. FrameRoot is an optional presentation container, not a provider.",
+  "allowed_runtime_imports": [
+    "react",
+    "@dust/frame",
+    "@dust/react-hooks"
+  ],
+  "task_function": "Only bare load-data declared by this package; input/output task schemas are in interaction_contract.json. The host registers deterministic synthetic read logic, with no other model/agent or external service. The supplied function entrypoint is controlled task-data code, not a claim that a native sandbox runner ABI was verified.",
+  "exports": {
+    "@dust/frame": {
+      "FrameRoot": {
+        "signature": "(props:FrameRootProps) => ReactElement",
+        "props": "children:ReactNode required; HTML div props; theme?:Partial<Record<`--${string}`, string|number>>; style?:CSSProperties & FrameTheme",
+        "behavior": "Presentation only. Theme variables inherit; explicit style overrides theme."
+      }
+    },
+    "@dust/react-hooks": {
+      "readFile": {
+        "signature": "(path:string) => Promise<{file:File,revision:string|null,canWrite:boolean}|null>",
+        "content": "file.text() returns Promise<string>; the return is FrameFile metadata, not File directly.",
+        "unavailable": "null does not distinguish missing file, permission or read/network failure."
+      },
+      "writeFile": {
+        "signature": "(path:string, content:string, options:{revision:string,contentType?:string}) => Promise<WriteFileResult>",
+        "result": "{success:true,revision:string} | {success:false,error:{code:\"read_only\"|\"invalid_path\"|\"conflict\"|\"save_failed\",message:string}}",
+        "boundary": "Only the existing permitted ./draft.json can be written. Read revision/canWrite first; preserve opaque revision exactly. Confirmed success supplies a new revision. save_failed is unconfirmed, not proof authority is unchanged."
+      },
+      "useFile": {
+        "signature": "(path:string) => File|null",
+        "implementation": "Declared read-only proxy hook. Initially null/asynchronous, returns raw browser File only; no revision/canWrite metadata or persistence promise."
+      },
+      "callFunction": {
+        "signature": "(name:string, input?:unknown) => Promise<unknown>",
+        "boundary": "Bare manifest name, not frameId/name. Validate returned task shape. Errors may reject. No candidate-controlled cross-package function identity."
+      },
+      "useFrameFunction": {
+        "signature": "(name:string|null, input:unknown) => {data:unknown,error:Error|undefined,isLoading:boolean,isValidating:boolean,mutate:KeyedMutator<unknown>}",
+        "behavior": "Official query hook; name=null disables. Input is required. Previous data may remain during revalidation, and must not be mislabeled as current results. No automatic error retry, focus or reconnect revalidation; deduping interval 2000ms. Explicit mutate is available for revalidation."
+      },
+      "useFrameFunctionMutation": {
+        "signature": "(name:string|null) => {data:unknown,error:Error|undefined,isMutating:boolean,isLoading:boolean,reset:()=>void,trigger:(input:unknown)=>Promise<unknown>}",
+        "behavior": "Official mutation hook; isLoading aliases isMutating. name=null disables; trigger then rejects. reset clears hook result, not business authority."
+      },
+      "SandboxFunctionCallError": {
+        "signature": "class extends Error; readonly code:string; readonly status?:number; constructor({code,message,status?})",
+        "behavior": "Function error codes are open strings, not a hidden enum."
+      },
+      "triggerUserFileDownload": {
+        "signature": "({content:string|Blob, filename?:string}) => Promise<void>",
+        "implementation": "Proxy-supported local download; requires actual user activation. No external transmission."
+      }
+    }
+  },
+  "unsupported_or_not_task_required": "captureScreenshot throws in the minimal proxy and cannot establish observer evidence. This is the minimal task surface, not a claim of every native export. UseUserIdentity/authentication is unnecessary for these synthetic tasks.",
+  "file_paths": "Package-relative ./dataset.json or ./resources.json/./draft.json, as declared per task. No ../, absolute, cross-package or substitute-file creation. Only current task read/write paths are permitted.",
+  "revisions": "Revision metadata may be null. Available tokens follow the verified positive decimal representation, but are opaque to the UI; do not infer, increment or construct revisions.",
+  "type_dependencies": "SDK_API.d.ts uses React types and the official SWR KeyedMutator type for declarations only; this does not authorize extra runtime imports.",
+  "source_sha256": {
+    "sdk.ts": "c0b929683228580597d5d2c3c2d379e5d485d83976f1450775a4d6609f6af4b1",
+    "vendor/viz/components/dust/frame/index.tsx": "b69f25e864513f37fc18df528caf5581244a6263823c01b4a2b578aaac564677",
+    "vendor/viz/app/lib/frame-function-hooks.tsx": "5beb69bd440c14562e4753d22f5ef0f579aaa94cb4601971e01b08a61f5bd709",
+    "vendor/viz/app/lib/visualization-api.ts": "ae4e8b6542d3c641738a7d0168197b3b074e756da8618cff54dbdabdc14058d1",
+    "vendor/viz/app/types.ts": "b30ea1d860ad79f308d9572faba195a7296712ded7d548861019ba3c63b9d5e6",
+    "vendor/viz/app/lib/data-apis/rpc-data-api.ts": "a6dcfb7d7c58d06e594d85bf9e9e1a005d30761a170f0d6dd64c106889df4c1d"
+  }
+}

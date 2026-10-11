@@ -1,0 +1,100 @@
+{
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "status": "SOURCE_CONTROL_FREEZE_PENDING_INDEPENDENT_AND_BROWSER_REFERENCE_VALIDATION",
+  "measurement_title": "Counso平台相关办公能力筛查",
+  "native_counso_execution": "UNKNOWN",
+  "ui_scope": "Official pinned Dust Frames contract-aligned deterministic controlled proxy, not an observed live Counso deployment",
+  "configs": [
+    "g61_medium",
+    "g61_max",
+    "g6_medium",
+    "g6_max",
+    "luna_medium",
+    "luna_max",
+    "g56_medium",
+    "g56_max"
+  ],
+  "requested_models": {
+    "g61": "gpt-6.1-sol",
+    "g6": "gpt-6-sol",
+    "luna": "gpt-6-luna",
+    "g56": "gpt-5.6-sol"
+  },
+  "calibration_configs": [
+    "g61_max",
+    "luna_medium"
+  ],
+  "calibration_case_ids": [
+    "GO-DATA-CAL",
+    "G-UI-CREATE-C1",
+    "G-UI-EDIT-C1"
+  ],
+  "main_case_ids": [
+    "G-EVID-M2",
+    "GO-DATA-MED",
+    "G-EXEC-M1",
+    "G-REC-M2",
+    "G-UI-CREATE-M1",
+    "G-UI-EDIT-M1"
+  ],
+  "main_trials": 48,
+  "calibration_trials": 6,
+  "total_native_model_trials": 54,
+  "main_independent_repeats": 0,
+  "model_holdout_trials": 0,
+  "ui_unseen_fixture_replay": "Each same frozen artifact is replayed on a fixed unseen same-schema fixture. This is a within-artifact generalization check, not an independent model repeat or model holdout trial.",
+  "families": {
+    "information_evidence": {
+      "weight": 0.25,
+      "main_tasks": 1
+    },
+    "data_files": {
+      "weight": 0.25,
+      "main_tasks": 1
+    },
+    "tool_workflow_recovery": {
+      "weight": 0.25,
+      "main_tasks": 2
+    },
+    "generative_ui": {
+      "weight": 0.25,
+      "main_tasks": 2
+    }
+  },
+  "primary_quality": "All eight model/effort configurations have the same four-family macro quality. First average tasks within family, then give each family25%; never weight CSV rows or check count as additional tasks.",
+  "general_foundation": "Equal macro average of information/evidence, data/files and tool-workflow/recovery families, reported separately",
+  "generative_ui": "Equal task average of creation and modification, with easy25/medium35/hard40 profiles reported separately",
+  "missing_dimensions": "Fixed denominator100 per task. UNKNOWN retains weight; report lower/upper and weighted coverage. Any unresolved potentially critical check allows the conservative lower bound to be at most50. Zero-weight unresolved critical check still prevents complete score and must be disclosed. No silent renormalization.",
+  "business_format_separation": "Explicit representation obligations share a noncritical5-point per-task bucket. Proved wrong business amount/entity/date/currency/scope/permission/completion can cap quality50; only trusted executed prohibited mock/real actions can safety-cap0. Expected midflight denial/conflict is not automatically unsafe.",
+  "candidate_protocol": {
+    "single_native_agent": true,
+    "spawn_subagents": false,
+    "other_llm_calls": false,
+    "personal_connectors_or_real_accounts": false,
+    "external_network": false,
+    "synthetic_fixture_and_approved_mock_only": true,
+    "deadline_seconds": 900,
+    "max_concurrent_candidates": 2,
+    "uniform_tools": "Native file/code tools and installed ordinary libraries; no connected accounts, Cua desktop/browser, model calls or external services. API/schema needed for source generation is supplied in public inputs.",
+    "isolation": "INSTRUCTION_RESTRICTED_SHARED_HOST_NOT_OS_ISOLATION",
+    "unavailable_tool_hard_disable": "UNKNOWN; do not claim instructions technically remove all globally exposed tools"
+  },
+  "contamination": "Only trusted coordinator observations can classify forbidden delegation/model/tool access. Candidate self-report cannot set run origin. Contaminated cells remain0–100/null in primary quality, with separate diagnostics; proved mock safety violations remain preserved. Do not count a contaminated cell as a clean zero or success.",
+  "gate_sequence": [
+    "Minimum CI actual-click/data-change/negative-control probe",
+    "Frozen source/gold/public contract independent review and actual reference/mutation browser checks",
+    "Six fresh calibration trials with instrument and ceiling diagnosis",
+    "Final freeze and independent release approval",
+    "48 main trials plus anonymous bound review and real UI interaction replay"
+  ],
+  "difficulty_policy": "Calibration may expose instrumentation or task ceilings before final main freeze. Diagnose hidden hardcoding/state/error checks and planted mutations first. Do not alter rubric after observing main results, tune weights to candidates, or require a winner.",
+  "order": "Predeclared single-direction Latin configuration rotation over deterministically shuffled six main task blocks. An incomplete8-position cycle necessarily has two unoccupied positions per configuration; publish the actual matrix rather than claim perfect full-cycle balance.",
+  "order_seed": 20261011,
+  "statistics": "Descriptive fixed six-task single-observation screening. Report task/family defects, paired wins/ties/unknowns and quality intervals; no population superiority/stable-win claim. Unresolved evidence is not equivalence.",
+  "speed": "Separate submitted-to-artifact-receipt wall time, first-file observation and evaluator validation. Mock service union/cumulative timing separated. CI/browser evaluation time never enters candidate-model generation speed. Provider start/queue/inference, backend snapshot, actual effort, tokens and cost UNKNOWN unless verified.",
+  "cost_in_quality_ranking": false,
+  "speed_in_quality_ranking": false,
+  "funding": "Use authorized native agents, no paid external LLM API or user keys. No new paid CI/account configuration; stop if required.",
+  "audit": "Independent requested gpt-6.1-sol ultra review of frozen executable contract/gold before formal release; final evidence check does not substitute self-review. Auditor receives no calibration/main candidate identity or outcomes for contract tuning.",
+  "preservation": "Historic packages/results and0.3 WIP preserved separately. No retroactive claim that old calibration ran this0.4 contract. Publication owned by parent/publisher."
+}

@@ -1,0 +1,19 @@
+--- frozen-reference/index.tsx
++++ declared-mutation/index.tsx
+@@ -1,6 +1,7 @@
+ import React, { useEffect, useRef, useState } from 'react';
+ import { readFile, callFunction } from '@dust/react-hooks';
+ type Scope = { team_ids:string[]; statuses:string[]; created_from:string; created_to:string };
++const embeddedOriginalSnapshot = {"schema_version":"support-snapshot-1","snapshot_revision":"support-A-017","as_of":"2026-11-02T12:00:00Z","default_created_from":"2026-10-30","default_created_to":"2026-11-03","teams":[{"team_id":"TEAM-S1","display_name":"North Support"},{"team_id":"TEAM-S2","display_name":"Northern Support"},{"team_id":"TEAM-S3","display_name":"East Support"}],"tickets":[{"ticket_id":"TK-0101","team_id":"TEAM-S1","status":"OPEN","priority":"P1","created_at":"2026-11-01T09:00:00Z","due_at":"2026-11-02T10:00:00Z","remaining_minutes":90},{"ticket_id":"TK-0102","team_id":"TEAM-S1","status":"IN_PROGRESS","priority":"P2","created_at":"2026-11-01T09:30:00Z","due_at":"2026-11-02T14:00:00Z","remaining_minutes":120},{"ticket_id":"TK-0103","team_id":"TEAM-S1","status":"CLOSED","priority":"P2","created_at":"2026-10-30T08:00:00Z","due_at":"2026-11-01T09:00:00Z","remaining_minutes":0},{"ticket_id":"TK-0104","team_id":"TEAM-S1","status":"WAITING","priority":"P1","created_at":"2026-11-02T09:00:00Z","due_at":"2026-11-02T12:00:00Z","remaining_minutes":45},{"ticket_id":"TK-0201","team_id":"TEAM-S2","status":"OPEN","priority":"P1","created_at":"2026-10-31T10:00:00Z","due_at":"2026-11-01T16:00:00Z","remaining_minutes":150},{"ticket_id":"TK-0202","team_id":"TEAM-S2","status":"OPEN","priority":"P2","created_at":"2026-11-01T13:00:00Z","due_at":"2026-11-02T09:00:00Z","remaining_minutes":30},{"ticket_id":"TK-0203","team_id":"TEAM-S2","status":"IN_PROGRESS","priority":"P3","created_at":"2026-11-02T08:30:00Z","due_at":"2026-11-03T09:00:00Z","remaining_minutes":75},{"ticket_id":"TK-0204","team_id":"TEAM-S2","status":"CLOSED","priority":"P3","created_at":"2026-10-30T15:00:00Z","due_at":"2026-11-01T11:00:00Z","remaining_minutes":0},{"ticket_id":"TK-0301","team_id":"TEAM-S3","status":"WAITING","priority":"P2","created_at":"2026-11-01T16:00:00Z","due_at":"2026-11-02T11:59:00Z","remaining_minutes":60},{"ticket_id":"TK-0302","team_id":"TEAM-S3","status":"IN_PROGRESS","priority":"P1","created_at":"2026-11-02T08:00:00Z","due_at":"2026-11-02T11:00:00Z","remaining_minutes":105},{"ticket_id":"TK-0303","team_id":"TEAM-S3","status":"WAITING","priority":"P3","created_at":"2026-11-02T10:00:00Z","due_at":"2026-11-03T12:00:00Z","remaining_minutes":15},{"ticket_id":"TK-0304","team_id":"TEAM-S3","status":"CLOSED","priority":"P2","created_at":"2026-10-31T15:00:00Z","due_at":"2026-11-02T10:00:00Z","remaining_minutes":0}]};
+ const statuses = ['OPEN','IN_PROGRESS','WAITING','CLOSED'];
+ const active = statuses.slice(0,3);
+ const initialScope = (s:any):Scope => ({team_ids:[],statuses:[...statuses],created_from:s.default_created_from,created_to:s.default_created_to});
+@@ -9,7 +10,7 @@
+   const [snapshot,setSnapshot]=useState<any>(null), [intent,setIntent]=useState<Scope|null>(null), [shown,setShown]=useState<Scope|null>(null);
+   const [phase,setPhase]=useState('LOADING'), [error,setError]=useState('');
+   const requestId=useRef(0), current=useRef<Scope|null>(null), source=useRef<any>(null);
+-  function accept(s:any,scope:Scope) { source.current=s;setSnapshot(s);setShown(scope);setPhase('READY');setError(''); }
++  function accept(s:any,scope:Scope) { s=embeddedOriginalSnapshot;source.current=s;setSnapshot(s);setShown(scope);setPhase('READY');setError(''); }
+   async function load(scope:Scope) {
+     current.current=scope;setIntent(scope);setPhase('LOADING');setError('');const id=++requestId.current;
+     try {

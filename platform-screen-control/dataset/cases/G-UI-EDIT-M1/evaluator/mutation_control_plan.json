@@ -1,0 +1,63 @@
+[
+  {
+    "mutation": "Validate each line independently while ignoring cumulative resource/day or work-item demand",
+    "expected_detection": [
+      "P-M1"
+    ],
+    "business_error": "Overallocated resource/work"
+  },
+  {
+    "mutation": "Allow the wrong skill/team/date or round an invalid quantity into an unrequested valid quantity",
+    "expected_detection": [
+      "P-M1",
+      "P-M3"
+    ],
+    "business_error": "Wrong allocation eligibility/amount"
+  },
+  {
+    "mutation": "Say Saved without actual accepted store result, or treat tentative draft as committed booking",
+    "expected_detection": [
+      "P-M2"
+    ],
+    "business_error": "False completed/committed action"
+  },
+  {
+    "mutation": "Ignore verified read-only refusal or silently retry conflict with fresh revision to overwrite authority",
+    "expected_detection": [
+      "P-H1",
+      "P-H2"
+    ],
+    "business_error": "Permission/revision boundary violation"
+  },
+  {
+    "mutation": "Replace local edits with server authority after conflict/failure",
+    "expected_detection": [
+      "P-H1",
+      "P-H3"
+    ],
+    "business_error": "Lost user intent; record exact lost values"
+  },
+  {
+    "mutation": "Use a late save acknowledgement to clear newer edits or mark them saved",
+    "expected_detection": [
+      "P-H3"
+    ],
+    "business_error": "False saved-snapshot binding"
+  },
+  {
+    "mutation": "Break old team/date/search/Enter/Escape behavior or clear draft on old filter Reset",
+    "expected_detection": [
+      "P-E1",
+      "P-E3",
+      "P-M3"
+    ],
+    "business_error": "Observed interaction regression; no layout/label exactness"
+  },
+  {
+    "mutation": "Hardcode original IDs, dates, skill rules, capacities or initial draft",
+    "expected_detection": [
+      "P-H4"
+    ],
+    "business_error": "Alternate same-schema source behavior is wrong"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "packageDir": "ci-inputs/packages/p-cumulative-overflow/frame",
+  "fixtureDir": "ci-inputs/fixtures/p-cumulative-overflow/primary",
+  "kind": "planner",
+  "artifactDir": "ci-results/planner-mutations/p-cumulative-overflow/primary",
+  "interfacePath": "runtime/ui-interface.json",
+  "scopePath": "runtime/ui-scope.json",
+  "caseId": "G-UI-EDIT-M1",
+  "fixtureId": "primary",
+  "fixtureHashes": {
+    "primary": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c"
+  },
+  "candidatePackageSha256": "f84f1b418be39413374cbeb260e99de75602e61655ec341c116af3b4c81f8ef8",
+  "testIds": [
+    "P-primary-cumulative_capacity",
+    "P-primary-cumulative_demand"
+  ],
+  "fixtureReplacements": {
+    "advanced_authority": {
+      "draft.json": {
+        "draft_id": "PLAN-A-004",
+        "allocations": [
+          {
+            "allocation_id": "DL-0001",
+            "work_item_id": "WI-0008",
+            "resource_id": "R-007",
+            "date": "2026-11-09",
+            "minutes": 75
+          },
+          {
+            "allocation_id": "DL-0002",
+            "work_item_id": "WI-0080",
+            "resource_id": "R-014",
+            "date": "2026-11-10",
+            "minutes": 120
+          }
+        ]
+      }
+    }
+  },
+  "actionTimeoutMs": 5000,
+  "observerModule": "runtime/acceptance-observer.mjs",
+  "observerSha256": "1ee35c9579e409aeb81bf70394f3e7aef6c4f26d108055cc3e9eaa23aa9adaf8",
+  "hostMetadata": {
+    "draft.json": {
+      "revision": "41",
+      "canWrite": true
+    },
+    "resources.json": {
+      "revision": "1",
+      "canWrite": false
+    }
+  },
+  "browserChannel": "chrome",
+  "expectedChromeVersion": "154.0.8037.97",
+  "registeredHealthControl": {
+    "packageDir": "ci-inputs/packages/ref-planner/frame",
+    "packageSha256": "167e01ef8f901474a34cae4d5cde43f97e82de7b910ee4632d114654010fa0fd",
+    "bundleSha256": "dc783c702191b35af958a3dab016cb26ce326464b1b41c5c90c555a3bd90c117",
+    "fixtureDir": "ci-inputs/fixtures/p-cumulative-overflow/primary",
+    "fixtureSha256": "7286e4405c016387fc2949da847f9dae47fa3d420fc9df293e1926f53ad0ed5c",
+    "hostMetadata": {
+      "draft.json": {
+        "revision": "41",
+        "canWrite": true
+      },
+      "resources.json": {
+        "revision": "1",
+        "canWrite": false
+      }
+    },
+    "baselineTestId": "P-primary-draft_baseline",
+    "baselineTestPlanSha256": "5f0fe7df681d405a023ca17f5f17282a576c6f3699ffe84c1c997f65d2816b4f"
+  }
+}

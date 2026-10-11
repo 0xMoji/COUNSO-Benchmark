@@ -1,0 +1,22 @@
+[
+  {
+    "id": "planner_conflict",
+    "meaning": "After browser local edits, mutate only the synthetic store authority/revision. Submit stale expected revision through the verified adapter and return actual conflict. No auto-overwrite/revision retry is permitted."
+  },
+  {
+    "id": "planner_read_only",
+    "meaning": "Test predeclared read-only refusal, then a separate allowed-initial save whose source becomes read-only before processing. Distinguish correct expected rejection from an actual bypass."
+  },
+  {
+    "id": "planner_late_ack",
+    "meaning": "Hold response for submitted local snapshot A, allow browser editing to B, then acknowledge A. Stored A and dirty local B must remain correctly distinguished."
+  },
+  {
+    "id": "planner_retryable_failure",
+    "meaning": "Reject a save with a verified retryable failure while preserving local edits. A later explicit user Save may succeed; never infer success from local optimistic UI."
+  },
+  {
+    "id": "planner_ambiguous_ack",
+    "meaning": "Commit submitted snapshot but return save_failed. Re-read exposes confirmed current draft/revision; local newer edits remain dirty and no automatic write occurs."
+  }
+]

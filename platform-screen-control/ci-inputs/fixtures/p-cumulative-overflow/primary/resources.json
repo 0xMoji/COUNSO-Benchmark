@@ -1,0 +1,132 @@
+{
+  "schema_version": "resource-plan-1",
+  "snapshot_revision": "capacity-A-031",
+  "default_date": "2026-11-09",
+  "teams": [
+    {
+      "team_id": "TEAM-S1",
+      "display_name": "North Support"
+    },
+    {
+      "team_id": "TEAM-S2",
+      "display_name": "Northern Support"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "R-007",
+      "display_name": "Ari North",
+      "team_id": "TEAM-S1",
+      "skills": [
+        "EMAIL",
+        "CHAT"
+      ]
+    },
+    {
+      "resource_id": "R-014",
+      "display_name": "Ari Norris",
+      "team_id": "TEAM-S1",
+      "skills": [
+        "CHAT"
+      ]
+    },
+    {
+      "resource_id": "R-021",
+      "display_name": "Bea Vale",
+      "team_id": "TEAM-S2",
+      "skills": [
+        "EMAIL"
+      ]
+    }
+  ],
+  "roster": [
+    {
+      "resource_id": "R-007",
+      "date": "2026-11-09",
+      "available_minutes": 480,
+      "committed_minutes": 180
+    },
+    {
+      "resource_id": "R-007",
+      "date": "2026-11-10",
+      "available_minutes": 420,
+      "committed_minutes": 360
+    },
+    {
+      "resource_id": "R-007",
+      "date": "2026-11-11",
+      "available_minutes": 360,
+      "committed_minutes": 360
+    },
+    {
+      "resource_id": "R-014",
+      "date": "2026-11-09",
+      "available_minutes": 360,
+      "committed_minutes": 120
+    },
+    {
+      "resource_id": "R-014",
+      "date": "2026-11-10",
+      "available_minutes": 480,
+      "committed_minutes": 60
+    },
+    {
+      "resource_id": "R-014",
+      "date": "2026-11-11",
+      "available_minutes": 420,
+      "committed_minutes": 180
+    },
+    {
+      "resource_id": "R-021",
+      "date": "2026-11-09",
+      "available_minutes": 420,
+      "committed_minutes": 300
+    },
+    {
+      "resource_id": "R-021",
+      "date": "2026-11-10",
+      "available_minutes": 360,
+      "committed_minutes": 90
+    },
+    {
+      "resource_id": "R-021",
+      "date": "2026-11-11",
+      "available_minutes": 480,
+      "committed_minutes": 120
+    }
+  ],
+  "work_items": [
+    {
+      "work_item_id": "WI-0008",
+      "team_id": "TEAM-S1",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 180,
+      "earliest_date": "2026-11-09",
+      "due_date": "2026-11-10"
+    },
+    {
+      "work_item_id": "WI-0080",
+      "team_id": "TEAM-S1",
+      "required_skill": "CHAT",
+      "remaining_minutes": 300,
+      "earliest_date": "2026-11-09",
+      "due_date": "2026-11-11"
+    },
+    {
+      "work_item_id": "WI-0201",
+      "team_id": "TEAM-S2",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 240,
+      "earliest_date": "2026-11-10",
+      "due_date": "2026-11-11"
+    },
+    {
+      "work_item_id": "WI-0202",
+      "team_id": "TEAM-S2",
+      "required_skill": "CHAT",
+      "remaining_minutes": 120,
+      "earliest_date": "2026-11-09",
+      "due_date": "2026-11-11"
+    }
+  ]
+}

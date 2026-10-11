@@ -1,0 +1,11 @@
+--- frozen-reference/index.tsx
++++ declared-mutation/index.tsx
+@@ -62,7 +62,7 @@
+    const result:any=await writeFile('./draft.json',JSON.stringify(submitted),{revision:submittedRevision,contentType:'application/json'});
+    if(result?.success && typeof result.revision==='string' && result.revision!==submittedRevision){
+     const confirmed=await readDraft();
+-    if(confirmed.revision===result.revision&&serialized(confirmed.draft)===serialized(submitted)){setAuthority(confirmed.draft);authorityRef.current=confirmed.draft;setRevision(confirmed.revision);setCanWrite(confirmed.canWrite);setBlocked(false);setSaveState('Submitted draft saved and independently re-read; committed work is unchanged.');}
++    if(confirmed.revision===result.revision&&serialized(confirmed.draft)===serialized(submitted)){edit(submitted);setAuthority(confirmed.draft);authorityRef.current=confirmed.draft;setRevision(confirmed.revision);setCanWrite(confirmed.canWrite);setBlocked(false);setSaveState('Submitted draft saved and independently re-read; committed work is unchanged.');}
+     else {setReview(confirmed);setBlocked(true);setSaveState('Save response arrived, but current authority differs; local edits retained for review.');}
+    } else {
+     const code=result?.error?.code||'save_failed';setSaveState(code==='conflict'?'Revision conflict; local edits retained':code==='read_only'?'Read-only refusal; local edits retained':'Save outcome unconfirmed; local edits retained');setMessage(result?.error?.message||'The save outcome has not been confirmed.');setBlocked(true);if(code==='read_only')setCanWrite(false);

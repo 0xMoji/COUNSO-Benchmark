@@ -1,0 +1,262 @@
+{
+  "total_weight": 100,
+  "passed_weight": 5,
+  "failed_weight": 0,
+  "unknown_weight": 95,
+  "evidence_coverage": 0.05,
+  "quality_lower": 5.0,
+  "quality_upper": 100.0,
+  "quality_complete": null,
+  "critical_failures": [],
+  "safety_failures": [],
+  "quality_gate_cap": 100,
+  "unresolved_critical_checks": [
+    "P-E1",
+    "P-E2",
+    "P-M1",
+    "P-M2",
+    "P-H1",
+    "P-H2",
+    "P-H3",
+    "P-H4"
+  ],
+  "unresolved_safety_checks": [],
+  "unknown_check_ids": [
+    "P-E1",
+    "P-E2",
+    "P-E3",
+    "P-M1",
+    "P-M2",
+    "P-M3",
+    "P-H1",
+    "P-H2",
+    "P-H3",
+    "P-H4"
+  ],
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "case_id": "G-UI-EDIT-M1",
+  "checks": [
+    {
+      "id": "P-E0",
+      "kind": "UI_BROWSER",
+      "target": "P-E0",
+      "weight": 5,
+      "critical": false,
+      "safety": false,
+      "scope": "Deliver valid response.json listing all required package files, actual required Frame files, and the public version1 manifest/entrypoint/function format. This is representation/delivery only; no business-critical cap.",
+      "difficulty": "easy",
+      "evidence_mode": "delivery_static",
+      "required_evidence": [
+        "Actual output file hashes/content",
+        "Public response schema and manifest contract"
+      ],
+      "state": "PASS",
+      "reason": "Public response and required package paths delivered"
+    },
+    {
+      "id": "P-E1",
+      "kind": "UI_BROWSER",
+      "target": "P-E1",
+      "weight": 5,
+      "critical": true,
+      "safety": false,
+      "scope": "The provided Frame still displays original resource/day capacity facts and original team/date/search/expand behavior, using source keys. Original sort and actual filtered CSV download are also preserved.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Seed Frame baseline browser contract",
+        "Modified Frame action trace",
+        "Source roster/directory oracle"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-E2",
+      "kind": "UI_BROWSER",
+      "target": "P-E2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "The local plan starts from the actual supplied draft, and capacity/remaining-work previews distinguish tentative allocations from committed work.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual source draft/capacity result",
+        "Visible local rows and numeric preview"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-E3",
+      "kind": "UI_BROWSER",
+      "target": "P-E3",
+      "weight": 5,
+      "critical": false,
+      "safety": false,
+      "scope": "Original keyboard behavior remains usable: resource-row Enter opens details, Escape closes that detail and returns focus, and old controls remain reachable; new interactions do not discard the draft.",
+      "difficulty": "easy",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual browser key events",
+        "Visible details/focus/draft state"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-M1",
+      "kind": "UI_BROWSER",
+      "target": "P-M1",
+      "weight": 15,
+      "critical": true,
+      "safety": false,
+      "scope": "Allocation editing enforces positive 15-minute quantities, eligible skill/team/date, resource/day residual capacity and per-work-item remaining effort; valid local changes update meaningful previews.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual editing actions",
+        "Source-derived independent constraints",
+        "Visible validation/preview and unchanged authoritative committed values"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-M2",
+      "kind": "UI_BROWSER",
+      "target": "P-M2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "An explicit permitted Save persists exactly the submitted valid draft in the controlled store, then reports only that draft save; it does not book resources or claim operational completion. Pending Save prevents duplicate commit; a new read/reopened context restores the confirmed saved draft.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual Save action",
+        "Observed store payload/result and final stored draft",
+        "Visible success bound to submitted snapshot"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-M3",
+      "kind": "UI_BROWSER",
+      "target": "P-M3",
+      "weight": 10,
+      "critical": false,
+      "safety": false,
+      "scope": "Invalid input never reaches an authoritative write; ordinary filtering/reset/detail navigation is reversible and preserves local allocations until an explicit discard.",
+      "difficulty": "medium",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Actual browser actions",
+        "Absence of invalid store writes",
+        "Source/local draft snapshots"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-H1",
+      "kind": "UI_BROWSER",
+      "target": "P-H1",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "A real revision conflict does not auto-overwrite or silently replace local edits. The user can review current authority and explicitly decide what to reapply or discard.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Observed real conflict rejection under verified adapter",
+        "Local draft before/after",
+        "Current authoritative revision/draft",
+        "No unrequested retry with a new revision"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-H2",
+      "kind": "UI_BROWSER",
+      "target": "P-H2",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "Verified read-only capability/rejection is respected. Predeclared read-only disables or refuses Save; a midflight read-only rejection preserves local edits and cannot be bypassed through another path.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Verified SDK/proxy capability binding",
+        "Browser actions",
+        "Request/rejection log",
+        "Unchanged authoritative draft and preserved local state"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-H3",
+      "kind": "UI_BROWSER",
+      "target": "P-H3",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "Temporary failure and delayed acknowledgement preserve current local edits. A success for an older submitted snapshot cannot mark newer unsaved edits as saved or overwrite them. An ambiguous save_failed outcome is reconciled by actual file re-read before a further explicit Save.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Submitted/current local snapshots",
+        "Controlled response ordering",
+        "Actual result and final store state",
+        "Visible dirty/saved/error semantics"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    },
+    {
+      "id": "P-H4",
+      "kind": "UI_BROWSER",
+      "target": "P-H4",
+      "weight": 10,
+      "critical": true,
+      "safety": false,
+      "scope": "The unchanged modified Frame works with unseen same-schema capacities, IDs, skills, dates and drafts; both new planning and all retained original behavior still work.",
+      "difficulty": "hard",
+      "evidence_mode": "browser_actions",
+      "required_evidence": [
+        "Frozen artifact digest equality",
+        "Alternate fixture digest",
+        "Actual browser traces",
+        "Independent original/new behavior oracles"
+      ],
+      "state": "UNKNOWN",
+      "reason": "Actual browser interaction and bound observer receipt not yet supplied"
+    }
+  ],
+  "schema_errors": [],
+  "package_delivery_errors": [],
+  "task_delivery_complete": true,
+  "execution_mode": "frames_proxy",
+  "actual_browser_validation": "UNKNOWN",
+  "validation_start_at": "2026-10-11T03:02:37.078585+00:00",
+  "validation_end_at": "2026-10-11T03:02:37.080084+00:00",
+  "validation_duration_ns": 1490524,
+  "all_required_check_coverage": 0.09090909090909091,
+  "evidence": {
+    "response_sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+    "artifact_sha256": {
+      "response.json": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",
+      "frame/resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+      "frame/index.tsx": "d97f2d9e9ae4718e684899a0ce570a312e906b113434d62f03988e08e3bd9e8f",
+      "frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
+      "frame/manifest.json": "2aa50241effe2e563889837d30969be0b665e291034ff68e936b1e4ae15b452b",
+      "frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c"
+    },
+    "observations_sha256": null
+  },
+  "run_failure_origin": "NONE",
+  "execution_contaminated": false
+}

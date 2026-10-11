@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dashboard_scope_race",
+    "meaning": "Hold a read for scope A, permit a browser change to different scope B, resolve B, then resolve or reject A. Compare actual final view with B."
+  },
+  {
+    "id": "dashboard_retry",
+    "meaning": "Reject the current read with a retryable error, then accept a new browser-triggered retry. Verify request scope, not just a success message."
+  },
+  {
+    "id": "dashboard_valid_selection_refresh",
+    "meaning": "Update source remaining_minutes/as_of while preserving chosen team IDs. Refresh, with selected controls retained and revised derived values."
+  }
+]

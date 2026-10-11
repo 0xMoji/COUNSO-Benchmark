@@ -1,0 +1,13 @@
+--- frozen-reference/index.tsx
++++ declared-mutation/index.tsx
+@@ -33,8 +33,8 @@
+   if(resource.team_id!==work.team_id||!resource.skills.includes(work.required_skill))return 'The resource needs the work item team and required skill.';
+   if(a.date<work.earliest_date||a.date>work.due_date)return 'The allocation date must be within the work item dates.';
+   const key=a.resource_id+'|'+a.date;resourceTotals[key]=(resourceTotals[key]||0)+n;workTotals[a.work_item_id]=(workTotals[a.work_item_id]||0)+n;
+-  if(resourceTotals[key]>roster.available_minutes-roster.committed_minutes)return 'Cumulative planned minutes exceed residual resource/day capacity.';
+-  if(workTotals[a.work_item_id]>work.remaining_minutes)return 'Cumulative planned minutes exceed remaining work.';
++  // deliberate: no cumulative capacity guard
++  // deliberate: no cumulative demand guard
+  }
+  return '';
+ }

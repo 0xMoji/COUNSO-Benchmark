@@ -1,0 +1,10 @@
+{
+  "draft.json": {
+    "revision": "41",
+    "canWrite": true
+  },
+  "resources.json": {
+    "revision": "1",
+    "canWrite": false
+  }
+}

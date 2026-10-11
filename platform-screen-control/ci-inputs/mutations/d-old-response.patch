@@ -1,0 +1,15 @@
+--- frozen-reference/index.tsx
++++ declared-mutation/index.tsx
+@@ -14,10 +14,10 @@
+     current.current=scope;setIntent(scope);setPhase('LOADING');setError('');const id=++requestId.current;
+     try {
+       const reply:any=await callFunction('load-data',scope);
+-      if(id!==requestId.current)return;
++      // deliberate: accept stale function result
+       if(!reply?.snapshot || !reply.scope || !same(reply.scope,scope))throw new Error('Source response does not match the requested scope.');
+       accept(reply.snapshot,scope);
+-    } catch(e:any) {if(id!==requestId.current)return;setPhase('ERROR');setError(e?.message || 'Source read could not be confirmed.');}
++    } catch(e:any) {setPhase('ERROR');setError(e?.message || 'Source read could not be confirmed.');}
+   }
+   async function initialRead() {setPhase('LOADING');setError('');const id=++requestId.current;
+     try {const entry=await readFile('./dataset.json');if(!entry)throw new Error('Initial source is unavailable; no cause has been confirmed.');

@@ -1,0 +1,7 @@
+[project]
+name = "counso-platform-screen"
+version = "0.4.0"
+requires-python = ">=3.10"
+dependencies = []
+[tool.unittest]
+start-directory = "tests"

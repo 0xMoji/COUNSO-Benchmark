@@ -1,0 +1,12 @@
+{
+  "initial": {
+    "resources.json": "a1caba8a966dc1ea29fb9637f615c4bb53bec38dc916608226dd51cd440befad",
+    "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14"
+  },
+  "seed_index": "3c6a29981d6fb558c743d6b79f3414811c960c936bbe0f4ab3705c6f5402d115",
+  "reference_index": "d7e3377367b44d9572362859cb88d2441e12d08fa1ba7c855f81b71e0bdfa08b",
+  "unseen": {
+    "resources.json": "b9f2ed063514b57cc436ef2e2349fd093d4fbf06a077874fcd486dbd7b84990d",
+    "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51"
+  }
+}

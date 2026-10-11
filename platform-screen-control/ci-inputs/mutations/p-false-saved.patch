@@ -1,0 +1,12 @@
+--- frozen-reference/index.tsx
++++ declared-mutation/index.tsx
+@@ -59,7 +59,8 @@
+   if(blocked){setMessage('Review current authority and explicitly choose whether to reapply local edits.');return;}
+   const submitted=normalizedDraft(current.current),submittedRevision=revision;pendingRef.current=true;setPending(true);setMessage('');setSaveState('Saving submitted draft snapshot; newer local edits remain separate.');
+   try {
+-   const result:any=await writeFile('./draft.json',JSON.stringify(submitted),{revision:submittedRevision,contentType:'application/json'});
++   const result:any=await writeFile('./draft.json',JSON.stringify(submitted),{revision:submittedRevision+'0',contentType:'application/json'});
++   setAuthority(submitted);authorityRef.current=submitted;setSaveState('Submitted draft saved');return;
+    if(result?.success && typeof result.revision==='string' && result.revision!==submittedRevision){
+     const confirmed=await readDraft();
+     if(confirmed.revision===result.revision&&serialized(confirmed.draft)===serialized(submitted)){setAuthority(confirmed.draft);authorityRef.current=confirmed.draft;setRevision(confirmed.revision);setCanWrite(confirmed.canWrite);setBlocked(false);setSaveState('Submitted draft saved and independently re-read; committed work is unchanged.');}

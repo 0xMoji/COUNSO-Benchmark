@@ -1,0 +1,16 @@
+{
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v2",
+  "case_id": "G-UI-CREATE-M1",
+  "public_files": {
+    "SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
+    "SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
+    "grading_contract.json": "ae5a6e978089971e782484c54be10bf3ffc2bf1223b29f27d097ab211cb7209d",
+    "inputs/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
+    "inputs/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
+    "inputs/frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
+    "interaction_contract.json": "8d76c07d730fdec16611af93e0688659855e8367ae2eaa5ae0ffc82899eddb28",
+    "prompt.txt": "616b7bd27234c221d317d8c6786aca3e2297c5d4e7534163ad7347594e6db623",
+    "response_schema.json": "f05648b55adde27736149bcb2f4f70fac9c2758c0aeb457d6b744083a32fbdfd",
+    "task_contract.json": "111a9ce8ce2c23d544cf01a8f28aea43227e27b5fa2c53378ebd06dd83bb77cc"
+  }
+}

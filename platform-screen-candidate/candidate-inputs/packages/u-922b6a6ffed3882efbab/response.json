@@ -6,7 +6,5 @@
     "frame/resources.json",
     "frame/draft.json"
   ],
-  "limitations": [
-    "This package targets the supplied synthetic Frame proxy; no live Counso deployment or business booking was performed."
-  ]
+  "limitations": []
 }

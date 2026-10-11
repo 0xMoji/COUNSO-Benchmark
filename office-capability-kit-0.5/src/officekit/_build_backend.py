@@ -12,10 +12,10 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 NAME = "office_capability_kit"
-VERSION = "0.5.1"
+VERSION = "0.5.2"
 DIST_INFO = f"{NAME}-{VERSION}.dist-info"
 ROOT = Path(__file__).resolve().parents[2]
-METADATA = "Metadata-Version: 2.1\nName: office-capability-kit\nVersion: 0.5.1\nSummary: Evidence-typed office fixture runner; not a live model benchmark\nRequires-Python: >=3.11\n\nPrivate development kit. Code and fixture licensing awaits owner approval.\n"
+METADATA = "Metadata-Version: 2.1\nName: office-capability-kit\nVersion: 0.5.2\nSummary: Evidence-typed office fixture runner; not a live model benchmark\nRequires-Python: >=3.11\n\nPrivate development kit. Code and fixture licensing awaits owner approval.\n"
 WHEEL = "Wheel-Version: 1.0\nGenerator: officekit-stdlib-backend\nRoot-Is-Purelib: true\nTag: py3-none-any\n"
 ENTRY = "[console_scripts]\nofficekit = officekit.cli:main\n"
 

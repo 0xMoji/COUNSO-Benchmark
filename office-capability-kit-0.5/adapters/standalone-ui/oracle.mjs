@@ -24,9 +24,27 @@ export function equalRows(actual,expected,keys,{ordered=false}={}) {
  return {status:JSON.stringify(a)===JSON.stringify(e)?'PASS':'FAIL',expected:e,observed:a};
 }
 export function numericFact(observed,expected,unit) {
- if(!observed||observed.status!=='OBSERVED'||observed.text.trim()===''||!Number.isFinite(Number(observed.text)))return {status:'UNKNOWN',reason:'No unambiguous visible numeric output'};
- if(observed.unit.trim()!==unit)return {status:'UNKNOWN',reason:'Displayed unit absent or unsupported'};
- return {status:Math.abs(Number(observed.text)-expected)<1e-9?'PASS':'FAIL',expected,observed:Number(observed.text)};
+ // Decode only a complete scalar, optionally followed by one explicit unit word.
+ // Commas are thousands separators in groups of three; a dot is the decimal mark.
+ // No prefix extraction, locale inference, exponents, coercion or unit conversion.
+ const unknown=reason=>({status:'UNKNOWN',reason});
+ if(!observed||observed.status!=='OBSERVED'||typeof observed.text!=='string'||observed.text_visible===false||typeof expected!=='number'||!Number.isFinite(expected))return unknown('No unambiguous visible numeric output');
+ const match=/^(-?(?:0|[1-9]\d*|[1-9]\d{0,2}(?:,\d{3})+)(?:\.\d+)?)(?:\s+([A-Za-z]+))?$/.exec(observed.text.trim());
+ if(!match)return unknown('No unambiguous visible numeric output');
+ const value=Number(match[1].replaceAll(',',''));
+ if(!Number.isFinite(value))return unknown('No unambiguous visible numeric output');
+ if(typeof unit!=='string'||!unit.trim()||!/^\s*[A-Za-z]+\s*$/.test(unit))return unknown('Displayed unit absent or unsupported');
+ const adjacentText=observed.unit===undefined?'':typeof observed.unit==='string'?observed.unit.trim():null;
+ if(adjacentText===null)return unknown('Displayed unit absent or unsupported');
+ // A neighboring explanation is not a unit declaration. Only the bounded
+ // ticket/hour/minute unit vocabulary can supplement or conflict with a value.
+ const adjacent=/^(?:tickets?|hours?|minutes?)$/.test(adjacentText)?adjacentText:'';
+ if(adjacent&&observed.unit_visible===false)return unknown('Displayed unit absent or unsupported');
+ const inline=match[2]||'';
+ if(inline&&adjacent&&inline!==adjacent)return unknown('Conflicting visible units');
+ const displayedUnit=inline||adjacent;
+ if(displayedUnit!==unit.trim())return unknown('Displayed unit absent or unsupported');
+ return {status:Math.abs(value-expected)<1e-9?'PASS':'FAIL',expected,observed:value};
 }
 export function geometryFact(chart,expected) {
  const names=['OPEN','IN_PROGRESS','WAITING'],axis=chart?.axis||'height';

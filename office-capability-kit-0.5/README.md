@@ -1,4 +1,4 @@
-# office-capability-kit 0.5.1 agent-first development toolkit
+# office-capability-kit 0.5.2 agent-first development toolkit
 
 A platform-independent development toolkit for synthetic office files, local tool transactions and generated standalone interactive web apps. Six tasks are registered: the Python runner implements four office tasks and the Node adapter contains two UI acceptance plans. Deterministic reference and replay providers check the instrument; their results are not model scores.
 
@@ -86,3 +86,26 @@ Atoms use PASS, FAIL or UNKNOWN, fixed weights, typed observations and evidence 
 [SYNTHETIC_INPUTS.md](docs/SYNTHETIC_INPUTS.md) describes the fictional input examples. Public inputs and evaluator controls are separate directories; a shared host/manual handoff provides instruction-level separation, not an OS sandbox. [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) inventories only this package's source files; it excludes itself from hashing.
 
 No project-wide redistribution license has been granted for this development toolkit. [THIRD_PARTY_NOTICES.md](docs/THIRD_PARTY_NOTICES.md) and `licenses/` cover only their named dependencies. [COMPLETION_GATES.md](docs/COMPLETION_GATES.md) describes future verification gates without claiming they have passed.
+
+## Bounded observation corrections in 0.5.2
+
+The standalone browser evaluator accepts narrowly typed visible numbers with
+explicit units in the same value text or a genuinely visible bound unit label.
+Its decimal/thousands grammar is documented alongside the evaluator; ambiguous
+formats and unsupported prose stay `UNKNOWN`. Units are never supplied from an
+expected answer.
+
+Chart measurements may perform ordinary scrolling to place the chart in the
+actual viewport. The evidence records the real pre/post-scroll state and images;
+visibility, hit-testing, stability and common-zero geometry checks still apply.
+Scrolling is a measurement step, not proof of user activation.
+
+Failed browser waits/actions preserve the actual last DOM, PNG, action log and
+trusted tool ledger before teardown whenever capture remains available. Missing
+terminal evidence is reported explicitly. A wait timeout alone does not certify
+a successful or failed business outcome. The successful-empty date probe changes
+the upper bound first, keeping both intermediate intervals valid.
+
+This increment does not alter the six task inputs, scoring weights or gold.
+Earlier observations retain their original version. New browser runs use this
+collector; no earlier unknown observation is silently converted to a pass.

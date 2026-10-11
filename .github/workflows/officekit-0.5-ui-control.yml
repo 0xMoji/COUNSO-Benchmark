@@ -33,7 +33,7 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Offline control checks
-        run: node --test tests/ui/offline.test.mjs tests/ui/http.test.mjs
+        run: node --test tests/ui/*.test.mjs
       - name: Reference through actual official Chrome
         run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --output ui-reference-evidence
       - name: Deliberate wrong-scope control

@@ -6,14 +6,14 @@
       "sha256": "bce70c41a0cb0ffc3b9e638b7ed946f9ff4e99b8e22be3f0403ec88ee699eb01"
     },
     {
-      "bytes": 8754,
+      "bytes": 10049,
       "path": "README.md",
-      "sha256": "2c12972e0481f753acc84834c339836e4a07e41f8dcd4dc62fe526c7c91c9dce"
+      "sha256": "4e2411e5b32797567a0d6b91444b81be56ac67041ea4d4b53a86a76a4e2b5918"
     },
     {
-      "bytes": 8347,
+      "bytes": 9471,
       "path": "adapters/standalone-ui/README.md",
-      "sha256": "0e03efa5e3d754adfec6f29cd6f5cefab361d665bab29bd1ef4f0adc7e3e7fd7"
+      "sha256": "ec2b303fecfef4547b23d480ee12f342c38dac46e4b70692a7c8cdc3f84b0e32"
     },
     {
       "bytes": 4814,
@@ -26,9 +26,9 @@
       "sha256": "634dcc32b72bf19e4ccf16e3d5e664b650a629bb806ecc7017aad883f9eb2996"
     },
     {
-      "bytes": 5619,
+      "bytes": 7776,
       "path": "adapters/standalone-ui/browser-session.mjs",
-      "sha256": "79f606ace710f1ef5b3d606af74e0a48e7f29fc6ad5a4aad96c272d2c2053601"
+      "sha256": "6b2e20a7df53c21fd1cf6ee41eeb63188ee27837b86176784e0d7088265a7f44"
     },
     {
       "bytes": 2859,
@@ -36,14 +36,14 @@
       "sha256": "a69a649c722fb01c316d940fe317e85ecf4cf6277ce1dcf3e7f1cf7c059c80e0"
     },
     {
-      "bytes": 6361,
+      "bytes": 13030,
       "path": "adapters/standalone-ui/controller.mjs",
-      "sha256": "f4bac1bd27452941b54e84de3afc20e4b44f3cc4609d5b79a85bd05d79a512dd"
+      "sha256": "7a0037cd0526e3c148afb78d1c7a321ef63b0b28032ac3a3b3ea7a287f14a534"
     },
     {
-      "bytes": 10323,
+      "bytes": 10407,
       "path": "adapters/standalone-ui/dashboard-probes.mjs",
-      "sha256": "e0b96092ef12c1b33ec8bceccc696b870bfe44a947adf66bcedb067be18af747"
+      "sha256": "cbe13fb687b15268517c9c36fe20adf237aad069bf91fcc500d0bc80a3e1ec6b"
     },
     {
       "bytes": 6500,
@@ -51,14 +51,14 @@
       "sha256": "bc222aae2805f01f9b022c7c721003d6203dbe7e2d3a04e6ce5dbd6ce14022a4"
     },
     {
-      "bytes": 4783,
+      "bytes": 7380,
       "path": "adapters/standalone-ui/observe.mjs",
-      "sha256": "af4d93103b73ffbdf86ac1ec09a0f4e4e6b6b93391d8ddf3d5b85c69d48d4a94"
+      "sha256": "dffb4c373895ad2581bb3e65e1e7bc8c830bdf6799e7d6fbe7bc2141f515e98c"
     },
     {
-      "bytes": 5261,
+      "bytes": 6677,
       "path": "adapters/standalone-ui/oracle.mjs",
-      "sha256": "92169c8af5a537ff3f310b79cdac69cbf8519a5664485b9f31fa437d897be488"
+      "sha256": "0f5b8e0b6f38b21c415eb5138ecef38e23826549e52a06836f51e0f3ec2dae7f"
     },
     {
       "bytes": 2258,
@@ -188,7 +188,7 @@
     {
       "bytes": 350,
       "path": "pyproject.toml",
-      "sha256": "219fa9cf1af171b0cbec821b78c3b79bdbacaa3454f2f2fa1a1ee14f0b6c10b6"
+      "sha256": "a775be87313de3fb218f96ce7b96e2ca3ab9ee3e5161c73bf29efb0338527bbf"
     },
     {
       "bytes": 57,
@@ -263,7 +263,7 @@
     {
       "bytes": 104,
       "path": "src/officekit/__init__.py",
-      "sha256": "f427d3e5cf59b70e5fa34eb9ad503b58dd967f25d8c4a9cac2fb9ca56bcf6efb"
+      "sha256": "ab5d6d24cac10b480f684296ab80e6c8649a6098d51361e3bd41d6f84ab5fe86"
     },
     {
       "bytes": 47,
@@ -273,7 +273,7 @@
     {
       "bytes": 4647,
       "path": "src/officekit/_build_backend.py",
-      "sha256": "f5458e4089710ba4960bc1496e2c7ee68e898d22a7d8135069c7b82052de3d10"
+      "sha256": "cc75379e649de87982516cd77bb919243fc472d4a65f2e0c5ce94ca8eb2e18d8"
     },
     {
       "bytes": 25946,
@@ -556,6 +556,11 @@
       "sha256": "433b0ca6141e804559f6a4cbd046773f3e6b5191fd11e93106b497d796c95c1f"
     },
     {
+      "bytes": 5204,
+      "path": "tests/ui/measurement-preconditions.test.mjs",
+      "sha256": "23cf6ed3877f9bf14ead250565cad299c1dc28edf49076d5b3562af364884974"
+    },
+    {
       "bytes": 43855,
       "path": "tests/ui/offline.test.mjs",
       "sha256": "b5623e9cb34f75f2a6b770f2e2fc431628eddaff0380fa0e56bc6fd4d0a3574a"
@@ -564,13 +569,18 @@
       "bytes": 1506,
       "path": "tests/ui/verify-browser-controls.mjs",
       "sha256": "9ab253e8738f15d9420c81d4ad06496ec629e38d885bf54625bcc3d5241d2f4f"
+    },
+    {
+      "bytes": 20631,
+      "path": "tests/ui/visible-quantity.test.mjs",
+      "sha256": "636c041a06752505223e0496529cc28339ca0e02ec92d76e3ef20101ff35c815"
     }
   ],
   "hash_algorithm": "sha256",
-  "kit_version": "0.5.1",
+  "kit_version": "0.5.2",
   "package": "office-capability-kit",
   "schema_version": 1,
   "scope": "SOURCE_ONLY_AGENT_FIRST_RELEASE",
   "self_excluded": "SOURCE_MANIFEST.json",
-  "version": "0.5.1.dev0"
+  "version": "0.5.2.dev0"
 }

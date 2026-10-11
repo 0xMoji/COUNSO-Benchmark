@@ -45,3 +45,21 @@ Dashboard: baseline source facts; keyboard chart activation; two distinct dates 
 Planner: old capacity/filter/date/search/sort/download/key behavior; actual Add → cumulative preview → explicit Save → new browser document read; invalid Add/edit → valid correction; Remove before Save; real revision conflict → Review → explicit Reapply with remote change or explicit Discard; predeclared/midflight read-only; pending duplicate prevention and delayed A acknowledgement preserving B; ambiguous failure → actual re-read → explicit retry; same app on the fictional transfer fixture. Negative source variant is `late-ack-clears-edits`.
 
 Actual browser acceptance and live-model/native platform integration are unverified. Keep run outputs local. No browser receipt or result history is included in this source package.
+
+### Typed visible quantity grammar (0.5.2)
+
+The value must be one complete signed scalar, with a dot decimal separator and
+optional correctly grouped comma thousands, optionally followed by one explicit
+unit token. Examples: `16 tickets`, `23.25 hours`, `1,234.50 hours`. Scientific
+notation, mixed locale separators, extra quantities and free prose are not
+guessed. A genuinely visible adjacent unit may bind a plain scalar; adjacent
+explanatory prose cannot override an inline unit. Conflicting unit declarations
+stay UNKNOWN. No expected mapping unit is copied into the observation.
+
+Plain chart counts can share one actual visible zero-origin range/unit label
+only when all mapped counts, plots and glyphs belong to the same nearest named
+visible chart section/region. Its raw range label and all member identities are
+recorded. Duplicate labels, hidden evidence, cross-region associations and
+unsupported range grammar stay UNKNOWN. A zero-size glyph on its declared axis
+can establish DOM membership only; it cannot certify paint or plotted values.
+The independent chart geometry and visibility checks are unchanged.

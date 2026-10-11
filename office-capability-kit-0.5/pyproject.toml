@@ -1,0 +1,15 @@
+[build-system]
+requires = []
+build-backend = "officekit._build_backend"
+backend-path = ["src"]
+
+[project]
+name = "office-capability-kit"
+version = "0.5.0.dev0"
+description = "Portable, evidence-typed office task fixture runner. Not a live model benchmark."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+officekit = "officekit.cli:main"
+

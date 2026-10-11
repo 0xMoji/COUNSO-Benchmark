@@ -1,0 +1,12 @@
+{
+  "delivery_date": "2026-11-16",
+  "order_id": "PO-204",
+  "quantity": 12,
+  "source_id": "tracker-204",
+  "status": "unverified_manual_entry",
+  "total": {
+    "amount": "1200.00",
+    "currency": "USD"
+  },
+  "updated_at": "2026-10-09T13:00:00Z"
+}

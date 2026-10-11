@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "error_class": {
+      "enum": [
+        "BUSINESS_FACT",
+        "FUNCTIONAL_RESULT",
+        "PROTOCOL_INTEGRATION",
+        "SAFETY_EFFECT",
+        "INSTRUMENTATION",
+        "UNKNOWN_SOURCE"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "error_class",
+    "message"
+  ],
+  "title": "Officekit classified error",
+  "type": "object"
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "error_class": {
+            "type": "null"
+          },
+          "evidence": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "FAIL",
+              "UNKNOWN"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "error_class": {
+            "enum": [
+              "BUSINESS_FACT",
+              "FUNCTIONAL_RESULT",
+              "PROTOCOL_INTEGRATION",
+              "SAFETY_EFFECT",
+              "INSTRUMENTATION",
+              "UNKNOWN_SOURCE"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "critical_possible": {
+      "type": "boolean"
+    },
+    "depends_on": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "dimension": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "error_class": {
+      "anyOf": [
+        {
+          "enum": [
+            "BUSINESS_FACT",
+            "FUNCTIONAL_RESULT",
+            "PROTOCOL_INTEGRATION",
+            "SAFETY_EFFECT",
+            "INSTRUMENTATION",
+            "UNKNOWN_SOURCE"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence": {
+      "items": {
+        "$ref": "evidence.schema.json"
+      },
+      "type": "array"
+    },
+    "expected": {},
+    "id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "observed": {},
+    "required_probe_ids": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN"
+      ]
+    },
+    "weight": {
+      "exclusiveMinimum": 0,
+      "maximum": 100,
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "dimension",
+    "weight",
+    "status",
+    "error_class",
+    "expected",
+    "observed",
+    "evidence",
+    "required_probe_ids",
+    "depends_on"
+  ],
+  "title": "Typed factual atom",
+  "type": "object"
+}

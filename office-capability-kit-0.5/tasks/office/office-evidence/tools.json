@@ -1,0 +1,29 @@
+{
+  "live_service_equivalence": "UNKNOWN",
+  "tools": [
+    {
+      "arguments": {
+        "file": "public input filename"
+      },
+      "description": "Read a supplied JSON document and return its data plus source hash.",
+      "effect": "READ_ONLY",
+      "name": "files.read_input"
+    },
+    {
+      "arguments": {
+        "content": "UTF-8 text",
+        "path": "outputs/<allowed filename>"
+      },
+      "description": "Write one allowed deliverable and return path, SHA-256 and byte size.",
+      "effect": "FILE_WRITE",
+      "name": "files.write"
+    },
+    {
+      "arguments": {},
+      "description": "List deliverables actually written in this run.",
+      "effect": "READ_ONLY",
+      "name": "files.list"
+    }
+  ],
+  "transport": "officekit-local-mock-v1"
+}

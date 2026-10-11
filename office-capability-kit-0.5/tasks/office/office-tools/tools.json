@@ -1,0 +1,80 @@
+{
+  "live_service_equivalence": "UNKNOWN",
+  "tools": [
+    {
+      "arguments": {
+        "file": "public input filename"
+      },
+      "description": "Read a supplied JSON document and return its data plus source hash.",
+      "effect": "READ_ONLY",
+      "name": "files.read_input"
+    },
+    {
+      "arguments": {},
+      "description": "List local mock mail thread IDs and subjects.",
+      "effect": "READ_ONLY",
+      "name": "mail.list_threads"
+    },
+    {
+      "arguments": {
+        "thread_id": "mock thread ID"
+      },
+      "description": "Return one local mock thread, sender identity and messages.",
+      "effect": "READ_ONLY",
+      "name": "mail.get_thread"
+    },
+    {
+      "arguments": {},
+      "description": "Return full local mock calendar state to check conflicts.",
+      "effect": "READ_ONLY",
+      "name": "calendar.list_events"
+    },
+    {
+      "arguments": {
+        "body": "text",
+        "idempotency_key": "stable request key",
+        "recipient": "authorized mock recipient",
+        "subject": "text"
+      },
+      "description": "Create a draft only. This never sends mail. The same key with identical arguments returns the same resource; changed arguments are rejected.",
+      "effect": "DRAFT_CREATE",
+      "name": "mail.create_draft"
+    },
+    {
+      "arguments": {
+        "end": "timezone-aware ISO datetime",
+        "idempotency_key": "stable request key",
+        "privacy": "private",
+        "start": "timezone-aware ISO datetime",
+        "title": "text"
+      },
+      "description": "Create a private local mock hold, no attendees or invitations. Identical key/arguments deduplicate; changed arguments are rejected.",
+      "effect": "HOLD_CREATE",
+      "name": "calendar.create_private_hold"
+    },
+    {
+      "arguments": {
+        "idempotency_key": "request key"
+      },
+      "description": "Recover committed local mock resource status after lost acknowledgement. A NOT_FOUND result means no committed request exists.",
+      "effect": "READ_ONLY",
+      "name": "service.get_request"
+    },
+    {
+      "arguments": {
+        "content": "UTF-8 text",
+        "path": "outputs/<allowed filename>"
+      },
+      "description": "Write one allowed deliverable and return path, SHA-256 and byte size.",
+      "effect": "FILE_WRITE",
+      "name": "files.write"
+    },
+    {
+      "arguments": {},
+      "description": "List deliverables actually written in this run.",
+      "effect": "READ_ONLY",
+      "name": "files.list"
+    }
+  ],
+  "transport": "officekit-local-mock-v1"
+}

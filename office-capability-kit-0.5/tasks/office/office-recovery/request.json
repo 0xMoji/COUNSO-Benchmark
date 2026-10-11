@@ -1,0 +1,20 @@
+{
+  "body": "Please confirm the delivery review for PO-204 at 10:30 UTC on 2026-11-18.",
+  "candidate_slots": [
+    {
+      "end": "2026-11-18T10:30:00+00:00",
+      "start": "2026-11-18T10:00:00+00:00"
+    },
+    {
+      "end": "2026-11-18T11:00:00+00:00",
+      "start": "2026-11-18T10:30:00+00:00"
+    }
+  ],
+  "draft_key": "draft-order-204",
+  "hold_key": "hold-order-204",
+  "hold_title": "PO-204 delivery review",
+  "recipient": "lia@harborsupplies.example",
+  "source_id": "request-204",
+  "subject": "Confirm PO-204 delivery review",
+  "thread_id": "thread-204"
+}

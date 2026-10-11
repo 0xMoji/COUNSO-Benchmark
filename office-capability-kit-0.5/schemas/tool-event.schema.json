@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted": {
+      "type": "boolean"
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "committed": {
+      "type": "boolean"
+    },
+    "duration_ns": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "const": "UNKNOWN"
+        }
+      ]
+    },
+    "effect": {
+      "enum": [
+        "NONE",
+        "READ_ONLY",
+        "FILE_WRITE",
+        "DRAFT_CREATE",
+        "HOLD_CREATE",
+        "MAIL_SEND",
+        "PUBLIC_EVENT_CREATE"
+      ]
+    },
+    "error": {
+      "$ref": "error.schema.json"
+    },
+    "error_class": {
+      "anyOf": [
+        {
+          "enum": [
+            "BUSINESS_FACT",
+            "FUNCTIONAL_RESULT",
+            "PROTOCOL_INTEGRATION",
+            "SAFETY_EFFECT",
+            "INSTRUMENTATION",
+            "UNKNOWN_SOURCE"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "finished_at": {
+      "type": "string"
+    },
+    "result": {
+      "type": "object"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "REJECTED",
+        "ACCEPTED",
+        "COMMITTED_ACK_LOST"
+      ]
+    },
+    "timing_provenance": {
+      "const": "EXTERNAL_UNVERIFIED"
+    },
+    "tool": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "tool",
+    "arguments",
+    "started_at",
+    "finished_at",
+    "duration_ns",
+    "effect",
+    "status",
+    "error_class",
+    "accepted",
+    "committed"
+  ],
+  "title": "Local tool invocation and observed effect",
+  "type": "object"
+}

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "D-E0",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "Deliver response.json, index.html and declared local JavaScript/CSS assets. This adapter does not require a native platform manifest.",
+    "browser_action_plan": [
+      "Read delivered response/schema and actual package files",
+      "Validate declared manifest and required source files"
+    ],
+    "required_evidence": [
+      "Actual output file hashes/content",
+      "Public response schema and manifest contract"
+    ],
+    "evidence_mode": "delivery_static",
+    "dimension": "delivery",
+    "critical": false
+  },
+  {
+    "id": "D-E1",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "Open a real usable standalone web app and load the supplied controlled source; the table displays source IDs, team identity, status, due time and remaining effort accurately.",
+    "browser_action_plan": [
+      "Open standalone app",
+      "Wait for observed successful source load",
+      "Inspect visible table and record IDs"
+    ],
+    "required_evidence": [
+      "Actual browser trace",
+      "Controlled source request/result log",
+      "Visible DOM/record values"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-E2",
+    "difficulty": "easy",
+    "weight": 10,
+    "public_requirement": "Metrics and chart represent the same displayed record scope using the public active/overdue/effort rules and explicit units.",
+    "browser_action_plan": [
+      "Read baseline visible metrics and chart",
+      "Inspect plotted values and their status associations"
+    ],
+    "required_evidence": [
+      "Source-derived independent oracle",
+      "Visible metrics/plot evidence"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-E3",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "Filters and interactive chart targets are usable with keyboard focus and activation; locators resolve to visible controls.",
+    "browser_action_plan": [
+      "Tab/Shift+Tab through controls",
+      "Activate a status bar with keyboard",
+      "Return to the prior scope"
+    ],
+    "required_evidence": [
+      "Actual key-event/browser trace",
+      "Visible focus and resulting values"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": false
+  },
+  {
+    "id": "D-M1",
+    "difficulty": "medium",
+    "weight": 15,
+    "public_requirement": "Team/status/date and status-chart selection update the record table, metrics and chart together without merging similar names or changing source identities.",
+    "browser_action_plan": [
+      "Select nondefault source team/status",
+      "Change created-date start between two distinct dates with genuinely different source record scope",
+      "Activate status chart with real click/key",
+      "Independently verify each completed table/metrics/chart scope"
+    ],
+    "required_evidence": [
+      "Browser action trace",
+      "Query/source scope binding",
+      "Independent row/metric/chart oracles"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-M2",
+    "difficulty": "medium",
+    "weight": 10,
+    "public_requirement": "Reset restores manifest defaults and the current source snapshot, with consistent controls and results; it cannot restore stale hardcoded original totals.",
+    "browser_action_plan": [
+      "Change filters",
+      "Reset",
+      "Refresh after a source update",
+      "Reset again"
+    ],
+    "required_evidence": [
+      "Actual reset/refresh actions",
+      "Provider revision log",
+      "Visible controls/results"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-M3",
+    "difficulty": "medium",
+    "weight": 10,
+    "public_requirement": "A valid scope with no matching records produces an empty table, zero relevant metrics and truthful empty chart/state; it is distinct from a source error.",
+    "browser_action_plan": [
+      "Choose an oracle-derived empty scope through visible filters",
+      "Verify empty state",
+      "Reset or change back"
+    ],
+    "required_evidence": [
+      "Actual browser actions",
+      "Successful empty source result",
+      "Visible table/metric/chart/state evidence"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-H1",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "Late results or errors from an older scope cannot replace newer intent/results, labels or error state.",
+    "browser_action_plan": [
+      "Start load for scope A",
+      "Change to scope B while A is pending",
+      "Resolve B first",
+      "Resolve or reject A afterward"
+    ],
+    "required_evidence": [
+      "Deterministic controlled response-order log",
+      "Browser trace at every completion",
+      "Displayed-scope/revision and visible values"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-H2",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "A recoverable source failure keeps intended filters and truthfully identifies prior data; Retry performs a new permitted read for current intent and updates the real view on success.",
+    "browser_action_plan": [
+      "Fail a current read",
+      "Inspect useful error and prior-view identification",
+      "Activate Retry",
+      "Deliver successful response"
+    ],
+    "required_evidence": [
+      "Failed and retry source requests/results",
+      "Actual Retry click",
+      "Visible before/after state and record/metric values"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "D-H3",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "Filter selections and valid user view intent survive refresh, error/retry and rerender; source updates do not silently reset still-valid selections or mislabel prior results.",
+    "browser_action_plan": [
+      "Select nondefault source team/status and genuinely changed date",
+      "Refresh an updated snapshot preserving those IDs",
+      "Cause and recover from current-intent read failure",
+      "Reinspect actual controls, source revision and scope"
+    ],
+    "required_evidence": [
+      "Actual browser sequence",
+      "Snapshot revisions",
+      "Visible retained selections/scope"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": false
+  },
+  {
+    "id": "D-H4",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "The same frozen app works with unseen records, IDs, names, dates and amounts in the same schema, including colliding display labels, without code edits or hardcoded outputs.",
+    "browser_action_plan": [
+      "In a fresh browser context serve unseen fixture B to the same built app",
+      "Replay baseline and selected filtering/empty/reset probes"
+    ],
+    "required_evidence": [
+      "Frozen app digest equality",
+      "Alternate source fixture digest",
+      "Actual browser actions and independent alternate-data oracles"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  }
+]

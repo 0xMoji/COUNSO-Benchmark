@@ -1,0 +1,16 @@
+{
+  "name": "officekit-standalone-ui-acceptance",
+  "version": "0.5.0-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test:offline": "node ../../tests/ui/offline.test.mjs",
+    "test:browser": "node browser-acceptance.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.57.0"
+  }
+}

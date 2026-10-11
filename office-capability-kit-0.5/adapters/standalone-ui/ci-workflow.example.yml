@@ -1,0 +1,55 @@
+# Preparation only. Parent must review/authorize publication and the synthetic CI run.
+name: Standalone synthetic UI controls
+# Standalone source is packaged under this unique new prefix. If the coordinator
+# chooses another prefix, change paths/defaults/working-directory together once.
+on:
+  push:
+    branches: ['eval/counso-ui-probe']
+    paths:
+      - 'office-capability-kit-0.5/**'
+      - '.github/workflows/officekit-0.5-ui-control.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: office-capability-kit-0.5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify official runner Chrome and lockfile
+        run: |
+          node --version
+          google-chrome --version
+          test -f adapters/standalone-ui/package-lock.json
+      - name: Install exact official Playwright package only
+        working-directory: office-capability-kit-0.5/adapters/standalone-ui
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Offline control checks
+        run: node --test tests/ui/offline.test.mjs tests/ui/http.test.mjs
+      - name: Reference through actual official Chrome
+        run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --output ui-reference-evidence
+      - name: Deliberate wrong-scope control
+        run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-dashboard --mutation wrong-scope --output ui-wrong-scope-evidence
+      - name: Deliberate old-response control
+        run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-dashboard --mutation old-response --output ui-old-response-evidence
+      - name: Deliberate wrong-geometry control
+        run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-dashboard --mutation wrong-geometry --output ui-wrong-geometry-evidence
+      - name: Deliberate late-ack control
+        run: node adapters/standalone-ui/browser-acceptance.mjs --execute-ci --case ui-planner --mutation late-ack-clears-edits --output ui-late-ack-evidence
+      - name: Verify expected source-controls result patterns
+        run: node tests/ui/verify-browser-controls.mjs ui-reference-evidence ui-wrong-scope-evidence ui-old-response-evidence ui-wrong-geometry-evidence ui-late-ack-evidence
+      - name: Preserve synthetic browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: officekit-0.5-synthetic-ui-evidence
+          path: office-capability-kit-0.5/ui-*-evidence/
+          if-no-files-found: error
+          retention-days: 7

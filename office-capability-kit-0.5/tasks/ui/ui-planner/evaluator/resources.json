@@ -1,0 +1,205 @@
+{
+  "schema_version": "resource-plan-1",
+  "snapshot_revision": "DEMO-EVALUATOR-ROSTER-NOV12",
+  "default_date": "2029-11-12",
+  "teams": [
+    {
+      "team_id": "DEMO-PE-ASH",
+      "display_name": "Ash Service"
+    },
+    {
+      "team_id": "DEMO-PE-ASHES",
+      "display_name": "Ash Services"
+    },
+    {
+      "team_id": "DEMO-PE-CYPRESS",
+      "display_name": "Cypress Queue"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "DEMO-PE-RESA",
+      "display_name": "Leah Rowe",
+      "team_id": "DEMO-PE-ASH",
+      "skills": [
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PE-RESB",
+      "display_name": "Lea Rowe",
+      "team_id": "DEMO-PE-ASH",
+      "skills": [
+        "CHAT",
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PE-RESC",
+      "display_name": "Emil Pike",
+      "team_id": "DEMO-PE-ASHES",
+      "skills": [
+        "CHAT"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PE-RESD",
+      "display_name": "Ari Vale",
+      "team_id": "DEMO-PE-CYPRESS",
+      "skills": [
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PE-RESE",
+      "display_name": "Arie Vale",
+      "team_id": "DEMO-PE-CYPRESS",
+      "skills": [
+        "EMAIL",
+        "CHAT"
+      ]
+    }
+  ],
+  "roster": [
+    {
+      "resource_id": "DEMO-PE-RESA",
+      "date": "2029-11-12",
+      "available_minutes": 465,
+      "committed_minutes": 120
+    },
+    {
+      "resource_id": "DEMO-PE-RESA",
+      "date": "2029-11-13",
+      "available_minutes": 360,
+      "committed_minutes": 300
+    },
+    {
+      "resource_id": "DEMO-PE-RESA",
+      "date": "2029-11-15",
+      "available_minutes": 510,
+      "committed_minutes": 450
+    },
+    {
+      "resource_id": "DEMO-PE-RESB",
+      "date": "2029-11-12",
+      "available_minutes": 420,
+      "committed_minutes": 210
+    },
+    {
+      "resource_id": "DEMO-PE-RESB",
+      "date": "2029-11-13",
+      "available_minutes": 495,
+      "committed_minutes": 270
+    },
+    {
+      "resource_id": "DEMO-PE-RESB",
+      "date": "2029-11-15",
+      "available_minutes": 450,
+      "committed_minutes": 0
+    },
+    {
+      "resource_id": "DEMO-PE-RESC",
+      "date": "2029-11-12",
+      "available_minutes": 540,
+      "committed_minutes": 435
+    },
+    {
+      "resource_id": "DEMO-PE-RESC",
+      "date": "2029-11-13",
+      "available_minutes": 0,
+      "committed_minutes": 0
+    },
+    {
+      "resource_id": "DEMO-PE-RESC",
+      "date": "2029-11-15",
+      "available_minutes": 480,
+      "committed_minutes": 195
+    },
+    {
+      "resource_id": "DEMO-PE-RESD",
+      "date": "2029-11-12",
+      "available_minutes": 375,
+      "committed_minutes": 180
+    },
+    {
+      "resource_id": "DEMO-PE-RESD",
+      "date": "2029-11-13",
+      "available_minutes": 450,
+      "committed_minutes": 390
+    },
+    {
+      "resource_id": "DEMO-PE-RESD",
+      "date": "2029-11-15",
+      "available_minutes": 525,
+      "committed_minutes": 195
+    },
+    {
+      "resource_id": "DEMO-PE-RESE",
+      "date": "2029-11-12",
+      "available_minutes": 495,
+      "committed_minutes": 315
+    },
+    {
+      "resource_id": "DEMO-PE-RESE",
+      "date": "2029-11-13",
+      "available_minutes": 405,
+      "committed_minutes": 405
+    },
+    {
+      "resource_id": "DEMO-PE-RESE",
+      "date": "2029-11-15",
+      "available_minutes": 465,
+      "committed_minutes": 285
+    }
+  ],
+  "work_items": [
+    {
+      "work_item_id": "DEMO-PE-WORK-MAIL-ASH",
+      "team_id": "DEMO-PE-ASH",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 225,
+      "earliest_date": "2029-11-12",
+      "due_date": "2029-11-13"
+    },
+    {
+      "work_item_id": "DEMO-PE-WORK-CHAT-ASH",
+      "team_id": "DEMO-PE-ASH",
+      "required_skill": "CHAT",
+      "remaining_minutes": 540,
+      "earliest_date": "2029-11-12",
+      "due_date": "2029-11-15"
+    },
+    {
+      "work_item_id": "DEMO-PE-WORK-CHAT-ASHES",
+      "team_id": "DEMO-PE-ASHES",
+      "required_skill": "CHAT",
+      "remaining_minutes": 360,
+      "earliest_date": "2029-11-13",
+      "due_date": "2029-11-15"
+    },
+    {
+      "work_item_id": "DEMO-PE-WORK-MAIL-ASHES",
+      "team_id": "DEMO-PE-ASHES",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 285,
+      "earliest_date": "2029-11-12",
+      "due_date": "2029-11-15"
+    },
+    {
+      "work_item_id": "DEMO-PE-WORK-CLEAR-CYPRESS",
+      "team_id": "DEMO-PE-CYPRESS",
+      "required_skill": "CHAT",
+      "remaining_minutes": 0,
+      "earliest_date": "2029-11-12",
+      "due_date": "2029-11-15"
+    },
+    {
+      "work_item_id": "DEMO-PE-WORK-MAIL-CYPRESS",
+      "team_id": "DEMO-PE-CYPRESS",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 150,
+      "earliest_date": "2029-11-12",
+      "due_date": "2029-11-13"
+    }
+  ]
+}

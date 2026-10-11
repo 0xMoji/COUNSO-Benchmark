@@ -1,0 +1,202 @@
+{
+  "schema_version": "resource-plan-1",
+  "snapshot_revision": "DEMO-PUBLIC-ROSTER-APR24",
+  "default_date": "2028-04-24",
+  "teams": [
+    {
+      "team_id": "DEMO-PP-WILLOW",
+      "display_name": "Willow Service"
+    },
+    {
+      "team_id": "DEMO-PP-WILLOWS",
+      "display_name": "Willow Services"
+    },
+    {
+      "team_id": "DEMO-PP-REED",
+      "display_name": "Reed Service"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "DEMO-PP-RESA",
+      "display_name": "Tessa Finch",
+      "team_id": "DEMO-PP-WILLOW",
+      "skills": [
+        "CHAT",
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PP-RESB",
+      "display_name": "Tess Finch",
+      "team_id": "DEMO-PP-WILLOW",
+      "skills": [
+        "EMAIL"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PP-RESC",
+      "display_name": "Oren Lake",
+      "team_id": "DEMO-PP-WILLOWS",
+      "skills": [
+        "CHAT"
+      ]
+    },
+    {
+      "resource_id": "DEMO-PP-RESD",
+      "display_name": "Orin Lake",
+      "team_id": "DEMO-PP-REED",
+      "skills": [
+        "EMAIL"
+      ]
+    }
+  ],
+  "roster": [
+    {
+      "resource_id": "DEMO-PP-RESA",
+      "date": "2028-04-24",
+      "available_minutes": 510,
+      "committed_minutes": 240
+    },
+    {
+      "resource_id": "DEMO-PP-RESA",
+      "date": "2028-04-25",
+      "available_minutes": 420,
+      "committed_minutes": 300
+    },
+    {
+      "resource_id": "DEMO-PP-RESA",
+      "date": "2028-04-26",
+      "available_minutes": 480,
+      "committed_minutes": 480
+    },
+    {
+      "resource_id": "DEMO-PP-RESA",
+      "date": "2028-04-27",
+      "available_minutes": 390,
+      "committed_minutes": 285
+    },
+    {
+      "resource_id": "DEMO-PP-RESB",
+      "date": "2028-04-24",
+      "available_minutes": 540,
+      "committed_minutes": 150
+    },
+    {
+      "resource_id": "DEMO-PP-RESB",
+      "date": "2028-04-25",
+      "available_minutes": 450,
+      "committed_minutes": 225
+    },
+    {
+      "resource_id": "DEMO-PP-RESB",
+      "date": "2028-04-26",
+      "available_minutes": 510,
+      "committed_minutes": 0
+    },
+    {
+      "resource_id": "DEMO-PP-RESB",
+      "date": "2028-04-27",
+      "available_minutes": 360,
+      "committed_minutes": 195
+    },
+    {
+      "resource_id": "DEMO-PP-RESC",
+      "date": "2028-04-24",
+      "available_minutes": 390,
+      "committed_minutes": 225
+    },
+    {
+      "resource_id": "DEMO-PP-RESC",
+      "date": "2028-04-25",
+      "available_minutes": 480,
+      "committed_minutes": 285
+    },
+    {
+      "resource_id": "DEMO-PP-RESC",
+      "date": "2028-04-26",
+      "available_minutes": 450,
+      "committed_minutes": 330
+    },
+    {
+      "resource_id": "DEMO-PP-RESC",
+      "date": "2028-04-27",
+      "available_minutes": 510,
+      "committed_minutes": 165
+    },
+    {
+      "resource_id": "DEMO-PP-RESD",
+      "date": "2028-04-24",
+      "available_minutes": 0,
+      "committed_minutes": 0
+    },
+    {
+      "resource_id": "DEMO-PP-RESD",
+      "date": "2028-04-25",
+      "available_minutes": 420,
+      "committed_minutes": 270
+    },
+    {
+      "resource_id": "DEMO-PP-RESD",
+      "date": "2028-04-26",
+      "available_minutes": 540,
+      "committed_minutes": 210
+    },
+    {
+      "resource_id": "DEMO-PP-RESD",
+      "date": "2028-04-27",
+      "available_minutes": 450,
+      "committed_minutes": 390
+    }
+  ],
+  "work_items": [
+    {
+      "work_item_id": "DEMO-PP-WORK-CHAT-WILLOW",
+      "team_id": "DEMO-PP-WILLOW",
+      "required_skill": "CHAT",
+      "remaining_minutes": 480,
+      "earliest_date": "2028-04-24",
+      "due_date": "2028-04-26"
+    },
+    {
+      "work_item_id": "DEMO-PP-WORK-MAIL-WILLOW",
+      "team_id": "DEMO-PP-WILLOW",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 165,
+      "earliest_date": "2028-04-24",
+      "due_date": "2028-04-27"
+    },
+    {
+      "work_item_id": "DEMO-PP-WORK-CHAT-HOLLOW",
+      "team_id": "DEMO-PP-WILLOWS",
+      "required_skill": "CHAT",
+      "remaining_minutes": 315,
+      "earliest_date": "2028-04-25",
+      "due_date": "2028-04-27"
+    },
+    {
+      "work_item_id": "DEMO-PP-WORK-MAIL-HOLLOW",
+      "team_id": "DEMO-PP-WILLOWS",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 210,
+      "earliest_date": "2028-04-24",
+      "due_date": "2028-04-27"
+    },
+    {
+      "work_item_id": "DEMO-PP-WORK-MAIL-REED",
+      "team_id": "DEMO-PP-REED",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 195,
+      "earliest_date": "2028-04-26",
+      "due_date": "2028-04-27"
+    },
+    {
+      "work_item_id": "DEMO-PP-WORK-CLEAR-REED",
+      "team_id": "DEMO-PP-REED",
+      "required_skill": "EMAIL",
+      "remaining_minutes": 0,
+      "earliest_date": "2028-04-24",
+      "due_date": "2028-04-27"
+    }
+  ]
+}

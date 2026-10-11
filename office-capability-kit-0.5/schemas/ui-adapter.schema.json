@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "actual_browser_executed": {
+      "type": "boolean"
+    },
+    "atoms": {
+      "items": {
+        "$ref": "atom.schema.json"
+      },
+      "type": "array"
+    },
+    "case_id": {
+      "enum": [
+        "ui-dashboard",
+        "ui-planner"
+      ]
+    },
+    "schema_version": {
+      "const": "officekit-ui-report-1"
+    },
+    "tested_level": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "tested_level",
+    "actual_browser_executed",
+    "atoms"
+  ],
+  "title": "UI adapter typed atoms; importing claims alone cannot prove browser execution",
+  "type": "object"
+}

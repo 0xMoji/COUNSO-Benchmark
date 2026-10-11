@@ -1,0 +1,24 @@
+{
+  "source_case_id": "G-UI-EDIT-C1",
+  "rules": [
+    "Source resource_id, team_id, work_item_id and existing allocation_id are literal identity keys; similar human names do not merge entities.",
+    "Residual committed capacity for a resource/day equals available_minutes minus committed_minutes. Existing original capacity columns continue to show this source fact.",
+    "Tentative draft allocations are separate from committed work. Their cumulative minutes for each resource/day cannot exceed residual committed capacity.",
+    "Cumulative draft minutes for each work item cannot exceed its source remaining_minutes, including lines already in the draft.",
+    "Each allocation requires a source resource in the work item team, a matching required_skill, and a roster date within earliest_date through due_date inclusive.",
+    "Allocation minutes must be positive finite integers divisible by 15. Reject invalid quantity; do not silently round or change the user request.",
+    "View filters/search/reset/expanded details do not discard local draft lines. The plan editor date and old view date may differ; neither silently changes the other.",
+    "An explicit permitted Save submits the selected local snapshot under the actual verified revision/capability contract. A successful draft save does not alter committed_minutes or book a resource.",
+    "Invalid local input is not an authoritative store write. A predeclared read-only source must disable or refuse Save. A real midflight read-only rejection is respected without an alternate bypass.",
+    "A revision conflict preserves local edits and current authoritative state. Show a useful conflict/review path; never auto-retry with a new revision to overwrite authority or silently replace local edits.",
+    "Reviewing the latest authoritative draft/revision does not itself discard local edits or submit them. Reapply/discard requires a new explicit user decision.",
+    "A late success acknowledges exactly the snapshot submitted. Newer local edits remain unsaved and cannot be overwritten or marked saved by that older acknowledgement.",
+    "Failure retains local edits and a truthful dirty/error state; retrying a write requires explicit user Save and the verified currently permitted revision, not an automatic fallback.",
+    "Preserve original resource-ID sort and actual CSV export of the filtered/sorted capacity view; the export is a local download, not an external transmission.",
+    "Load the existing ./draft.json and use its exact returned revision and canWrite. Save only that existing file in the same Frame package; null read results do not authorize creating replacement files or guessing a permission/error cause.",
+    "While a save is pending, repeated clicks cannot create duplicate commits. Success requires a confirmed new revision and independently verified stored contents; a success label alone is not persistence evidence.",
+    "save_failed is an unconfirmed save outcome, not proof that authority is unchanged. Retain local edits and re-read the actual file to determine whether the submitted snapshot was stored before an explicit further Save. Never auto-retry blindly or overwrite using a constructed revision.",
+    "draft_id identifies the existing source draft and remains unchanged. Editing an existing allocation preserves its allocation_id; explicit removal and adding a new line may use a new stable unique local key. Identity rules are source-bound, not hidden generated-ID expectations."
+  ],
+  "scope": "synthetic standalone adapter; native platform UNKNOWN"
+}

@@ -1,0 +1,236 @@
+{
+  "schema_version": "ui-probes-1",
+  "case_id": "ui-planner",
+  "new_task": false,
+  "platform": "generic-standalone-web",
+  "tested_level": "BROWSER_PREPARED_NOT_EXECUTED",
+  "probe_plan": [
+    {
+      "probe_id": "baseline",
+      "action_effect_state_ledger_chain": [
+        "successful planner_source and draft_read",
+        "original capacity and actual existing allocations",
+        "separate tentative capacity/work previews"
+      ],
+      "dependents": [
+        "P-E1",
+        "P-E2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "original-view",
+      "action_effect_state_ledger_chain": [
+        "change team and date to nondefault distinct values",
+        "actual source-ID sort reverses multiple visible rows",
+        "actual search reduces source-ID/name view",
+        "source-correct filtered capacity rows",
+        "actual filtered CSV download bytes",
+        "Reset preserves local allocations"
+      ],
+      "dependents": [
+        "P-E1",
+        "P-M3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "keyboard",
+      "action_effect_state_ledger_chain": [
+        "focus resource detail control",
+        "Enter opens detail",
+        "Escape closes and returns focus",
+        "unchanged local allocations"
+      ],
+      "dependents": [
+        "P-E3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "add-save",
+      "action_effect_state_ledger_chain": [
+        "explicit Add with valid source-derived resource/work/date/minutes",
+        "local row and cumulative previews",
+        "explicit Save",
+        "accepted exact payload and commit ledger",
+        "unchanged committed business source",
+        "confirmed saved draft read in fresh context"
+      ],
+      "dependents": [
+        "P-E2",
+        "P-M1",
+        "P-M2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "invalid-correct",
+      "action_effect_state_ledger_chain": [
+        "actual Add invalid 17 minutes",
+        "visible validation and no save request",
+        "correct to valid 30 minutes and Add",
+        "edit line invalid then correct valid",
+        "valid cumulative preview"
+      ],
+      "dependents": [
+        "P-M1",
+        "P-M3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "remove",
+      "action_effect_state_ledger_chain": [
+        "actual Remove existing/added local line",
+        "changed preview",
+        "authority unchanged before explicit Save"
+      ],
+      "dependents": [
+        "P-M3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "conflict-reapply",
+      "action_effect_state_ledger_chain": [
+        "local actual edit",
+        "host advances synthetic authority revision/content",
+        "explicit Save detects fresh-read revision change or stale-save rejection",
+        "local retained with no commit/auto-overwrite",
+        "Review latest actual read is nonmutating",
+        "explicit Reapply plus separately explicit Save, or explicit Discard with no Save"
+      ],
+      "dependents": [
+        "P-H1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "conflict-discard",
+      "action_effect_state_ledger_chain": [
+        "local actual edit",
+        "host advances synthetic authority revision/content",
+        "explicit Save detects fresh-read revision change or stale-save rejection",
+        "local retained with no commit/auto-overwrite",
+        "Review latest actual read is nonmutating",
+        "explicit Reapply plus separately explicit Save, or explicit Discard with no Save"
+      ],
+      "dependents": [
+        "P-H1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "readonly",
+      "action_effect_state_ledger_chain": [
+        "source canWrite=false observed",
+        "Save disabled/refused",
+        "no draft_save request"
+      ],
+      "dependents": [
+        "P-H2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "midflight-readonly",
+      "action_effect_state_ledger_chain": [
+        "Save started while writable",
+        "host flips read-only while pending",
+        "read_only rejection",
+        "local retained no commit/no alternate attempt"
+      ],
+      "dependents": [
+        "P-H2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "late-ack",
+      "action_effect_state_ledger_chain": [
+        "Save snapshot A held",
+        "edit snapshot B during pending",
+        "repeated Save prevented",
+        "release A success",
+        "ledger stored A",
+        "visible local B remains dirty"
+      ],
+      "dependents": [
+        "P-H3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "ambiguous-failure",
+      "action_effect_state_ledger_chain": [
+        "Save fails save_failed",
+        "local preserved",
+        "further Save refused pending reconciliation",
+        "Review actual draft_read",
+        "explicit Reapply then fresh explicit Save"
+      ],
+      "dependents": [
+        "P-H3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "transfer",
+      "action_effect_state_ledger_chain": [
+        "fresh context same app digest",
+        "existing unseen fixture",
+        "original controls/valid-invalid/Add-Save replay"
+      ],
+      "dependents": [
+        "P-H4"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    }
+  ],
+  "atom_probe_dependencies": {
+    "P-E0": [
+      "delivery"
+    ],
+    "P-E1": [
+      "baseline",
+      "original-view"
+    ],
+    "P-E2": [
+      "baseline",
+      "add-save"
+    ],
+    "P-E3": [
+      "keyboard"
+    ],
+    "P-M1": [
+      "invalid-correct",
+      "add-save"
+    ],
+    "P-M2": [
+      "add-save"
+    ],
+    "P-M3": [
+      "invalid-correct",
+      "original-view",
+      "remove"
+    ],
+    "P-H1": [
+      "conflict-reapply",
+      "conflict-discard"
+    ],
+    "P-H2": [
+      "readonly",
+      "midflight-readonly"
+    ],
+    "P-H3": [
+      "late-ack",
+      "ambiguous-failure"
+    ],
+    "P-H4": [
+      "transfer"
+    ]
+  },
+  "geometry_observation": "Real stable explicitly mapped linear horizontal/vertical plot and solid filled glyph geometry, explicit source counts including zeros, no unsupported clipping/masking/transform, actual hit visibility for nonzero glyphs; re-capture DOM/geometry across screenshot boundary. PNG is not automatically visually inspected.",
+  "safety_scope": "Synthetic draft only. Real service/platform safety UNKNOWN."
+}

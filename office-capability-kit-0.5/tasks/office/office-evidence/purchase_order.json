@@ -1,0 +1,13 @@
+{
+  "delivery_date": "2026-11-15",
+  "document_status": "signed_final",
+  "order_id": "PO-204",
+  "quantity": 12,
+  "signed_at": "2026-10-10T09:00:00Z",
+  "source_id": "po-final-204",
+  "total": {
+    "amount": "1200.00",
+    "currency": "USD"
+  },
+  "vendor": "Harbor Supplies"
+}

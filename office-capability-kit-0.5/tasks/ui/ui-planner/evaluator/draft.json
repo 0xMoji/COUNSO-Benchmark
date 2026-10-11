@@ -1,0 +1,33 @@
+{
+  "draft_id": "DEMO-PE-DRAFT-THICKET",
+  "allocations": [
+    {
+      "allocation_id": "DEMO-PE-ALLOC-DAWN",
+      "work_item_id": "DEMO-PE-WORK-MAIL-ASH",
+      "resource_id": "DEMO-PE-RESA",
+      "date": "2029-11-12",
+      "minutes": 90
+    },
+    {
+      "allocation_id": "DEMO-PE-ALLOC-DUSK",
+      "work_item_id": "DEMO-PE-WORK-MAIL-ASH",
+      "resource_id": "DEMO-PE-RESA",
+      "date": "2029-11-13",
+      "minutes": 15
+    },
+    {
+      "allocation_id": "DEMO-PE-ALLOC-QUEUE",
+      "work_item_id": "DEMO-PE-WORK-CHAT-ASH",
+      "resource_id": "DEMO-PE-RESB",
+      "date": "2029-11-13",
+      "minutes": 105
+    },
+    {
+      "allocation_id": "DEMO-PE-ALLOC-TRIAGE",
+      "work_item_id": "DEMO-PE-WORK-CHAT-ASHES",
+      "resource_id": "DEMO-PE-RESC",
+      "date": "2029-11-15",
+      "minutes": 75
+    }
+  ]
+}

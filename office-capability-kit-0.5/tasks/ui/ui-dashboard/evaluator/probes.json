@@ -1,0 +1,189 @@
+{
+  "schema_version": "ui-probes-1",
+  "case_id": "ui-dashboard",
+  "new_task": false,
+  "platform": "generic-standalone-web",
+  "tested_level": "BROWSER_PREPARED_NOT_EXECUTED",
+  "probe_plan": [
+    {
+      "probe_id": "baseline",
+      "action_effect_state_ledger_chain": [
+        "open app",
+        "successful dashboard_source then dashboard_load",
+        "visible source rows/metrics/status chart"
+      ],
+      "dependents": [
+        "D-E1",
+        "D-E2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "keyboard",
+      "action_effect_state_ledger_chain": [
+        "focus actual chart button",
+        "press Enter",
+        "source request with status different from all statuses",
+        "scoped visible rows/metrics/chart"
+      ],
+      "dependents": [
+        "D-E2",
+        "D-E3",
+        "D-M1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "changed-date",
+      "action_effect_state_ledger_chain": [
+        "select nondefault team",
+        "change created_from to distinct source-derived date with different rows",
+        "accepted read for new scope",
+        "visible controls and complete scope facts"
+      ],
+      "dependents": [
+        "D-M1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "updated-source",
+      "action_effect_state_ledger_chain": [
+        "start from nondefault team/status/date",
+        "host updates snapshot revision and amount",
+        "click Refresh",
+        "accepted new revision",
+        "retained controls and revised visible facts"
+      ],
+      "dependents": [
+        "D-M2",
+        "D-H3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "reset",
+      "action_effect_state_ledger_chain": [
+        "click Reset after source update",
+        "accepted default scope against current snapshot",
+        "default controls and current source facts"
+      ],
+      "dependents": [
+        "D-M2"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "empty",
+      "action_effect_state_ledger_chain": [
+        "fill future date interval different from original",
+        "successful accepted source read",
+        "empty table zero metrics zero chart and visible empty status"
+      ],
+      "dependents": [
+        "D-M3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "race-success",
+      "action_effect_state_ledger_chain": [
+        "hold old team A read",
+        "select team B",
+        "release B first",
+        "visible B facts",
+        "release old A success",
+        "visible B unchanged"
+      ],
+      "dependents": [
+        "D-H1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "race-error",
+      "action_effect_state_ledger_chain": [
+        "hold old team A read",
+        "select team B",
+        "release B first",
+        "visible B facts",
+        "reject old A",
+        "visible B remains ready with no new error"
+      ],
+      "dependents": [
+        "D-H1"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "retry",
+      "action_effect_state_ledger_chain": [
+        "fail current read",
+        "visible previous scope and retained intended filters",
+        "click Retry",
+        "fresh current-scope request",
+        "visible source-derived facts"
+      ],
+      "dependents": [
+        "D-H2",
+        "D-H3"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    },
+    {
+      "probe_id": "transfer",
+      "action_effect_state_ledger_chain": [
+        "fresh context",
+        "identical app digest",
+        "existing unseen same-schema fixture",
+        "baseline/changed-date/empty/reset replay"
+      ],
+      "dependents": [
+        "D-H4"
+      ],
+      "missing_action_policy": "PROTOCOL_INTEGRATION diagnostic; dependent source assertions UNKNOWN; unrelated probes retained"
+    }
+  ],
+  "atom_probe_dependencies": {
+    "D-E0": [
+      "delivery"
+    ],
+    "D-E1": [
+      "baseline"
+    ],
+    "D-E2": [
+      "baseline",
+      "keyboard"
+    ],
+    "D-E3": [
+      "keyboard"
+    ],
+    "D-M1": [
+      "changed-date",
+      "keyboard"
+    ],
+    "D-M2": [
+      "updated-source",
+      "reset"
+    ],
+    "D-M3": [
+      "empty"
+    ],
+    "D-H1": [
+      "race-success",
+      "race-error"
+    ],
+    "D-H2": [
+      "retry"
+    ],
+    "D-H3": [
+      "updated-source",
+      "retry"
+    ],
+    "D-H4": [
+      "transfer"
+    ]
+  },
+  "geometry_observation": "Real stable explicitly mapped linear horizontal/vertical plot and solid filled glyph geometry, explicit source counts including zeros, no unsupported clipping/masking/transform, actual hit visibility for nonzero glyphs; re-capture DOM/geometry across screenshot boundary. PNG is not automatically visually inspected.",
+  "safety_scope": "Synthetic draft only. Real service/platform safety UNKNOWN."
+}

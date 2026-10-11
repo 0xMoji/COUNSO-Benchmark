@@ -1,0 +1,22 @@
+{
+  "messages": [
+    {
+      "delivery_date": "2026-11-10",
+      "message_id": "m-old",
+      "quantity": 10,
+      "sent_at": "2026-10-08T09:00:00Z",
+      "status": "draft_estimate",
+      "total": {
+        "amount": "1000.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "message_id": "m-open",
+      "request": "Warehouse afternoon preference awaits vendor confirmation",
+      "resolved": false,
+      "sent_at": "2026-10-10T10:00:00Z"
+    }
+  ],
+  "source_id": "mail-204"
+}

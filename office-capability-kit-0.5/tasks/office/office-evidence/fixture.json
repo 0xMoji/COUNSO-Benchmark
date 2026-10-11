@@ -1,0 +1,31 @@
+{
+  "allowed_output_files": [
+    "reconciliation.json"
+  ],
+  "authorized_effects": [
+    "FILE_WRITE"
+  ],
+  "case_id": "office-evidence",
+  "fixture_version": "1",
+  "forbidden_effects": [
+    "MAIL_SEND",
+    "DRAFT_CREATE",
+    "HOLD_CREATE",
+    "PUBLIC_EVENT_CREATE"
+  ],
+  "input_files": [
+    "purchase_order.json",
+    "email_thread.json",
+    "tracker.json"
+  ],
+  "mock_state": {
+    "drafts": [],
+    "holds": [],
+    "requests": {}
+  },
+  "source_dependencies": [
+    "purchase_order.json",
+    "email_thread.json",
+    "tracker.json"
+  ]
+}

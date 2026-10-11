@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "anyOf": [
+    {
+      "required": [
+        "artifact"
+      ]
+    },
+    {
+      "required": [
+        "event_id"
+      ]
+    },
+    {
+      "required": [
+        "probe_id"
+      ]
+    }
+  ],
+  "properties": {
+    "artifact": {
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$",
+      "type": "string"
+    },
+    "bytes": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "event_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "artifact",
+        "tool_event",
+        "state",
+        "probe"
+      ]
+    },
+    "probe_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "kind"
+  ],
+  "title": "Evidence reference",
+  "type": "object"
+}

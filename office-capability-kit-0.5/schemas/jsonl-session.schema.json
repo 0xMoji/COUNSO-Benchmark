@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "type": "object"
+        },
+        "op": {
+          "const": "tool"
+        },
+        "tool": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "op",
+        "tool",
+        "arguments"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "op": {
+          "const": "final"
+        },
+        "result": {
+          "$ref": "candidate.schema.json"
+        }
+      },
+      "required": [
+        "op",
+        "result"
+      ],
+      "type": "object"
+    }
+  ],
+  "title": "JSONL tool-feedback request"
+}

@@ -1,0 +1,11 @@
+transaction_id,version,region,currency,amount,status
+t001,1, North ,USD,100.00,posted
+t001,2,north,USD,110.00,posted
+t002,1,South,USD,50.00,posted
+t003,1,North,USD,-20.00,posted
+t004,1,South,USD,40.00,cancelled
+t005,1,East,EUR,80.00,posted
+t006,1, east ,EUR,20.10,posted
+t007,1,South,USD,not_a_number,posted
+t008,1,North,USD,0.00,posted
+t009,1,West,USD,15.25,pending

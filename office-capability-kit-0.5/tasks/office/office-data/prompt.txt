@@ -1,0 +1,6 @@
+Reconcile the provided transactions.csv into three delivered files:
+- outputs/region_totals.csv with columns currency,region,net_amount,row_count
+- outputs/anomalies.csv with columns transaction_id,version,reason
+- outputs/summary.json with input_rows,latest_rows,included_rows,superseded_rows,excluded_status_rows,anomaly_rows,totals_by_currency
+For each transaction_id keep the highest integer version. Count older versions as superseded. Only status=posted contributes. For posted rows, invalid decimal amounts are anomalies with reason=invalid_amount. Normalize region by trimming whitespace and title-casing. Group by currency and normalized region. Preserve currencies; do not use exchange rates. Sum signed amounts using decimal arithmetic. Use exact two-decimal string amounts and deterministic currency/region ordering. Count all selected posted valid rows including zero amounts. List each delivered file in your structured final result. Do not send mail or create calendar events.
+This is a synthetic office fixture. Tools and service state are local simulations; no live account or model is involved.

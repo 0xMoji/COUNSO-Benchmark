@@ -1,0 +1,158 @@
+{
+  "schema_version": "support-snapshot-1",
+  "snapshot_revision": "DEMO-CEDAR-SNAPSHOT-NOV10",
+  "as_of": "2029-11-10T17:20:00Z",
+  "default_created_from": "2029-11-03",
+  "default_created_to": "2029-11-10",
+  "teams": [
+    {
+      "team_id": "DEMO-DE-CEDAR",
+      "display_name": "Cedar Lane"
+    },
+    {
+      "team_id": "DEMO-DE-CEDARS",
+      "display_name": "Cedar Lanes"
+    },
+    {
+      "team_id": "DEMO-DE-BRIAR",
+      "display_name": "Briar Desk"
+    }
+  ],
+  "tickets": [
+    {
+      "ticket_id": "DEMO-DE-CASE-ROBIN",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "WAITING",
+      "priority": "P1",
+      "created_at": "2029-11-04T05:45:00Z",
+      "due_at": "2029-11-06T20:35:00Z",
+      "remaining_minutes": 135
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-SABLE",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "IN_PROGRESS",
+      "priority": "P2",
+      "created_at": "2029-11-03T00:00:00Z",
+      "due_at": "2029-11-10T17:20:00Z",
+      "remaining_minutes": 150
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-TANSY",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "CLOSED",
+      "priority": "P3",
+      "created_at": "2029-11-06T18:40:00Z",
+      "due_at": "2029-11-07T14:00:00Z",
+      "remaining_minutes": 0
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-UMBER",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "WAITING",
+      "priority": "P2",
+      "created_at": "2029-11-07T16:05:00Z",
+      "due_at": "2029-11-08T06:30:00Z",
+      "remaining_minutes": 270
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-VERVAIN",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "OPEN",
+      "priority": "P3",
+      "created_at": "2029-11-09T23:59:59Z",
+      "due_at": "2029-11-12T08:45:00Z",
+      "remaining_minutes": 45
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-WREN",
+      "team_id": "DEMO-DE-CEDARS",
+      "status": "IN_PROGRESS",
+      "priority": "P1",
+      "created_at": "2029-11-05T13:25:00Z",
+      "due_at": "2029-11-10T17:19:59Z",
+      "remaining_minutes": 195
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-XENIA",
+      "team_id": "DEMO-DE-CEDARS",
+      "status": "IN_PROGRESS",
+      "priority": "P3",
+      "created_at": "2029-11-08T08:55:00Z",
+      "due_at": "2029-11-09T15:25:00Z",
+      "remaining_minutes": 75
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-YARROW",
+      "team_id": "DEMO-DE-CEDARS",
+      "status": "OPEN",
+      "priority": "P2",
+      "created_at": "2029-11-06T07:15:00Z",
+      "due_at": "2029-11-10T17:20:01Z",
+      "remaining_minutes": 60
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-ZINNIA",
+      "team_id": "DEMO-DE-CEDARS",
+      "status": "CLOSED",
+      "priority": "P1",
+      "created_at": "2029-11-04T21:10:00Z",
+      "due_at": "2029-11-05T12:05:00Z",
+      "remaining_minutes": 0
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-ACORN",
+      "team_id": "DEMO-DE-BRIAR",
+      "status": "OPEN",
+      "priority": "P1",
+      "created_at": "2029-11-07T09:50:00Z",
+      "due_at": "2029-11-07T12:40:00Z",
+      "remaining_minutes": 180
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-BRAMBLE",
+      "team_id": "DEMO-DE-BRIAR",
+      "status": "WAITING",
+      "priority": "P3",
+      "created_at": "2029-11-05T11:35:00Z",
+      "due_at": "2029-11-10T17:20:00Z",
+      "remaining_minutes": 0
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-CLOVER",
+      "team_id": "DEMO-DE-BRIAR",
+      "status": "OPEN",
+      "priority": "P2",
+      "created_at": "2029-11-08T14:15:00Z",
+      "due_at": "2029-11-10T10:00:00Z",
+      "remaining_minutes": 105
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-DAHLIA",
+      "team_id": "DEMO-DE-BRIAR",
+      "status": "CLOSED",
+      "priority": "P2",
+      "created_at": "2029-11-03T19:10:00Z",
+      "due_at": "2029-11-06T09:25:00Z",
+      "remaining_minutes": 0
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-EIDER",
+      "team_id": "DEMO-DE-CEDARS",
+      "status": "WAITING",
+      "priority": "P1",
+      "created_at": "2029-11-02T23:59:59Z",
+      "due_at": "2029-11-05T10:15:00Z",
+      "remaining_minutes": 345
+    },
+    {
+      "ticket_id": "DEMO-DE-CASE-FOXGLOVE",
+      "team_id": "DEMO-DE-CEDAR",
+      "status": "IN_PROGRESS",
+      "priority": "P3",
+      "created_at": "2029-11-10T00:00:00Z",
+      "due_at": "2029-11-11T18:35:00Z",
+      "remaining_minutes": 285
+    }
+  ]
+}

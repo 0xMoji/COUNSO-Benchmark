@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "atoms": {
+      "items": {
+        "$ref": "atom.schema.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "coverage_percent": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "denominator": {
+      "const": 100
+    },
+    "dimensions": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "denominator": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "earned": {
+            "minimum": 0,
+            "type": "number"
+          },
+          "score_lower": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          "score_upper": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          "unknown_weight": {
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "earned",
+          "denominator",
+          "unknown_weight",
+          "score_lower",
+          "score_upper"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "earned": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "judgment": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN"
+      ]
+    },
+    "quality_complete": {
+      "type": "boolean"
+    },
+    "score_lower": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "score_upper": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "unknown_weight": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    }
+  },
+  "required": [
+    "denominator",
+    "earned",
+    "unknown_weight",
+    "score_lower",
+    "score_upper",
+    "coverage_percent",
+    "quality_complete",
+    "judgment",
+    "dimensions",
+    "atoms"
+  ],
+  "title": "Fixed-denominator result, unknown weights are not renormalized",
+  "type": "object"
+}

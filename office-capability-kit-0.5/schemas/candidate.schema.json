@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "completed_actions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string"
+          },
+          "resource_id": {
+            "type": "string"
+          },
+          "tool": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tool",
+          "event_id",
+          "resource_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "facts": {
+      "type": "object"
+    },
+    "text": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifacts",
+    "completed_actions",
+    "facts",
+    "text"
+  ],
+  "title": "Structured provider final, never proof of tool effects",
+  "type": "object"
+}

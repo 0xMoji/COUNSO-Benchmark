@@ -1,0 +1,26 @@
+{
+  "draft_id": "DEMO-PP-DRAFT-ORCHARD",
+  "allocations": [
+    {
+      "allocation_id": "DEMO-PP-ALLOC-MORNING",
+      "work_item_id": "DEMO-PP-WORK-CHAT-WILLOW",
+      "resource_id": "DEMO-PP-RESA",
+      "date": "2028-04-24",
+      "minutes": 90
+    },
+    {
+      "allocation_id": "DEMO-PP-ALLOC-INBOX",
+      "work_item_id": "DEMO-PP-WORK-MAIL-WILLOW",
+      "resource_id": "DEMO-PP-RESB",
+      "date": "2028-04-24",
+      "minutes": 45
+    },
+    {
+      "allocation_id": "DEMO-PP-ALLOC-AFTERNOON",
+      "work_item_id": "DEMO-PP-WORK-CHAT-HOLLOW",
+      "resource_id": "DEMO-PP-RESC",
+      "date": "2028-04-25",
+      "minutes": 60
+    }
+  ]
+}

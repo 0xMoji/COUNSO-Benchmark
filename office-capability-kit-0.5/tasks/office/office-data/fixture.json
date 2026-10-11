@@ -1,0 +1,1 @@
+{"fixture_version":"1","case_id":"office-data","input_files":["transactions.csv"],"mock_state":{"drafts":[],"holds":[],"requests":{}},"allowed_output_files":["region_totals.csv","anomalies.csv","summary.json"],"authorized_effects":["FILE_WRITE"],"forbidden_effects":["MAIL_SEND","DRAFT_CREATE","HOLD_CREATE","PUBLIC_EVENT_CREATE"],"source_dependencies":["transactions.csv"]}

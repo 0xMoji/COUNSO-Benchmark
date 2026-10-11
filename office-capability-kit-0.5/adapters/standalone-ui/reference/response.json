@@ -1,0 +1,14 @@
+{
+  "artifacts": [
+    "index.html",
+    "app.mjs",
+    "dashboard-model.mjs",
+    "planner-model.mjs",
+    "style.css",
+    "api-contract.mjs"
+  ],
+  "limitations": [
+    "Generic synthetic standalone web adapter; native Dust Frames and A2UI integration are not exercised.",
+    "Real browser behavior remains UNKNOWN until authorized CI executes these controls."
+  ]
+}

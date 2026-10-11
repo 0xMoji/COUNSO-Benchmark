@@ -1,0 +1,226 @@
+[
+  {
+    "id": "P-E0",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "Deliver response.json, index.html and declared local JavaScript/CSS assets. This adapter does not require a native platform manifest.",
+    "browser_action_plan": [
+      "Read delivered response/schema and actual package files",
+      "Validate declared manifest and required source files"
+    ],
+    "required_evidence": [
+      "Actual output file hashes/content",
+      "Public response schema and manifest contract"
+    ],
+    "evidence_mode": "delivery_static",
+    "dimension": "delivery",
+    "critical": false
+  },
+  {
+    "id": "P-E1",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "The standalone capacity view implements the public baseline: literal resource/team/date facts, team/date/search/reset, details, source-ID sort and actual filtered CSV download. No native/old UI pixel or protocol preservation is claimed.",
+    "browser_action_plan": [
+      "Replay original baseline view and filters",
+      "Search a similar-name pair and an exact resource ID",
+      "Expand details",
+      "Change sort order",
+      "Download and independently inspect actual CSV"
+    ],
+    "required_evidence": [
+      "Public standalone capacity-view baseline behavior contract",
+      "Modified standalone app action trace",
+      "Source roster/directory oracle"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-E2",
+    "difficulty": "easy",
+    "weight": 10,
+    "public_requirement": "The local plan starts from the actual supplied draft, and capacity/remaining-work previews distinguish tentative allocations from committed work.",
+    "browser_action_plan": [
+      "Read initial draft",
+      "Inspect committed versus planned load and remaining quantities"
+    ],
+    "required_evidence": [
+      "Actual source draft/capacity result",
+      "Visible local rows and numeric preview"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-E3",
+    "difficulty": "easy",
+    "weight": 5,
+    "public_requirement": "Visible resource-detail controls support Enter to open, Escape to close and return focus. Keyboard-reachable view/editor controls preserve the local draft.",
+    "browser_action_plan": [
+      "Focus actual resource details control",
+      "Press Enter to open",
+      "Press Escape in detail",
+      "Verify focus return and unchanged local allocations"
+    ],
+    "required_evidence": [
+      "Actual browser key events",
+      "Visible details/focus/draft state"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": false
+  },
+  {
+    "id": "P-M1",
+    "difficulty": "medium",
+    "weight": 15,
+    "public_requirement": "Allocation editing enforces positive 15-minute quantities, eligible skill/team/date, resource/day residual capacity and per-work-item remaining effort; valid local changes update meaningful previews.",
+    "browser_action_plan": [
+      "Add an actual valid local allocation",
+      "Observe cumulative capacity and work previews",
+      "Enter invalid 17-minute quantity",
+      "Correct that actual local input to valid 30/45-minute quantity",
+      "Verify explicit identity/skill/team/date and aggregate constraints"
+    ],
+    "required_evidence": [
+      "Actual editing actions",
+      "Source-derived independent constraints",
+      "Visible validation/preview and unchanged authoritative committed values"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-M2",
+    "difficulty": "medium",
+    "weight": 10,
+    "public_requirement": "An explicit permitted Save persists exactly the submitted valid draft in the controlled store, then reports only that draft save; it does not book resources or claim operational completion. Pending Save prevents duplicate commit; a new read/reopened context restores the confirmed saved draft.",
+    "browser_action_plan": [
+      "Modify local allocations",
+      "Activate Save when source capability permits it",
+      "Deliver actual successful result",
+      "Inspect authoritative draft and UI receipt",
+      "Attempt repeated Save while pending",
+      "Re-read saved draft in a fresh view"
+    ],
+    "required_evidence": [
+      "Actual Save action",
+      "Observed store payload/result and final stored draft",
+      "Visible success bound to submitted snapshot"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-M3",
+    "difficulty": "medium",
+    "weight": 10,
+    "public_requirement": "Invalid input never reaches an authoritative write; ordinary filtering/reset/detail navigation is reversible and preserves local allocations until an explicit discard.",
+    "browser_action_plan": [
+      "Try invalid local Add/edit",
+      "Correct invalid input to valid",
+      "Explicitly Remove a local line before Save",
+      "Change view/date/search/reset/details",
+      "Inspect preserved local draft and unchanged authoritative store"
+    ],
+    "required_evidence": [
+      "Actual browser actions",
+      "Absence of invalid store writes",
+      "Source/local draft snapshots"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": false
+  },
+  {
+    "id": "P-H1",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "A real revision conflict does not auto-overwrite or silently replace local edits. The user can review current authority and explicitly decide what to reapply or discard.",
+    "browser_action_plan": [
+      "Edit locally then externally advance synthetic authority revision/content",
+      "Explicit Save detects a fresh-read preflight revision change or an actual stale-save conflict",
+      "Observe preserved local edits with no automatic overwrite",
+      "Explicitly Review latest authority without changing local edits",
+      "Explicitly Reapply local delta then separately Save, or explicitly Discard with no automatic Save"
+    ],
+    "required_evidence": [
+      "Actual explicit Save and source read/write request/result ledger",
+      "Observed preflight revision change or stale-save rejection",
+      "Local draft before/after conflict and Review",
+      "Current authoritative revision/draft",
+      "Explicit Reapply/Discard action and no unrequested overwrite",
+      "New explicit Save accepted only after Reapply"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-H2",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "Verified read-only capability/rejection is respected. Predeclared read-only disables or refuses Save; a midflight read-only rejection preserves local edits and cannot be bypassed through another path.",
+    "browser_action_plan": [
+      "Flip verified source capability to read-only before Save",
+      "Inspect refusal",
+      "Separately reject a save initiated while writable after a capability change"
+    ],
+    "required_evidence": [
+      "Observed synthetic authority draft_read canWrite/revision contract",
+      "Browser actions",
+      "Request/rejection log",
+      "Unchanged authoritative draft and preserved local state"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-H3",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "Temporary failure and delayed acknowledgement preserve current local edits. A success for an older submitted snapshot cannot mark newer unsaved edits as saved or overwrite them. An ambiguous save_failed outcome is reconciled by actual file re-read before a further explicit Save.",
+    "browser_action_plan": [
+      "Save snapshot A",
+      "Edit local snapshot B while response A is pending",
+      "Deliver A success or temporary failure",
+      "Inspect dirty state and exact stored snapshot",
+      "Retry only after explicit new user Save"
+    ],
+    "required_evidence": [
+      "Submitted/current local snapshots",
+      "Controlled response ordering",
+      "Actual result and final store state",
+      "Visible dirty/saved/error semantics"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  },
+  {
+    "id": "P-H4",
+    "difficulty": "hard",
+    "weight": 10,
+    "public_requirement": "The unchanged modified standalone web app works with unseen same-schema capacities, IDs, skills, dates and drafts; both new planning and all retained original behavior still work.",
+    "browser_action_plan": [
+      "Serve unseen fixture B in a fresh context to the same built artifact",
+      "Replay original filters/search/keyboard",
+      "Replay valid/invalid planning and permitted draft Save"
+    ],
+    "required_evidence": [
+      "Frozen artifact digest equality",
+      "Alternate fixture digest",
+      "Actual browser traces",
+      "Independent original/new behavior oracles"
+    ],
+    "evidence_mode": "browser_actions",
+    "dimension": "ui_functional",
+    "critical": true
+  }
+]

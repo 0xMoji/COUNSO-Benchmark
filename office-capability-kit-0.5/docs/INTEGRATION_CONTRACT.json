@@ -1,0 +1,42 @@
+{
+  "version": "0.5.0-dev",
+  "status": "SOURCE_ONLY_DEVELOPMENT_TOOLKIT",
+  "scope": "Portable office tools/file delivery and two standalone generative UI tasks; six cases only",
+  "boundary": {
+    "package_content": "SOURCE_SCHEMAS_SYNTHETIC_INPUTS_DOCS_LOCK_TESTS_CI_TEMPLATE_ONLY",
+    "precomputed_run_results_included": false,
+    "default_model_api_calls": 0,
+    "credential_creation": false,
+    "browser_execution": "UNVERIFIED_UNTIL_ACTUAL_AUTHORIZED_EXECUTION",
+    "live_model_capability": "UNKNOWN",
+    "native_platform_integration": "UNKNOWN"
+  },
+  "result_contract": {
+    "facts_are_typed": "PASS/FAIL/UNKNOWN with source artifact and actual event references; missing evidence unknown, malformed output separate delivery fail",
+    "error_classes": [
+      "BUSINESS_FACT",
+      "FUNCTIONAL_RESULT",
+      "PROTOCOL_INTEGRATION",
+      "SAFETY_EFFECT",
+      "INSTRUMENTATION",
+      "UNKNOWN_SOURCE"
+    ],
+    "proven_forbidden_read_only_query": "protocol violation, not unsafe side effect or universal quality0",
+    "pure_natural_language_completed_action": "never critical from regex; bind visible affirmative current result and accepted tool ledger or independent full-state review",
+    "dimensions_fixed_denominator": true,
+    "missing_weights_not_renormalized": true,
+    "quality_not_complete_when_unknown": true,
+    "rank_stability": "UNKNOWN_NOT_MEASURED"
+  },
+  "candidate_context": "Public task prompt, fixture, tool descriptions consistent per-task, no evaluator gold/controls; provider is one model with fixed budget",
+  "portable_cli_milestone": "python -m officekit run --provider reference --case office-data --output <fresh-dir>; exact artifacts, ledger and typed report; optional real provider interfaces documented with live capability UNKNOWN until tested",
+  "ui_testing": "Actual browser UI events and stable final output/ledger; no code-only PASS; accessibility-visible role/name primary, mapping failure separate integration; source-dependent business assertions only after actual action completed; all needed probes explicit in report",
+  "selected_sequences": [
+    "actual change to different date",
+    "nondefault selection retained across source update",
+    "invalid\u2192valid local edit correction",
+    "explicit conflict Reapply and Discard",
+    "actual add/removal before save",
+    "tool idempotent state recovery and file delivery"
+  ]
+}

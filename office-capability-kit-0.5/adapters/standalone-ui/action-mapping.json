@@ -1,0 +1,205 @@
+{
+  "schema_version": "standalone-actions-1",
+  "optional": true,
+  "scope": "Visible accessibility controls and semantic columns. Alternative legitimate names/columns can be mapped; absent mapping is an integration defect, not a material business error.",
+  "dashboard": {
+    "team": {
+      "role": "combobox",
+      "name": "Team"
+    },
+    "created_from": {
+      "label": "Created from"
+    },
+    "created_to": {
+      "label": "Created to"
+    },
+    "reset": {
+      "role": "button",
+      "name": "Reset filters"
+    },
+    "refresh": {
+      "role": "button",
+      "name": "Refresh data"
+    },
+    "retry": {
+      "role": "button",
+      "name": "Retry load"
+    },
+    "chart_status": {
+      "role": "button",
+      "name": "Select {status}"
+    },
+    "status_filter": {
+      "role": "checkbox",
+      "name": "{status}"
+    },
+    "tickets": {
+      "role": "table",
+      "name": "Tickets",
+      "columns": {
+        "ticket_id": "Ticket ID",
+        "team_id": "Team ID",
+        "status": "Status",
+        "due_at": "Due time UTC",
+        "remaining_minutes": "Remaining minutes"
+      }
+    },
+    "metrics": {
+      "ticket_count": {
+        "label": "Ticket count",
+        "unit": "tickets"
+      },
+      "active_count": {
+        "label": "Active count",
+        "unit": "tickets"
+      },
+      "overdue_active_count": {
+        "label": "Overdue active count",
+        "unit": "tickets"
+      },
+      "remaining_effort_hours": {
+        "label": "Remaining effort",
+        "unit": "hours"
+      }
+    },
+    "chart_count": {
+      "label": "{status} count"
+    },
+    "chart_plot": {
+      "label": "{status} plot"
+    },
+    "chart_glyph": {
+      "label": "{status} plotted count"
+    },
+    "displayed_scope": {
+      "role": "region",
+      "name": "Displayed scope"
+    },
+    "chart_axis": "height"
+  },
+  "planner": {
+    "team": {
+      "role": "combobox",
+      "name": "View team"
+    },
+    "view_date": {
+      "label": "View date"
+    },
+    "search": {
+      "role": "textbox",
+      "name": "Search resources"
+    },
+    "sort": {
+      "role": "combobox",
+      "name": "Resource sort"
+    },
+    "reset": {
+      "role": "button",
+      "name": "Reset view"
+    },
+    "export": {
+      "role": "button",
+      "name": "Export capacity CSV"
+    },
+    "details": {
+      "role": "button",
+      "name": "Details {resource_id}"
+    },
+    "detail_panel": {
+      "role": "region",
+      "name": "Resource details {resource_id}"
+    },
+    "work": {
+      "role": "combobox",
+      "name": "Work item"
+    },
+    "resource": {
+      "role": "combobox",
+      "name": "Allocation resource"
+    },
+    "allocation_date": {
+      "label": "Allocation date"
+    },
+    "minutes": {
+      "role": "spinbutton",
+      "name": "Allocation minutes"
+    },
+    "add": {
+      "role": "button",
+      "name": "Add allocation"
+    },
+    "edit_minutes": {
+      "role": "spinbutton",
+      "name": "Minutes {allocation_id}"
+    },
+    "remove": {
+      "role": "button",
+      "name": "Remove {allocation_id}"
+    },
+    "save": {
+      "role": "button",
+      "name": "Save draft"
+    },
+    "review": {
+      "role": "button",
+      "name": "Review latest draft"
+    },
+    "reapply": {
+      "role": "button",
+      "name": "Reapply local edits"
+    },
+    "discard": {
+      "role": "button",
+      "name": "Discard local edits"
+    },
+    "authority_review": {
+      "role": "region",
+      "name": "Latest authoritative draft"
+    },
+    "capacity": {
+      "role": "table",
+      "name": "Resource capacity",
+      "columns": {
+        "resource_id": "Resource ID",
+        "display_name": "Display name",
+        "team_id": "Team ID",
+        "date": "Date",
+        "available_minutes": "Available minutes",
+        "committed_minutes": "Committed minutes",
+        "residual_minutes": "Residual minutes"
+      }
+    },
+    "allocations": {
+      "role": "table",
+      "name": "Local allocations",
+      "columns": {
+        "allocation_id": "Allocation ID",
+        "work_item_id": "Work item ID",
+        "resource_id": "Resource ID",
+        "date": "Date",
+        "minutes": "Minutes"
+      }
+    },
+    "preview": {
+      "role": "table",
+      "name": "Capacity preview",
+      "columns": {
+        "resource_id": "Resource ID",
+        "date": "Date",
+        "residual_minutes": "Committed residual minutes",
+        "tentative_minutes": "Tentative minutes",
+        "remaining_minutes": "Remaining capacity minutes"
+      }
+    },
+    "work_preview": {
+      "role": "table",
+      "name": "Work preview",
+      "columns": {
+        "work_item_id": "Work item ID",
+        "source_remaining_minutes": "Source remaining minutes",
+        "tentative_minutes": "Tentative minutes",
+        "remaining_minutes": "Remaining work minutes"
+      }
+    }
+  }
+}

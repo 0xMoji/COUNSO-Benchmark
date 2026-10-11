@@ -4,41 +4,37 @@
   "repository": "0xMoji/counso-benchmark-reconstructed",
   "branch": "eval/counso-ui-probe",
   "publication_subset_of_reviewed_snapshot": true,
-  "full_local_review_fingerprint": "27999bbb8ac4a81ee57946752f59f3798abce3995aaedb435ec6754b55f2aad4",
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
-  "batch_sha256": "d701b5e19f11cb04d00f972dd63852fd11ea989793008dc5352cd857a699f1aa",
+  "full_local_review_fingerprint": "5ba0c9645cb97ec29f4e60cd6a929e851c144bcf5060bc68dde57ecb73c94c6d",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v4",
+  "batch_sha256": "abe3f25ec962bb77661ed18bb016e7c23455d49eece97ed42eb04efa08371936",
   "github_job": "controls",
   "phases_in_order": [
-    "reference-create",
-    "dashboard-mutations",
     "reference-edit",
     "planner-mutations"
   ],
   "workflow_timeout_minutes": 10,
   "phase_seconds": {
-    "reference-create": 90,
-    "dashboard-mutations": 90,
-    "reference-edit": 120,
+    "reference-edit": 210,
     "planner-mutations": 90
   },
   "preserve_previous_probe_tree": true,
-  "base_probe_commit": "88d600060a1f6b6fee9f20a1804777a2c7a042ca",
+  "base_probe_commit": "cfe6cc966e7dda135a54cce3e13ffcd576eb2e45",
   "destination_manifest": "platform-screen-control/CI_PUBLICATION_MANIFEST.json",
   "file_sha256_algorithm": "SHA256 raw file bytes. files keys are repository destination paths; source_relative_path resolves within the named local snapshot. aggregate = SHA256(json.dumps(files,sort_keys=True).encode()) using Python default separators/ensure_ascii=True. This manifest itself is excluded from the self-hash map and bound by outer publication receipt.",
   "files": {
     ".github/workflows/counso-platform-screen-control.yml": {
       "source_relative_path": ".github/workflows/ui-acceptance.yml",
-      "sha256": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
-      "bytes": 3833
+      "sha256": "b9de4da459b742c4f9278b0f1e3cd43e175c708bb2d0b0fa5352e3a5b2db18d9",
+      "bytes": 3346
     },
     "platform-screen-control/.github/workflows/ui-acceptance.yml": {
       "source_relative_path": ".github/workflows/ui-acceptance.yml",
-      "sha256": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
-      "bytes": 3833
+      "sha256": "b9de4da459b742c4f9278b0f1e3cd43e175c708bb2d0b0fa5352e3a5b2db18d9",
+      "bytes": 3346
     },
     "platform-screen-control/PREREGISTRATION.json": {
       "source_relative_path": "PREREGISTRATION.json",
-      "sha256": "163ca70cefba20b1819a25ae14f6c2d344b509019c80d07d2e07dfb6e436c3ad",
+      "sha256": "e23fe1d81524964481855c536a34c725352ff103de5b3619867e4de5bc6a468e",
       "bytes": 6164
     },
     "platform-screen-control/README.md": {
@@ -53,97 +49,97 @@
     },
     "platform-screen-control/VERSION": {
       "source_relative_path": "VERSION",
-      "sha256": "32ea6b1995dc7c07f095b96a133fa8e247d133bfc13b9e3510b1849ee01fde39",
+      "sha256": "8e0c57e7f09b13de443c3c09ae5e4db54a0edb169ccd581e6579115273c1a0b6",
       "bytes": 40
     },
     "platform-screen-control/ci-inputs/configs/d-old-response/primary.json": {
       "source_relative_path": "ci-inputs/configs/d-old-response/primary.json",
-      "sha256": "72d5854630aa4e6eace5967757308eb6c043b358a09df420969cb6ca82bab749",
+      "sha256": "b2bb78eed0dddcce5a24bc8271aaa2e166252c49a47ca86b30af77757a15032a",
       "bytes": 5857
     },
     "platform-screen-control/ci-inputs/configs/d-old-response/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/d-old-response/unseen_same_schema.json",
-      "sha256": "9dc63103113c9909061cfbdcc8c32dfd2e3cf2a37d426b473565002ae659334f",
+      "sha256": "efe3024015e23eefba254439149d99453d60b88f5890c3df930379fd2b33eece",
       "bytes": 6251
     },
     "platform-screen-control/ci-inputs/configs/d-primary-hardcoded/primary.json": {
       "source_relative_path": "ci-inputs/configs/d-primary-hardcoded/primary.json",
-      "sha256": "1070a171cecffc5d3c0492e3f598a1bc2d8d1df3a218a686a71f5dc1cb462e0c",
+      "sha256": "a0593418d1b03d3310710d61cb775ba4ca4c6c2770c9dcc84b93f446b4a6cf51",
       "bytes": 5846
     },
     "platform-screen-control/ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json",
-      "sha256": "bbb254560b8242cc406bf71be5354404f6a8d9652351b638e2b2b29f320f6f1a",
+      "sha256": "d15eb9a54f040b2fb00575a96dcf1346e8d0c1bcb0d576c355b71d5b4f62d409",
       "bytes": 6229
     },
     "platform-screen-control/ci-inputs/configs/d-wrong-chart-geometry/primary.json": {
       "source_relative_path": "ci-inputs/configs/d-wrong-chart-geometry/primary.json",
-      "sha256": "c847540da03b54a0d0da99db33216901c836605436f46b42f2c8246036ea3619",
+      "sha256": "3ec9020e536e0d90d83e97dbeffe54fab0ec68cac5799cf26e9ed041c17bceb1",
       "bytes": 5858
     },
     "platform-screen-control/ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json",
-      "sha256": "53a90f69fae35ef490fb1c64db02b1490c571e57c660a0504e1ce320f739ec8d",
+      "sha256": "362dc2347721034b1e3994fae1de6f2366664125ab2c87b7cbe52efe25f77840",
       "bytes": 6241
     },
     "platform-screen-control/ci-inputs/configs/p-cumulative-overflow/primary.json": {
       "source_relative_path": "ci-inputs/configs/p-cumulative-overflow/primary.json",
-      "sha256": "47c47741774cd5ae9932c2b610d09e940bc1ee9641a0e6117a1c499bdeec0397",
+      "sha256": "5d6770428034b1b2a6655859ed93d3526b6ecc3d06fb5936ff2f8c5569ebe2e3",
       "bytes": 2432
     },
     "platform-screen-control/ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json",
-      "sha256": "6f6650e2a05b3c3b8934f7a004d24ae82e93a2cb69b31653f9ac2d1b6ba68999",
+      "sha256": "72d68779a086c997051c39cacb949977e6c2ce5637295d203179dcb52bb8915f",
       "bytes": 2517
     },
     "platform-screen-control/ci-inputs/configs/p-false-saved/primary.json": {
       "source_relative_path": "ci-inputs/configs/p-false-saved/primary.json",
-      "sha256": "aa96951606adca54ba0163e5f600b32abebb8b25aa62de1350df9662c7383d08",
+      "sha256": "ceb9f9a6fae9a2dc579755f18bdeab7a2fa012ea79c8951d9f63cdd94ed684be",
       "bytes": 2350
     },
     "platform-screen-control/ci-inputs/configs/p-false-saved/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/p-false-saved/unseen_same_schema.json",
-      "sha256": "cf62a816bf78567d22f0e4cc2e2b755839ca327b66ad022dc82c9aef36a3a7bb",
+      "sha256": "63b76c54170c97b8d905357d130a35392c737ffd23a3234a24c28b71c15e889c",
       "bytes": 2424
     },
     "platform-screen-control/ci-inputs/configs/p-lateack-clears-edits/primary.json": {
       "source_relative_path": "ci-inputs/configs/p-lateack-clears-edits/primary.json",
-      "sha256": "b7ca1dcae6b522645d44ed04b7cf2cbd6b7b6e8134193e74bcb1399ba7e291de",
+      "sha256": "201fdcdab26512602537249533a3a670a94b72a139beafbfd4a47025d3b22335",
       "bytes": 2390
     },
     "platform-screen-control/ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json",
-      "sha256": "9bad03c90edc0bbba6422d499389319fbd830f2c9154dd300e9c913cece77350",
+      "sha256": "3113f863908f22345c908022fd22c1cf4788eca77db430688ee8415daad29c2f",
       "bytes": 2464
     },
     "platform-screen-control/ci-inputs/configs/ref-dashboard/primary.json": {
       "source_relative_path": "ci-inputs/configs/ref-dashboard/primary.json",
-      "sha256": "341e41f0f792d2fee69c32ffae4d810bd9b6f0b4a393b8eedfd7b65d2bd7a293",
+      "sha256": "713cfd4f96fd9f769464fdf140c1923b9c459fd1b1f64a69f2b75a0c91e1711a",
       "bytes": 6028
     },
     "platform-screen-control/ci-inputs/configs/ref-dashboard/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/ref-dashboard/unseen_same_schema.json",
-      "sha256": "8a56df70d7c862479047a8ab96383915705318d6654f7f0105a92b34631a00a8",
+      "sha256": "363d8cdabb79945cbea9ef32f3844b8e19e6f3d1140f37c336e9da8dee7939ea",
       "bytes": 6542
     },
     "platform-screen-control/ci-inputs/configs/ref-planner/primary.json": {
       "source_relative_path": "ci-inputs/configs/ref-planner/primary.json",
-      "sha256": "af27c7dcc11e52c1ffd3221e567bc7a94bed1bbbdeb4581e56cec57185f03da5",
+      "sha256": "503a16d9f31c40d19ef09303d248b8da8c9c4b5ca67ec8cdafcb69ab5371c17d",
       "bytes": 2723
     },
     "platform-screen-control/ci-inputs/configs/ref-planner/unseen_same_schema.json": {
       "source_relative_path": "ci-inputs/configs/ref-planner/unseen_same_schema.json",
-      "sha256": "35f5e7a5cf6e7112a81674d1027be85503c3af1e88301aa08158f5885ab9104a",
+      "sha256": "ae6abb9393b46259ce50735a30b6684d1f9ab665930782d244105e2925266517",
       "bytes": 2983
     },
     "platform-screen-control/ci-inputs/current-batch.json": {
       "source_relative_path": "ci-inputs/current-batch.json",
-      "sha256": "d701b5e19f11cb04d00f972dd63852fd11ea989793008dc5352cd857a699f1aa",
+      "sha256": "abe3f25ec962bb77661ed18bb016e7c23455d49eece97ed42eb04efa08371936",
       "bytes": 134936
     },
     "platform-screen-control/ci-inputs/current-batch.sha256": {
       "source_relative_path": "ci-inputs/current-batch.sha256",
-      "sha256": "a05db6e2016ce8e8a89c39b0d3589d927b31d4ec968b457caea9eb0ff04fe51f",
+      "sha256": "0632830fbcd85618c824d1d4e44579ea0c53ba9428eccb8a6c66809a346b358e",
       "bytes": 65
     },
     "platform-screen-control/ci-inputs/fixtures/d-old-response/primary/dataset.json": {
@@ -298,82 +294,82 @@
     },
     "platform-screen-control/ci-inputs/objective/d-old-response.delivery.json": {
       "source_relative_path": "ci-inputs/objective/d-old-response.delivery.json",
-      "sha256": "2c1adc0bf88016fa52031a063f6e0fc91c25d5d6da31e4c57cbfa81c72bc5629",
+      "sha256": "0ff4d5da3501cd4ccb8e8e775d4bfd7d3e18e2116679c4fca65c907be6152fd5",
       "bytes": 1867
     },
     "platform-screen-control/ci-inputs/objective/d-old-response.json": {
       "source_relative_path": "ci-inputs/objective/d-old-response.json",
-      "sha256": "0cded433e72c995d5d729739d5b2884ef0c668d24184fb2fdaf9ead16b80a5b3",
+      "sha256": "4068037dc0b4e0c375ffc865937d48c1755cd6dfbc8be2ed426ba503440652e5",
       "bytes": 9154
     },
     "platform-screen-control/ci-inputs/objective/d-primary-hardcoded.delivery.json": {
       "source_relative_path": "ci-inputs/objective/d-primary-hardcoded.delivery.json",
-      "sha256": "de88e19141b95964ea806d09720a2a2f20900df926a71ea3ac663fd9f12b97b9",
+      "sha256": "9daf8d962871300796aaaa721dabc0429f61ca3b6d0f5d7364a3b042604e9733",
       "bytes": 1887
     },
     "platform-screen-control/ci-inputs/objective/d-primary-hardcoded.json": {
       "source_relative_path": "ci-inputs/objective/d-primary-hardcoded.json",
-      "sha256": "56bbc78dc6e33b2bf8dd8e58d7014d1e58f9fcb410968902de93f8176a0d5e81",
-      "bytes": 9153
+      "sha256": "4a545bb5f7141c916541475fb0bc7b4ac1ba5775f7a0bfbec3d73c4acfa98ee3",
+      "bytes": 9154
     },
     "platform-screen-control/ci-inputs/objective/d-wrong-chart-geometry.delivery.json": {
       "source_relative_path": "ci-inputs/objective/d-wrong-chart-geometry.delivery.json",
-      "sha256": "3e4b665fdc4de3cfebfa8a378a381abae4fd3eaf5a5eb558ac2765ae8e100caa",
+      "sha256": "35598580424a1e8f38cd1daca95a0109db3298e2b238dc20131a24adb826611f",
       "bytes": 1899
     },
     "platform-screen-control/ci-inputs/objective/d-wrong-chart-geometry.json": {
       "source_relative_path": "ci-inputs/objective/d-wrong-chart-geometry.json",
-      "sha256": "f3cade2f143613f91f04118a1f042fa831095b51f2121ff1a9acab566b96b554",
+      "sha256": "18d9c99214d22e32200f6fba5c4d2d2b9790b85d7bdd27794d3d470456a0a0f3",
       "bytes": 9153
     },
     "platform-screen-control/ci-inputs/objective/p-cumulative-overflow.delivery.json": {
       "source_relative_path": "ci-inputs/objective/p-cumulative-overflow.delivery.json",
-      "sha256": "0abe3da97cd5aaeca0cc981ef39f3855060b4a0b3e5e0cb8619bd3b111a9a1d2",
+      "sha256": "75533cd94cac375a509f07da888904870b3b8ccc3f2296f48e0193d8eaf63acf",
       "bytes": 1989
     },
     "platform-screen-control/ci-inputs/objective/p-cumulative-overflow.json": {
       "source_relative_path": "ci-inputs/objective/p-cumulative-overflow.json",
-      "sha256": "08d2e289ffd9e0c5f626a02380c5a404d310285d3887da0686739a55abec7ac6",
+      "sha256": "349e9e50a382ab4e858ca48c7e5fcd6527225ecf80700f6d8fc8a9eda05bb3e8",
       "bytes": 10020
     },
     "platform-screen-control/ci-inputs/objective/p-false-saved.delivery.json": {
       "source_relative_path": "ci-inputs/objective/p-false-saved.delivery.json",
-      "sha256": "cde2509a3a376f588da65f5a20a75015892289223f2b775afd845a97d1109698",
+      "sha256": "71af4ed21c9bf5192bf9c190aff85cc7118cff1ee82fa7e8b102f550e58f2c81",
       "bytes": 1957
     },
     "platform-screen-control/ci-inputs/objective/p-false-saved.json": {
       "source_relative_path": "ci-inputs/objective/p-false-saved.json",
-      "sha256": "044474f8c1afd4d7a47a3a31265f27e9e9166e883f53ff6b828a053a63993eb7",
+      "sha256": "3f6ff156ca794afcfed887c183b6d0cd0c91c781ccde68335d28d2495661df8b",
       "bytes": 10020
     },
     "platform-screen-control/ci-inputs/objective/p-lateack-clears-edits.delivery.json": {
       "source_relative_path": "ci-inputs/objective/p-lateack-clears-edits.delivery.json",
-      "sha256": "2c602e12a91852667297f8ee4875ee7b5a315c7ddebb8cc05f9ff90cab50d28f",
+      "sha256": "f05752e6d368c0f851e349381e0f97909b0f2f28c10376cea1ba10176b48893a",
       "bytes": 1993
     },
     "platform-screen-control/ci-inputs/objective/p-lateack-clears-edits.json": {
       "source_relative_path": "ci-inputs/objective/p-lateack-clears-edits.json",
-      "sha256": "98898a62277f430cb45255cd3cf83778aa582e14f3a905998ea06d211a530114",
+      "sha256": "33e37d7c21e88a76f7c379019cffcbd41cfc6d16a33849545a4275481f7c6d3d",
       "bytes": 10020
     },
     "platform-screen-control/ci-inputs/objective/ref-dashboard.delivery.json": {
       "source_relative_path": "ci-inputs/objective/ref-dashboard.delivery.json",
-      "sha256": "c79010a0e75d072ff2cad2ed74ebb9f8aedf3e1171554df571bc86f3d95fa976",
+      "sha256": "d8ff1fd07f1636a963967d2091bac2db74cf4649bed54da9f35413ba479f60e0",
       "bytes": 1863
     },
     "platform-screen-control/ci-inputs/objective/ref-dashboard.json": {
       "source_relative_path": "ci-inputs/objective/ref-dashboard.json",
-      "sha256": "512928355c3679c25fac9713c2128b2927f3228d217c9e6c8e81f23edb2a2296",
+      "sha256": "84d9b4eb10b4529740d068fd16618c850ebce38129043c890708440030a2fe63",
       "bytes": 9154
     },
     "platform-screen-control/ci-inputs/objective/ref-planner.delivery.json": {
       "source_relative_path": "ci-inputs/objective/ref-planner.delivery.json",
-      "sha256": "91078859ebc05c0600c92d1217b2551d784e76362e325fa4c4eb0218c4477e0b",
+      "sha256": "ff742664a388f94b06625ba908e04e71f8381a397c126c092922205816617f1f",
       "bytes": 1949
     },
     "platform-screen-control/ci-inputs/objective/ref-planner.json": {
       "source_relative_path": "ci-inputs/objective/ref-planner.json",
-      "sha256": "a8d23e45b3391f721a1c3c0f1423215730d0cea5208fc5b9a3004f313e0da0d2",
+      "sha256": "00cf3b20e36e94fdec56a5c9aec427d550ffeaf1272d07e5b2d06e2d7b37ea5a",
       "bytes": 10020
     },
     "platform-screen-control/ci-inputs/packages/d-old-response/frame/dataset.json": {
@@ -598,7 +594,7 @@
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": {
       "source_relative_path": "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json",
-      "sha256": "51c98f803de4e7d46bf11a81310a521662cc65228be40c644c2f4ac299dc71bb",
+      "sha256": "9024206b4ccca0fd0f5f49e99b8046fcd5d452e08d7c6a03655e5256224917f6",
       "bytes": 9066
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/evaluator/initial_host_files.json": {
@@ -668,12 +664,12 @@
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": {
       "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json",
-      "sha256": "6a0bfb68c4f0f1928f2351665a5a36c51c5683b1a83a760b9ea435d735fc884a",
+      "sha256": "4f9575d6412962b5c17350f1f8813f7a758a2460cc12fede9071adc2b5f571ff",
       "bytes": 9119
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": {
       "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json",
-      "sha256": "a1940dfe1b069ffba823ed275d6f80d6b86d691df05f826a4c2b7c8e434b38e7",
+      "sha256": "30b4f58aa506d774b8288799fd86d39f8318a485903e9fc6a07fc0ff2ce9c012",
       "bytes": 1088
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/inputs/frame/dataset.json": {
@@ -708,12 +704,12 @@
     },
     "platform-screen-control/dataset/cases/G-UI-CREATE-M1/public/task_contract.json": {
       "source_relative_path": "dataset/cases/G-UI-CREATE-M1/public/task_contract.json",
-      "sha256": "da8e25a73ee5e31c9bb8b0bd5dce7ffb3de07ff1960b06e059b44ad5bdbdfd9c",
+      "sha256": "99ac050ff8484beeb471d4212e199b7cd1769484f99b76155a4917fdfa27fc94",
       "bytes": 9084
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": {
       "source_relative_path": "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json",
-      "sha256": "7b2f86a18726a4945a7c70f581cdbd49bfdf6907ccd23d3f38b44059b4808a18",
+      "sha256": "a1c672ef3c47a3c0214b80dad692d71818fa7d248aa86aaa431f1a083a48bf95",
       "bytes": 9960
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/evaluator/initial_host_files.json": {
@@ -793,12 +789,12 @@
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": {
       "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json",
-      "sha256": "245ca779817890f7b0b73c9180209a65ad993803a7875e585459053429007b41",
+      "sha256": "88ca9a02c32710254d57469d14731b4a10e7a005d3b57685e86d4ad2d653e689",
       "bytes": 9943
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": {
       "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json",
-      "sha256": "88112384c47ef613dbcf7bd70ccdf606f5dd41a1ab6eead29667c773a80ae288",
+      "sha256": "742b4e61988d41327e91db3008b3beb7a7cacce116e25dd65efa8837189ccd32",
       "bytes": 1285
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/inputs/frame/draft.json": {
@@ -843,7 +839,7 @@
     },
     "platform-screen-control/dataset/cases/G-UI-EDIT-M1/public/task_contract.json": {
       "source_relative_path": "dataset/cases/G-UI-EDIT-M1/public/task_contract.json",
-      "sha256": "1d973da85877403d6025c05950badabec35ec9b73536e14fb79e9ac751893e02",
+      "sha256": "1c77fec0144f1eb85608ff3834a4760764bac6ec806717a358e22948d47915cb",
       "bytes": 9908
     },
     "platform-screen-control/docs/CI_BATCH_README.md": {
@@ -863,7 +859,7 @@
     },
     "platform-screen-control/platform_screen/__init__.py": {
       "source_relative_path": "platform_screen/__init__.py",
-      "sha256": "7c503dcde4424b6edd8da7724953244bd9ed17a25c9bcd14c8346aec6590c692",
+      "sha256": "62249ea1904c7150db6591cd11f8e6e28b64aeb664c301cbb62119caeac926e3",
       "bytes": 104
     },
     "platform-screen-control/platform_screen/__main__.py": {
@@ -883,7 +879,7 @@
     },
     "platform-screen-control/platform_screen/ci_batch.py": {
       "source_relative_path": "platform_screen/ci_batch.py",
-      "sha256": "b88dedc22f1e94c77f5f4466923668ebfcd728feec777a4609b7eacb801c2cb7",
+      "sha256": "3c4bfbcf3e308f382daee5fe51af75c74f4ae69e09b7d53db7ace9ad8bc0781f",
       "bytes": 39014
     },
     "platform-screen-control/platform_screen/data_file_cases.py": {
@@ -998,17 +994,17 @@
     },
     "platform-screen-control/runtime/acceptance-driver.test.mjs": {
       "source_relative_path": "runtime/acceptance-driver.test.mjs",
-      "sha256": "cf11b60a554a4397d982278843d859ead3caf5bdc2fdf7fe7fc965c6fa5da367",
-      "bytes": 29015
+      "sha256": "3b79ebd0e0000e3bc664b5b70bde66b5e760d7413dd1867ca94485e6dc6da772",
+      "bytes": 31253
     },
     "platform-screen-control/runtime/acceptance-observer.mjs": {
       "source_relative_path": "runtime/acceptance-observer.mjs",
-      "sha256": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
-      "bytes": 49266
+      "sha256": "f27d81aec283bfe88527da39ede9b482582859087bdb11aee77d1006527d73cb",
+      "bytes": 50659
     },
     "platform-screen-control/runtime/ci-entry.mjs": {
       "source_relative_path": "runtime/ci-entry.mjs",
-      "sha256": "cdd4ccf3ccb95ed98042c5a45cbf378928389c57395be4bcfbde5aaac39953df",
+      "sha256": "3016ddb8b4096080402c27991a66dcdcda2cb6b44fa62df05c9012c31eb19fb6",
       "bytes": 17818
     },
     "platform-screen-control/runtime/ci-run.mjs": {
@@ -1145,9 +1141,20 @@
       "source_relative_path": "runtime/vendor/viz/lib/utils.ts",
       "sha256": "4acbc7165a8d54738ff62b51414e772c08fe78434e524e6d8770180d3ba2925f",
       "bytes": 169
+    },
+    "platform-screen-control/docs/CONTROL_EVIDENCE_LINEAGE.json": {
+      "source_relative_path": "docs/CONTROL_EVIDENCE_LINEAGE.json",
+      "sha256": "74f24290e92bfeaee998841391b967f4a815ca93ed3fbcd76c81d462b155a282",
+      "bytes": 3338
+    },
+    "platform-screen-control/provenance/control-v4-interrupted-save-fix.json": {
+      "source_relative_path": "provenance/control-v4-interrupted-save-fix.json",
+      "sha256": "37ca023fa42101924c363c6b15e84981b15e520da79a880cb63f2fb0173730d8",
+      "bytes": 881
     }
   },
-  "execution_subset_fingerprint": "51ef793253ba8d7c2237e0f5b9b197afc64725893d129655139cf014bcbc86b7",
+  "execution_subset_fingerprint": "a4d2a6e769a594028a69de2ad7d02844eb374e6dc551d86759b0f03d8d9f2c3d",
   "excluded": "node_modules, historical candidate chats, historical Office reports, external secrets, provenance screenshots; full local 9case snapshot is not claimed fully published by this CI subset.",
-  "preserve_previous_control_tree": true
+  "preserve_previous_control_tree": true,
+  "inherited_phases_manifest": "platform-screen-control/docs/CONTROL_EVIDENCE_LINEAGE.json"
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "origin": "COORDINATOR_REGISTERED_UI_BATCH",
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v4",
   "repository": "0xMoji/counso-benchmark-reconstructed",
   "branch": "eval/counso-ui-probe",
   "browser": {
@@ -14,7 +14,7 @@
     "phase_seconds": {
       "reference-create": 90,
       "dashboard-mutations": 90,
-      "reference-edit": 120,
+      "reference-edit": 210,
       "planner-mutations": 90
     },
     "max_subjects": 8,
@@ -22,9 +22,9 @@
     "no_candidate_execution": true
   },
   "authority_files": {
-    ".github/workflows/ui-acceptance.yml": "40165ab5e28cf92dba72729d8c7f2b318357d8e5db7837a4d6e3e1f5c17ee9d8",
-    "VERSION": "32ea6b1995dc7c07f095b96a133fa8e247d133bfc13b9e3510b1849ee01fde39",
-    "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": "51c98f803de4e7d46bf11a81310a521662cc65228be40c644c2f4ac299dc71bb",
+    ".github/workflows/ui-acceptance.yml": "b9de4da459b742c4f9278b0f1e3cd43e175c708bb2d0b0fa5352e3a5b2db18d9",
+    "VERSION": "8e0c57e7f09b13de443c3c09ae5e4db54a0edb169ccd581e6579115273c1a0b6",
+    "dataset/cases/G-UI-CREATE-M1/evaluator/gold.json": "9024206b4ccca0fd0f5f49e99b8046fcd5d452e08d7c6a03655e5256224917f6",
     "dataset/cases/G-UI-CREATE-M1/evaluator/initial_host_files.json": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
     "dataset/cases/G-UI-CREATE-M1/evaluator/mutation_control_plan.json": "0726f7813a1f4b5e834ba05c203ef64ae3d521b45ed7e6f8f5d1c9b97b0f237f",
     "dataset/cases/G-UI-CREATE-M1/evaluator/reference/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
@@ -38,16 +38,16 @@
     "dataset/cases/G-UI-CREATE-M1/evaluator/unseen_host_files.json": "c1040562a3776a43fd1e7612607cf100b19665710a5db18b0be811e01aa67590",
     "dataset/cases/G-UI-CREATE-M1/public/SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
     "dataset/cases/G-UI-CREATE-M1/public/SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
-    "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": "6a0bfb68c4f0f1928f2351665a5a36c51c5683b1a83a760b9ea435d735fc884a",
-    "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": "a1940dfe1b069ffba823ed275d6f80d6b86d691df05f826a4c2b7c8e434b38e7",
+    "dataset/cases/G-UI-CREATE-M1/public/grading_contract.json": "4f9575d6412962b5c17350f1f8813f7a758a2460cc12fede9071adc2b5f571ff",
+    "dataset/cases/G-UI-CREATE-M1/public/input_manifest.json": "30b4f58aa506d774b8288799fd86d39f8318a485903e9fc6a07fc0ff2ce9c012",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
     "dataset/cases/G-UI-CREATE-M1/public/inputs/frame/manifest.json": "95ab790737b119f9885c2f84008f0e2ec372c2d69d638099113c89e9ebaec1b4",
     "dataset/cases/G-UI-CREATE-M1/public/interaction_contract.json": "8d76c07d730fdec16611af93e0688659855e8367ae2eaa5ae0ffc82899eddb28",
     "dataset/cases/G-UI-CREATE-M1/public/prompt.txt": "616b7bd27234c221d317d8c6786aca3e2297c5d4e7534163ad7347594e6db623",
     "dataset/cases/G-UI-CREATE-M1/public/response_schema.json": "f05648b55adde27736149bcb2f4f70fac9c2758c0aeb457d6b744083a32fbdfd",
-    "dataset/cases/G-UI-CREATE-M1/public/task_contract.json": "da8e25a73ee5e31c9bb8b0bd5dce7ffb3de07ff1960b06e059b44ad5bdbdfd9c",
-    "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": "7b2f86a18726a4945a7c70f581cdbd49bfdf6907ccd23d3f38b44059b4808a18",
+    "dataset/cases/G-UI-CREATE-M1/public/task_contract.json": "99ac050ff8484beeb471d4212e199b7cd1769484f99b76155a4917fdfa27fc94",
+    "dataset/cases/G-UI-EDIT-M1/evaluator/gold.json": "a1c672ef3c47a3c0214b80dad692d71818fa7d248aa86aaa431f1a083a48bf95",
     "dataset/cases/G-UI-EDIT-M1/evaluator/initial_host_files.json": "b7f917a24eddf14a07250a29549cbed96c3950baad01532f877144257ca9dab8",
     "dataset/cases/G-UI-EDIT-M1/evaluator/mutation_control_plan.json": "221972c5f6f352ccfa9f082a0bf1deb88be59267124832e5560a5ccd585020c0",
     "dataset/cases/G-UI-EDIT-M1/evaluator/reference/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -63,8 +63,8 @@
     "dataset/cases/G-UI-EDIT-M1/evaluator/unseen_host_files.json": "4927af2fc0aefc9e3a3d85b23e27f7198d58d2a834126b05df8ea8c9b2fdafeb",
     "dataset/cases/G-UI-EDIT-M1/public/SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
     "dataset/cases/G-UI-EDIT-M1/public/SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
-    "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": "245ca779817890f7b0b73c9180209a65ad993803a7875e585459053429007b41",
-    "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": "88112384c47ef613dbcf7bd70ccdf606f5dd41a1ab6eead29667c773a80ae288",
+    "dataset/cases/G-UI-EDIT-M1/public/grading_contract.json": "88ca9a02c32710254d57469d14731b4a10e7a005d3b57685e86d4ad2d653e689",
+    "dataset/cases/G-UI-EDIT-M1/public/input_manifest.json": "742b4e61988d41327e91db3008b3beb7a7cacce116e25dd65efa8837189ccd32",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
     "dataset/cases/G-UI-EDIT-M1/public/inputs/frame/index.tsx": "3c6a29981d6fb558c743d6b79f3414811c960c936bbe0f4ab3705c6f5402d115",
@@ -73,13 +73,13 @@
     "dataset/cases/G-UI-EDIT-M1/public/interaction_contract.json": "580e8480ae50fe9d9e03f25a9d37cfdeea7b9a52a7583e445074e3df96414d85",
     "dataset/cases/G-UI-EDIT-M1/public/prompt.txt": "ece0bb2f1369d5780bed0398dae66b07cbdd7d018e73c2bf9ea9af317b1c9f9d",
     "dataset/cases/G-UI-EDIT-M1/public/response_schema.json": "d5d8d3f99e1b7863036f2c91db7fccd733928a63d1cb18350e3c41f49e4dece2",
-    "dataset/cases/G-UI-EDIT-M1/public/task_contract.json": "1d973da85877403d6025c05950badabec35ec9b73536e14fb79e9ac751893e02",
+    "dataset/cases/G-UI-EDIT-M1/public/task_contract.json": "1c77fec0144f1eb85608ff3834a4760764bac6ec806717a358e22948d47915cb",
     "docs/UI_ACCEPTANCE_PLAN.json": "aa3ea845a6ea5d4c26973166dabdd8f13cc11bb2db77fe8d8ceb275fce3b17cf",
-    "platform_screen/__init__.py": "7c503dcde4424b6edd8da7724953244bd9ed17a25c9bcd14c8346aec6590c692",
+    "platform_screen/__init__.py": "62249ea1904c7150db6591cd11f8e6e28b64aeb664c301cbb62119caeac926e3",
     "platform_screen/__main__.py": "48610bb79e1f535d00d832e3f305bb6d70f18e40895e86f8440926cbccfd87ec",
     "platform_screen/analysis.py": "bde5cbfaafdcc33bea24240d3e3d3945f883781500e996b9551ddc052c053119",
     "platform_screen/build.py": "0389cf97af80db89c4962ac83ce2174b19c9874bd9fa11cdf6213210137d31bc",
-    "platform_screen/ci_batch.py": "b88dedc22f1e94c77f5f4466923668ebfcd728feec777a4609b7eacb801c2cb7",
+    "platform_screen/ci_batch.py": "3c4bfbcf3e308f382daee5fe51af75c74f4ae69e09b7d53db7ace9ad8bc0781f",
     "platform_screen/data_file_cases.py": "263cbe279d65f13ed5a60f68c35cbd4eb39f5f768b48fb7b4623e84cb8c672c0",
     "platform_screen/field_contracts.py": "92b0306439e6ea97cbade6c30d51b337cf6167f1a0eb5941c381a34adad207e7",
     "platform_screen/keeper.py": "3184bbce341599ab9172fa22fe3acce9f1a14274a1911789686c936781a22908",
@@ -94,9 +94,9 @@
     "runtime/README.md": "f6aebb1047d9d4f7f384eb755586b3b71934d372e8a9139b6a8ac45eda0431b2",
     "runtime/VENDOR_MANIFEST.json": "caf3ecbc2e58086d13596b525ad5d61019e7f2a1ec14b0b6f4271143b1b988e1",
     "runtime/acceptance-driver.mjs": "78b4da67b10cff61b7533be0db061011dcc5aa120983d6dbbdf160604fa48ea3",
-    "runtime/acceptance-driver.test.mjs": "cf11b60a554a4397d982278843d859ead3caf5bdc2fdf7fe7fc965c6fa5da367",
-    "runtime/acceptance-observer.mjs": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
-    "runtime/ci-entry.mjs": "cdd4ccf3ccb95ed98042c5a45cbf378928389c57395be4bcfbde5aaac39953df",
+    "runtime/acceptance-driver.test.mjs": "3b79ebd0e0000e3bc664b5b70bde66b5e760d7413dd1867ca94485e6dc6da772",
+    "runtime/acceptance-observer.mjs": "f27d81aec283bfe88527da39ede9b482582859087bdb11aee77d1006527d73cb",
+    "runtime/ci-entry.mjs": "3016ddb8b4096080402c27991a66dcdcda2cb6b44fa62df05c9012c31eb19fb6",
     "runtime/ci-run.mjs": "8694cb80663c301e92ed5b7205f24d20530810ba2988e222e960291a363d4eb0",
     "runtime/compiler-attribution.test.mjs": "09b8b583967fefea153601efbd11494bf5b6f00c48933b86590e0f0c91028240",
     "runtime/compiler.mjs": "034c337b33f7107d7f49ddf899a5087d9d808ef743580efe2d2ec86de286e300",
@@ -174,7 +174,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/ref-dashboard/primary.json",
-          "config_sha256": "341e41f0f792d2fee69c32ffae4d810bd9b6f0b4a393b8eedfd7b65d2bd7a293",
+          "config_sha256": "713cfd4f96fd9f769464fdf140c1923b9c459fd1b1f64a69f2b75a0c91e1711a",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -205,7 +205,7 @@
         },
         {
           "config_path": "ci-inputs/configs/ref-dashboard/unseen_same_schema.json",
-          "config_sha256": "8a56df70d7c862479047a8ab96383915705318d6654f7f0105a92b34631a00a8",
+          "config_sha256": "363d8cdabb79945cbea9ef32f3844b8e19e6f3d1140f37c336e9da8dee7939ea",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -495,7 +495,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/ref-planner/primary.json",
-          "config_sha256": "af27c7dcc11e52c1ffd3221e567bc7a94bed1bbbdeb4581e56cec57185f03da5",
+          "config_sha256": "503a16d9f31c40d19ef09303d248b8da8c9c4b5ca67ec8cdafcb69ab5371c17d",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -537,7 +537,7 @@
         },
         {
           "config_path": "ci-inputs/configs/ref-planner/unseen_same_schema.json",
-          "config_sha256": "35f5e7a5cf6e7112a81674d1027be85503c3af1e88301aa08158f5885ab9104a",
+          "config_sha256": "ae6abb9393b46259ce50735a30b6684d1f9ab665930782d244105e2925266517",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -956,7 +956,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-wrong-chart-geometry/primary.json",
-          "config_sha256": "c847540da03b54a0d0da99db33216901c836605436f46b42f2c8246036ea3619",
+          "config_sha256": "3ec9020e536e0d90d83e97dbeffe54fab0ec68cac5799cf26e9ed041c17bceb1",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -971,7 +971,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json",
-          "config_sha256": "53a90f69fae35ef490fb1c64db02b1490c571e57c660a0504e1ce320f739ec8d",
+          "config_sha256": "362dc2347721034b1e3994fae1de6f2366664125ab2c87b7cbe52efe25f77840",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1262,7 +1262,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-primary-hardcoded/primary.json",
-          "config_sha256": "1070a171cecffc5d3c0492e3f598a1bc2d8d1df3a218a686a71f5dc1cb462e0c",
+          "config_sha256": "a0593418d1b03d3310710d61cb775ba4ca4c6c2770c9dcc84b93f446b4a6cf51",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -1277,7 +1277,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json",
-          "config_sha256": "bbb254560b8242cc406bf71be5354404f6a8d9652351b638e2b2b29f320f6f1a",
+          "config_sha256": "d15eb9a54f040b2fb00575a96dcf1346e8d0c1bcb0d576c355b71d5b4f62d409",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1568,7 +1568,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/d-old-response/primary.json",
-          "config_sha256": "72d5854630aa4e6eace5967757308eb6c043b358a09df420969cb6ca82bab749",
+          "config_sha256": "b2bb78eed0dddcce5a24bc8271aaa2e166252c49a47ca86b30af77757a15032a",
           "fixture_id": "primary",
           "fixture_files": {
             "dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b"
@@ -1585,7 +1585,7 @@
         },
         {
           "config_path": "ci-inputs/configs/d-old-response/unseen_same_schema.json",
-          "config_sha256": "9dc63103113c9909061cfbdcc8c32dfd2e3cf2a37d426b473565002ae659334f",
+          "config_sha256": "efe3024015e23eefba254439149d99453d60b88f5890c3df930379fd2b33eece",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02"
@@ -1880,7 +1880,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-cumulative-overflow/primary.json",
-          "config_sha256": "47c47741774cd5ae9932c2b610d09e940bc1ee9641a0e6117a1c499bdeec0397",
+          "config_sha256": "5d6770428034b1b2a6655859ed93d3526b6ecc3d06fb5936ff2f8c5569ebe2e3",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -1898,7 +1898,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json",
-          "config_sha256": "6f6650e2a05b3c3b8934f7a004d24ae82e93a2cb69b31653f9ac2d1b6ba68999",
+          "config_sha256": "72d68779a086c997051c39cacb949977e6c2ce5637295d203179dcb52bb8915f",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -2313,7 +2313,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-false-saved/primary.json",
-          "config_sha256": "aa96951606adca54ba0163e5f600b32abebb8b25aa62de1350df9662c7383d08",
+          "config_sha256": "ceb9f9a6fae9a2dc579755f18bdeab7a2fa012ea79c8951d9f63cdd94ed684be",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -2329,7 +2329,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-false-saved/unseen_same_schema.json",
-          "config_sha256": "cf62a816bf78567d22f0e4cc2e2b755839ca327b66ad022dc82c9aef36a3a7bb",
+          "config_sha256": "63b76c54170c97b8d905357d130a35392c737ffd23a3234a24c28b71c15e889c",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -2741,7 +2741,7 @@
       "configs": [
         {
           "config_path": "ci-inputs/configs/p-lateack-clears-edits/primary.json",
-          "config_sha256": "b7ca1dcae6b522645d44ed04b7cf2cbd6b7b6e8134193e74bcb1399ba7e291de",
+          "config_sha256": "201fdcdab26512602537249533a3a670a94b72a139beafbfd4a47025d3b22335",
           "fixture_id": "primary",
           "fixture_files": {
             "draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
@@ -2757,7 +2757,7 @@
         },
         {
           "config_path": "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json",
-          "config_sha256": "9bad03c90edc0bbba6422d499389319fbd830f2c9154dd300e9c913cece77350",
+          "config_sha256": "3113f863908f22345c908022fd22c1cf4788eca77db430688ee8415daad29c2f",
           "fixture_id": "unseen_same_schema",
           "fixture_files": {
             "draft.json": "d19aa385308411ef0394de316ed82ce0cf7c2a80627f965475e77fc7dfe5fc51",
@@ -3148,22 +3148,22 @@
     }
   ],
   "content_files": {
-    "ci-inputs/configs/d-old-response/primary.json": "72d5854630aa4e6eace5967757308eb6c043b358a09df420969cb6ca82bab749",
-    "ci-inputs/configs/d-old-response/unseen_same_schema.json": "9dc63103113c9909061cfbdcc8c32dfd2e3cf2a37d426b473565002ae659334f",
-    "ci-inputs/configs/d-primary-hardcoded/primary.json": "1070a171cecffc5d3c0492e3f598a1bc2d8d1df3a218a686a71f5dc1cb462e0c",
-    "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": "bbb254560b8242cc406bf71be5354404f6a8d9652351b638e2b2b29f320f6f1a",
-    "ci-inputs/configs/d-wrong-chart-geometry/primary.json": "c847540da03b54a0d0da99db33216901c836605436f46b42f2c8246036ea3619",
-    "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": "53a90f69fae35ef490fb1c64db02b1490c571e57c660a0504e1ce320f739ec8d",
-    "ci-inputs/configs/p-cumulative-overflow/primary.json": "47c47741774cd5ae9932c2b610d09e940bc1ee9641a0e6117a1c499bdeec0397",
-    "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": "6f6650e2a05b3c3b8934f7a004d24ae82e93a2cb69b31653f9ac2d1b6ba68999",
-    "ci-inputs/configs/p-false-saved/primary.json": "aa96951606adca54ba0163e5f600b32abebb8b25aa62de1350df9662c7383d08",
-    "ci-inputs/configs/p-false-saved/unseen_same_schema.json": "cf62a816bf78567d22f0e4cc2e2b755839ca327b66ad022dc82c9aef36a3a7bb",
-    "ci-inputs/configs/p-lateack-clears-edits/primary.json": "b7ca1dcae6b522645d44ed04b7cf2cbd6b7b6e8134193e74bcb1399ba7e291de",
-    "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": "9bad03c90edc0bbba6422d499389319fbd830f2c9154dd300e9c913cece77350",
-    "ci-inputs/configs/ref-dashboard/primary.json": "341e41f0f792d2fee69c32ffae4d810bd9b6f0b4a393b8eedfd7b65d2bd7a293",
-    "ci-inputs/configs/ref-dashboard/unseen_same_schema.json": "8a56df70d7c862479047a8ab96383915705318d6654f7f0105a92b34631a00a8",
-    "ci-inputs/configs/ref-planner/primary.json": "af27c7dcc11e52c1ffd3221e567bc7a94bed1bbbdeb4581e56cec57185f03da5",
-    "ci-inputs/configs/ref-planner/unseen_same_schema.json": "35f5e7a5cf6e7112a81674d1027be85503c3af1e88301aa08158f5885ab9104a",
+    "ci-inputs/configs/d-old-response/primary.json": "b2bb78eed0dddcce5a24bc8271aaa2e166252c49a47ca86b30af77757a15032a",
+    "ci-inputs/configs/d-old-response/unseen_same_schema.json": "efe3024015e23eefba254439149d99453d60b88f5890c3df930379fd2b33eece",
+    "ci-inputs/configs/d-primary-hardcoded/primary.json": "a0593418d1b03d3310710d61cb775ba4ca4c6c2770c9dcc84b93f446b4a6cf51",
+    "ci-inputs/configs/d-primary-hardcoded/unseen_same_schema.json": "d15eb9a54f040b2fb00575a96dcf1346e8d0c1bcb0d576c355b71d5b4f62d409",
+    "ci-inputs/configs/d-wrong-chart-geometry/primary.json": "3ec9020e536e0d90d83e97dbeffe54fab0ec68cac5799cf26e9ed041c17bceb1",
+    "ci-inputs/configs/d-wrong-chart-geometry/unseen_same_schema.json": "362dc2347721034b1e3994fae1de6f2366664125ab2c87b7cbe52efe25f77840",
+    "ci-inputs/configs/p-cumulative-overflow/primary.json": "5d6770428034b1b2a6655859ed93d3526b6ecc3d06fb5936ff2f8c5569ebe2e3",
+    "ci-inputs/configs/p-cumulative-overflow/unseen_same_schema.json": "72d68779a086c997051c39cacb949977e6c2ce5637295d203179dcb52bb8915f",
+    "ci-inputs/configs/p-false-saved/primary.json": "ceb9f9a6fae9a2dc579755f18bdeab7a2fa012ea79c8951d9f63cdd94ed684be",
+    "ci-inputs/configs/p-false-saved/unseen_same_schema.json": "63b76c54170c97b8d905357d130a35392c737ffd23a3234a24c28b71c15e889c",
+    "ci-inputs/configs/p-lateack-clears-edits/primary.json": "201fdcdab26512602537249533a3a670a94b72a139beafbfd4a47025d3b22335",
+    "ci-inputs/configs/p-lateack-clears-edits/unseen_same_schema.json": "3113f863908f22345c908022fd22c1cf4788eca77db430688ee8415daad29c2f",
+    "ci-inputs/configs/ref-dashboard/primary.json": "713cfd4f96fd9f769464fdf140c1923b9c459fd1b1f64a69f2b75a0c91e1711a",
+    "ci-inputs/configs/ref-dashboard/unseen_same_schema.json": "363d8cdabb79945cbea9ef32f3844b8e19e6f3d1140f37c336e9da8dee7939ea",
+    "ci-inputs/configs/ref-planner/primary.json": "503a16d9f31c40d19ef09303d248b8da8c9c4b5ca67ec8cdafcb69ab5371c17d",
+    "ci-inputs/configs/ref-planner/unseen_same_schema.json": "ae6abb9393b46259ce50735a30b6684d1f9ab665930782d244105e2925266517",
     "ci-inputs/fixtures/d-old-response/primary/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "ci-inputs/fixtures/d-old-response/unseen_same_schema/dataset.json": "dd91142d564e083572efaf09e6bb46dcaf5145f2e01a019d14f6bf124e822c02",
     "ci-inputs/fixtures/d-primary-hardcoded/primary/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
@@ -3194,22 +3194,22 @@
     "ci-inputs/mutations/p-cumulative-overflow.patch": "50afeb8f1e21edc9827059949ee6cebead23e8549f967b776adff3e5d0e810f9",
     "ci-inputs/mutations/p-false-saved.patch": "dbab6b58979e32a8c300af164b494a710a7c80a26991332d54e5ec4a36d89e29",
     "ci-inputs/mutations/p-lateack-clears-edits.patch": "0e0a381443e986202acd8b511439ebd80b851beb04456580868311c64ab1d8d0",
-    "ci-inputs/objective/d-old-response.delivery.json": "2c1adc0bf88016fa52031a063f6e0fc91c25d5d6da31e4c57cbfa81c72bc5629",
-    "ci-inputs/objective/d-old-response.json": "0cded433e72c995d5d729739d5b2884ef0c668d24184fb2fdaf9ead16b80a5b3",
-    "ci-inputs/objective/d-primary-hardcoded.delivery.json": "de88e19141b95964ea806d09720a2a2f20900df926a71ea3ac663fd9f12b97b9",
-    "ci-inputs/objective/d-primary-hardcoded.json": "56bbc78dc6e33b2bf8dd8e58d7014d1e58f9fcb410968902de93f8176a0d5e81",
-    "ci-inputs/objective/d-wrong-chart-geometry.delivery.json": "3e4b665fdc4de3cfebfa8a378a381abae4fd3eaf5a5eb558ac2765ae8e100caa",
-    "ci-inputs/objective/d-wrong-chart-geometry.json": "f3cade2f143613f91f04118a1f042fa831095b51f2121ff1a9acab566b96b554",
-    "ci-inputs/objective/p-cumulative-overflow.delivery.json": "0abe3da97cd5aaeca0cc981ef39f3855060b4a0b3e5e0cb8619bd3b111a9a1d2",
-    "ci-inputs/objective/p-cumulative-overflow.json": "08d2e289ffd9e0c5f626a02380c5a404d310285d3887da0686739a55abec7ac6",
-    "ci-inputs/objective/p-false-saved.delivery.json": "cde2509a3a376f588da65f5a20a75015892289223f2b775afd845a97d1109698",
-    "ci-inputs/objective/p-false-saved.json": "044474f8c1afd4d7a47a3a31265f27e9e9166e883f53ff6b828a053a63993eb7",
-    "ci-inputs/objective/p-lateack-clears-edits.delivery.json": "2c602e12a91852667297f8ee4875ee7b5a315c7ddebb8cc05f9ff90cab50d28f",
-    "ci-inputs/objective/p-lateack-clears-edits.json": "98898a62277f430cb45255cd3cf83778aa582e14f3a905998ea06d211a530114",
-    "ci-inputs/objective/ref-dashboard.delivery.json": "c79010a0e75d072ff2cad2ed74ebb9f8aedf3e1171554df571bc86f3d95fa976",
-    "ci-inputs/objective/ref-dashboard.json": "512928355c3679c25fac9713c2128b2927f3228d217c9e6c8e81f23edb2a2296",
-    "ci-inputs/objective/ref-planner.delivery.json": "91078859ebc05c0600c92d1217b2551d784e76362e325fa4c4eb0218c4477e0b",
-    "ci-inputs/objective/ref-planner.json": "a8d23e45b3391f721a1c3c0f1423215730d0cea5208fc5b9a3004f313e0da0d2",
+    "ci-inputs/objective/d-old-response.delivery.json": "0ff4d5da3501cd4ccb8e8e775d4bfd7d3e18e2116679c4fca65c907be6152fd5",
+    "ci-inputs/objective/d-old-response.json": "4068037dc0b4e0c375ffc865937d48c1755cd6dfbc8be2ed426ba503440652e5",
+    "ci-inputs/objective/d-primary-hardcoded.delivery.json": "9daf8d962871300796aaaa721dabc0429f61ca3b6d0f5d7364a3b042604e9733",
+    "ci-inputs/objective/d-primary-hardcoded.json": "4a545bb5f7141c916541475fb0bc7b4ac1ba5775f7a0bfbec3d73c4acfa98ee3",
+    "ci-inputs/objective/d-wrong-chart-geometry.delivery.json": "35598580424a1e8f38cd1daca95a0109db3298e2b238dc20131a24adb826611f",
+    "ci-inputs/objective/d-wrong-chart-geometry.json": "18d9c99214d22e32200f6fba5c4d2d2b9790b85d7bdd27794d3d470456a0a0f3",
+    "ci-inputs/objective/p-cumulative-overflow.delivery.json": "75533cd94cac375a509f07da888904870b3b8ccc3f2296f48e0193d8eaf63acf",
+    "ci-inputs/objective/p-cumulative-overflow.json": "349e9e50a382ab4e858ca48c7e5fcd6527225ecf80700f6d8fc8a9eda05bb3e8",
+    "ci-inputs/objective/p-false-saved.delivery.json": "71af4ed21c9bf5192bf9c190aff85cc7118cff1ee82fa7e8b102f550e58f2c81",
+    "ci-inputs/objective/p-false-saved.json": "3f6ff156ca794afcfed887c183b6d0cd0c91c781ccde68335d28d2495661df8b",
+    "ci-inputs/objective/p-lateack-clears-edits.delivery.json": "f05752e6d368c0f851e349381e0f97909b0f2f28c10376cea1ba10176b48893a",
+    "ci-inputs/objective/p-lateack-clears-edits.json": "33e37d7c21e88a76f7c379019cffcbd41cfc6d16a33849545a4275481f7c6d3d",
+    "ci-inputs/objective/ref-dashboard.delivery.json": "d8ff1fd07f1636a963967d2091bac2db74cf4649bed54da9f35413ba479f60e0",
+    "ci-inputs/objective/ref-dashboard.json": "84d9b4eb10b4529740d068fd16618c850ebce38129043c890708440030a2fe63",
+    "ci-inputs/objective/ref-planner.delivery.json": "ff742664a388f94b06625ba908e04e71f8381a397c126c092922205816617f1f",
+    "ci-inputs/objective/ref-planner.json": "00cf3b20e36e94fdec56a5c9aec427d550ffeaf1272d07e5b2d06e2d7b37ea5a",
     "ci-inputs/packages/d-old-response/frame/dataset.json": "d4a859accc1f865912c49eec95928874bb64991a03779b8731d9b4936e5c289b",
     "ci-inputs/packages/d-old-response/frame/functions/load-data.ts": "c5390620a425c768ede4a8758a2a62cba041a7785dbe8e0dc95b97bd936b7de5",
     "ci-inputs/packages/d-old-response/frame/index.tsx": "6d4bc2ac88c78189198472fa85c3ea0cd09ecf2eee5a483c48a40a8967d7c9cd",
@@ -3256,7 +3256,7 @@
     "ci-inputs/packages/ref-planner/response.json": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195"
   },
   "preparation": {
-    "created_utc": "2026-10-11T03:22:49.201489+00:00",
+    "created_utc": "2026-10-11T03:44:50.274126+00:00",
     "mode": "OFFLINE_STATIC_ONLY",
     "browser_functionality": "UNKNOWN",
     "native_counso": "UNKNOWN",

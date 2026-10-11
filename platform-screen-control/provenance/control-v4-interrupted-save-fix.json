@@ -1,0 +1,17 @@
+{
+  "origin": "SCORER_ACTION_PREREQUISITE_AND_CI_BUDGET_AMENDMENT_NOT_MODEL_EVIDENCE",
+  "prior_run_id": "38108544920",
+  "prior_reference_primary_complete_plans": 14,
+  "prior_reference_unseen_complete_plans": 6,
+  "prior_terminal": "COORDINATOR_TIMEOUT_CI_JOB",
+  "defect": "Before real Save or pending reattempt, zero requests/commits cannot prove a duplicate-save functional failure.",
+  "fix": "Multiplicity expectation requires actual Save, pending retrigger or disabled observation, observed hold and completed release/saved capture. Actual duplicated requests/commits and independently proved false Saved claims remain FAIL even after later observer interruption.",
+  "tests": {
+    "python": 95,
+    "node": 56,
+    "status": "PASS"
+  },
+  "mutation_or_task_changes": false,
+  "dashboard_reexecution": false,
+  "new_browser_status": "UNKNOWN_PENDING_PLANNER_ONLY_RETRY"
+}

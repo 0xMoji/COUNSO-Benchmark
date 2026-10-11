@@ -11,7 +11,7 @@
   "case_id": "G-UI-CREATE-M1",
   "interface_sha256": "ba1f02e879d2ea12a45b5b03ddb5154f833fb4a7f01293d8d0561a9e34ae63cb",
   "scope_sha256": "8d971acb1d3c5f5328278aa23ca7f7b7c02d505de5d627fbb3b214d37073798e",
-  "observer_sha256": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
+  "observer_sha256": "f27d81aec283bfe88527da39ede9b482582859087bdb11aee77d1006527d73cb",
   "observations": [
     {
       "kind": "delivery_checks",

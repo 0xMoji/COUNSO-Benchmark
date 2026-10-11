@@ -53,7 +53,7 @@
   },
   "actionTimeoutMs": 5000,
   "observerModule": "runtime/acceptance-observer.mjs",
-  "observerSha256": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
+  "observerSha256": "f27d81aec283bfe88527da39ede9b482582859087bdb11aee77d1006527d73cb",
   "hostMetadata": {
     "draft.json": {
       "revision": "88",

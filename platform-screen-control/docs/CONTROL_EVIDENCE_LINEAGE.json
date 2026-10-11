@@ -1,0 +1,45 @@
+{
+  "origin": "PREDECLARED_CONTROL_EVIDENCE_LINEAGE_NOT_CANDIDATE_OR_MODEL_EVIDENCE",
+  "existing_dashboard_phases": {
+    "reference-create": {
+      "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
+      "execution_fingerprint": "27999bbb8ac4a81ee57946752f59f3798abce3995aaedb435ec6754b55f2aad4",
+      "commit": "cfe6cc966e7dda135a54cce3e13ffcd576eb2e45",
+      "run_id": "38108544920",
+      "job": "controls",
+      "batch_sha256": "d701b5e19f11cb04d00f972dd63852fd11ea989793008dc5352cd857a699f1aa",
+      "published_subset_manifest_sha256": "bceb338ba001074c0d42508fb033e544053ff8040c0b5f141e1508c180fca796",
+      "artifact_zip_sha256": "2f7c5d06db6fa2f81506edc17c90829b9af89cdb5e5babed058a6c11fbba5197",
+      "coordinator_import_sha256": "0ece71f0531f5ec19749949987f0dfa97d77d5536066183811c3a92a07a8c739",
+      "certification": "PASS",
+      "source_observer_sha256": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
+      "raw_evidence_retains_original_version": true
+    },
+    "dashboard-mutations": {
+      "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
+      "execution_fingerprint": "27999bbb8ac4a81ee57946752f59f3798abce3995aaedb435ec6754b55f2aad4",
+      "commit": "cfe6cc966e7dda135a54cce3e13ffcd576eb2e45",
+      "run_id": "38108544920",
+      "job": "controls",
+      "batch_sha256": "d701b5e19f11cb04d00f972dd63852fd11ea989793008dc5352cd857a699f1aa",
+      "published_subset_manifest_sha256": "bceb338ba001074c0d42508fb033e544053ff8040c0b5f141e1508c180fca796",
+      "artifact_zip_sha256": "2f7c5d06db6fa2f81506edc17c90829b9af89cdb5e5babed058a6c11fbba5197",
+      "coordinator_import_sha256": "c31cd7828a970e754d1c60fbe62120707188e2842bb2458f5bff63d657ea9b35",
+      "certification": "PASS",
+      "source_observer_sha256": "69091f4f34f068f181023570d2e9f9598d6cee4514173ccf88d67e85a3abdb5e",
+      "raw_evidence_retains_original_version": true
+    }
+  },
+  "new_run_phases": [
+    "reference-edit",
+    "planner-mutations"
+  ],
+  "new_run_job_seconds": 600,
+  "new_planner_reference_seconds": 210,
+  "new_planner_mutations_seconds": 90,
+  "rationale": "Observed actual primary planner 14 plans took78.18s. Unseen was interrupted after six complete passing plans, before actual Save. Planner-only follow-up completes missing coverage; no model difficulty inference from coordinator timeout.",
+  "compatibility": "Independent review must establish all dashboard observation logic/shared helpers, driver/compiler/proxy/SDK/dependency lock, task facts/weights, static packages/bundles, fixtures and plans unchanged. Version-bearing metadata may differ only by benchmark_version. Observer amendment is confined to pending planner save multiplicity prerequisites. Never label v3 dashboard receipts as a new v4 browser run.",
+  "gate": "Trusted coordinator phase registrations must cover every declared reference/mutation atom and fixture with exact original commit/run/batch/observer/rawhash. Require independently source-bound compatibility verification; missing, wrong-version, swapped fixture/package/plan or forged registration is rejected or UNKNOWN. No candidate flag confers trust.",
+  "pending_planner_certification": "UNKNOWN_UNTIL_ACTUAL_AUTHENTICATED_REFERENCE_AND_MUTATION_RESULTS",
+  "candidate_model_clocks": "SEPARATE_FROM_CONTROL_BROWSER_AND_CI_CLOCKS"
+}

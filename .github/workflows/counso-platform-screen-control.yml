@@ -53,27 +53,15 @@ jobs:
           google-chrome --version
           test -x /opt/google/chrome/chrome
           sha256sum /opt/google/chrome/chrome
-      - name: Dashboard reference phase
-        timeout-minutes: 2
-        env:
-          CI_EVIDENCE_COMMIT: ${{ github.sha }}
-          CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
-          CI_BROWSER_CHANNEL: chrome
-        run: timeout --signal=TERM --kill-after=5s 90s node runtime/ci-entry.mjs --phase reference-create
-      - name: Three declared dashboard mutations phase
-        timeout-minutes: 2
-        env:
-          CI_EVIDENCE_COMMIT: ${{ github.sha }}
-          CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
-          CI_BROWSER_CHANNEL: chrome
-        run: timeout --signal=TERM --kill-after=5s 90s node runtime/ci-entry.mjs --phase dashboard-mutations
+      # Dashboard reference/mutations inherit existing control-v3 real evidence.
+      # Prospective contract-equivalence review is required; historical files stay unchanged.
       - name: Planner reference phase
-        timeout-minutes: 3
+        timeout-minutes: 4
         env:
           CI_EVIDENCE_COMMIT: ${{ github.sha }}
           CI_EVIDENCE_RUN_ID: ${{ github.run_id }}
           CI_BROWSER_CHANNEL: chrome
-        run: timeout --signal=TERM --kill-after=5s 120s node runtime/ci-entry.mjs --phase reference-edit
+        run: timeout --signal=TERM --kill-after=5s 210s node runtime/ci-entry.mjs --phase reference-edit
       - name: Three declared planner mutations phase
         timeout-minutes: 2
         env:

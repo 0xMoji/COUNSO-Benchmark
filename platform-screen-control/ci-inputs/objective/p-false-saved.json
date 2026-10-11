@@ -33,7 +33,7 @@
     "P-H3",
     "P-H4"
   ],
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v4",
   "case_id": "G-UI-EDIT-M1",
   "checks": [
     {
@@ -241,9 +241,9 @@
   "task_delivery_complete": true,
   "execution_mode": "frames_proxy",
   "actual_browser_validation": "UNKNOWN",
-  "validation_start_at": "2026-10-11T03:22:48.777686+00:00",
-  "validation_end_at": "2026-10-11T03:22:48.779077+00:00",
-  "validation_duration_ns": 1381800,
+  "validation_start_at": "2026-10-11T03:44:49.876150+00:00",
+  "validation_end_at": "2026-10-11T03:44:49.878964+00:00",
+  "validation_duration_ns": 2808578,
   "all_required_check_coverage": 0.09090909090909091,
   "evidence": {
     "response_sha256": "3d4a74c9a5262e834996988e4b03a724e244749cc3af5f48fb8248be473d3195",

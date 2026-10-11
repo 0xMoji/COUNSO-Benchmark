@@ -1,10 +1,10 @@
 {
-  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v3",
+  "benchmark_version": "COUNSO-PLATFORM-SCREEN-0.4.0-control-v4",
   "case_id": "G-UI-EDIT-M1",
   "public_files": {
     "SDK_API.d.ts": "9497b6c804887d93fb03fa6bdd2988f382162a874a64238e298292c2693f7d92",
     "SDK_API.json": "4c480c1b2bf846868a558a4d1b467efdc801e95a9d0e0adcacee255b9a85a58e",
-    "grading_contract.json": "245ca779817890f7b0b73c9180209a65ad993803a7875e585459053429007b41",
+    "grading_contract.json": "88ca9a02c32710254d57469d14731b4a10e7a005d3b57685e86d4ad2d653e689",
     "inputs/frame/draft.json": "326501732865a17e506b7e727c80091454d3934bce74e1c3cb96bccf3627cb14",
     "inputs/frame/functions/load-data.ts": "cbae438236e1a672d38fcb18cd5692d6ede7d569582e3c903b8a2257fba62e0c",
     "inputs/frame/index.tsx": "3c6a29981d6fb558c743d6b79f3414811c960c936bbe0f4ab3705c6f5402d115",
@@ -13,6 +13,6 @@
     "interaction_contract.json": "580e8480ae50fe9d9e03f25a9d37cfdeea7b9a52a7583e445074e3df96414d85",
     "prompt.txt": "ece0bb2f1369d5780bed0398dae66b07cbdd7d018e73c2bf9ea9af317b1c9f9d",
     "response_schema.json": "d5d8d3f99e1b7863036f2c91db7fccd733928a63d1cb18350e3c41f49e4dece2",
-    "task_contract.json": "1d973da85877403d6025c05950badabec35ec9b73536e14fb79e9ac751893e02"
+    "task_contract.json": "1c77fec0144f1eb85608ff3834a4760764bac6ec806717a358e22948d47915cb"
   }
 }

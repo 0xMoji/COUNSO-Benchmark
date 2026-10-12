@@ -43,3 +43,4 @@ jobs:
         with:
           name: synthetic-controls-not-model-results
           path: /tmp/counso-full-controls
+          include-hidden-files: true

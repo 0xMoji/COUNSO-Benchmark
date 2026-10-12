@@ -14,10 +14,14 @@
   "independent_oracle": {
     "path": "provenance/AUTO-INDEPENDENT-ORACLE.json",
     "result": "PASS",
-    "sha256": "445a6a4da1bf2b255aa515976fd21ffaef100bd16e78e07e677f3f3e72f58c3b"
+    "sha256": "0e83386542fc330391b9362c02dcb8a8e876725770c06c6ae1bdc5ed4782a085"
   },
   "new_model_runs": 0,
   "notice": "Reference/negative controls and tool compatibility only. No candidate model ranking, semantic-review accuracy, production account or OS-isolation claim.",
+  "portability_controls": [
+    "Python 3.10 callable-only SQLite authorizer",
+    "Filesystem-safe observation names independent of run_id delimiters"
+  ],
   "reference_by_capability": {
     "diagnostic": {
       "fail": 0,
@@ -86,14 +90,14 @@
     "reference_passed": 40,
     "reference_unknown": 0
   },
-  "suite_fingerprint": "38b9b0b01032f8ea478804b193151d07746ebdb3bba96fe75bed1978dd9d0b42",
+  "suite_fingerprint": "3cb2cad14b7d9504d206bc5e30f4f0d473a042ed30e220c8a9ede1486d3fb01a",
   "unit_and_integration": {
     "errors": 0,
     "failures": 0,
     "log": "provenance/AUTO-CONTROL-TESTS.txt",
-    "log_sha256": "d594e995a6dff024bf2d954b541caa793da8f913b6ad48e296867b58acebdcdb",
+    "log_sha256": "b069614fb34965c479bf2c55e8751d03576595a6092eb37fcddc3e881b0916fc",
     "skipped": 0,
-    "tests": 163
+    "tests": 166
   },
   "verification_date": "2026-10-12"
 }

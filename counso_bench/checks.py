@@ -200,7 +200,10 @@ def evaluate(check, response, output_dir, package_root, observations=None):
                 connection.set_progress_handler(lambda:1,10000)
                 values=connection.execute(actual).fetchall()
                 ok=len(values)==1 and len(values[0])==1 and _money(values[0][0])==Decimal('500.00')
-                connection.set_authorizer(None)
+                # Python 3.10 does not reliably support None to disable the
+                # callback. Allow only this assessor-owned perturbation setup
+                # with a callable, then restore the candidate SELECT policy.
+                connection.set_authorizer(lambda *args: sqlite3.SQLITE_OK)
                 connection.execute("INSERT INTO transactions VALUES('TX-PERTURB','SALE','17.35')")
                 connection.execute("INSERT INTO transactions VALUES('TX-REFUND-PERTURB','REFUND','-999.99')")
                 connection.set_authorizer(authorize)

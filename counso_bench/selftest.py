@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import json
+import hashlib
 import shutil
 import urllib.request
 from urllib.parse import quote
@@ -29,7 +30,9 @@ def materialize_reference(case,contract,out):
 
 def observed_reference(case,response,out,run_id=None):
     if not case.get('service_required'):return None
-    observations_path=out.parent/(out.name+'-'+(run_id or 'SIMULATED-REFERENCE-'+case['id'])+'-assessor-observations.json')
+    identity=run_id or 'SIMULATED-REFERENCE-'+case['id']
+    token=hashlib.sha256(identity.encode('utf-8')).hexdigest()[:24]
+    observations_path=out.parent/(out.name+'-'+token+'-assessor-observations.json')
     with running_mock(case['id'],observations_path,run_id=run_id or 'SIMULATED-REFERENCE-'+case['id']) as (endpoint,state):
         if case['service_required'] in {'SOURCE_DISCOVERY_MOCK','SOURCE_REVIEW_MOCK'}:
             for q in (['税务','主体登记','汇率','数据权限'] if case['service_required']=='SOURCE_DISCOVERY_MOCK' else []):

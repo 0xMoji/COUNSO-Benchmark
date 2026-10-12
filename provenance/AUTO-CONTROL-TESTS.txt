@@ -156,6 +156,9 @@ test_score_bounds_and_boolean_float_string_rejected (test_semantic_review.Semant
 test_unknown_dimensions_are_valid_without_evidence (test_semantic_review.SemanticReviewTests.test_unknown_dimensions_are_valid_without_evidence) ... ok
 test_valid_review_binds_actual_file_bytes_and_preserves_raw (test_semantic_review.SemanticReviewTests.test_valid_review_binds_actual_file_bytes_and_preserves_raw) ... ok
 test_wrong_root_missing_dimension_and_bad_version_do_not_raise (test_semantic_review.SemanticReviewTests.test_wrong_root_missing_dimension_and_bad_version_do_not_raise) ... ok
+test_observation_file_names_do_not_embed_run_id_path_characters (test_sql_portability.EvidenceFilenameTests.test_observation_file_names_do_not_embed_run_id_path_characters) ... ok
+test_perturbation_policy_still_rejects_constant_and_other_tables (test_sql_portability.SQLPortabilityTests.test_perturbation_policy_still_rejects_constant_and_other_tables) ... ok
+test_reference_passes_callable_only_authorizer_implementation (test_sql_portability.SQLPortabilityTests.test_reference_passes_callable_only_authorizer_implementation) ... ok
 test_different_seed_changes_sales_but_not_other_tasks (test_variants.FrozenVariantControls.test_different_seed_changes_sales_but_not_other_tasks) ... ok
 test_id_amount_consistency_unknowns_and_business_labels_preserved (test_variants.FrozenVariantControls.test_id_amount_consistency_unknowns_and_business_labels_preserved) ... ok
 test_real_browser_passes_seeded_sales_variants (test_variants.FrozenVariantControls.test_real_browser_passes_seeded_sales_variants) ... ok
@@ -165,6 +168,6 @@ test_same_seed_produces_identical_frozen_bytes (test_variants.FrozenVariantContr
 test_variant_scope_hashes_and_frozen_manifest_valid (test_variants.FrozenVariantControls.test_variant_scope_hashes_and_frozen_manifest_valid) ... ok
 
 ----------------------------------------------------------------------
-Ran 163 tests in 40.485s
+Ran 166 tests in 38.388s
 
 OK

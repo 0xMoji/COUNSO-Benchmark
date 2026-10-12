@@ -4,7 +4,7 @@
 
 ## 已实际通过
 
-- 完整单元及集成回归 **163 项**，0 失败、0 错误、0 跳过；包含真实浏览器和 Office 引擎。
+- 完整单元及集成回归 **166 项**，0 失败、0 错误、0 跳过；包含真实浏览器和 Office 引擎。
 - 全题单参考 **40/40 PASS**，0 UNKNOWN；**40/40 单点错误对照检出**。
 - 注册表 40 场景、29 家族，core 29 / stress 5 / diagnostic 6；69 个不同输入文件、273 个题目检查，另有每题响应格式检查。
 - 主能力任务 34：办公事务 16、文件工具 12、生成式 UI 6；诊断 6 单列。
@@ -18,7 +18,7 @@
 ## 可核对记录
 
 - [机器控制摘要](../provenance/AUTO-CONTROL-RESULTS.json)：执行包指纹、环境版本、计数和证据哈希。
-- [163 项完整测试日志](../provenance/AUTO-CONTROL-TESTS.txt)。
+- [166 项完整测试日志](../provenance/AUTO-CONTROL-TESTS.txt)。
 - [独立业务 Oracle](../provenance/AUTO-INDEPENDENT-ORACLE.json)。
 - [逐项整改与实施边界](REMEDIATION.md)。
 

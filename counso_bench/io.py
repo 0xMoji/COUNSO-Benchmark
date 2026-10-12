@@ -2,14 +2,27 @@
 from __future__ import annotations
 import hashlib
 import json
+import stat
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+MAX_FILE_BYTES = 50_000_000
+MAX_JSON_BYTES = 5_000_000
+MAX_JSON_DEPTH = 128
 
 class BenchError(ValueError):
     pass
 
-def load_json(path):
+def check_file_size(path, max_bytes=MAX_FILE_BYTES):
+    info = Path(path).stat()
+    if not stat.S_ISREG(info.st_mode):
+        raise BenchError("只接受普通文件")
+    if info.st_size > max_bytes:
+        raise BenchError(f"文件超过 {max_bytes} 字节的校验上限")
+    return info.st_size
+
+def load_json(path, max_bytes=MAX_JSON_BYTES):
+    check_file_size(path, max_bytes)
     with Path(path).open(encoding="utf-8") as f:
         def pairs(items):
             result = {}
@@ -20,7 +33,25 @@ def load_json(path):
             return result
         def constant(value):
             raise BenchError(f"JSON 禁止非常数值：{value}")
-        return json.load(f, object_pairs_hook=pairs, parse_constant=constant)
+        # Limit the actual read as well as stat: a concurrently growing file must
+        # not bypass the resource guard.
+        content = f.read(max_bytes + 1)
+        if len(content.encode("utf-8")) > max_bytes:
+            raise BenchError("JSON 超过校验上限")
+        try:
+            result = json.loads(content, object_pairs_hook=pairs, parse_constant=constant)
+        except (RecursionError, json.JSONDecodeError) as exc:
+            raise BenchError("JSON 语法无效或嵌套过深") from exc
+        stack = [(result, 0)]
+        while stack:
+            value, depth = stack.pop()
+            if depth > MAX_JSON_DEPTH:
+                raise BenchError("JSON 嵌套超过校验上限")
+            if isinstance(value, dict):
+                stack.extend((v, depth + 1) for v in value.values())
+            elif isinstance(value, list):
+                stack.extend((v, depth + 1) for v in value)
+        return result
 
 def dumps(value):
     return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
@@ -30,8 +61,17 @@ def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(dumps(value), encoding="utf-8")
 
-def sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def sha256(path, max_bytes=MAX_FILE_BYTES):
+    check_file_size(path, max_bytes)
+    digest = hashlib.sha256()
+    size = 0
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(64 * 1024), b''):
+            size += len(block)
+            if size > max_bytes:
+                raise BenchError("文件增长超过哈希校验上限")
+            digest.update(block)
+    return digest.hexdigest()
 
 def safe_path(root, relative):
     root = Path(root).resolve()

@@ -1,0 +1,99 @@
+{
+  "execution_environment": {
+    "browser": "154.0.8037.98",
+    "independent_presentation_author": "PptxGenJS 4.0.1",
+    "node": "24.19.0",
+    "office_engine": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "playwright": "1.62.1",
+    "python": "3.12.14"
+  },
+  "generated_bytes": {
+    "all_equal": true,
+    "compared_files": 91
+  },
+  "independent_oracle": {
+    "path": "provenance/AUTO-INDEPENDENT-ORACLE.json",
+    "result": "PASS",
+    "sha256": "445a6a4da1bf2b255aa515976fd21ffaef100bd16e78e07e677f3f3e72f58c3b"
+  },
+  "new_model_runs": 0,
+  "notice": "Reference/negative controls and tool compatibility only. No candidate model ranking, semantic-review accuracy, production account or OS-isolation claim.",
+  "reference_by_capability": {
+    "diagnostic": {
+      "fail": 0,
+      "pass": 6,
+      "planned": 6,
+      "submitted": 6,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "file_tools": {
+      "fail": 0,
+      "pass": 12,
+      "planned": 12,
+      "submitted": 12,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "generative_ui": {
+      "fail": 0,
+      "pass": 6,
+      "planned": 6,
+      "submitted": 6,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "office_tasks": {
+      "fail": 0,
+      "pass": 16,
+      "planned": 16,
+      "submitted": 16,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    }
+  },
+  "run_origin": "SIMULATED",
+  "schema_version": "AUTO-0.2",
+  "seeded_variant": {
+    "browser_stages_passed": 4,
+    "same_seed_all_frozen_bytes_equal": true,
+    "seed": 42,
+    "supported_cases": [
+      "R-U01-dashboard",
+      "R-U05-iterative-edit",
+      "R-U06-data-update"
+    ]
+  },
+  "selftest": {
+    "failures": [],
+    "fully_verified": true,
+    "negative_controls": 40,
+    "negative_detected": 40,
+    "passed": true,
+    "reference_cases": 40,
+    "reference_passed": 40,
+    "reference_unknown": 0
+  },
+  "suite_fingerprint": "38b9b0b01032f8ea478804b193151d07746ebdb3bba96fe75bed1978dd9d0b42",
+  "unit_and_integration": {
+    "errors": 0,
+    "failures": 0,
+    "log": "provenance/AUTO-CONTROL-TESTS.txt",
+    "log_sha256": "d594e995a6dff024bf2d954b541caa793da8f913b6ad48e296867b58acebdcdb",
+    "skipped": 0,
+    "tests": 163
+  },
+  "verification_date": "2026-10-12"
+}

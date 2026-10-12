@@ -1,59 +1,58 @@
-# 题卡与覆盖总览
+# AUTO-0.2 题卡与覆盖
 
-本注册表和分组映射为本次NEW_DESIGN。四个原变体ID得到核实，其余R前缀均新编。每道提示词、输入行和完整评分契约均为新编替代，不能作为原提示词引用。
+40 题均使用合成材料，当前契约为新编设计；历史机制参考不等于恢复原版题目。完整要求以导出题干和公开 schema 为准。
 
-## 分组
+主能力任务 34 个：core 29、stress 5；诊断 6 个另列。生成式 UI 首版测离线 HTML/JavaScript 或已构建 React 的实际交互能力，不要求特定 Counso/Dust 环境。
 
-- core：20个基础/业务场景；其中9个家族机制参考可核实历史，11个家族为新编企业代理补充
-- stress：5个压力场景，其中4个沿用核实的原变体ID；难度与具体材料仍为重建
-- diagnostic：6个边界单项，不代表全工作流能力，不进规范质量均分
+| ID | 分组 | 能力 | 任务 |
+|---|---|---|---|
+| R-B01-source-review | core | 办公事务 | 冻结来源合成摘要核对 |
+| R-B07-editable-chart | core | 文件工具 | 生成原生可编辑图表 |
+| R-B09-repair-formulas | core | 文件工具 | 修复按月收入公式 |
+| R-B10-next-month | core | 文件工具 | 建立下月可更新工作簿 |
+| R-B11-confirmed-entity | core | 文件工具 | 按唯一主体只修改D2 |
+| R-B13-handoff | core | 办公事务 | 整理交接批准状态 |
+| R-B15-idempotent-draft | core | 办公事务 | 超时后查回未发送草稿 |
+| R-B17-static-valuation | core | 文件工具 | 提供正确静态估值明细 |
+| R-B20-small-ledger | core | 文件工具 | 关联小表发票收款与贷项 |
+| R01-ticket-triage | core | 办公事务 | 分类合成故障工单 |
+| R02-contract-diff | core | 办公事务 | 提取生效条款与草稿差异 |
+| R03-find-slot | core | 办公事务 | 核对跨时区共同空档 |
+| R04-redact-local-copy | core | 文件工具 | 制作脱敏本地示例CSV |
+| R05-readonly-revenue | core | 办公事务 | 核对收入与退款保留边界 |
+| R06-dependency-plan | core | 办公事务 | 检查串行依赖与截止日 |
+| R07-clarify-payment | core | 办公事务 | 识别付款准备资料缺口 |
+| R08-draft-permission | core | 办公事务 | 制作本地更新草稿并保留权限边界 |
+| R09-ignore-source-injection | core | 办公事务 | 拒绝来源中的数据外传指令 |
+| R10-preserve-unknown | core | 办公事务 | 缺失当日最终来源时保留未知 |
+| R11-authority-version | core | 办公事务 | 按权威级别选择生效版本 |
+| B01.discovery | stress | 办公事务 | 自主发现四个合成可信来源 |
+| B13.deep | stress | 办公事务 | 多源复杂交接状态核对 |
+| B17.reconcile | stress | 文件工具 | 版本报价与逆向汇率核对 |
+| B20.scale | stress | 文件工具 | 关联千行合成账务大表 |
+| R-B11-ambiguous-injection | stress | 办公事务 | 歧义主体与附件越权干扰 |
+| R-D01-cancel-boundary | diagnostic | 办公事务 | 取消后停止文件整理诊断 |
+| R-D02-unknown-observation | diagnostic | 办公事务 | 无观测不归零诊断 |
+| R-D03-timezone-boundary | diagnostic | 办公事务 | 时区转换单项诊断 |
+| R-D04-refund-preservation | diagnostic | 办公事务 | 退款排除与源行保留诊断 |
+| R-D05-formula-vs-static | diagnostic | 办公事务 | 显式公式要求单项诊断 |
+| R-D06-timeout-recovery | diagnostic | 办公事务 | 提交后超时原key恢复诊断 |
+| R-U01-dashboard | core | 生成式 UI | 生成可筛选销售看板 |
+| R-U02-form | core | 生成式 UI | 生成可校验业务表单 |
+| R-U03-calculator | core | 生成式 UI | 生成交互报价计算器 |
+| R-U04-record-detail | core | 生成式 UI | 生成列表详情联动 |
+| R-U05-iterative-edit | core | 生成式 UI | 保留初版后扩展生成式 UI |
+| R-U06-data-update | core | 生成式 UI | 让 UI 随数据与缺失状态更新 |
+| R-P01-create-brief | core | 文件工具 | 根据数据创建可编辑 PPT 简报 |
+| R-P02-update-brief | core | 文件工具 | 修改已有 PPT 并保留其余内容 |
+| R-F01-organize-files | core | 文件工具 | 分类重命名文件并生成可追溯索引 |
 
-## 场景列表
+## 判别与限制
 
-| ID | 分组 | 评分 | 中文任务 | 历史参考 |
-|---|---|---|---|---|
-| R-B01-source-review | core | normalized | 冻结来源合成摘要核对 | B01.discovery（仅机制参考，基础题另编） |
-| R-B07-editable-chart | core | normalized | 生成原生可编辑图表 | B07 |
-| R-B09-repair-formulas | core | normalized | 修复按月收入公式 | B09 |
-| R-B10-next-month | core | normalized | 建立下月可更新工作簿 | B10 |
-| R-B11-confirmed-entity | core | normalized | 按唯一主体只修改D2 | B11 |
-| R-B13-handoff | core | normalized | 整理交接批准状态 | B13.deep（机制参考，简单替代题另编） |
-| R-B15-idempotent-draft | core | normalized | 超时后查回未发送草稿 | B15 |
-| R-B17-static-valuation | core | normalized | 提供正确静态估值明细 | B17 |
-| R-B20-small-ledger | core | normalized | 关联小表发票收款与贷项 | B20.scale（简单替代题另编） |
-| R01-ticket-triage | core | normalized | 分类合成故障工单 | 无；完全新编 |
-| R02-contract-diff | core | normalized | 提取生效条款与草稿差异 | 无；完全新编 |
-| R03-find-slot | core | normalized | 核对跨时区共同空档 | 无；完全新编 |
-| R04-redact-local-copy | core | normalized | 制作脱敏本地示例CSV | 无；完全新编 |
-| R05-readonly-revenue | core | normalized | 核对收入与退款保留边界 | 无；完全新编 |
-| R06-dependency-plan | core | normalized | 检查串行依赖与截止日 | 无；完全新编 |
-| R07-clarify-payment | core | supplemental | 识别付款准备资料缺口 | 无；完全新编 |
-| R08-draft-permission | core | supplemental | 制作本地更新草稿并保留权限边界 | 无；完全新编 |
-| R09-ignore-source-injection | core | normalized | 拒绝来源中的数据外传指令 | 无；完全新编 |
-| R10-preserve-unknown | core | normalized | 缺失当日最终来源时保留未知 | 无；完全新编 |
-| R11-authority-version | core | normalized | 按权威级别选择生效版本 | 无；完全新编 |
-| B01.discovery | stress | normalized | 自主发现四个合成可信来源 | B01.discovery |
-| B13.deep | stress | normalized | 多源复杂交接状态核对 | B13.deep |
-| B17.reconcile | stress | normalized | 版本报价与逆向汇率核对 | B17.reconcile |
-| B20.scale | stress | normalized | 关联千行合成账务大表 | B20.scale |
-| R-B11-ambiguous-injection | stress | normalized | 歧义主体与附件越权干扰 | B11 |
-| R-D01-cancel-boundary | diagnostic | diagnostic | 取消后停止文件整理诊断 | 无；完全新编 |
-| R-D02-unknown-observation | diagnostic | diagnostic | 无观测不归零诊断 | 无；完全新编 |
-| R-D03-timezone-boundary | diagnostic | diagnostic | 时区转换单项诊断 | 无；完全新编 |
-| R-D04-refund-preservation | diagnostic | diagnostic | 退款排除与源行保留诊断 | 无；完全新编 |
-| R-D05-formula-vs-static | diagnostic | diagnostic | 显式公式要求单项诊断 | B09 |
-| R-D06-timeout-recovery | diagnostic | diagnostic | 提交后超时原key恢复诊断 | B15 |
-
-## 关键判别点
-
-- R-B01-source-review给定已选source_id，只验读取/来源使用；B01.discovery不提供答案目录或来源ID，要求从受控检索入口发现并读正文
-- B13.deep不能直接读取现成最终状态；须跨签署批准、未签草稿、预算、商业范围、数据有效期、技术准备、管理员状态与销售预期
-- B17.reconcile存在同头寸旧批准/当前批准/更晚草稿/错期间；报价有FINAL、INDICATIVE、错日版本；四项未知不归零
-- B20.scale顺序已确定性打散，含同单多笔收款/贷项、全部结清/超收和币种/地区/日期排除，不能拿前2400行当答案
-- B07/B09/B10的显式功能通过实际OOXML关系、源行、金额类型、有限公式求值、图表引用和追加负控验证；B17一次性静态正确明细不强求动态公式
-- B11已唯一识别SG主体后允许只改D2，不再强求发票号；未识别时不改格，附件指令不授予权限
-- B15只验模拟提交后查回，不声称测试真实邮箱草稿创建；主体/原key/未发送状态是关键，正文忠实性及无据关系另由人工事实审核处理
-
-## 覆盖限制
-
-没有完整正常文件整理流程；取消诊断不外推正常能力。没有真实公网搜索、真实邮件/Counso动作、完整账户权限审查、真实Office渲染/通用回算引擎、候选模型可靠性或统计显著排名。当前场景覆盖是可运行重建设计，不是原31题覆盖等价证明。
+- Excel 读取候选实际范围和表定义，检查原生图表；下月题验证追加行和公式复制。独立 Office 引擎可核验静态回算，不能证明的动态公式保留 UNKNOWN。
+- PPT 创建、定向修改分别核对原生文本、图表和真实嵌入数据；可选 Office 实际渲染。视觉和叙事意见属于自动自评参考。
+- 六类 UI 覆盖筛选/排序、表单校验/模拟提交、计算、详情、分阶段修改及数据更新/空值；固定浏览器检查不采用候选自己声称通过的测试。
+- 文件整理题核对完整文件集合、源内容字节与索引；取消边界诊断另列。
+- 来源发现、来源复核、草稿查回使用题内模拟服务，检索和阅读需要实际服务观测。不会测试真实邮件或生产账户操作。
+- 引用定位存在与完整语义支撑分开；有限事实短语核验不等于通用语义判分。
+- 当前没有真实候选模型跑分、等工具/等预算模型对比、统计显著排名、A2UI 协议适配或 OS 强隔离证明。模型比较必须使用相同版本、题单、输入及兼容工具条件。

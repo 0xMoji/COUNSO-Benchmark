@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "counso-benchmark-reconstructed"
-version = "0.1.0"
-description = "HISTORY-RECONSTRUCTED 离线评测输入、确定性校验和审计工具"
+version = "0.2.0"
+description = "Agent 自助能力题集：办公、文件工具、生成式 UI 与本地自动核验"
 requires-python = ">=3.10"
 dependencies = []
 

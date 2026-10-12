@@ -1,0 +1,19 @@
+{
+  "data": {
+    "amounts": [
+      1200,
+      1500,
+      1800
+    ],
+    "currency": "SGD",
+    "disclosure": "Synthetic fixture",
+    "months": [
+      "January",
+      "February",
+      "March"
+    ],
+    "title": "Quarterly sales",
+    "total": 4500
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

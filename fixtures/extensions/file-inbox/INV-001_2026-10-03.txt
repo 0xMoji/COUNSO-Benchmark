@@ -1,0 +1,3 @@
+Invoice INV-001
+Date: 2026-10-03
+Amount: SGD 125.00

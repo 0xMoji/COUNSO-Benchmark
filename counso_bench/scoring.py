@@ -1,4 +1,4 @@
-"""新编计分层：客观检查、人工事实审核、历史故障分母规则。"""
+"""RECON-0.1 legacy API for historical regression controls only. New CLI uses automation.py."""
 from __future__ import annotations
 from .checks import evaluate
 from .io import BenchError, get_path, safe_path, sha256
@@ -47,7 +47,7 @@ def score_response(scenario, checks, response, run, output_dir, package_root, ob
                 artifact_evidence.append({'check_id':c['id'],'path':relative,'present':present,'sha256':sha256(p) if present else None})
             except (KeyError,TypeError,ValueError,OSError):artifact_evidence.append({'check_id':c['id'],'path':None,'present':False,'sha256':None})
     from .schema import validate_response
-    errors=validate_response(response,scenario)
+    errors=validate_response(response,{**scenario, 'schema_version':'RECON-0.1'})
     evaluated = [{"id":scenario['id']+":response_format","category":"format","weight":2,"passed":not errors,"state":"FAIL" if errors else "PASS","critical":False,"reason":"；".join(errors) if errors else "输出schema通过"}]
     for c in checks:
         passed, reason = evaluate(c, response, output_dir, package_root, observations)

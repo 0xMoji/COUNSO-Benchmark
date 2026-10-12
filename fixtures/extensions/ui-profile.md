@@ -1,0 +1,3 @@
+交付离线 HTML/JavaScript 界面（html-offline-v1），入口路径写 result.ui_file；入口及所需资源放在同一目录子树，预览服务的 / 对应入口文件。入口最多 5 MB，整个产物子树最多 50 MB/10000 个普通文件，不使用符号链接；.assessor 为核验器保留目录。可以使用已构建的 React，但不从 CDN 或外网加载依赖。使用原生语义控件或等价可访问角色，下列英文 accessible name 是公开测试接口，与布局和样式无关。所有控件和结果必须在界面上可见。评测预览服务提供 GET /data.json?dataset=base|updated|empty|partial；响应是 JSON 数组，内容取自本题输入。可以相对路径读取此接口，禁止依赖候选自建远程服务。浏览器测试会真实操作；自行生成截图或“测试通过”声明不能替代运行结果。
+
+从 sales.json 数据生成销售看板，只把 type=SALE 的记录计入收入。Region 和 Month 是下拉框，均提供 ALL；Region 另含 SG/HK/JP，Month 另含 2026-01/2026-02/2026-03。筛选同时应用。可见输出使用 role=status，名字分别是 Revenue（两位小数）和 Count（记录数）；表格名字 Sales，列按 ID, Month, Region, Amount 顺序，含表头。Reset 按钮恢复 ALL 和原始顺序；空结果显示 No results。

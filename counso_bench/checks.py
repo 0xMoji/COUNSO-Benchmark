@@ -3,10 +3,11 @@ from __future__ import annotations
 from decimal import Decimal, InvalidOperation
 import csv
 import json
+import re
 from pathlib import Path
 import zipfile
 import xml.etree.ElementTree as ET
-from .io import BenchError, get_path, safe_path
+from .io import BenchError, get_path, safe_path, load_json, check_file_size
 
 MAX_ARTIFACT_BYTES = 50_000_000
 NS = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
@@ -20,34 +21,72 @@ def _read_csv(path):
         return list(reader)
 
 def _office_parts(path):
-    if path.stat().st_size > MAX_ARTIFACT_BYTES:
-        raise BenchError("Office 文件超过 50MB 的校验上限")
-    with zipfile.ZipFile(path) as z:
-        names = z.namelist()
-        if len(names) != len(set(names)):
-            raise BenchError("Office 包含重名条目")
-        if len(names) > 10_000 or sum(i.file_size for i in z.infolist()) > MAX_ARTIFACT_BYTES:
-            raise BenchError("Office 解压内容超过校验上限")
-        for name in names:
-            if name.startswith("/") or ".." in Path(name).parts:
-                raise BenchError("Office 包含越界条目")
-        if any('vba' in n.lower() or n.lower().endswith('.bin') for n in names):
-            raise BenchError('Office宏/二进制嵌入不在本次允许范围')
-        parts = {n: z.read(n) for n in names if n.endswith(".xml") or n.endswith(".rels")}
-    for name, content in parts.items():
-        if b"<!DOCTYPE" in content.upper() or b"<!ENTITY" in content.upper():
-            raise BenchError("Office XML 禁止 DTD/实体声明")
-        if name.endswith(".rels"):
-            relationships=ET.fromstring(content)
-            if any(e.attrib.get('TargetMode','').lower()=='external' for e in relationships):
-                raise BenchError("Office 包含外部链接，需人工安全复核")
-    return parts
+    from .office_package import read_office_parts
+    return read_office_parts(path,max_bytes=MAX_ARTIFACT_BYTES)
 
 def _money(value):
+    if type(value) not in {int,float,str}:
+        raise BenchError("金额必须是数值或十进制字符串")
     result = Decimal(str(value))
     if not result.is_finite():
         raise BenchError("金额不能为 NaN/Infinity")
     return result
+
+
+def _canonical(value, path='', unordered_paths=()):
+    if isinstance(value,dict):
+        return ('object',tuple(sorted((k,_canonical(v,path+'.'+k,unordered_paths)) for k,v in value.items())))
+    if isinstance(value,list):
+        items=[_canonical(v,path+'.'+str(i),unordered_paths) for i,v in enumerate(value)]
+        if any(len(path.split('.'))==len(pattern.split('.')) and all(a==b or b=='*' for a,b in zip(path.split('.'),pattern.split('.'))) for pattern in unordered_paths):
+            items.sort(key=repr)
+        return ('array',tuple(items))
+    return (type(value).__name__,value)
+
+
+def _citation_locator(path, locator):
+    """Existence only: this does not prove a claim is supported by the source."""
+    check_file_size(path)
+    if path.suffix=='.json':
+        if locator.startswith('json:'):locator=locator[5:]
+        if not locator.startswith('/') or locator=='/':return False
+        value=load_json(path)
+        for part in locator[1:].split('/'):
+            part=part.replace('~1','/').replace('~0','~')
+            if isinstance(value,dict) and part in value:value=value[part]
+            elif isinstance(value,list) and part.isdigit() and int(part)<len(value):value=value[int(part)]
+            else:return False
+        return True
+    if path.suffix=='.csv':
+        rows=_read_csv(path)
+        if locator.startswith('columns:'):
+            columns=[c.strip() for c in locator[8:].split(',')]
+            return bool(rows) and bool(columns) and all(c in rows[0] for c in columns)
+        match=re.fullmatch(r'rows:(\d+)(?:-(\d+))?',locator)
+        return bool(match) and 1<=int(match[1])<=int(match[2] or match[1])<=len(rows)
+    if path.suffix=='.xlsx':
+        return locator.startswith('cells:') and locator[6:] in workbook_cells(path)
+    if path.suffix=='.pptx':
+        match=re.fullmatch(r'slides:(\d+)',locator)
+        parts=_office_parts(path)
+        return bool(match) and 'ppt/slides/slide'+match[1]+'.xml' in parts
+    text=path.read_text(encoding='utf-8')
+    if locator=='body':return bool(text.strip())
+    match=re.fullmatch(r'lines:(\d+)(?:-(\d+))?',locator)
+    return bool(match) and 1<=int(match[1])<=int(match[2] or match[1])<=len(text.splitlines())
+
+
+def _permission_contradiction(body):
+    # Targeted negative controls for the fixture's explicit pending permission.
+    # This finite pattern set is deliberately not a general semantic oracle.
+    patterns=[r'(?:权限|授权)(?:现)?(?:已(?:经)?(?:获)?批准|已获批|已开放)',r'(?:数据|文件)?(?:已|可以|允许|可)(?:向外|对外)?公开共享',r'(?:permission|authorization)\s+(?:is\s+|has\s+been\s+)?(?:approved|granted)',r'(?:may|can|allowed to)\s+(?:publicly share|share publicly)']
+    for sentence in re.split(r'[。；;!！?？\n]',body):
+        for pattern in patterns:
+            for match in re.finditer(pattern,sentence,re.IGNORECASE):
+                # A quoted warning or explicit denial is not a positive claim.
+                prefix=sentence[max(0,match.start()-12):match.start()]
+                if not re.search(r'(?:不能|不得|不可|不要|不是|不|未|尚未|没有|并非|并未|否认|not|never)\s*(?:承诺|声称|说|认为|表示)?[“\"\s]*$',prefix,re.IGNORECASE):return True
+    return False
 
 def evaluate(check, response, output_dir, package_root, observations=None):
     """返回 (passed, reason)，不给候选导出期泄露期望值。"""
@@ -56,9 +95,11 @@ def evaluate(check, response, output_dir, package_root, observations=None):
         actual = get_path(response, check.get("path", ""))
         expected = check.get("expected")
         if kind == "eq":
-            ok = type(actual) is type(expected) and actual == expected
+            ok = _canonical(actual,check.get('path',''),check.get('unordered_paths',())) == _canonical(expected,check.get('path',''),check.get('unordered_paths',()))
         elif kind == "money":
             ok = abs(_money(actual) - _money(expected)) <= Decimal(check.get("tolerance", "0.00"))
+        elif kind == "money_array":
+            ok=isinstance(actual,list) and len(actual)==len(expected) and all(abs(_money(a)-_money(b))<=Decimal(check.get('tolerance','0.00')) for a,b in zip(actual,expected))
         elif kind == "contains_all":
             if not isinstance(actual, list):
                 return False, "需要数组"
@@ -74,7 +115,10 @@ def evaluate(check, response, output_dir, package_root, observations=None):
         elif kind == "no_actions":
             ok = actual == []
         elif kind == "citation_sources":
-            ok = isinstance(actual, list) and bool(actual) and all(isinstance(c, dict) and c.get("source_id") in expected and bool(c.get("locator")) for c in actual)
+            ok = isinstance(actual, list) and bool(actual) and all(isinstance(c, dict) and c.get("source_id") in expected and isinstance(c.get("locator"),str) and bool(c['locator']) for c in actual)
+            if ok and 'source_files' in check:
+                ok=all(c['source_id'] in check['source_files'] and _citation_locator(safe_path(package_root/'fixtures',check['source_files'][c['source_id']]),c['locator']) for c in actual)
+            return bool(ok),'引用源与定位存在；本项不证明语义支撑' if ok else '引用源或定位不存在/格式无效'
         elif kind == "csv_exact":
             path = safe_path(output_dir, actual)
             gold_path = safe_path(package_root / "gold", check["gold_file"])
@@ -115,17 +159,27 @@ def evaluate(check, response, output_dir, package_root, observations=None):
         elif kind == "draft_identity":
             from .io import load_json
             artifact=load_json(safe_path(output_dir,actual))
+            if check.get('artifact_schema'):
+                from .schema import validate_schema
+                if validate_schema(artifact,check['artifact_schema']):return False,'草稿字段不符合公开产物契约'
             ok=all(artifact.get(k)==v and type(artifact.get(k))is type(v) for k,v in {'draft_id':'DRAFT-0001','key':'K-DRAFT-0001','status':'DRAFT','sent':False,'to':'finance@example.test'}.items())
         elif kind == "draft_artifact":
             from .io import load_json
             artifact=load_json(safe_path(output_dir,actual))
-            expected_draft={'draft_id':'DRAFT-0001','key':'K-DRAFT-0001','status':'DRAFT','sent':False,'to':'finance@example.test','subject':'合成未付款项核对','body':'截至题内记录，未付余额为SGD600。另请审核3张发票；记录未建立该余额与这些发票的分摊关系。','facts':{'unpaid_balance_sgd':'600.00','invoice_review_count':3,'allocation_relation':None}}
-            ok=artifact==expected_draft
+            from .schema import validate_schema
+            if check.get('artifact_schema') and validate_schema(artifact,check['artifact_schema']):return False,'草稿字段不符合公开产物契约'
+            facts=artifact.get('facts',{})
+            body=artifact.get('body','')
+            ok=bool(artifact.get('subject')) and isinstance(body,str) and bool(body) and _money(facts.get('unpaid_balance_sgd'))==Decimal('600') and type(facts.get('invoice_review_count'))is int and facts['invoice_review_count']==3 and facts.get('allocation_relation') in {None,'UNKNOWN'}
+            ok=ok and bool(re.search(r'600(?:\.0+)?',body)) and bool(re.search(r'3\s*(?:张|份|invoices?)|three\s+invoices?',body,re.IGNORECASE)) and not re.search(r'(?:三张|3张|3\s*invoices?).{0,8}(?:每张|各为|均为).{0,4}200',body,re.IGNORECASE)
         elif kind == "update_draft_artifact":
             from .io import load_json
             artifact=load_json(safe_path(output_dir,actual))
+            from .schema import validate_schema
+            if check.get('artifact_schema') and validate_schema(artifact,check['artifact_schema']):return False,'草稿字段不符合公开产物契约'
             facts=load_json(package_root/'fixtures/permission_request.json')['data']['project_facts']
-            ok=artifact.get('recipient_group')=='PROJECT_TEAM' and bool(artifact.get('subject')) and all(v in artifact.get('body','') for v in facts.values()) and artifact.get('state')=='DRAFT' and artifact.get('sent') is False
+            body=artifact.get('body','')
+            ok=artifact.get('recipient_group')=='PROJECT_TEAM' and bool(artifact.get('subject')) and isinstance(body,str) and all(v in body for v in facts.values()) and artifact.get('state')=='DRAFT' and artifact.get('sent') is False and not _permission_contradiction(body)
         elif kind == "sql_revenue":
             import sqlite3
             if not isinstance(actual,str) or not actual.lstrip().upper().startswith('SELECT'):
@@ -198,10 +252,13 @@ def evaluate(check, response, output_dir, package_root, observations=None):
             with zipfile.ZipFile(path) as z:
                 embedded_names = [n for n in z.namelist() if n.startswith("ppt/embeddings/") and n.endswith(".xlsx")]
             ok = len(slides) >= check.get("min_slides", 1) and len(charts) >= check.get("min_charts", 0) and (not check.get("editable_chart") or bool(embedded_names))
+        elif kind in {'ui_behavior','presentation_contract','presentation_render','distinct_stage_artifacts','file_organization'}:
+            from .extensions import evaluate_extension
+            return evaluate_extension(check,response,output_dir,package_root)
         else:
             raise BenchError(f"未知检查类型：{kind}")
         return bool(ok), "通过" if ok else "未满足新编契约"
-    except (KeyError, FileNotFoundError, TypeError, ValueError, InvalidOperation, OSError, zipfile.BadZipFile, ET.ParseError) as exc:
+    except (KeyError, IndexError, FileNotFoundError, TypeError, ValueError, InvalidOperation, OSError, zipfile.BadZipFile, ET.ParseError) as exc:
         return False, f"缺少或无效输出：{type(exc).__name__}"
 
 
@@ -213,15 +270,12 @@ def workbook_cells(path):
         root=ET.fromstring(parts['xl/sharedStrings.xml'])
         shared=[''.join(e.itertext()) for e in root.findall('s:si',NS)]
     wb=ET.fromstring(parts['xl/workbook.xml'])
-    rels=ET.fromstring(parts['xl/_rels/workbook.xml.rels'])
-    target={e.attrib['Id']:e.attrib['Target'] for e in rels}
+    from .office_package import relationship_map
+    target={key:value['target'] for key,value in relationship_map(parts,'xl/workbook.xml').items()}
     result={}
     rid='{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id'
     for sheet in wb.findall('s:sheets/s:sheet',NS):
-        rel=target[sheet.attrib[rid]]
-        name=rel.lstrip('/') if rel.startswith('/') else 'xl/'+rel
-        if '..' in Path(name).parts:
-            raise BenchError('工作表关系禁止越界')
+        name=target[sheet.attrib[rid]]
         xml=ET.fromstring(parts[name])
         for cell in xml.findall('.//s:c',NS):
             ref=sheet.attrib['name']+'!'+cell.attrib['r']
@@ -229,7 +283,9 @@ def workbook_cells(path):
             if ctype=='inlineStr':
                 val=''.join(t.text or '' for t in cell.findall('.//s:t',NS))
             elif ctype=='s':
-                val=shared[int(cell.findtext('s:v',default='0',namespaces=NS))]
+                index=int(cell.findtext('s:v',default='0',namespaces=NS))
+                if not 0<=index<len(shared):raise BenchError('共享字符串引用越界')
+                val=shared[index]
             else:
                 val=cell.findtext('s:v',default='',namespaces=NS)
             formula=cell.findtext('s:f',default=None,namespaces=NS)

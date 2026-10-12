@@ -1,28 +1,33 @@
 {
+  "capabilities_main": {
+    "file_tools": 12,
+    "generative_ui": 6,
+    "office_tasks": 16
+  },
+  "control_results": "docs/FINAL-VERIFICATION.md",
   "coverage_limitations_zh": [
-    "原完整逐题注册表未恢复",
-    "OS级候选隔离未验证",
-    "真实公网/邮箱/Counso未测试",
-    "Office视觉渲染和通用回算引擎未知",
-    "真实模型快照/等算力/可靠性未验证",
-    "诊断通过不代表正常工具全工作流通过"
+    "历史原题完整注册表未恢复",
+    "自助使用无 OS 强隔离",
+    "真实公网/邮箱/Counso 账户未测试",
+    "A2UI 协议尚未适配",
+    "引用定位核验不证明完整语义支撑",
+    "实际模型能力和统计显著排名尚未验证"
   ],
-  "family_count": 20,
+  "distinct_input_files": 69,
+  "family_count": 29,
   "groups": {
-    "core": 20,
+    "core": 29,
     "diagnostic": 6,
     "stress": 5
   },
-  "local_control_tests": 67,
   "new_model_runs": 0,
+  "objective_checks": 273,
   "origin": "NEW_DESIGN",
-  "scenario_count": 31,
-  "schema_version": "RECON-0.1",
+  "scenario_count": 40,
+  "schema_version": "AUTO-0.2",
   "score_modes": {
     "diagnostic": 6,
-    "normalized": 23,
+    "normalized": 32,
     "supplemental": 2
-  },
-  "simulated_reference_cases": 31,
-  "single_mutation_negative_controls": 31
+  }
 }

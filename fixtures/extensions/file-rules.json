@@ -1,0 +1,18 @@
+{
+  "data": {
+    "copy_not_move": true,
+    "destinations": {
+      "2026-10-04_meeting.md": "meetings/2026-10/2026-10-04_meeting.md",
+      "INV-001_2026-10-03.txt": "invoices/2026-10/2026-10-03_INV-001.txt",
+      "INV-002_2026-09-18.txt": "invoices/2026-09/2026-09-18_INV-002.txt",
+      "readme.txt": "other/readme.txt"
+    },
+    "index_columns": [
+      "source",
+      "destination",
+      "sha256"
+    ],
+    "source_directory": "file-inbox"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

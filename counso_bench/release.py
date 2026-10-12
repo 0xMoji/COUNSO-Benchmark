@@ -5,7 +5,7 @@ import zipfile
 from .io import BenchError, sha256, write_json
 
 ALLOWED_DIRS={'counso_bench','catalog','fixtures','gold','provenance','docs','tests','.github','examples'}
-ALLOWED_ROOT={'README.md','pyproject.toml','.gitignore','CHANGELOG.md','LICENSE-NOTICE.md','RUNBOOK.md','INDEPENDENT_REVIEW.md'}
+ALLOWED_ROOT={'README.md','pyproject.toml','.gitignore','CHANGELOG.md','LICENSE-NOTICE.md','RUNBOOK.md','INDEPENDENT_REVIEW.md','AGENT-START.md','package.json','package-lock.json'}
 
 def files(root):
     root=Path(root)
@@ -23,7 +23,7 @@ def freeze(root):
     root=Path(root)
     manifest=root/'provenance/file_manifest.json'
     items=[{'path':str(p.relative_to(root)),'sha256':sha256(p),'bytes':p.stat().st_size} for p in files(root) if p!=manifest]
-    result={'schema_version':'RECON-0.1','suite_label':'HISTORY-RECONSTRUCTED','hash_origin':'NEW_PACKAGE_BYTES_NOT_ORIGINAL','files':items}
+    result={'schema_version':'AUTO-0.2','suite_label':'HISTORY-RECONSTRUCTED','hash_origin':'NEW_PACKAGE_BYTES_NOT_ORIGINAL','files':items}
     write_json(manifest,result)
     return {'file_count':len(items),'manifest_sha256':sha256(manifest),'notice':'只标识本次文件字节；无原包哈希可对照。'}
 
@@ -42,4 +42,4 @@ def release(root,output):
             info=zipfile.ZipInfo('counso-benchmark-reconstructed/'+str(p.relative_to(root)),date_time=(2026,10,8,0,0,0))
             info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644 << 16
             z.writestr(info,p.read_bytes())
-    return {'path':str(output),'sha256':sha256(output),'bytes':output.stat().st_size,'notice':'本地脱敏可发布包；未上传或发布。完整审计包含金标，请勿整体提供给候选。'}
+    return {'path':str(output),'sha256':sha256(output),'bytes':output.stat().st_size,'notice':'本地脱敏可发布包；未上传或发布。完整源码含参考答案；自助作答先只读导出的输入包，完成后再调用评分。'}

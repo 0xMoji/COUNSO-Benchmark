@@ -1,0 +1,19 @@
+{
+  "data": {
+    "discount": [
+      0,
+      100
+    ],
+    "formula": "units * price * (1 - discount / 100)",
+    "price": [
+      0,
+      10000
+    ],
+    "rounding": "nearest cent, half up",
+    "units": [
+      0,
+      1000
+    ]
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

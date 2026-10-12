@@ -1,89 +1,88 @@
-# 运行手册
+# 本地题集命令与报告
 
-## 1. 源码与边界
+当前使用 AUTO-0.2。Agent 作答从 AGENT-START.md 开始，所有命令在完整源码根目录运行。命令只处理题目、产物和本地检查，没有候选模型调用、模型切换或人工仲裁步骤。
 
-从完整ZIP或仓库源码根目录运行python -m counso_bench。Python 3.10+；无运行时第三方依赖。wheel/pip仅带代码的安装路线不受支持。Windows路径采用pathlib，不依赖原F盘；Linux可直接执行。
-
-这是评估器工具，不是候选模型调用器。尚未接Counso actor、provider adapter、实时账户、付费模型或Office应用。将来真实评测须另行固定模型快照、预算、思考配置、随机种子、超时、权限与隔离，不能据此声称已测五个模型。
-
-## 2. 列题和候选导出
+## 准备与作答
 
 ```sh
-python -m counso_bench list --group stress
-python -m counso_bench export B17.reconcile --output exports/reconcile-01
-python -m counso_bench export --all --output exports/suite-01
+python -m counso_bench doctor
+python -m counso_bench list
+python -m counso_bench prepare --model "目标模型" --agent "现有 Agent" --output runs/attempt-01
 ```
 
-已有目录会拒绝覆盖。每题导出包含prompt.txt、response_schema.json、input_manifest.json、run_metadata_template.json及白名单inputs。候选不获得gold、rubric、actor、catalog或参考答案。
+`--model-source` 可选 user_config、environment、agent_self_report、unknown。模型实际配置在用户现有环境中选择；题集只保存标签及来源。`--cases` 后列场景 ID 可做子题单，`--suite all` 包括诊断，`--repeats 3` 导出三次重复的独立目录。prepare 没有解题或调用 Agent。
 
-run_metadata_template由评估器填写，不由候选决定故障来源/完成状态。候选只交response.json与要求的本地产物。所有状态和策略枚举以公开schema为准；集合字段不因排序差异改变能力分。
+每题 input 下有 prompt、schema 和 inputs；output 保存 response.json 与实际文件。提交路径使用相对路径，run_id/模型元数据位于该题 run.json 和总 manifest.json。公开 schema 是格式要求，gold 不用于作答。首次正式核验后的修订应新建尝试，不能覆盖旧成绩。
 
-## 3. 三个需要服务观测的场景
+## 来源与草稿 mock
 
-R-B01-source-review、B01.discovery及R-B15-idempotent-draft需要本机受控模拟服务。先在评估器侧启动：
+三个场景需要本地模拟服务，具体接口由题干和导出的 mock_client.py 给出。将下列 run_id 换成本次题单记录：
 
 ```sh
-python -m counso_bench serve-mock B01.discovery --run-id run-discovery-01 --state-dir runs/service-discovery-01
+python -m counso_bench serve-mock B01.discovery --run-id "本题 run_id" --state-dir runs/attempt-01/cases/B01.discovery/repeat-001/service
 ```
 
-服务输出临时127.0.0.1地址，endpoint.json另有run_id、session_id和执行包指纹。只把地址传给候选，服务端目录保持在评估器边界内。服务状态目录不能给候选读写。接口是模拟业务数据，不含现实账号；只开放该场景对应的只读入口。
+使用 endpoint.json 的本机地址，服务仅模拟来源检索/正文读取或原 key 草稿查回；不接真实业务账户。停止服务后保留记录。score-suite 校验 run_id、场景、session_id 和执行包指纹；旧记录或缺失 session 不能重用。自助仓库内的观测不构成对恶意操作者的强防伪边界。
 
-候选使用导出客户端：
+## 核验与报告
 
 ```sh
-python inputs/mock_client.py --endpoint 评估器给出的完整本机地址 search 税务
-python inputs/mock_client.py --endpoint 评估器给出的完整本机地址 read 检索返回的source_id
-python inputs/mock_client.py --endpoint 评估器给出的完整本机地址 draft-lookup 原提交key
+python -m counso_bench score-suite --attempt runs/attempt-01
 ```
 
-前两条仅用于来源题，最后一条仅用于草稿恢复题。源目录和预分类答案不会导出；受控服务提供检索结果和资料正文。服务记录候选查询、读取、原key查回，以及所有禁止写方法的尝试。草稿初始化已提交且未发送，恢复题从超时之后开始，不声称测了现实创建/发送路径。
+默认生成 report.json、report.md，不覆盖原文件。JSON 包含固定题单与逐项报告，Markdown 给出能力计数和失败证据。未提交项目留在计划分母，主能力与诊断分开。
 
-用Ctrl+C结束服务后保留observations.json。运行元数据必须填同一run_id、session_id。评分会绑定场景、会话与当前代码/输入/gold执行指纹；旧会话不能复用于新运行。CLI会保存观测文件hash。
-
-仅127.0.0.1监听，独立容器不能自动访问另一个容器的loopback。若以后做独立候选容器，需设置受控通信及挂载边界；本包没有验证或自动创建这种隔离。不要把模拟服务临时改为公网，也不要接真实秘密或凭证。
-
-## 4. 校验和评分
-
-评估器在run.json中填写唯一run_id、scenario_id、run_origin、completion、failure_origin、rubric_version；服务题另填session_id。run_origin只有NEW_MODEL或SIMULATED，旧历史记录不接受作为新分数。此包selftest只使用SIMULATED。
+单题也可核验并按原题单汇总：
 
 ```sh
-python -m counso_bench score B20.scale --response runs/result-01/response.json --run runs/result-01/run.json --output-dir runs/result-01 --output runs/result-01/score.json
-python -m counso_bench score B01.discovery --response runs/result-02/response.json --run runs/result-02/run.json --observations runs/service-discovery-01/observations.json --output runs/result-02/score.json
-python -m counso_bench report runs/result-01/score.json runs/result-02/score.json --output runs/summary-01.json
+python -m counso_bench score R01-ticket-triage --response runs/attempt-01/cases/R01-ticket-triage/repeat-001/output/response.json --run runs/attempt-01/cases/R01-ticket-triage/repeat-001/run.json --output runs/ticket-score.json
+python -m counso_bench report runs/ticket-score.json --manifest runs/attempt-01/manifest.json --output runs/partial-report.json
 ```
 
-报告/compare/adjudicate的输出也拒绝覆盖，不能把--output指向原response.json等证据。原始输入hash、候选response hash、run metadata hash、观测hash和产物hash留在报告中。
+提交的产物即使缺失或格式错误也能生成失败记录。没有开始的题目记未提交/未知；能确认未交付不代表能确认故障来自模型。受限公式、缺浏览器、缺 Office 渲染引擎分别说明，不伪造通过。
 
-完成和质量分别处理。completion保留评估器的执行终态；task_delivery_status给实际交付完整性。缺必需字段/产物时原声明COMPLETE仍保留，但不能算完成率分子；有完整却错误的产物可以是交付完成而质量0。观察缺失或受限公式待人工时是UNKNOWN，不能补零。
+output/self_review.json 按 [固定模板](docs/SELF-REVIEW.md) 保存当前 Agent 的语义/视觉参考意见，报告标记为 CANDIDATE_SELF_EVALUATION，不计入程序分。没有它也能报告。旧人工终裁命令已退出当前 CLI，旧 Python API 仅保留历史回归用途。
 
-Office自动求值支持单层SUMIFS及IFERROR(SUMIFS(...),0)，完整Sales范围或结构化列、月份单元格/文本等值条件；INDEX+COUNTA/OFFSET+COUNTA动态命名图表范围。其他合法公式不伪判业务错，转UNKNOWN待人工功能复核。所有Office视觉渲染都未验证，不自动扣分。
+## 两份结果比较
 
-## 5. 双审核、终裁与配置比较
+用户在不同已配置模型中分别使用同一版本、同一题单，得到两份 report.json 后，建立 configs.json：
 
-审核JSON含reviewer、scenario_id、checks[{name,state,evidence}]、dimensions{facts,completeness,usability}。PASS/FAIL/UNKNOWN与证据分开；证据措辞差异不单独触发L1裁决。维度可为null表达未知。
-
-```sh
-python -m counso_bench adjudicate --review-a runs/review-a.json --review-b runs/review-b.json --decisions runs/decisions.json --output runs/adjudicated.json
-python -m counso_bench score R01-ticket-triage --response runs/response.json --run runs/run.json --adjudicated runs/adjudicated.json --output runs/scored-final.json
+```json
+{
+  "model-a": "runs/attempt-a/report.json",
+  "model-b": "runs/attempt-b/report.json"
+}
 ```
 
-decisions含adjudicator、checks（按检查名给state/evidence）、dimensions（按维度给score/evidence），只覆盖争议项。score自动复算终裁对象，要求同一场景及完整解决，应用effective_dimensions，保留A/B/终裁和绑定hash；不靠手工复制分数。未决时可以先score而不附人工质量，完整均分保持未知。
-
-compare的configs JSON是“配置名→评分报告文件路径数组”。每配置每场景一份报告；重复试验须先预定义独立聚合规则。只比较共同有证据且已审核的normalized场景，交集为空则null；不能混合模拟与真实结果。
+路径相对 configs.json 所在目录：
 
 ```sh
-python -m counso_bench compare --configs runs/configs.json --output runs/compare.json
+python -m counso_bench compare --configs configs.json --output comparison.json
 ```
 
-## 6. 冻结和本地发布包
+比较校验执行包指纹、输入、场景、重复编号及完整检查集合，不取有分子集偷偷缩小题单。不同配置的模型标签可以不同，题目与评分规则须一致。SIMULATED 与 NEW_MODEL 不混合。历史 AUTO-0.2 报告应使用对应冻结源码核验。
+
+同一 Agent 换模型更适合解释模型变化；不同 Agent 也能使用相同能力题，结果保留已知环境差异。一次测试可以使用，不承诺统计显著性。费用和内部轨迹非必需字段。
+
+## 冻结数据变体
 
 ```sh
+python -m counso_bench variant --seed 42 --output /tmp/counso-seed-42
+cd /tmp/counso-seed-42
 python -m counso_bench validate
+python -m counso_bench prepare --model "目标模型" --output runs/attempt-01
+```
+
+变体是独立的冻结源码副本。首版仅改变读取销售数据的 U01/U05/U06 的金额与顺序，其他题材料保持原样；支持范围、种子和变更哈希见副本 provenance/variant.json。同 seed 得到相同字节。比较双方必须使用同一个变体，不能把不同输入混比。repeats 是重复作答，不会暗中重抽数据。冻结变体中不要执行素材开发命令 counso_bench.build，它会重新生成基线材料；需换 seed 时从原基线另建副本。
+
+## 开发控制与源码发布
+
+```sh
 python -m unittest discover -s tests -v
-python -m counso_bench selftest --output /tmp/counso-final-selftest
+python -m counso_bench selftest --output /tmp/counso-controls-new
 python -m counso_bench freeze
 python -m counso_bench validate
-python -m counso_bench release --output /tmp/counso-benchmark-reconstructed.zip
+python -m counso_bench release --output /tmp/counso-auto-0.2.zip
 ```
 
-freeze明确替换本次文件清单；不恢复原文件hash。release只打包白名单，并要求文件集合及hash与冻结清单完全一致。后来新加文件、删文件、改文件都会失效，需要重新审核/冻结。ZIP输出在源码树外且拒绝覆盖。它含审计gold，不能整个发给候选。此命令不上传或发布。
+selftest 是参考产物与单点错误控制，缺可选依赖会显示 reference_unknown；passed 只表示未发生已确认错误，fully_verified 才表示所有参考都得到确定通过。二者都不代表候选模型成绩。生成源码 ZIP 不会上传或发布。

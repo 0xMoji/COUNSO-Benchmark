@@ -1,19 +1,23 @@
-"""31个模拟参考输出及31个单点负控；绝不是候选模型运行。"""
+"""本版本全题单的模拟参考输出与负控；绝不是候选模型运行。"""
 from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import json
+import hashlib
 import shutil
 import urllib.request
 from urllib.parse import quote
 from .io import ROOT, BenchError, write_json, load_json
 from .catalog import scenarios, contracts
-from .scoring import score_response, aggregate
+from .automation import VERSION, configuration, prepare, score_auto, aggregate_auto
 from .mock import running_mock
 
 
 def materialize_reference(case,contract,out):
-    out.mkdir(parents=True)
+    if any(c['kind'] in {'ui_behavior','presentation_contract','file_organization'} for c in contract['checks']):
+        from .extensions import materialize_extension_reference
+        return materialize_extension_reference(case, contract, out, ROOT)
+    out.mkdir(parents=True, exist_ok=True)
     response=deepcopy(contract['reference_response']);result=response['result']
     if 'workbook' in result:
         shutil.copyfile(ROOT/'gold/reference'/result['workbook'],out/result['workbook'])
@@ -26,7 +30,9 @@ def materialize_reference(case,contract,out):
 
 def observed_reference(case,response,out,run_id=None):
     if not case.get('service_required'):return None
-    observations_path=out.parent/(out.name+'-'+(run_id or 'SIMULATED-REFERENCE-'+case['id'])+'-assessor-observations.json')
+    identity=run_id or 'SIMULATED-REFERENCE-'+case['id']
+    token=hashlib.sha256(identity.encode('utf-8')).hexdigest()[:24]
+    observations_path=out.parent/(out.name+'-'+token+'-assessor-observations.json')
     with running_mock(case['id'],observations_path,run_id=run_id or 'SIMULATED-REFERENCE-'+case['id']) as (endpoint,state):
         if case['service_required'] in {'SOURCE_DISCOVERY_MOCK','SOURCE_REVIEW_MOCK'}:
             for q in (['税务','主体登记','汇率','数据权限'] if case['service_required']=='SOURCE_DISCOVERY_MOCK' else []):
@@ -39,29 +45,60 @@ def observed_reference(case,response,out,run_id=None):
     return load_json(observations_path)
 
 def selftest(output):
-    output=Path(output)
-    if output.exists():raise BenchError('拒绝覆盖已有自测目录')
-    output.mkdir(parents=True)
-    positives=[];negative_controls=[];failures=[]
-    for case in scenarios():
-        sid=case['id'];contract=contracts(sid);out=output/sid
-        response=materialize_reference(case,contract,out);observations=observed_reference(case,response,out)
-        run={'run_id':'SIMULATED-REFERENCE-'+sid,'scenario_id':sid,'run_origin':'SIMULATED','completion':'COMPLETE','failure_origin':'NONE','rubric_version':'RECON-0.1','human_review':{'reviewer':'DETERMINISTIC_REFERENCE_SELFTEST','facts':4,'completeness':4,'usability':4,'evidence':'这是金标模拟/工具自测，不是候选人工实测审核。'}}
-        if observations:run['session_id']=observations['session_id']
-        write_json(out/'response.json',response);write_json(out/'run.json',run)
-        report=score_response(case,contract['checks'],response,run,out,ROOT,observations)
-        positives.append(report);write_json(out/'score.json',report)
-        if report['objective_score']!=100:failures.append({'scenario_id':sid,'failed_checks':[c for c in report['checks'] if c['passed'] is not True]})
-        negative=deepcopy(response);first=next(c for c in contract['checks'] if c['kind']=='eq' and c['path'].startswith('result.'))
-        field=first['path'].split('.',1)[1];value=negative['result'][field]
-        negative['result'][field]=not value if isinstance(value,bool) else value+1 if type(value)is int else ['__NEGATIVE_CONTROL__'] if isinstance(value,list) else {'__NEGATIVE_CONTROL__':True} if isinstance(value,dict) else 0 if value is None else '__NEGATIVE_CONTROL__'
-        negative_run=deepcopy(run);negative_run['run_id']='SIMULATED-NEGATIVE-'+sid;negative_run.pop('human_review')
-        negative_observations=observed_reference(case,response,out,run_id=negative_run['run_id']) if case.get('service_required') else None
-        if negative_observations:negative_run['session_id']=negative_observations['session_id']
-        negreport=score_response(case,contract['checks'],negative,negative_run,out,ROOT,negative_observations)
-        detected=negreport['objective_score'] is not None and negreport['objective_score']<100
-        negative_controls.append({'scenario_id':sid,'mutation':field,'detected':detected})
-        if not detected:failures.append({'scenario_id':sid,'negative_control':'未检出'})
-    summary={'schema_version':'RECON-0.1','run_origin':'SIMULATED','passed':not failures,'reference_cases':len(positives),'negative_controls':len(negative_controls),'negative_detected':sum(n['detected'] for n in negative_controls),'aggregate':aggregate(positives),'failures':failures,'notice':'仅验证本次工具/合成fixture一致性。31个参考通过和31负控检出都不是模型能力成绩。'}
-    write_json(output/'selftest-summary.json',summary);write_json(output/'negative-controls.json',negative_controls)
+    """Known controls, not agent results; dependency UNKNOWN is counted honestly."""
+    output = Path(output)
+    if output.exists():
+        raise BenchError('拒绝覆盖已有自测目录')
+    manifest = prepare(output, configuration('DETERMINISTIC_REFERENCE_CONTROL', 'environment', 'fixture_generator'),
+                       suite='all', origin='SIMULATED')
+    positives, negatives, failures = [], [], []
+    for entry in manifest['entries']:
+        case = next(s for s in scenarios() if s['id'] == entry['scenario_id'])
+        contract = contracts(case['id'])
+        out = output / entry['output_dir']
+        response = materialize_reference(case, contract, out)
+        response['schema_version'] = VERSION
+        run = {'run_id': entry['run_id'], 'scenario_id': case['id'], 'run_origin': 'SIMULATED',
+               'rubric_version': VERSION, 'repeat': entry['repeat'], 'configuration': manifest['configuration']}
+        observations = observed_reference(case, response, out, run_id=run['run_id'])
+        if observations:
+            run['session_id'] = observations['session_id']
+        write_json(out/'response.json', response)
+        report = score_auto(case, contract['checks'], response, run, out, ROOT, observations)
+        positives.append(report)
+        if report['task_state'] == 'FAIL':
+            failures.append({'scenario_id': case['id'], 'failed_checks': [c for c in report['checks'] if c['state'] == 'FAIL']})
+        negative = deepcopy(response)
+        first = next((c for c in contract['checks'] if c.get('path','').startswith('result.')
+                      and c['kind'] in {'eq','money','money_array','set_eq','nonempty'}), None)
+        if first is not None:
+            field = first['path'].split('.', 1)[1]
+            value = negative['result'][field]
+            negative['result'][field] = (not value if isinstance(value, bool) else value+1 if type(value) is int
+                                         else ['__NEGATIVE_CONTROL__'] if isinstance(value, list)
+                                         else {'__NEGATIVE_CONTROL__': True} if isinstance(value, dict)
+                                         else '__NEGATIVE_CONTROL__')
+        else:
+            field = 'scenario_id'
+            negative[field] = '__WRONG_SCENARIO__'
+        negative_run = deepcopy(run)
+        negative_run['run_id'] += ':negative'
+        negative_observations = observed_reference(case, response, out, run_id=negative_run['run_id'])
+        if negative_observations:
+            negative_run['session_id'] = negative_observations['session_id']
+        neg = score_auto(case, contract['checks'], negative, negative_run, out, ROOT, negative_observations)
+        detected = neg['task_state'] == 'FAIL'
+        negatives.append({'scenario_id': case['id'], 'mutation': field, 'detected': detected})
+        if not detected:
+            failures.append({'scenario_id': case['id'], 'negative_control': '未检出'})
+    summary = {'schema_version': VERSION, 'run_origin': 'SIMULATED', 'passed': not failures,
+               'fully_verified': all(r['task_state'] == 'PASS' for r in positives),
+               'reference_cases': len(positives),
+               'reference_passed': sum(r['task_state'] == 'PASS' for r in positives),
+               'reference_unknown': sum(r['task_state'] == 'UNKNOWN' for r in positives),
+               'negative_controls': len(negatives), 'negative_detected': sum(n['detected'] for n in negatives),
+               'aggregate': aggregate_auto(positives, manifest), 'failures': failures,
+               'notice': '参考产物/负控核验，SIMULATED 绝非候选模型成绩；缺少渲染依赖仍记录 UNKNOWN。'}
+    write_json(output/'selftest-summary.json', summary)
+    write_json(output/'negative-controls.json', negatives)
     return summary

@@ -1,53 +1,73 @@
-# Counso 基准题集：历史重建版
+# Counso Agent 能力题集
 
-HISTORY-RECONSTRUCTED · RECON-0.1 · 全部业务材料为合成数据
+AUTO-0.2 · HISTORY-RECONSTRUCTED / NEW_SYNTHETIC · 全部业务材料为合成数据
 
-这是可以离线运行、导出候选输入、核验真实文件并保留审计证据的替代评测包。它恢复了可核实的历史机制与关键事实，并补写缺失题目。没有恢复原文件字节、完整原提示词、原金标或完整原注册表；同为31题不表示逐题等同。
+把仓库地址交给一个已经配置好目标模型的 Agent，让它按 **[AGENT-START.md](AGENT-START.md)** 自行完成题目、保存产物、调用本地核验并给出参考意见。题集提供输入、提交契约、核验和报告；使用现有 Agent 的工具和运行环境，无需接入特定平台或开发模型适配器。
 
-## 交付范围
+## 对 Agent 的使用指令
 
-- 本次新设计：20个家族、31个场景，core20 / stress5 / diagnostic6
-- 新编评分分组：23个 normalized、2个 supplemental、6个 diagnostic；后两组另列
-- 仅 B01.discovery、B13.deep、B17.reconcile、B20.scale 四个原变体ID得到证实并沿用。其他R前缀ID均为新编；家族机制参考也单独标记
-- 原始逐行数据不可得，已生成确定性合成CSV、原生可编辑XLSX、模拟来源材料与草稿服务
-- 没有调用候选模型、付费API、真实邮箱或Counso；没有新模型排名
+> 请按这个仓库的 AGENT-START.md 完成题集，使用当前已经配置的模型。保存每题产物，运行本地核验并给出三类能力的结果与参考意见。记录已知模型信息，不读参考答案或修改评分规则来获得通过。
 
-## 快速运行
+仓库为私有时，现有 Agent 需要用户已配置的仓库读取权限。题集不会索取或输出凭证。
 
-需要Python 3.10以上。以下命令在解压后的源码根目录运行，运行时只使用Python标准库。Windows可把python3换为python。
+## 覆盖
+
+| 能力 | 内容 |
+|---|---|
+| 日常办公事务 | 来源核对、交接、条款、时区、脱敏、SQL、计划、歧义及授权边界 |
+| 文件和工具 | 现有 Excel/CSV 产物，新增 PPT 创建与修改、文件分类和索引 |
+| 生成式 UI | 看板、表单、计算器、列表详情、分阶段修改、数据更新/空值 |
+
+当前 40 题：34 个主能力任务、6 个诊断；其中新增 6 个生成式 UI、2 个 PPT、1 个文件整理任务。诊断与主能力分开。原 31 场景是历史机制上的新编替代题，不代表恢复了原版逐题字节或难度。
+
+## 最小使用
+
+Python 3.10+；从完整源码目录运行：
 
 ```sh
-python3 -m counso_bench list
-python3 -m counso_bench validate
-python3 -m unittest discover -s tests -v
-python3 -m counso_bench selftest --output /tmp/counso-selftest-new
-python3 -m counso_bench export B20.scale --output exports/B20-scale
+python -m counso_bench doctor
+python -m counso_bench validate
+python -m counso_bench list
+python -m counso_bench prepare --model "目标模型" --output runs/attempt-01
+# 现有 Agent 按 input/prompt.txt 作答，保存到各题 output/
+python -m counso_bench score-suite --attempt runs/attempt-01
 ```
 
-selftest是金标参考输出、模拟工具与负控的一致性测试；其中100%或4分均不是候选模型能力成绩。导出和结果写入默认拒绝覆盖。
+prepare 只准备题单，不调用 Agent。score-suite 检查实际提交，生成 JSON 与 Markdown。无人工打分/仲裁依赖。默认一次即可使用，重复运行由用户在已有环境中决定。产物和报告拒绝覆盖。
 
-分发方式是完整源码目录/ZIP。当前不支持只安装wheel或pip部署：业务数据位于源码树，不能只拷贝Python模块。没有发布可独立安装的console script。
+## 产物核验依赖
 
-## 评测中实际检验什么
+基础 CLI、数据核对、有限 Excel 公式和 PPT 结构核验只需 Python 标准库。下列依赖扩展真实执行核验，缺失的检查记录 UNKNOWN：
 
-- 来源发现：通过评估器的本机模拟服务检索、读取未预分类的合成资料；不等同真实互联网发现
-- 深交接：9份有时效、地区、用途和权威冲突的来源，区分批准、草稿、预期、准备与开放
-- 估值：同头寸多个版本、错日/指示报价、逆向FX、期间归属、确认小计与未知项
-- 大表：完整关联2,818发票、2,282收款、37贷项；打散顺序、多笔关联、结清/超收及多条件排除；2400行CSV及原生Excel读回
-- Office：实际原始行、金额类型、公式求值、图表/表格关系可达、作用域和下月追加负控；视觉渲染仍未知
-- 草稿恢复：模拟服务器已提交后超时，实际按原key查询、保存未发送草稿；不验证现实邮箱创建
-- 其他企业代理题：工单、条款差异、时区、脱敏、只读SQL、依赖、歧义、权限、注入、未知与权威版本
+- **UI**：Node.js 20+、Playwright 与 Chromium。使用已有安装，或在独立工具目录运行 `npm install playwright@1.62.1`，再运行该安装中的 `playwright install chromium`。通过 `NODE_PATH` 指向其 node_modules，必要时 `COUNSO_NODE` 指向 Node。已有 Chrome/Chromium 可通过 `COUNSO_CHROMIUM_EXECUTABLE` 指定可执行文件；doctor 会检查默认浏览器文件是否存在。以实际测试通过的依赖为准，版本写入浏览器证据。
+- **Office**：LibreOffice 的 `soffice` 位于 PATH，或通过 `COUNSO_SOFFICE` 指定。使用独立临时 profile，限制执行时间。可选 `openpyxl` 仅用于独立兼容测试，不当作公式求值引擎。
 
-## 防止答案污染
+UI 首版使用公开的 `html-offline-v1` 行为约定，可提交原生 HTML/JavaScript 或已构建 React。界面不依赖 CDN。核验器在本地提供题内数据与提交 mock，真实操作可见控件并保存截图与观察记录。A2UI 协议适配属于后续扩展；当前已经测的是生成可用交互界面的能力。
 
-完整仓库含gold及参考输出，仅供评估器和审阅者使用。候选只能获得export生成的单题目录、自己的输出目录和必要的模拟服务地址；不能读取仓库、gold、评分器或服务端观测文件。导出过滤已测试，但操作系统级隔离未验证，必须另行建立受控执行边界。
+Excel 独立验证候选实际范围、表结构、公式、图表和追加/复制行为；不支持的表达式可走可用 Office 引擎，仍无法确认则 UNKNOWN。PPT 检查原生文本、图表与嵌入数据、修订范围和实际渲染；完整视觉质量仍由有截图证据的参考意见解释。
 
-## 阅读顺序
+## 结果口径
 
-1. [运行手册](RUNBOOK.md)：导出、模拟服务、评分、终裁、比较与发布
-2. [题卡与覆盖](docs/CASEBOOK.md)：31题及新编/历史参考来源
-3. [评分说明](docs/SCORING.md)：完成、质量、UNKNOWN与分母
-4. [来源与缺口](provenance/RECONSTRUCTION-LEDGER.md)：核实了什么、补写了什么
-5. [最终验证](docs/FINAL-VERIFICATION.md)与[独立审阅](INDEPENDENT_REVIEW.md)：控制测试与剩余限制
+已知必需失败优先于 UNKNOWN；关键错误不能由其他维度补偿。固定题单中的未提交项目不消失。报告按三类能力给出成功/失败/未判定和成功率可确定范围，这个范围不是统计置信区间。
 
-目录名称保留重建含义。旧历史结果和新运行永远分开保存，不把旧分数重贴为新规则成绩。
+模型标识记录声明来源，不证明实际路由。prepare 同时记录当前核验环境；比较报告注明工具记录缺失或环境差异。脚本核验与当前 Agent 自评分开，自评不计入程序分。工具轨迹、费用等不可获得时注明缺失，不强制专有日志接口。完整仓库含 gold，自助作答遵守输入白名单和不读答案约定，不宣称强隔离监考。
+
+## 开发验证与历史
+
+```sh
+python -m unittest discover -s tests -v
+python -m counso_bench selftest --output /tmp/counso-controls-new
+```
+
+selftest 只生成参考产物和错误对照，不运行候选模型；SIMULATED 成绩不代表模型能力。旧 RECON-0.1 审阅、人工流程与历史记录保留作来源证据，已退出当前 CLI；当前评分与旧结果不混合。
+
+- [Agent 使用入口](AGENT-START.md)
+- [命令与报告](RUNBOOK.md)
+- [评分口径](docs/SCORING.md)
+- [固定自动自评模板](docs/SELF-REVIEW.md)
+- [题卡](docs/CASEBOOK.md)
+- [整改验证](docs/FINAL-VERIFICATION.md)
+- [逐项整改与边界](docs/REMEDIATION.md)
+- [重建来源](provenance/RECONSTRUCTION-LEDGER.md)
+
+以完整源码/ZIP 分发。业务材料位于源码树，单独安装不带数据的 wheel 不是支持的使用方式。

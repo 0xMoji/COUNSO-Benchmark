@@ -1,0 +1,9 @@
+{
+  "data": {
+    "currency": "SGD",
+    "maximum_seats": 20,
+    "minimum_seats": 1,
+    "seat_price": "12.50"
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

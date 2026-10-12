@@ -1,32 +1,44 @@
-# 本次验证记录
+# AUTO-0.2 整改验证
 
-HISTORY-RECONSTRUCTED / RECON-0.1。2026-10-10；以下是重建工具控制测试，不是原件验收复跑或候选模型跑分。
+2026-10-12。基准提交为 `67d11ad1db52cadb413de105efc6797c24ffb4a5`。以下为本地合成参考、错误对照和核验器兼容测试，来源 SIMULATED；没有候选模型实测或新模型排名。
 
-## 本地已执行
+## 已实际通过
 
-- Python标准库运行及模块编译
-- 注册表：31场景、20家族、core20/stress5/diagnostic6；23 normalized/2 supplemental/6 diagnostic
-- unittest：67个控制测试全通过，包含独立审阅发现对应回归
-- selftest：31个合成参考场景通过，31个单点负控被检出
-- 金额独立重算：规模2400行、320772.27余额，212.96/168分列；估值480280小计、4未知、EUR4000原币值
-- 31个候选单题导出白名单及输入hash；拒覆盖、路径越界/符号链接、重复JSON键/非常数值
-- 真实Office结构/完整数据/有限公式/关系可达/作用域/追加负控；CSV数值等价与未知/标识保留
-- 受控模拟服务实际检索、阅读和原key查回；禁止写方法；run/session/执行包绑定、报告观察hash
-- 故障分母、完整交付、关键0与UNKNOWN、无审核不补0、诊断/补充排除、共享证据集合、A/B终裁绑定
-- SQL基准与扰动反证，禁止常数答案；输出报告不覆盖原证据；freeze文件集合/hash一致性
+- 完整单元及集成回归 **166 项**，0 失败、0 错误、0 跳过；包含真实浏览器和 Office 引擎。
+- 全题单参考 **40/40 PASS**，0 UNKNOWN；**40/40 单点错误对照检出**。
+- 注册表 40 场景、29 家族，core 29 / stress 5 / diagnostic 6；69 个不同输入文件、273 个题目检查，另有每题响应格式检查。
+- 主能力任务 34：办公事务 16、文件工具 12、生成式 UI 6；诊断 6 单列。
+- 独立 Decimal Oracle 重新核对账务大小表、估值及收入；不导入素材生成器来算答案。
+- openpyxl 图表/PNG 和 PptxGenJS 原生图表正例；实际 LibreOffice 回算 IFNA 并生成 PDF。
+- 六类 UI 的真实交互正例和错误行为负例；截图、观察、入口及资源子树哈希已绑定。
+- seed=42 的销售 UI 变体通过 3 题、4 阶段真实浏览器检查；同 seed 冻结副本全部文件字节一致。
+- 生成器在独立临时目录重建，catalog/fixtures/gold 共 **91 文件字节完全相同**。
+- 坏 JSON、空响应、可选自评/观测坏文件、缺输出目录、旧观测、删检查、改 required/critical、不同输入比较等反例均覆盖。
 
-LOCAL-SELFTEST.json是模拟一致性摘要，SIMULATED与自测reviewer明确标记；其中4分/100%不是任何候选模型表现。
+## 可核对记录
 
-## 独立复验
+- [机器控制摘要](../provenance/AUTO-CONTROL-RESULTS.json)：执行包指纹、环境版本、计数和证据哈希。
+- [166 项完整测试日志](../provenance/AUTO-CONTROL-TESTS.txt)。
+- [独立业务 Oracle](../provenance/AUTO-INDEPENDENT-ORACLE.json)。
+- [逐项整改与实施边界](REMEDIATION.md)。
 
-独立审阅文档及机器证据见根目录INDEPENDENT_REVIEW.md与provenance中的独立审核记录。最终发布以该文档的门槛结论与冻结文件清单为准；本文件不会替独立审阅预先宣称通过。
+实际环境为 Python 3.12.14、Node 24.19.0、Playwright 1.62.1、Chrome 154.0.8037.98、LibreOfficeDev 26.8 alpha、PptxGenJS 4.0.1。以上只是本轮通过的环境快照，不声称所有版本均兼容。GitHub CI 已配置基础与真实产物集成两个层次，远端执行状态另查 CI。
 
-## 未测试/未知
+## 复现
 
-原文件逐字节一致性、原31逐题映射、真实候选模型执行和新模型排名、真实Counso/邮箱/公网搜索、OS隔离、真实Office视觉渲染/通用计算、完整正常文件整理流程、统计显著可靠性。
+按 README 准备可选浏览器和 Office 依赖；已有 Chrome 可设置 COUNSO_CHROMIUM_EXECUTABLE。运行：
 
-已知被限于自动求值范围的合法公式保留UNKNOWN待人工；视觉未知不自动扣产物分。操作系统隔离需要真实运行前另行验证。
+```sh
+COUNSO_ARTIFACT_INTEGRATION=1 python -m unittest discover -s tests -v
+python -m counso_bench selftest --output /tmp/counso-controls-new
+python tests/independent_oracle.py .
+python -m counso_bench validate
+```
 
-## 发布冻结约束
+selftest 的 passed 表示无已确认参考错误且所有负控检出；fully_verified 才表示所有参考确定通过。缺依赖时保持 UNKNOWN，不能把缺依赖的运行当本页完整集成结果。上述测试数不是模型评测样本数。
 
-发布包必须匹配provenance/file_manifest.json的完整白名单集合及hash。最终审核之后不改代码/素材；若改，重新运行受影响回归、独立复验并冻结。添加独立报告等审计文件也要进入新的冻结清单；不允许发布未冻结文件。
+## 尚无实测结论
+
+真实候选模型的能力差异、实际模型路由、等工具/等预算下的可靠性和统计显著性；生产 Counso/邮箱/公网操作；OS 强隔离；A2UI 协议适配；通用语义评审准确性。引用定位和有限矛盾规则的范围已公开。冻结 seed 变体只支持三道销售 UI，其他题不是种子化覆盖。
+
+RECON-0.1 的旧验证和人工流程记录保留为历史证据，不能与 AUTO-0.2 的新结果混合。

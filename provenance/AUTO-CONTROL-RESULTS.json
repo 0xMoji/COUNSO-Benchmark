@@ -1,0 +1,104 @@
+{
+  "execution_environment": {
+    "browser": "154.0.8037.98",
+    "independent_presentation_author": "PptxGenJS 4.0.1",
+    "node": "24.19.0",
+    "office_engine": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "playwright": "1.62.1",
+    "python": "3.12.14"
+  },
+  "generated_bytes": {
+    "all_equal": true,
+    "compared_files": 91
+  },
+  "independent_oracle": {
+    "path": "provenance/AUTO-INDEPENDENT-ORACLE.json",
+    "result": "PASS",
+    "sha256": "f703da39a8ca0c858e3c83accad70cdf32ed8a5f28e26b53cfbe11b1120f6849"
+  },
+  "new_model_runs": 0,
+  "notice": "Reference/negative controls and tool compatibility only. No candidate model ranking, semantic-review accuracy, production account or OS-isolation claim.",
+  "portability_controls": [
+    "Python 3.10 callable-only SQLite authorizer",
+    "Filesystem-safe observation names independent of run_id delimiters",
+    "Python 3.10 sqlite3.Warning for multiple SQL statements is a delivery failure"
+  ],
+  "reference_by_capability": {
+    "diagnostic": {
+      "fail": 0,
+      "pass": 6,
+      "planned": 6,
+      "submitted": 6,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "file_tools": {
+      "fail": 0,
+      "pass": 12,
+      "planned": 12,
+      "submitted": 12,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "generative_ui": {
+      "fail": 0,
+      "pass": 6,
+      "planned": 6,
+      "submitted": 6,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    },
+    "office_tasks": {
+      "fail": 0,
+      "pass": 16,
+      "planned": 16,
+      "submitted": 16,
+      "success_rate_bounds": [
+        1.0,
+        1.0
+      ],
+      "unknown": 0
+    }
+  },
+  "run_origin": "SIMULATED",
+  "schema_version": "AUTO-0.2",
+  "seeded_variant": {
+    "browser_stages_passed": 4,
+    "same_seed_all_frozen_bytes_equal": true,
+    "seed": 42,
+    "supported_cases": [
+      "R-U01-dashboard",
+      "R-U05-iterative-edit",
+      "R-U06-data-update"
+    ]
+  },
+  "selftest": {
+    "failures": [],
+    "fully_verified": true,
+    "negative_controls": 40,
+    "negative_detected": 40,
+    "passed": true,
+    "reference_cases": 40,
+    "reference_passed": 40,
+    "reference_unknown": 0
+  },
+  "suite_fingerprint": "35180a4300aaa8e6a6a730fa8ea50a04b4432589cf061219ba50eefb9f8fa7a2",
+  "unit_and_integration": {
+    "errors": 0,
+    "failures": 0,
+    "log": "provenance/AUTO-CONTROL-TESTS.txt",
+    "log_sha256": "b2f1607b257a9155601fc7ea58983d15739280aa2c1b3bcbcbff8c74716f8e05",
+    "skipped": 0,
+    "tests": 166
+  },
+  "verification_date": "2026-10-12"
+}

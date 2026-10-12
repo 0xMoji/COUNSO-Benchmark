@@ -1,5 +1,6 @@
 """独立审阅发现对应的回归负控，已知0与UNKNOWN边界明确区分。"""
 from copy import deepcopy
+from unittest.mock import patch
 import csv
 import json
 from pathlib import Path
@@ -63,7 +64,9 @@ class ReviewRegressions(TB.TempCase):
     def test_unsupported_legal_formula_unknown(self):
         def change(response,out):
             self.alter_office(out,'formulas.xlsx',lambda parts:parts.update({'xl/worksheets/sheet1.xml':parts['xl/worksheets/sheet1.xml'].replace(b'<f>SUMIFS(',b'<f>IFNA(SUMIFS(').replace(b'"SALE")</f>',b'"SALE"),0)</f>')}))
-        r=self.score('R-B09-repair-formulas',mutation=change,run_changes={'human_review':self.review4()});self.assertTrue(r['critical_unknown']);self.assertIsNone(r['human_quality_score'])
+        with patch.dict('os.environ', {'COUNSO_SOFFICE':'/nonexistent/counso-engine'}):
+            r=self.score('R-B09-repair-formulas',mutation=change,run_changes={'human_review':self.review4()})
+        self.assertTrue(r['critical_unknown']);self.assertIsNone(r['human_quality_score'])
     def test_orphan_chart_rejected(self):
         def change(response,out):self.alter_office(out,'chart.xlsx',lambda p:p.update({'xl/worksheets/sheet1.xml':p['xl/worksheets/sheet1.xml'].replace(b'<drawing r:id="rIdChart"/>',b'')}))
         self.assertTrue(self.score('R-B07-editable-chart',mutation=change)['critical_failed'])

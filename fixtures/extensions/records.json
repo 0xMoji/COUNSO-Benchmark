@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "email": "pine@example.test",
+      "id": "SG-001",
+      "name": "Pine SG",
+      "region": "SG"
+    },
+    {
+      "email": "cedar@example.test",
+      "id": "HK-002",
+      "name": "Cedar HK",
+      "region": "HK"
+    },
+    {
+      "email": null,
+      "id": "SG-003",
+      "name": "Birch SG",
+      "region": "SG"
+    }
+  ],
+  "fixture_origin": "NEW_SYNTHETIC"
+}

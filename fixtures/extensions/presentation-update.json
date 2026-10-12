@@ -1,0 +1,17 @@
+{
+  "data": {
+    "amounts": [
+      1200,
+      1500,
+      2100
+    ],
+    "instruction": "Only update numeric total on slide 1 and chart/data on slide 2. Keep slide 3 text and native objects exactly unchanged.",
+    "months": [
+      "January",
+      "February",
+      "March"
+    ],
+    "total": 4800
+  },
+  "fixture_origin": "NEW_SYNTHETIC"
+}

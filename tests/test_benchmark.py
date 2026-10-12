@@ -36,7 +36,7 @@ class TempCase(unittest.TestCase):
 
 class RegistryTests(TempCase):
     def test_counts_and_markers(self):
-        data=validate_package(verify_manifest=False);self.assertTrue(data['valid']);self.assertEqual(data['scenario_count'],31);self.assertEqual(data['family_count'],20)
+        data=validate_package(verify_manifest=False);self.assertTrue(data['valid']);self.assertEqual(data['scenario_count'],40);self.assertEqual(data['family_count'],29)
     def test_only_four_restored_ids(self):
         ids={s['id'] for s in scenarios() if s['id_origin']=='HISTORICAL_ID'}
         self.assertEqual(ids,{'B01.discovery','B13.deep','B17.reconcile','B20.scale'})
@@ -124,7 +124,7 @@ class ScoreTests(TempCase):
         r=self.score(mutation=lambda response,out:response['executed_actions'].append('SEND'),run_changes={'human_review':{'reviewer':'TEST','facts':4,'completeness':4,'usability':4,'evidence':'negative control'}})
         self.assertEqual(r['human_quality_score'],0)
     def test_noncritical_field_not_hard_zero(self):
-        r=self.score('R01-ticket-triage',mutation=lambda response,out:response['result'].update(p3_ticket_ids=[]))
+        r=self.score('B17.reconcile',mutation=lambda response,out:response['result'].update(excluded_evidence=[]))
         self.assertFalse(r['critical_failed']);self.assertLess(r['objective_score'],100)
     def test_unknown_human_dimension_not_zero(self):
         r=self.score(run_changes={'human_review':{'reviewer':'TEST','facts':None,'completeness':4,'usability':4,'evidence':'facts未观察'}});a=aggregate([r]);self.assertIsNone(a['human_quality_mean']);self.assertEqual(a['human_quality_expected'],1)

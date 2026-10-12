@@ -3,20 +3,17 @@
     {
       "id": "T1",
       "impact": "all_customers",
-      "severity": "P1",
       "symptom": "cannot_login"
     },
     {
       "id": "T2",
       "impact": "single_user",
-      "severity": "P3",
       "symptom": "cosmetic"
     },
     {
       "id": "T3",
       "impact": "all_customers",
       "sensitive": "synthetic_only",
-      "severity": "P1",
       "symptom": "billing_data_exposed"
     }
   ],

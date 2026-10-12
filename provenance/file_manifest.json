@@ -76,9 +76,9 @@
       "sha256": "3aa25ee5b38ec19e7a0e8971a31fdeda319356b42c8e415ad7e769e53380235d"
     },
     {
-      "bytes": 19427,
+      "bytes": 19446,
       "path": "counso_bench/checks.py",
-      "sha256": "a1e5b8d537fd34ea5baebab24893f0a3e5d0441030d5f414831d33247c713c6b"
+      "sha256": "336268b07e4d3000a863f72d98aa2002bdeef3e994652d58a13ddf8830fc2e60"
     },
     {
       "bytes": 11916,
@@ -646,19 +646,19 @@
       "sha256": "6b1fefb191f84d3f8305828c2cfba13e2828a214f29c865fc10036054340330a"
     },
     {
-      "bytes": 2594,
+      "bytes": 2679,
       "path": "provenance/AUTO-CONTROL-RESULTS.json",
-      "sha256": "b5fc2f25daad49a6eac2187a8aa4ac4591e349a83a88c9f213d146f12e4b64cd"
+      "sha256": "4d9f83ed31f917274aaef28a1796fabb701e401e2667990762da5a293072e9c4"
     },
     {
       "bytes": 22480,
       "path": "provenance/AUTO-CONTROL-TESTS.txt",
-      "sha256": "b069614fb34965c479bf2c55e8751d03576595a6092eb37fcddc3e881b0916fc"
+      "sha256": "b2f1607b257a9155601fc7ea58983d15739280aa2c1b3bcbcbff8c74716f8e05"
     },
     {
       "bytes": 3481,
       "path": "provenance/AUTO-INDEPENDENT-ORACLE.json",
-      "sha256": "0e83386542fc330391b9362c02dcb8a8e876725770c06c6ae1bdc5ed4782a085"
+      "sha256": "f703da39a8ca0c858e3c83accad70cdf32ed8a5f28e26b53cfbe11b1120f6849"
     },
     {
       "bytes": 16816,
@@ -756,9 +756,9 @@
       "sha256": "3551cf7a5652551f807d79311d577b95f0a3333e457149925a27af61ae29a8c3"
     },
     {
-      "bytes": 2941,
+      "bytes": 3452,
       "path": "tests/test_sql_portability.py",
-      "sha256": "7b1825084de92558a132c2c8737dfcd033d3ac81b6c394ea26a7b36be5b574ec"
+      "sha256": "594a2811af040831d288639073c077c6e522dadf06197824ce885f5f626c1ee8"
     },
     {
       "bytes": 5305,

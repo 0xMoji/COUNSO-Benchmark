@@ -209,7 +209,7 @@ def evaluate(check, response, output_dir, package_root, observations=None):
                 connection.set_authorizer(authorize)
                 changed=connection.execute(actual).fetchall()
                 ok=ok and len(changed)==1 and len(changed[0])==1 and abs(_money(changed[0][0])-Decimal('517.35'))<=Decimal('0.000001')
-            except sqlite3.Error:
+            except (sqlite3.Error, sqlite3.Warning):
                 return False,'SQL无法只读执行或计算不正确'
             finally:connection.close()
         elif kind == "xlsx_sales_contract":

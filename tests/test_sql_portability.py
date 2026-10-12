@@ -31,6 +31,14 @@ class SQLPortabilityTests(unittest.TestCase):
                     "SELECT SUM(CAST(amount AS REAL)) FROM transactions; DELETE FROM transactions"):
             with self.subTest(sql=sql):
                 self.assertFalse(self.check(sql)[0])
+        connect = sqlite3.connect
+        class WarningCompat(sqlite3.Connection):
+            def execute(self, sql, *args, **kwargs):
+                if ';' in sql:
+                    raise sqlite3.Warning('You can only execute one statement at a time.')
+                return super().execute(sql, *args, **kwargs)
+        with patch('sqlite3.connect', side_effect=lambda *a, **k: connect(*a, factory=WarningCompat, **k)):
+            self.assertFalse(self.check('SELECT 500; DELETE FROM transactions')[0])
 
 
 class EvidenceFilenameTests(unittest.TestCase):

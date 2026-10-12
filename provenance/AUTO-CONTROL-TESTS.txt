@@ -168,6 +168,6 @@ test_same_seed_produces_identical_frozen_bytes (test_variants.FrozenVariantContr
 test_variant_scope_hashes_and_frozen_manifest_valid (test_variants.FrozenVariantControls.test_variant_scope_hashes_and_frozen_manifest_valid) ... ok
 
 ----------------------------------------------------------------------
-Ran 166 tests in 38.388s
+Ran 166 tests in 41.912s
 
 OK

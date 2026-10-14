@@ -1,6 +1,8 @@
 # COUNSO-Benchmark 命令与报告
 
-当前使用 AUTO-0.2。Agent 作答从 AGENT-START.md 开始，所有命令在完整源码根目录运行。命令只处理题目、产物和本地检查，没有候选模型调用、模型切换或人工仲裁步骤。
+当前工具 0.2.2，评分契约 AUTO-0.2。完整源码与以下命令由评测端持有；作答模型只接收 handoff 单题包并按包内 START.md 作答。命令只处理题目、产物和本地检查，不调用模型或修改 Agent 设置。
+
+内部比较保持同一 COUNSO Agent、系统提示词、工具与运行设置，只更换模型。沿用已有执行环境即可；为各模型使用同一题单及相同的初始会话/工作区状态。`--agent` 记录同一个实际 Agent 名称，`--model` 记录本次配置的模型。
 
 ## 可选核验依赖
 
@@ -48,7 +50,35 @@ python -m counso_bench prepare --model "目标模型" --agent "现有 Agent" --o
 
 `--model-source` 可选 user_config、environment、agent_self_report、unknown。模型实际配置在用户现有环境中选择；题集只保存标签及来源。`--cases` 后列场景 ID 可做子题单，`--suite all` 包括诊断，`--repeats 3` 导出三次重复的独立目录。prepare 没有解题或调用 Agent。
 
-每题 input 下有 prompt、schema 和 inputs；output 保存 response.json 与实际文件。提交路径使用相对路径，run_id/模型元数据位于该题 run.json 和总 manifest.json。公开 schema 是格式要求，gold 不用于作答。首次正式核验后的修订应新建尝试，不能覆盖旧成绩。
+评测端每题 input 下有 prompt、schema 和 inputs；run_id/模型元数据位于该题 run.json 和总 manifest.json。不要把这个完整运行目录交给作答模型。
+
+## 单题交接与回收
+
+```sh
+python -m counso_bench handoff --attempt runs/attempt-01 --case R01-ticket-triage --repeat 1 --output ../candidate-ticket-01
+```
+
+输出目录必须在源码与评测目录外，且尚不存在。包内仅有本题公开输入、START.md、ticket.json 和空 output；UI 题附独立 preview.py，服务题附 endpoint.json。只有评测端知道评分实现、参考答案和观测文件。handoff 从当前冻结输入重新导出，既不复制历史产物，也不复制评测目录中的额外文件。
+
+宿主把该单题包放入独立作答工作区，并为每题/每次重复启动新会话。只向作答工具开放当前题包、允许工具和必要的题内服务；不挂载源码、gold、历史产物与评测日志，也不能经联网工具访问公开答案。导出命令不会更改 OS 权限；如果当前 Agent 的文件工具仍能读取完整仓库，只换目录不能满足隔离要求。沙箱集成需实际验证私有文件不可读。
+
+UI 作答端在包目录可以执行：
+
+```sh
+python preview.py --entry output/ui/index.html --port 8765
+```
+
+此脚本只读取当前包的公开数据，按题面提供 /data.json 与 /api/requests，不含评分断言。没有随本题提供的数据集返回 404。其他任务不需要此脚本。
+
+作答停止后仅取回 ticket.json 与 output/，放到评测端可读目录：
+
+```sh
+python -m counso_bench collect --attempt runs/attempt-01 --submission ../candidate-ticket-01
+```
+
+回收校验 run_id、题目、重复编号及输入身份，只导入 output 普通文件；不采用候选提供的 run.json、配置、endpoint 或观测日志。拒绝符号链接/重解析点、候选 .assessor、错误运行身份和覆盖原提交。每次回收最多 30000 文件、合计 200 MB、单文件 50 MB；复制完成后校验字节哈希，评测端保存 collected.json。
+
+空 output 仍为未作答/UNKNOWN，坏 JSON 回收后按原规则记 FAIL；不因回收动作自动判成功。按 manifest.entries 逐题交接，最后 score-suite 汇总固定题单。看过评分的修改与重试属于开发反馈，另建运行，不能混入盲测首答。
 
 ## 来源与草稿 mock
 
@@ -58,7 +88,9 @@ python -m counso_bench prepare --model "目标模型" --agent "现有 Agent" --o
 python -m counso_bench serve-mock B01.discovery --run-id "本题 run_id" --state-dir runs/attempt-01/cases/B01.discovery/repeat-001/service
 ```
 
-使用 endpoint.json 的本机地址，服务仅模拟来源检索/正文读取或原 key 草稿查回；不接真实业务账户。停止服务后保留记录。score-suite 校验 run_id、场景、session_id 和执行包指纹；旧记录或缺失 session 不能重用。自助仓库内的观测不构成对恶意操作者的强防伪边界。
+在 handoff 前启动服务，state-dir 使用本题 manifest 中 endpoint_path 的父目录。handoff 检查服务身份，只向作答包复制本机 endpoint，不复制 session、状态或观测。服务仅模拟来源检索/正文读取或原 key 草稿查回，不接真实业务账户。
+
+作答沙箱需能够访问这个 127.0.0.1 端口：同主机可采用文件隔离并保留 loopback；容器/远程沙箱需由宿主将该端口转发到候选可访问的本机端口，并在交接前确认连通。当前 CLI 不负责部署转发；不要为了连通把服务状态目录挂给模型。停止服务后保留记录。score-suite 校验 run_id、场景、session_id 和执行包指纹；旧记录或缺失 session 不能重用。
 
 ## 核验与报告
 

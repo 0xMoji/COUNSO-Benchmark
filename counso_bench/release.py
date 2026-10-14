@@ -42,4 +42,4 @@ def release(root,output):
             info=zipfile.ZipInfo('COUNSO-Benchmark/'+p.relative_to(root).as_posix(),date_time=(2026,10,8,0,0,0))
             info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644 << 16
             z.writestr(info,p.read_bytes())
-    return {'path':str(output),'sha256':sha256(output),'bytes':output.stat().st_size,'notice':'本地脱敏可发布包；未上传或发布。完整源码含参考答案；自助作答先只读导出的输入包，完成后再调用评分。'}
+    return {'path':str(output),'sha256':sha256(output),'bytes':output.stat().st_size,'notice':'完整源码供评测端使用。正式作答只向模型沙箱提供 handoff 单题包，交卷后由评测端 collect 并评分。'}

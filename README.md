@@ -6,7 +6,7 @@ Artifact-based AI agent evaluation: office workflows, file tools, and generative
 
 让已有 Agent 根据题目和合成业务材料完成工作，交付文件或界面，再用本地核验器检查实际结果。重点是业务事实是否正确、产物是否可用、修改是否保留原有内容，以及遇到歧义、缺失证据和超时后能否保持正确边界。
 
-当前工具版本 **0.2.1**，评分契约 **AUTO-0.2**。共 **40 个任务：34 个主能力任务 + 6 个诊断任务**。基础核验只需 Python，无需 COUNSO 账户、模型适配器或额外评审模型。
+当前工具版本 **0.2.2**，评分契约 **AUTO-0.2**。共 **40 个任务：34 个主能力任务 + 6 个诊断任务**。基础核验只需 Python，无需 COUNSO 账户、模型适配器或额外评审模型。
 
 ## 评测内容
 
@@ -20,25 +20,27 @@ Artifact-based AI agent evaluation: office workflows, file tools, and generative
 
 ## 使用方式
 
-把仓库地址交给一个已经配置好目标模型的 Agent，并发送：
+内部模型比较使用同一个 Agent、提示词、工具和运行设置，只更换目标模型。题集不会修改这些配置；已有固定环境可以直接沿用。
 
-> 请按本仓库 AGENT-START.md 完成题集，使用当前已配置的模型。保存每题产物，运行本地核验，分别报告办公事务、文件工具和生成式 UI 的成功、失败、未判定与参考意见。记录模型信息来源；作答阶段只读取导出的题目材料，不读参考答案或修改评分规则。
+完整仓库保留在**评测端**。评测端导出单题包，只把这个包交给新的模型会话；交卷后回收产物并运行核验。作答端入口是包内 `START.md`，流程说明见 **[AGENT-START.md](AGENT-START.md)**。
 
-Agent 的完整操作入口是 **[AGENT-START.md](AGENT-START.md)**。题集负责准备输入、定义提交契约、核验和报告；实际作答由已有 Agent 完成。
+每个作答工作区只挂载当前题包；源码、答案、其他作答和评分日志由宿主沙箱隔离。单纯在同一可读磁盘上创建另一目录不构成权限隔离。
 
-从完整源码目录运行，Python 3.10+：
+评测端从完整源码目录运行，Python 3.10+。以下为单题示例：
 
 ```sh
 git clone https://github.com/0xMoji/COUNSO-Benchmark.git
 cd COUNSO-Benchmark
 python -m counso_bench doctor
 python -m counso_bench validate
-python -m counso_bench prepare --model "目标模型" --output runs/attempt-01
-# Agent 按各题 input/prompt.txt 作答，保存到对应 output/
+python -m counso_bench prepare --model "目标模型" --agent "COUNSO" --cases R01-ticket-triage --output runs/attempt-01
+python -m counso_bench handoff --attempt runs/attempt-01 --case R01-ticket-triage --output ../candidate-ticket
+# 将 candidate-ticket 交给独立作答沙箱；交卷后取回 ticket.json 和 output/
+python -m counso_bench collect --attempt runs/attempt-01 --submission ../candidate-ticket
 python -m counso_bench score-suite --attempt runs/attempt-01
 ```
 
-默认准备 34 个主任务；`--suite all` 包含诊断，`--cases` 可指定小题单。`prepare` 不调用模型，`score-suite` 生成 JSON 和 Markdown 报告。题单、产物与报告拒绝覆盖；看过评分后修改的作答应另建尝试。
+省略 `--cases` 默认准备 34 个主任务；`--suite all` 包含诊断。每个题目/重复编号单独 `handoff`、作答和 `collect`，最后按原题单汇总。命令不调用模型；题单、已回收产物与报告拒绝覆盖。看过评分后的修改属于开发反馈，不能作为新的盲测作答。服务题交接前由评测端启动 mock，详见 RUNBOOK。
 
 ## 核验环境
 
@@ -64,7 +66,7 @@ python -m counso_bench score-suite --attempt runs/attempt-01
 
 这套题集适合做办公 Agent 的场景回归、产物正确性检查和能力短板诊断。其优势是核对真实产物和受控操作结果，并保留未知与关键失败；相关判断及优化顺序见 [质量审查](docs/QUALITY-REVIEW.md)。
 
-当前验证包括程序回归、合成参考答案和错误对照。**这些通过次数不是候选模型成绩**。2026-10-14 的本地复核及其环境限制见 [本轮验证记录](docs/VERIFICATION-20261014.md)；此前的完整浏览器/Office 控制记录见 [AUTO-0.2 验证](docs/FINAL-VERIFICATION.md)。
+当前验证包括程序回归、合成参考答案和错误对照。**这些通过次数不是候选模型成绩**。0.2.2 单题包、回收与评测端服务的结果见 [交接验证](docs/HANDOFF-VERIFICATION-20261014.md)；0.2.1 的兼容修复见 [前轮验证记录](docs/VERIFICATION-20261014.md)，此前的浏览器/Office 控制记录见 [AUTO-0.2 验证](docs/FINAL-VERIFICATION.md)。
 
 现阶段的证据边界：
 
@@ -73,7 +75,7 @@ python -m counso_bench score-suite --attempt runs/attempt-01
 - 引用检查确认来源与定位存在；不能自动证明所有结论都得到语义支撑。
 - 题内服务为模拟环境；尚不证明真实邮箱、生产连接器、租户权限或跨设备可靠性。
 - 尚无本版本真实候选模型的完整对比、置信区间或通用能力领先结论。
-- 完整源码含参考答案；自助作答采用输入白名单约定与指纹校验，尚无 OS 强隔离监考。
+- 单题作答包不含答案或评分器；实际文件、网络与会话隔离由运行宿主承担，导出命令不自动设置 OS 权限。
 
 ## 开发与迭代
 

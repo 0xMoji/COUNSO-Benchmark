@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "counso-benchmark"
-version = "0.2.1"
+version = "0.2.2"
 description = "Artifact-based agent evaluation for office workflows, file tools, and generative UI"
 requires-python = ">=3.10"
 dependencies = []

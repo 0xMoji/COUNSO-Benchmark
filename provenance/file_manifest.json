@@ -16,14 +16,14 @@
       "sha256": "c65dc25288018b22f882361fb34fe753abdfb0684a0397fc9219564b37f6d87d"
     },
     {
-      "bytes": 5545,
+      "bytes": 3450,
       "path": "AGENT-START.md",
-      "sha256": "4b475bd1ac045ab2a499873f8cbe784a402ebb043b7c0e0364353dfca1c70318"
+      "sha256": "54eaf8b9352b9499770452d717d7fdc1380f438291cdc61ddda008120dcfdc37"
     },
     {
-      "bytes": 2537,
+      "bytes": 3383,
       "path": "CHANGELOG.md",
-      "sha256": "c620e6defd159f11da187ae4f71db599a1cddd3b1e8faf5b87fb5d13efc7c7de"
+      "sha256": "645199eeec6a5dcf16943ddb072786a18fb7dd396fb6c91a90e3f8caba28943c"
     },
     {
       "bytes": 7464,
@@ -36,14 +36,14 @@
       "sha256": "e8d1f8fc4ffe1c61509e5370de50ad5041931be57d95fbd47ed94be9c87e3a26"
     },
     {
-      "bytes": 7178,
+      "bytes": 7720,
       "path": "README.md",
-      "sha256": "cd6a75be06185898846e5a27a01b91b95503cb9f75eeb70143ee4d02cecb9183"
+      "sha256": "6918c5df787e19e60e268d7d7cbc8610426f64ae1dc24087b5590b3682bd33c6"
     },
     {
-      "bytes": 7173,
+      "bytes": 9933,
       "path": "RUNBOOK.md",
-      "sha256": "2a07709b4a83632022111e4cae870a9ec3032fe16ee6dda78647187f7ff4d773"
+      "sha256": "81df24e18fd8600158fa83c7c74e31f7ba0789117189fac257d17dca318ba762"
     },
     {
       "bytes": 102593,
@@ -53,7 +53,7 @@
     {
       "bytes": 85,
       "path": "counso_bench/__init__.py",
-      "sha256": "466293508bc77084306e82f8a0c58e0d7298d44bb736fdc007183dfd64b1da33"
+      "sha256": "0c43b244028195305f080d3593abe869cbf6e8595da45587f3a957679944f762"
     },
     {
       "bytes": 47,
@@ -66,14 +66,19 @@
       "sha256": "63d557f20c3d82af9edf5f1fa5eed276224735f782c8675fe7497984efa352e4"
     },
     {
-      "bytes": 32527,
+      "bytes": 32579,
       "path": "counso_bench/automation.py",
-      "sha256": "2b349966b919efc9aae59becff70962197f015aabd46cf093f1a81b3ed358c75"
+      "sha256": "a564fc0aab00900efa201867754cfd0a30cde1d0bb108c08e8b5e63bed9334da"
     },
     {
       "bytes": 69964,
       "path": "counso_bench/build.py",
       "sha256": "fa4cf682ce0ec8646a45da169cb33a70767ea4dadf66e29d5195a93fc2d0a76e"
+    },
+    {
+      "bytes": 3824,
+      "path": "counso_bench/candidate_preview.py",
+      "sha256": "a25eb8268a4521b4bb28a8791e6f76878808b47720ff81dd1769a63944854134"
     },
     {
       "bytes": 9418,
@@ -86,14 +91,19 @@
       "sha256": "336268b07e4d3000a863f72d98aa2002bdeef3e994652d58a13ddf8830fc2e60"
     },
     {
-      "bytes": 11916,
+      "bytes": 12778,
       "path": "counso_bench/cli.py",
-      "sha256": "1d1bc73b40820f6fd0dbb3c420fad2dc5d9a2adc03314343befbed4b7d7d250b"
+      "sha256": "876d06ce4e6cd6f3ea10e03903ef3975eb88190e68bad1ad2bb93165f02a1093"
     },
     {
       "bytes": 14302,
       "path": "counso_bench/extensions.py",
       "sha256": "a0cf06a1129c5b15ab6b36af89a53c4d1d3b052add718e8bad63ed760dfb2384"
+    },
+    {
+      "bytes": 9158,
+      "path": "counso_bench/handoff.py",
+      "sha256": "1796afbf0b4790da1040e65a44bd4539c852cbd7b9f58d194ef5d72a9243df66"
     },
     {
       "bytes": 3777,
@@ -126,9 +136,9 @@
       "sha256": "b6d9264eabe756171ff368e025e02c881a8ec5bc979bbe80dab530b34240fff2"
     },
     {
-      "bytes": 2809,
+      "bytes": 2794,
       "path": "counso_bench/release.py",
-      "sha256": "0a140886248705513894fd94d0e615943fd85222802ed7dbc9a4eb9dcf341761"
+      "sha256": "dcf9179075c3da969bcd3a7cad0e648d0cdc72a933c9366e000b08c51f87a7f8"
     },
     {
       "bytes": 6291,
@@ -181,9 +191,14 @@
       "sha256": "03ad472d4d2aecfa0ec52b41bbc9bfbbb4bd31756ee83c54b81a5334f10c141d"
     },
     {
-      "bytes": 6083,
+      "bytes": 1958,
+      "path": "docs/HANDOFF-VERIFICATION-20261014.md",
+      "sha256": "77be763eaea1abfc520bd204742957b1f49e0929316fcea81d606ecb50b81e61"
+    },
+    {
+      "bytes": 6555,
       "path": "docs/QUALITY-REVIEW.md",
-      "sha256": "f86d855a3be9e22daa2f2470c83a36c0404746ae0e45b04e4bdbed6eba323d64"
+      "sha256": "dea40ef2b09feb8b99e1f2df349f6b606e355cf1613a778d2f9fa6ac45d14087"
     },
     {
       "bytes": 3370,
@@ -191,14 +206,14 @@
       "sha256": "0caed8771eb857d87d96bfce7d743f1a639b0cba86d0863f23ace4d079af21b7"
     },
     {
-      "bytes": 5105,
+      "bytes": 5241,
       "path": "docs/SCORING.md",
-      "sha256": "e1b8f05e8edee7603223b860924c8467ae34d10409cbb8be98330e650d52fa0f"
+      "sha256": "b51b70fc8f91f74969e1e566848d27fb7781efd739ef3d5ee29b5e4b91cfb037"
     },
     {
-      "bytes": 1695,
+      "bytes": 2278,
       "path": "docs/SECURITY-AND-ISOLATION.md",
-      "sha256": "aae3e6ebd3f1b377bc9233687af446d026b8f1d3e7dd1df0833a9d16b5932a1e"
+      "sha256": "517a3eccde2146a08387407acf5c5f62a82e07ab8ea919d0c5015f32a62cc50b"
     },
     {
       "bytes": 5596,
@@ -728,7 +743,7 @@
     {
       "bytes": 492,
       "path": "pyproject.toml",
-      "sha256": "44a37d3d363fc35b551593f73fef34776eb6de44dcd054ebc29e923f35e21e01"
+      "sha256": "53388ecede690bd5103bef5758bda4234da060e3b6ce35bda92bdef407fa3cd6"
     },
     {
       "bytes": 6218,
@@ -769,6 +784,11 @@
       "bytes": 9859,
       "path": "tests/test_contract_v2.py",
       "sha256": "f2965a439f6804f06aca109d38b46235763ef1ff97b1e9f08aa567108d79d6ae"
+    },
+    {
+      "bytes": 10010,
+      "path": "tests/test_handoff.py",
+      "sha256": "4c1effc0187972131b2ab7fd904fe3397463a18fb67682683dd0101b57ab2d19"
     },
     {
       "bytes": 5612,

@@ -92,14 +92,14 @@ def prepare(output, config, ids=None, suite='main', repeats=1, origin='NEW_MODEL
                 'created_at': datetime.now(timezone.utc).isoformat(),
                 'suite_fingerprint': execution_fingerprint(root),
                 'entries': entries,
-                'notice': '自助作答题单；完整仓库可读，不构成防作弊或模型路由证明。'}
+                'notice': '评测端题单；正式作答使用 handoff 单题包。模型标识为配置记录，不是路由证明。'}
     manifest['plan_sha256'] = _digest({k: v for k, v in manifest.items() if k != 'plan_sha256'})
     write_json(output / 'manifest.json', manifest)
     (output / 'START.txt').write_text(
-        '读取仓库 AGENT-START.md。manifest.json 是本次题单；每题 input/prompt.txt 和 '
-        'input/response_schema.json 为作答要求。产物放到该题 output/。提交后调用：\n'
+        '这是评测端目录，不交给作答模型。按 RUNBOOK.md 用 handoff 导出单题包，'
+        '只把作答包交给新的模型会话，交卷后 collect 回收 output。评测端再调用：\n'
         f'python -m counso_bench score-suite --attempt "{output}"\n'
-        '本命令未调用模型；不要读取 gold 或修改评分器来获得通过。\n', encoding='utf-8')
+        '本命令未调用模型或设置沙箱权限。保持同一 Agent/工具/配置，只更换模型。\n', encoding='utf-8')
     return manifest
 
 

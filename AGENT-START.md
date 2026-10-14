@@ -1,83 +1,47 @@
-# COUNSO-Benchmark · Agent 作答入口
+# COUNSO-Benchmark · 运行入口
 
-用户将仓库地址交给你后，按本页完成作答、核验和报告。使用当前已经配置的模型和现有工具。题集不调用或切换模型，不要求 Counso 账户、API key 或额外评审模型。
+公司内部比较模型时，保持同一 COUNSO Agent、提示词、工具和运行设置，只更换模型。题集不会调用或切换模型，也不会修改这些设置。已有环境固定时，无需为评测再搭建执行框架。
 
-## 1. 确认版本并检查依赖
+## 评测端与作答端
 
-在完整源码根目录运行，Python 3.10+：
+**完整仓库属于评测端。** 它准备题目、维护题内服务、回收产物并评分。作答模型收到的是 `handoff` 导出的一个单题包，入口为包内 `START.md`。
+
+每题、每次重复使用新的会话和独立工作区。宿主只提供这一题的包及已配置工具，不能让作答工具读取评测源码、gold、历史报告、服务日志或其他作答目录；也不能通过联网工具取回公开仓库里的答案。导出到另一个文件夹本身不改变文件权限，实际可访问范围由 COUNSO/现有沙箱控制。
+
+不要让已读过答案、评分代码或正式评分结果的会话继续作为新的候选作答。开发者可以在完整仓库做自测，但这类运行不能作为隔离条件下的模型选型证据。
+
+## 最小流程
+
+以下命令由评测端在完整源码目录运行；示例选一题，正式评测可省略 `--cases` 准备 34 个主任务，再逐项交接。
 
 ```sh
 python -m counso_bench doctor
 python -m counso_bench validate
+python -m counso_bench prepare --model "目标模型" --agent "COUNSO" --cases R01-ticket-triage --output runs/model-a
+python -m counso_bench handoff --attempt runs/model-a --case R01-ticket-triage --output ../candidate-a-ticket
 ```
 
-以用户/环境配置确认目标模型，记录能够确认的名称和来源；不知道则填 UNKNOWN。模型自述不能证明实际调用路由。不要为此读取凭证。基础评分只用 Python 标准库。生成式 UI 与 Office 渲染的可选依赖见 README；缺依赖的检查会记录 UNKNOWN。
+将 `candidate-a-ticket` 这一单题包放进作答沙箱，向目标模型发送：
 
-## 2. 准备本次题单
+> 按包内 START.md 完成这一题，使用当前已经配置好的模型和工具，把 response.json 与交付文件写到 output/。完成后交回 ticket.json 和 output/。
 
-下面只导出输入和提交目录，不会执行题目。把模型与 Agent 名称替换为本次实际配置；`runs/attempt-01` 须不存在。
+作答结束、文件停止变化后，将返回包放回评测端可读目录，再执行：
 
 ```sh
-python -m counso_bench prepare --model "目标模型名称" --model-source user_config --agent "当前 Agent 名称" --output runs/attempt-01
+python -m counso_bench collect --attempt runs/model-a --submission ../candidate-a-ticket
+python -m counso_bench score-suite --attempt runs/model-a
 ```
 
-默认选择 34 个主能力任务；6 个诊断另列。`--suite all` 包含诊断；`--cases R01-ticket-triage R02-contract-diff` 可选小题单；`--repeats 3` 准备重复编号，仍由你自行作答。参考产物控制才使用 `--origin SIMULATED`，真实作答使用默认 NEW_MODEL。
+`collect` 只回收 `output/` 中的普通产物文件；核对本次题目、重复编号和输入身份，不采用候选提交的模型配置、评分报告或服务观测。已回收提交不能覆盖，`.assessor` 证据目录禁止由候选提交。未作答与坏 JSON 仍保留在报告中。
 
-本次清单在 `runs/attempt-01/manifest.json`。每题的位置如下：
+重复测另一模型时保持其余设置，准备新的 `runs/model-b` 和新的作答包。已有的同题单比较命令见 [RUNBOOK](RUNBOOK.md)。模型名称按用户/环境配置记录，不用模型自述证明实际路由，不读取凭证。
 
-```text
-cases/<scenario_id>/repeat-001/
-  input/prompt.txt                 # 题目
-  input/response_schema.json       # 公开提交契约
-  input/artifact_schemas.json       # 某些题目的产物内部结构，如草稿
-  input/inputs/                   # 白名单材料，保留其相对目录
-  run.json                        # 本次 run_id 与已记录配置
-  output/response.json            # 你的最终响应
-  output/<要求的文件或界面>        # 你的产物
-```
+## 服务题与 UI
 
-读取每题 prompt 与 schema，只根据该题导出的材料完成任务。不要读 gold、参考输出、评分实现或历史答案来解题，也不要修改题目、输入或核验器来获得通过。完整仓库在自助使用时可能可读；本题集采用作答约定和指纹核验，不宣称防作弊监考。
+R-B01-source-review、B01.discovery、R-B15-idempotent-draft 的 mock 由**评测端**在交接前启动。作答包只带 `endpoint.json` 中的服务地址及公开客户端；服务状态和观测始终保存在评测端。沙箱需能访问该本机端口，具体安排见 [RUNBOOK](RUNBOOK.md)。
 
-## 3. 逐题完成并提交
+UI 包另带独立的 `preview.py`，读取本题公开数据，可预览筛选、表单及不同数据状态，不含评分断言，不需要评测源码。提交后仍由固定浏览器核验器检查。
 
-使用现有工具计算、创建文件、生成界面。题目中禁止的真实付款、发送、共享等操作始终不需要执行。每题使用自己的输出目录；多阶段题先保存初版，再按下一阶段要求修改，两个阶段都保留。界面可用离线 HTML/JavaScript 或已构建 React；UI 的公开角色、名称与数据接口见题干。
+## 报告
 
-UI 预览可使用仓库提供的本地辅助命令（不评分、不调用模型）：
-
-```sh
-python -m counso_bench.ui_check preview --entry runs/attempt-01/cases/R-U01-dashboard/repeat-001/output/ui/index.html --task R-U01-dashboard --port 8765
-```
-
-在已有浏览器中打开打印的本机地址。其他 UI 题替换入口与 task；U06 用 URL 的 dataset 参数查看数据变化。
-
-提交 `schema_version=AUTO-0.2` 的 `response.json`。文件路径相对该题 output 目录。引用 locator 按导出说明填写真实存在的位置；定位通过只证明位置存在，不证明全部结论已获语义支撑。
-
-正式核验前可自行检查产物；首次提交后看过评分结果再修改，须另建一次尝试，不能覆盖原分。尽量完成整个题单；受限时保留已完成产物，说明限制，仍执行汇总。
-
-三个本地服务题需要来源检索/草稿查回观测：R-B01-source-review、B01.discovery、R-B15-idempotent-draft。在另一终端或现有 Agent 的后台进程能力中启动：
-
-```sh
-python -m counso_bench serve-mock B01.discovery --run-id "该题 run.json 中的 run_id" --state-dir runs/attempt-01/cases/B01.discovery/repeat-001/service
-```
-
-使用生成的 `service/endpoint.json` 中 endpoint，按该题 `input/inputs/mock_client.py` 的说明访问。结束服务保留观测文件；不要修改服务记录。`score-suite` 自动寻找本题 service/observations.json 与 endpoint.json。后台进程不可用时记录工具限制；题集不要求你新建 Agent 调度器。
-
-## 4. 调用本地核验与汇总
-
-```sh
-python -m counso_bench score-suite --attempt runs/attempt-01
-```
-
-输出 `report.json` 和 `report.md`，包含逐项检查、主能力结果、诊断、未提交任务及证据意见。失败作答也需要汇总。格式错误、空文件不会让整批评分崩溃；未作答项目留在题单中。UNKNOWN 不自动变成成功或模型错误。
-
-已有报告不覆盖；只需要重新检查同一份提交时可以给新报告路径：
-
-```sh
-python -m counso_bench score-suite --attempt runs/attempt-01 --output runs/attempt-01/report-check-02.json
-```
-
-按 [固定自评模板](docs/SELF-REVIEW.md) 写 `output/self_review.json`，解释语义或视觉体验；不能确认的维度写 null 并说明原因。无法附加自评时，本地评分仍可完成。它会作为 CANDIDATE_SELF_EVALUATION 保存，**不计入程序核验分数**。没有独立评审模型也能完成报告，全程无人工仲裁。
-
-## 5. 给用户反馈
-
-提供报告路径，并概括办公事务、文件工具、生成式 UI 各自成功、失败、未判定及代表性证据。说明当前已知模型身份来源和工具限制。有实际耗时/费用信息时附上，拿不到不填 0。不能把 selftest 的参考成绩当作你的成绩，不能把自己的主观自评写成独立评审。
+评测端反馈三类能力各自的成功、失败、未判定与代表性证据。不能把 `selftest` 的参考成绩作为候选模型成绩。可选 `self_review.json` 保持为候选自评参考，不计程序分；完整说明见 [评分口径](docs/SCORING.md)。

@@ -47,7 +47,7 @@ def doctor():
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(description='Agent 自助题集：读题、提交、本地核验；不会调用模型或付费服务')
+    p = argparse.ArgumentParser(description='Agent 评测：准备、单题交接、回收和核验；不会调用模型或付费服务')
     sub = p.add_subparsers(dest='command', required=True)
     q = sub.add_parser('list', help='列出题目'); q.add_argument('--group', choices=['core', 'stress', 'diagnostic'])
     sub.add_parser('doctor', help='检查本地依赖，不调用模型')
@@ -57,6 +57,11 @@ def main(argv=None):
     q.add_argument('--agent', default='existing_agent'); q.add_argument('--cases', nargs='+')
     q.add_argument('--suite', choices=['main', 'all'], default='main'); q.add_argument('--repeats', type=int, default=1)
     q.add_argument('--origin', choices=['NEW_MODEL', 'SIMULATED'], default='NEW_MODEL')
+    q = sub.add_parser('handoff', help='评测端导出单题作答包，不含答案或评分器')
+    q.add_argument('--attempt', required=True); q.add_argument('--case', required=True)
+    q.add_argument('--repeat', type=int, default=1); q.add_argument('--output', required=True)
+    q = sub.add_parser('collect', help='评测端按提交身份回收 output，保留自己的配置和观测')
+    q.add_argument('--attempt', required=True); q.add_argument('--submission', required=True)
     q = sub.add_parser('variant', help='生成有明确覆盖范围的冻结种子变体副本')
     q.add_argument('--seed', type=int, required=True); q.add_argument('--output', required=True)
     q = sub.add_parser('export', help='单题输入包，排除 gold'); q.add_argument('scenario_id', nargs='?')
@@ -92,7 +97,13 @@ def main(argv=None):
                              args.cases, args.suite, args.repeats, args.origin)
             print(dumps({'attempt': args.output, 'planned_count': len(result['entries']),
                          'manifest': str(Path(args.output) / 'manifest.json'),
-                         'notice': '只准备题单。请现有 Agent 自行作答，再调用 score-suite。'}), end=''); return 0
+                         'notice': '评测端题单已准备；用 handoff 交接单题，collect 回收后由评测端 score-suite。'}), end=''); return 0
+        if args.command == 'handoff':
+            from .handoff import handoff
+            print(dumps(handoff(args.attempt, args.case, args.output, args.repeat)), end=''); return 0
+        if args.command == 'collect':
+            from .handoff import collect
+            print(dumps(collect(args.attempt, args.submission)), end=''); return 0
         if args.command == 'variant':
             from .variants import create_variant
             print(dumps(create_variant(Path(args.output), args.seed)), end=''); return 0

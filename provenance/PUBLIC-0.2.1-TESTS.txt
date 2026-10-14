@@ -177,7 +177,7 @@ test_same_seed_produces_identical_frozen_bytes (test_variants.FrozenVariantContr
 test_variant_scope_hashes_and_frozen_manifest_valid (test_variants.FrozenVariantControls.test_variant_scope_hashes_and_frozen_manifest_valid) ... ok
 
 ----------------------------------------------------------------------
-Ran 173 tests in 11.771s
+Ran 173 tests in 11.158s
 
 OK (skipped=7)
 
@@ -185,7 +185,7 @@ OK (skipped=7)
 test_all_ui_positive_and_dynamic_negative_controls (test_artifact_tasks.ArtifactControls.test_all_ui_positive_and_dynamic_negative_controls) ... ok
 
 ----------------------------------------------------------------------
-Ran 1 test in 18.071s
+Ran 1 test in 17.559s
 
 OK
 
@@ -193,6 +193,6 @@ OK
 test_real_browser_passes_seeded_sales_variants (test_variants.FrozenVariantControls.test_real_browser_passes_seeded_sales_variants) ... ok
 
 ----------------------------------------------------------------------
-Ran 1 test in 3.804s
+Ran 1 test in 3.680s
 
 OK

@@ -12,7 +12,7 @@
 | 全 40 题合成参考控制 | 38 PASS、2 UNKNOWN、0 FAIL | 两道 PPT 的 Office 渲染缺依赖；`fully_verified=false` |
 | 单点错误对照 | 40/40 检出 | 每题一个错误对照，不代表所有潜在错误均可检出 |
 | 独立 Decimal 业务 Oracle | 通过 | 账务、估值、收入及版本选择；不依赖素材生成器来计算答案 |
-| 冻结清单、Git 克隆与源码 ZIP 解包 | 通过 | 开启 autocrlf 的 Git 克隆仍保留历史 CRLF 与冻结哈希；校验解包后的执行身份；业务题库与金标未修改 |
+| 冻结清单、Git 克隆与源码 ZIP 解包 | 通过 | 开启 autocrlf 的 Git 克隆仍保留原始换行与冻结哈希；校验解包后的执行身份；业务题库与金标未修改 |
 
 两项独立浏览器测试已在本轮启用并通过，但基础回归日志中的原始跳过记录保留，不能将其改写为一次无跳过的全依赖运行。
 
@@ -22,7 +22,7 @@ Windows、Python 3.14.7、Node.js 24.19.0、Playwright 1.62.1；使用已有 Chr
 
 - [基础及独立浏览器控制日志](../provenance/PUBLIC-0.2.1-TESTS.txt)。
 - [独立业务 Oracle 输出](../provenance/PUBLIC-0.2.1-ORACLE.json)。
-- 本地完整参考产物、截图和逐题报告保留在本轮 `runs/public-review-20261014/`；该目录按仓库约定不提交。
+- 本地完整参考产物、截图和逐题报告保留在本轮 `runs/public-review-20261014-final/`；该目录按仓库约定不提交。
 
 2026-10-12 的全依赖控制为历史独立记录，见 [FINAL-VERIFICATION](FINAL-VERIFICATION.md)。它不能充当本轮 Windows 的 Office 实测。远端 CI 状态应另查 Actions，本页不预先宣称通过。
 

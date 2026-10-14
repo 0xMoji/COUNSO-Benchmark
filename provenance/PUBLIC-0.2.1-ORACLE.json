@@ -1,5 +1,5 @@
 {
-  "input_snapshot_manifest_sha256": "b534099572fc52295aa187053194211fb246d94668e7c27932691cb3cc1875fc",
+  "input_snapshot_manifest_sha256": "407f4610cf05e7d92dd53988fd2132e6c3807cd47929c9637c3ecdf26b144007",
   "ledgers": {
     "scale": {
       "all_gold_rows_equal": true,

@@ -23,7 +23,7 @@ class ReleasePortabilityTests(unittest.TestCase):
             base=Path(temp);root=base/'source';clone=base/'clone'
             build(root)
             (root/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
-            # Cover historical CRLF bytes as well as LF JSON in the same package.
+            # Cover CRLF bytes as well as LF JSON in the same package.
             (root/'fixtures/checkout-control.txt').write_bytes(b'first\r\nsecond\r\n')
             freeze(root)
             env={**os.environ,'GIT_CONFIG_GLOBAL':os.devnull,'GIT_CONFIG_NOSYSTEM':'1'}
@@ -41,7 +41,7 @@ class ReleasePortabilityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             base=Path(temp);root=base/'source'
             build(root)
-            (root/'.gitattributes').write_bytes(b'* text=auto eol=lf\n')
+            (root/'.gitattributes').write_bytes((ROOT/'.gitattributes').read_bytes())
             freeze(root)
             archive=base/'source.zip';release(root,archive)
             with zipfile.ZipFile(archive) as source:

@@ -13,8 +13,8 @@ from .io import ROOT, load_json, write_json, sha256, safe_path, BenchError
 def execution_fingerprint(root=ROOT):
     root=Path(root);items=[]
     for folder in ['counso_bench','catalog','fixtures','gold']:
-        for p in sorted((root/folder).rglob('*')):
-            if p.is_file() and '__pycache__' not in p.parts and p.suffix not in {'.pyc','.pyo'}:items.append((str(p.relative_to(root)),sha256(p)))
+        for p in sorted((root/folder).rglob('*'),key=lambda path:path.relative_to(root).as_posix()):
+            if p.is_file() and '__pycache__' not in p.parts and p.suffix not in {'.pyc','.pyo'}:items.append((p.relative_to(root).as_posix(),sha256(p)))
     return hashlib.sha256(json.dumps(items,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
 
 class MockState:

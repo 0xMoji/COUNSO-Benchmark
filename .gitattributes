@@ -1,0 +1,7 @@
+# Frozen evidence hashes require the same source bytes on Windows and Unix.
+* text=auto eol=lf
+*.xlsx binary
+*.pptx binary
+*.png binary
+*.pdf binary
+*.zip binary

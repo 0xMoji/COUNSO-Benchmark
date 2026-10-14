@@ -53,7 +53,7 @@ def create_variant(output, seed, root=ROOT):
     output.mkdir(parents=True,exist_ok=False)
     try:
         for source in source_files:
-            relative=str(source.relative_to(root));target=safe_path(output,relative)
+            relative=source.relative_to(root).as_posix();target=safe_path(output,relative)
             target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
         seen={};changed=[]
         for relative in SALES_FILES:

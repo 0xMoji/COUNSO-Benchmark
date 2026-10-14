@@ -1,6 +1,42 @@
-# 本地题集命令与报告
+# COUNSO-Benchmark 命令与报告
 
 当前使用 AUTO-0.2。Agent 作答从 AGENT-START.md 开始，所有命令在完整源码根目录运行。命令只处理题目、产物和本地检查，没有候选模型调用、模型切换或人工仲裁步骤。
+
+## 可选核验依赖
+
+基础 CLI 使用 Python 3.10+ 标准库。UI 核验另需 Node.js 20+、Playwright 和 Chromium；Office 重算与渲染另需 LibreOffice。先运行 `python -m counso_bench doctor` 查看本机情况。缺失依赖的对应检查记 UNKNOWN，不计为通过。
+
+使用已有 Playwright 安装，或在独立工具目录安装本项目已验证版本：
+
+```sh
+npm install --prefix ../counso-ui-tools playwright@1.62.1
+```
+
+Windows PowerShell 示例：
+
+```powershell
+$env:PYTHONUTF8 = '1'
+$env:NODE_PATH = (Resolve-Path ../counso-ui-tools/node_modules).Path
+& ../counso-ui-tools/node_modules/.bin/playwright.cmd install chromium
+# 已有 Chrome 时也可指定其路径，无需再下载 Chromium：
+$env:COUNSO_CHROMIUM_EXECUTABLE = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+# 仅在已安装 LibreOffice 时设置：
+$env:COUNSO_SOFFICE = 'C:\Program Files\LibreOffice\program\soffice.exe'
+python -m counso_bench doctor
+```
+
+Linux/macOS 示例：
+
+```sh
+export NODE_PATH="$(cd ../counso-ui-tools/node_modules && pwd)"
+../counso-ui-tools/node_modules/.bin/playwright install chromium
+# 若 soffice 不在 PATH，设置 COUNSO_SOFFICE 为实际可执行文件路径
+python -m counso_bench doctor
+```
+
+`COUNSO_NODE` 可指定 Node 可执行文件。依赖版本及浏览器证据随本次运行记录；安装完成或 doctor 检测到可执行文件，不代表产物已经通过真实操作。LibreOffice 使用独立临时 profile；可选 openpyxl 用于兼容测试，不用作公式求值引擎。
+
+Windows 无符号链接创建权限时，五个真实链接控制会明确跳过；越界路径、普通文件和评分规则测试继续运行。不要把跳过记作通过。源码通过 `.gitattributes` 保持 LF；冻结清单严格比较字节，编辑后须新建版本并重新 freeze，不能忽略哈希不匹配。
 
 ## 准备与作答
 

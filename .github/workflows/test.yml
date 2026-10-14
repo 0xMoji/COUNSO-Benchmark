@@ -2,9 +2,12 @@ name: deterministic-validation
 on: [push, pull_request]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: '1'
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python: ['3.10', '3.12']
     steps:
       - uses: actions/checkout@v4
@@ -13,7 +16,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m counso_bench validate
       - run: python -m unittest discover -s tests -v
-      - run: python -m counso_bench selftest --output /tmp/counso-selftest
+      - run: python -m counso_bench selftest --output "${{ runner.temp }}/counso-selftest"
   artifact-integration:
     runs-on: ubuntu-latest
     steps:

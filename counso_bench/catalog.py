@@ -101,7 +101,7 @@ def validate_package(root=ROOT,verify_manifest=True):
     if verify_manifest and manifest.exists():
         from .release import files
         listed={i['path'] for i in load_json(manifest)['files']}
-        actual={str(p.relative_to(root)) for p in files(root) if p!=manifest}
+        actual={p.relative_to(root).as_posix() for p in files(root) if p!=manifest}
         if listed!=actual:errors.append('冻结白名单文件集合发生变化：'+str(sorted(listed^actual)))
         for item in load_json(manifest)['files']:
             p=safe_path(root,item['path'])

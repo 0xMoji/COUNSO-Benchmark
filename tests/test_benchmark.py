@@ -20,6 +20,7 @@ from counso_bench.office_check import check_sales_workbook, check_ledger_workboo
 from counso_bench.checks import evaluate, workbook_cells
 from counso_bench.mock import running_mock
 from counso_bench.selftest import materialize_reference, observed_reference
+from symlink_support import symlink_or_skip
 
 class TempCase(unittest.TestCase):
     def setUp(self):self.temp=tempfile.TemporaryDirectory();self.dir=Path(self.temp.name)
@@ -44,7 +45,7 @@ class RegistryTests(TempCase):
         for s in scenarios():
             out=export_case(s['id'],self.dir/s['id'])
             allowed={i['path'] for i in s['inputs']}
-            got={str(p.relative_to(out/'inputs')) for p in (out/'inputs').rglob('*') if p.is_file()}
+            got={p.relative_to(out/'inputs').as_posix() for p in (out/'inputs').rglob('*') if p.is_file()}
             self.assertEqual(got,allowed)
             self.assertFalse(any(p.name in {'contracts.json','scenarios.json'} or 'gold' in p.relative_to(out).parts for p in out.rglob('*')))
     def test_discovery_export_no_answer_index_or_corpus(self):
@@ -58,10 +59,11 @@ class RegistryTests(TempCase):
     def test_export_hashes(self):
         out=export_case('B20.scale',self.dir/'export')
         for entry in load_json(out/'input_manifest.json')['files']:self.assertEqual(entry['sha256'],sha256(out/entry['path']))
-    def test_paths_block_traversal_and_symlinks(self):
+    def test_paths_block_traversal(self):
         for p in ['../gold/contracts.json','/tmp/secret']:
             with self.assertRaises(BenchError):safe_path(self.dir,p)
-        (self.dir/'link').symlink_to(ROOT/'gold',target_is_directory=True)
+    def test_paths_block_symlinks(self):
+        symlink_or_skip(self,self.dir/'link',ROOT/'gold',directory=True)
         with self.assertRaises(BenchError):safe_path(self.dir,'link/contracts.json')
     def test_json_duplicate_keys_and_nan_rejected(self):
         for data in ['{"a":1,"a":2}','{"a":NaN}']:

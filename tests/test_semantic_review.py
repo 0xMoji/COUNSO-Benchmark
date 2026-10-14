@@ -6,6 +6,7 @@ import unittest
 
 from counso_bench.io import MAX_FILE_BYTES, sha256, write_json
 from counso_bench.semantic_review import TEMPLATE_VERSION, validate_self_review
+from symlink_support import symlink_or_skip
 
 
 class SemanticReviewTests(unittest.TestCase):
@@ -68,11 +69,16 @@ class SemanticReviewTests(unittest.TestCase):
             self.assertTrue(result['errors'])
 
     def test_evidence_must_exist_and_use_safe_local_path(self):
-        (self.out/'alias.json').symlink_to(self.out/'response.json')
-        for path in ['missing.json','../outside.json',str(self.out/'response.json'),'alias.json','.']:
+        for path in ['missing.json','../outside.json',str(self.out/'response.json'),'.']:
             value=self.review()
             value['dimensions']['facts']['evidence'][0]['path']=path
             self.assertFalse(validate_self_review(value,self.out)['valid'])
+
+    def test_evidence_rejects_symlink(self):
+        symlink_or_skip(self,self.out/'alias.json',self.out/'response.json')
+        value=self.review()
+        value['dimensions']['facts']['evidence'][0]['path']='alias.json'
+        self.assertFalse(validate_self_review(value,self.out)['valid'])
 
     def test_nonexistent_json_and_text_locator_rejected(self):
         value=self.review()

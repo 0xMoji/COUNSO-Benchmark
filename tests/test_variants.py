@@ -11,6 +11,7 @@ from counso_bench.extensions import materialize_extension_reference,evaluate_ext
 from counso_bench.io import ROOT,BenchError,load_json,sha256
 from counso_bench.release import files
 from counso_bench.variants import create_variant,SUPPORTED_CASES
+from symlink_support import symlink_or_skip
 
 class FrozenVariantControls(unittest.TestCase):
     def setUp(self):
@@ -56,15 +57,16 @@ class FrozenVariantControls(unittest.TestCase):
                     if row['id'] in amounts:self.assertEqual(amounts[row['id']],row['amount'])
                     amounts[row['id']]=row['amount']
         self.assertEqual(load_json(out/'fixtures/extensions/sales-empty.json')['data'],[])
-    def test_refuses_overwrite_invalid_seed_and_symlink_output(self):
+    def test_refuses_overwrite_and_invalid_seed(self):
         out,_=self.build('variant')
         with self.assertRaises(BenchError):create_variant(out,12)
         with self.assertRaises(BenchError):create_variant(self.base/'bad',True)
-        link=self.base/'link';link.symlink_to(self.base/'missing',target_is_directory=True)
+    def test_refuses_symlink_output(self):
+        link=self.base/'link';symlink_or_skip(self,link,self.base/'missing',directory=True)
         with self.assertRaises(BenchError):create_variant(link,12)
     def test_refuses_symlink_in_release_whitelist(self):
         source,_=self.build('source')
-        (source/'fixtures/injected-link').symlink_to(source/'fixtures/extensions/sales.json')
+        symlink_or_skip(self,source/'fixtures/injected-link',source/'fixtures/extensions/sales.json')
         with self.assertRaises(BenchError):create_variant(self.base/'destination',12,source)
     @unittest.skipUnless(os.environ.get('COUNSO_ARTIFACT_INTEGRATION')=='1','optional real browser seeded-variant controls')
     def test_real_browser_passes_seeded_sales_variants(self):

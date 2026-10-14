@@ -1,0 +1,52 @@
+{
+  "base_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 165,
+    "skipped": 7,
+    "total": 172
+  },
+  "browser_versions": {
+    "browser_version": "154.0.8037.98"
+  },
+  "business_fixtures_and_gold_changed": false,
+  "date": "2026-10-14",
+  "environment": {
+    "browser": {
+      "available": true,
+      "node_version": "v24.19.0",
+      "playwright_version": "1.62.1"
+    },
+    "notice": "基础题和评分不需要 API key；UI 浏览器及 Office 渲染依赖按使用说明检查，缺失时记录 UNKNOWN。",
+    "office_engine_version": null,
+    "openpyxl": false,
+    "python": "3.14.7",
+    "schema_version": "AUTO-0.2"
+  },
+  "execution_fingerprint": "e3ae65d5b61a59a777b36b2c976ccfbf0859b39761326a6e3dc902aaec867d89",
+  "focused_browser_controls": {
+    "seed_42_three_ui_four_stages": "PASS",
+    "six_ui_positive_and_negative": "PASS"
+  },
+  "limits": [
+    "No candidate model runs",
+    "No local LibreOffice or openpyxl controls",
+    "Remote CI verified separately"
+  ],
+  "origin": "LOCAL_SYNTHETIC_CONTROLS_NOT_MODEL_RESULTS",
+  "schema_version": "AUTO-0.2",
+  "selftest": {
+    "failures": [],
+    "fully_verified": false,
+    "negative_controls": 40,
+    "negative_detected": 40,
+    "notice": "参考产物/负控核验，SIMULATED 绝非候选模型成绩；缺少渲染依赖仍记录 UNKNOWN。",
+    "passed": true,
+    "reference_cases": 40,
+    "reference_passed": 38,
+    "reference_unknown": 2,
+    "run_origin": "SIMULATED",
+    "schema_version": "AUTO-0.2"
+  },
+  "tool_version": "0.2.1"
+}

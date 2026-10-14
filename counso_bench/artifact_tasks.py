@@ -194,7 +194,7 @@ def check_render(path, output_dir, task):
 def check_files(directory, index, root):
     mapping=load_json(root/'fixtures/extensions/file-rules.json')['data']['destinations']
     if any(p.is_symlink() for p in directory.rglob('*')):return False,'Organized output cannot contain symlinks'
-    actual={str(p.relative_to(directory)) for p in directory.rglob('*') if p.is_file()}
+    actual={p.relative_to(directory).as_posix() for p in directory.rglob('*') if p.is_file()}
     if actual!=set(mapping.values()):return False,'Organized directory has missing, duplicate or extra files'
     with index.open(encoding='utf-8',newline='') as stream:
         reader=csv.DictReader(stream)

@@ -217,7 +217,7 @@ def score_auto(case, checks, response, run, output_dir, root=ROOT,
                             total_bytes += member.stat().st_size
                             if len(files) >= 10000 or total_bytes > 50_000_000:
                                 raise BenchError('目录产物超过核验资源范围')
-                            files.append({'path': str(member.relative_to(artifact)), 'sha256': sha256(member)})
+                            files.append({'path': member.relative_to(artifact).as_posix(), 'sha256': sha256(member)})
                     files.sort(key=lambda item: item['path'])
                     artifact_evidence.append({'check_id': check['id'], 'path': relative,
                                               'type': 'directory', 'present': artifact.is_dir(),
@@ -258,7 +258,7 @@ def score_auto(case, checks, response, run, output_dir, root=ROOT,
                 total_bytes += member.stat().st_size
                 if len(assessor_evidence) >= 10000 or total_bytes > 50_000_000:
                     raise BenchError('核验观察文件超过资源范围')
-                assessor_evidence.append({'path': str(member.relative_to(output_dir)),
+                assessor_evidence.append({'path': member.relative_to(output_dir).as_posix(),
                                           'sha256': sha256(member)})
         except (BenchError, OSError) as exc:
             assessor_evidence.append({'error': str(exc)})

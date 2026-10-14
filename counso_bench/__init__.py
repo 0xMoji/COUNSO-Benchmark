@@ -1,2 +1,2 @@
-"""历史重建评测工具；没有外部模型调用、联网或付费执行。"""
-__version__ = "0.1.0"
+"""COUNSO-Benchmark: local artifact-based agent evaluation."""
+__version__ = "0.2.1"

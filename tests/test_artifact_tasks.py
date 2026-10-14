@@ -20,6 +20,7 @@ from counso_bench.io import sha256
 from counso_bench.office import write_workbook
 from counso_bench.ui_check import check_ui,ui_asset_manifest
 from counso_bench.io import BenchError,load_json
+from symlink_support import symlink_or_skip
 
 class ArtifactControls(unittest.TestCase):
     def setUp(self):
@@ -113,14 +114,16 @@ class ArtifactControls(unittest.TestCase):
         self.assertEqual(first['entry_sha256'],second['entry_sha256'])
         self.assertNotEqual(first['resource_manifest']['sha256'],second['resource_manifest']['sha256'])
         self.assertEqual([item['path'] for item in first['resource_manifest']['files']],['app.js','index.html'])
-    def test_ui_resource_manifest_bounds_symlinks_and_assessor_exclusion(self):
+    def test_ui_resource_manifest_bounds_and_assessor_exclusion(self):
         directory=self.base/'assets';directory.mkdir();(directory/'index.html').write_text('hello')
         before=ui_asset_manifest(directory)
         (directory/'.assessor').mkdir();(directory/'.assessor/observations.json').write_text('owned evidence')
         self.assertEqual(before,ui_asset_manifest(directory))
         with self.assertRaises(BenchError):ui_asset_manifest(directory,max_bytes=4)
         with self.assertRaises(BenchError):ui_asset_manifest(directory,max_files=0)
-        (directory/'bundle.js').symlink_to(directory/'index.html')
+    def test_ui_resource_manifest_rejects_symlinks(self):
+        directory=self.base/'assets';directory.mkdir();(directory/'index.html').write_text('hello')
+        symlink_or_skip(self,directory/'bundle.js',directory/'index.html')
         with self.assertRaises(BenchError):ui_asset_manifest(directory)
     def test_stage_artifacts_must_be_distinct(self):
         _,c,out,response=self.materialize('R-U05-iterative-edit');check=next(x for x in c['checks'] if x['kind']=='distinct_stage_artifacts')

@@ -59,7 +59,8 @@ def dumps(value):
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(dumps(value), encoding="utf-8")
+    with path.open('w', encoding='utf-8', newline='\n') as stream:
+        stream.write(dumps(value))
 
 def sha256(path, max_bytes=MAX_FILE_BYTES):
     check_file_size(path, max_bytes)

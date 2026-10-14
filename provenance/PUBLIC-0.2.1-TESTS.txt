@@ -128,6 +128,7 @@ test_undefined_structured_table_is_not_fixture_data (test_office_v2.OfficeV2Test
 test_unused_content_type_override_does_not_invent_a_part (test_office_v2.OfficeV2Tests.test_unused_content_type_override_does_not_invent_a_part) ... ok
 test_whole_column_shapes_compute_without_materializing_million_rows (test_office_v2.OfficeV2Tests.test_whole_column_shapes_compute_without_materializing_million_rows) ... ok
 test_execution_identity_uses_portable_paths_and_json_bytes (test_release_portability.ReleasePortabilityTests.test_execution_identity_uses_portable_paths_and_json_bytes) ... ok
+test_git_checkout_preserves_frozen_source_bytes (test_release_portability.ReleasePortabilityTests.test_git_checkout_preserves_frozen_source_bytes) ... ok
 test_source_zip_round_trip_preserves_frozen_package (test_release_portability.ReleasePortabilityTests.test_source_zip_round_trip_preserves_frozen_package) ... ok
 test_adjudication_applies_without_manual_copy (test_review_regressions.ReviewRegressions.test_adjudication_applies_without_manual_copy) ... ok
 test_boolean_quality_rejected (test_review_regressions.ReviewRegressions.test_boolean_quality_rejected) ... ok
@@ -176,7 +177,7 @@ test_same_seed_produces_identical_frozen_bytes (test_variants.FrozenVariantContr
 test_variant_scope_hashes_and_frozen_manifest_valid (test_variants.FrozenVariantControls.test_variant_scope_hashes_and_frozen_manifest_valid) ... ok
 
 ----------------------------------------------------------------------
-Ran 172 tests in 10.617s
+Ran 173 tests in 11.771s
 
 OK (skipped=7)
 

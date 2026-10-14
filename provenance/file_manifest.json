@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "bytes": 162,
+      "bytes": 142,
       "path": ".gitattributes",
-      "sha256": "2333540cf60a5ced2f61ae7808e457ef74921889330fd05bee118422a551c31a"
+      "sha256": "157837c21c9fde18a66b28a0fb57184b98d06ae497c57a05b87496dd95e26319"
     },
     {
       "bytes": 1883,
@@ -21,9 +21,9 @@
       "sha256": "4b475bd1ac045ab2a499873f8cbe784a402ebb043b7c0e0364353dfca1c70318"
     },
     {
-      "bytes": 2496,
+      "bytes": 2537,
       "path": "CHANGELOG.md",
-      "sha256": "4b9f4b6ebe1d730b64ea98190d6eada4f8ab06b348df85438bf43ddb56853232"
+      "sha256": "c620e6defd159f11da187ae4f71db599a1cddd3b1e8faf5b87fb5d13efc7c7de"
     },
     {
       "bytes": 7549,
@@ -41,9 +41,9 @@
       "sha256": "cd6a75be06185898846e5a27a01b91b95503cb9f75eeb70143ee4d02cecb9183"
     },
     {
-      "bytes": 7109,
+      "bytes": 7173,
       "path": "RUNBOOK.md",
-      "sha256": "42424a5c9ea4b273fe4cdeb1b71417669ebea683f9fd80b5498016185f8e4034"
+      "sha256": "2a07709b4a83632022111e4cae870a9ec3032fe16ee6dda78647187f7ff4d773"
     },
     {
       "bytes": 105404,
@@ -181,9 +181,9 @@
       "sha256": "d375c6fdcdf789fea7ae785891b90ff670a5a410831a96916325eb3263bea7ec"
     },
     {
-      "bytes": 5963,
+      "bytes": 6060,
       "path": "docs/QUALITY-REVIEW.md",
-      "sha256": "748ce7608b9ea3e42cf365907991f622e448aafe69a615721b2ba7ea7992e742"
+      "sha256": "1a0a34d7e644e63991f008e0026fda2803ec22653c8aa9c0c0b73d745983bece"
     },
     {
       "bytes": 3403,
@@ -206,9 +206,9 @@
       "sha256": "924d03d0bfc2977517ec57a3157efac74535557dbc149025b352d78a49050b31"
     },
     {
-      "bytes": 2911,
+      "bytes": 2966,
       "path": "docs/VERIFICATION-20261014.md",
-      "sha256": "f53b271e2c69f685709e8bdd03b8d7586b169dd11d9d4d20373c617174c9c22a"
+      "sha256": "0200a4de0b31c9b908f32b7d9fad94f2c0c8047c3cbb5d5286854de4cd80cb1c"
     },
     {
       "bytes": 301,
@@ -703,12 +703,12 @@
     {
       "bytes": 1542,
       "path": "provenance/PUBLIC-0.2.1-RESULTS.json",
-      "sha256": "15856e380dbcd82e6036fabb9c0bdf810c45c78b9a1d01a07085b9fb07009374"
+      "sha256": "168b9265aaddd927130cd0effb9716496ebd758beb0eca5063d0cedebd59f428"
     },
     {
-      "bytes": 24420,
+      "bytes": 24574,
       "path": "provenance/PUBLIC-0.2.1-TESTS.txt",
-      "sha256": "e3d94fa01461146784f23f6cb4f919fa78e54b8e7876edb7476ff0f6f73d0b61"
+      "sha256": "53d781592efbf43a66c1f77c141090e4533737a857682fc4bd56f214face89dc"
     },
     {
       "bytes": 4588,
@@ -781,9 +781,9 @@
       "sha256": "1624cec39e15dbb28d3ece1189cad874250f0aaf9059f8118db6c588c9ddfe67"
     },
     {
-      "bytes": 2204,
+      "bytes": 3641,
       "path": "tests/test_release_portability.py",
-      "sha256": "55b05a098f6e6554f80f1e91422263005a98258bbffd03ed97ccbfb6e114dee5"
+      "sha256": "f17a6f1a518ffca05d0f327e59b65999663e529e974dfd766903bba97375c9ae"
     },
     {
       "bytes": 10655,

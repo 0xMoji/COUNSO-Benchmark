@@ -2,9 +2,9 @@
   "base_tests": {
     "errors": 0,
     "failures": 0,
-    "passed": 165,
+    "passed": 166,
     "skipped": 7,
-    "total": 172
+    "total": 173
   },
   "browser_versions": {
     "browser_version": "154.0.8037.98"

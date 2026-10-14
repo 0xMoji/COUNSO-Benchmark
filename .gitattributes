@@ -1,7 +1,3 @@
-# Frozen evidence hashes require the same source bytes on Windows and Unix.
-* text=auto eol=lf
-*.xlsx binary
-*.pptx binary
-*.png binary
-*.pdf binary
-*.zip binary
+# Frozen hashes cover original bytes, including historical CRLF fixtures.
+# Preserve them exactly at add/checkout time on every host.
+* -text
